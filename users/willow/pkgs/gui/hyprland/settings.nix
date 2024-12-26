@@ -1,5 +1,4 @@
 {...}: {
-  wayland.windowManager.hyprland.catppuccin.enable = true;
   wayland.windowManager.hyprland.settings = {
     # See https://wiki.hyprland.org/Configuring/
 

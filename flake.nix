@@ -63,7 +63,6 @@
     self,
     nixpkgs,
     home-manager,
-    catppuccin,
     ...
   } @ inputs: let
     username = "willow";
@@ -74,7 +73,6 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/earthy
-          catppuccin.nixosModules.catppuccin
           home-manager.nixosModules.home-manager
         ];
         specialArgs = {
@@ -86,7 +84,6 @@
         system = "aarch64-linux";
         modules = [
           ./hosts/anemone
-          catppuccin.nixosModules.catppuccin
           home-manager.nixosModules.home-manager
         ];
         specialArgs = {
@@ -98,7 +95,6 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/lily
-          catppuccin.nixosModules.catppuccin
           home-manager.nixosModules.home-manager
         ];
         specialArgs = {

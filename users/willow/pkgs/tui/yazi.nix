@@ -1,6 +1,3 @@
 {...}: {
-  programs.yazi = {
-    enable = true;
-    catppuccin.enable = true;
-  };
+  programs.yazi.enable = true;
 }

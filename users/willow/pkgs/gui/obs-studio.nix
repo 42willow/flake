@@ -4,6 +4,5 @@
     plugins = with pkgs.obs-studio-plugins; [
       wlrobs
     ];
-    catppuccin.enable = true;
   };
 }
