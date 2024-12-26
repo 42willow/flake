@@ -51,13 +51,14 @@ in {
 
         substitutions = {
           "󰋞 /docs" = "󰈙 ";
+          "󰈙 /school" = "󰑴 ";
           "󰋞 /downloads" = " ";
           "󰋞 /tmp" = " ";
           "󰋞 /media/music" = " ";
           "󰋞 /media/pictures" = " ";
           "󰋞 /media/videos" = " ";
+          "󰋞 /media/3dp" = " ";
           "󰋞 /dev" = "󱌢 ";
-          "󰋞 /skl" = "󰑴 ";
           "󰋞 /.config" = " ";
         };
       };
