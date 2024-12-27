@@ -51,6 +51,11 @@
       libreoffice
       localsend # local network file sharing
       vlc
+      # 3D modeling
+      blender
+      openscad
+      # 2D modeling
+      inkscape
       # Nix Formatter
       alejandra
       statix
