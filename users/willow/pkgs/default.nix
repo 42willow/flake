@@ -12,9 +12,10 @@
   home.packages = with inputs;
     [
       # TODO: whiskers
-      # catppuccin-whiskers.packages.${pkgs.system}.whiskers
-      catppuccin-catwalk.packages.${pkgs.system}.catwalk
-      inputs.zen-browser.packages."${pkgs.system}".default
+      # catppuccin-whiskers.packages."${pkgs.system}".whiskers
+      catppuccin-catwalk.packages."${pkgs.system}".catwalk
+      zen-browser.packages."${pkgs.system}".default
+      ghostty.packages."${pkgs.system}".default
     ]
     ++ (with inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}; [
       calibre # ebooks
