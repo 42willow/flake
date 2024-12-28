@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ./firefox
+    ./floorp
     ./hyprland
     ./waybar
     ./chromium.nix
