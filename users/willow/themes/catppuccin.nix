@@ -12,6 +12,6 @@
     accent = "pink";
 
     enable = true;
+    zed.enable = false;
   };
-
 }
