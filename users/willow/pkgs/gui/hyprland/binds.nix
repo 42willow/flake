@@ -70,6 +70,7 @@
         "$mod, Q, exec, kitty"
         "$mod, F, exec, zen"
         "$mod, E, exec, nautilus"
+        "$mod, X, exec, zeditor"
         "$mod, L, exec, hyprlock"
         "$mod, P, exec, hyprctl dispatch pin"
 

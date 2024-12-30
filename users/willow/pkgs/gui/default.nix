@@ -11,5 +11,6 @@
     ./spicetify.nix
     ./thunderbird.nix
     ./tofi.nix
+    ./zed.nix
   ];
 }
