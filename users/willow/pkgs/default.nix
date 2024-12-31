@@ -15,10 +15,10 @@
       # catppuccin-whiskers.packages."${pkgs.system}".whiskers
       catppuccin-catwalk.packages."${pkgs.system}".catwalk
       zen-browser.packages."${pkgs.system}".default
-      ghostty.packages."${pkgs.system}".default
     ]
     ++ (with inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}; [
       calibre # ebooks
+      ghostty # terminal
     ])
     ++ (with pkgs; [
       hypridle

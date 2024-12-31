@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   programs.zed-editor = {
     enable = true;
-    package = (pkgs.zed-editor.fhsWithPackages (pkgs: [ pkgs.zlib ])); # Discord RPC requires zlib
+    package = pkgs.zed-editor.fhsWithPackages (pkgs: [pkgs.zlib]); # Discord RPC requires zlib
     userSettings = {
       assistant = {
         default_model = {
@@ -12,11 +12,6 @@
       };
       ui_font_size = 16;
       buffer_font_size = 16;
-      theme = {
-        mode = "dark";
-        light = "Catppuccin Latte (pink)";
-        dark = "Catppuccin Macchiato (pink)";
-      };
       tab_size = 2;
       ensure_final_newline_on_save = true;
       remove_trailing_whitespace_on_save = true;

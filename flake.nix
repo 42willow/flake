@@ -5,7 +5,7 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # theme management
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin.url = "github:catppuccin/nix/isabel/home-manger/zed/accent-support";
     # catppuccin.url = "path:/home/willow/git/sw/catppuccin-nix";
     stylix = {
       url = "github:danth/stylix";
@@ -51,12 +51,6 @@
     #   url = "github:42willow/cascade";
     #   flake = false;
     # };
-
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
-      inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
-    };
 
     # wallpapers
     wallpapers = {
