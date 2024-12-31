@@ -2,12 +2,32 @@
   programs.git = {
     enable = true;
 
-    userName = "Willow";
-    userEmail = "42willow@pm.me";
+    userName = "willow";
+    userEmail = "42willow" + "@" + "pm.me";
 
     extraConfig = {
       init.defaultBranch = "main";
       credential.helper = "store";
+
+      pull = {
+        rebase = true;
+        ff = "only";
+      };
+      push = {
+        autoSetupRemote = true;
+      };
+      rebase = {
+        autoSquash = true;
+        autoStash = true;
+      };
+      merge = {
+        ff = "only";
+      };
+
+      # prevent data corruption
+      transfer.fsckObjects = true;
+      fetch.fsckObjects = true;
+      receive.fsckObjects = true;
     };
 
     aliases = {
