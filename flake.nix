@@ -1,15 +1,15 @@
 {
-  description = "NixOS configuration of 42Willow";
+  description = "NixOS configuration of 42willow";
   inputs = {
     # TODO: reduce inputs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # theme management
-    catppuccin.url = "github:catppuccin/nix/isabel/home-manger/zed/accent-support";
+    catppuccin.url = "github:catppuccin/nix";
     # catppuccin.url = "path:/home/willow/git/sw/catppuccin-nix";
     stylix = {
-      url = "github:danth/stylix";
+      url = "github:danth/stylix/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin-catwalk = {
@@ -31,6 +31,12 @@
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # secrets
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     # neovim

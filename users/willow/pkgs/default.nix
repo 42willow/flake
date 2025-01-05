@@ -18,7 +18,7 @@
     ]
     ++ (with inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}; [
       calibre # ebooks
-      ghostty # terminal
+      # ghostty # terminal
     ])
     ++ (with pkgs; [
       hypridle
@@ -43,6 +43,7 @@
       # TUI
       peaclock
       # GUI
+      darktable
       speedcrunch # calculator
       keepassxc
       gparted
@@ -52,11 +53,14 @@
       libreoffice
       localsend # local network file sharing
       vlc
-      # 3D modeling
+      planify
+      tor-browser
+      # 3D
       blender
       openscad
-      # 2D modeling
+      # 2D
       inkscape
+      krita
       # Nix Formatter
       alejandra
       statix
