@@ -5,6 +5,7 @@
 
   catppuccin = {
     flavor = "macchiato";
+    # TODO: light flavor
     accent = "pink";
     enable = true;
   };

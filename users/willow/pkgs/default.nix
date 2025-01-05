@@ -55,6 +55,7 @@
       vlc
       planify
       tor-browser
+      veracrypt
       # 3D
       blender
       openscad
