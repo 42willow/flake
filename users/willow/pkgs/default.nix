@@ -17,10 +17,10 @@
       zen-browser.packages."${pkgs.system}".default
     ]
     ++ (with inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}; [
-      calibre # ebooks
       # ghostty # terminal
     ])
     ++ (with pkgs; [
+      calibre # ebooks
       hypridle
       hyprpicker
       hyprcursor

@@ -97,6 +97,8 @@
         "$mod, mouse_down, workspace, e+1"
         "$mod, code:49, togglespecialworkspace, scratchpad" # code:49 = `
         "$altMod, code:49, movetoworkspace, special:scratchpad" # code:49 = `
+        "$mod, code:20, togglespecialworkspace, scratchpad_alt" # code:20 = -
+        "$altMod, code:20, movetoworkspace, special:scratchpad_alt" # code:20 = -
         "$mod, A, togglespecialworkspace, mpd"
         "$altMod, A, movetoworkspace, special:mpd"
         "$mod, escape, togglespecialworkspace, btop"
