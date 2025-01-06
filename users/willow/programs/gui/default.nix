@@ -1,7 +1,6 @@
 {...}: {
   imports = [
     ./browsers
-    ./hyprland
     ./waybar
     ./cura.nix
     ./kitty.nix

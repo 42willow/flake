@@ -2,9 +2,7 @@
   config,
   lib,
   ...
-}: let
-  cfg = config.willow.programs.browsers;
-in {
+}: {
   imports = [
     ./firefox # default: enabled
     ./chromium.nix # default: enabled

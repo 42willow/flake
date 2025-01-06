@@ -13,6 +13,7 @@ These are my new dotfiles (migrating from arch over at https://github.com/42will
 
 Hostnames are listed in this [gist](https://gist.github.com/42Willow/bd33bd408deced515cd05fd7512b2597).
 
+Option defaults are all for `earthy`, which is my main machine.
 - `earthy`: ThinkPad X1 Yoga Gen 4
 - `anemone`: Raspberry Pi 3B+
 - `lily`: Portable Recovery ISO

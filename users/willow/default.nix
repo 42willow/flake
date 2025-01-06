@@ -7,6 +7,7 @@
   cfg = config.willow;
 in {
   imports = [
+    ./desktop
     ./programs
     ./scripts
     ./services
