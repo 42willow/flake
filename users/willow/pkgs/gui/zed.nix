@@ -32,6 +32,17 @@
             remove_trailing_whitespace_on_save = false;
           };
         };
+        Nix = {
+          language_severs = [
+            "nil"
+            "!nixd"
+          ];
+          formatter = {
+            external = {
+              command = "alejandra";
+            };
+          };
+        };
       };
     };
   };
