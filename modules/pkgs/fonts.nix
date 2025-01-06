@@ -18,6 +18,7 @@
       corefonts
       noto-fonts
       lexend
+      atkinson-hyperlegible
 
       # fonts for none latin languages
       noto-fonts-cjk-sans
