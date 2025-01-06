@@ -41,6 +41,7 @@ Thank you to the following people for helping me get into nix (from [catppuccin]
 
 - [isabelroses/dotfiles](https://github.com/isabelroses/dotfiles)
 - [uncenter/flake](https://github.com/uncenter/flake)
+- [getchoo/flake](https://github.com/getchoo/flake)
 - [sioodmy/dotfiles](https://github.com/sioodmy/dotfiles)
 - [Frost-Phoenix/nixos-config](https://github.com/Frost-Phoenix/nixos-config)
 

@@ -1,10 +1,8 @@
 {...}: {
   imports = [
-    ./firefox
-    ./floorp
+    ./browsers
     ./hyprland
     ./waybar
-    ./chromium.nix
     ./cura.nix
     ./kitty.nix
     ./obs-studio.nix
