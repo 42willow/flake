@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.willow.desktop.hyprland;
@@ -27,5 +28,11 @@ in {
     wayland.windowManager.hyprland = {
       enable = true;
     };
+
+    home.packages = with pkgs; [
+      hypridle
+      hyprpicker
+      hyprcursor
+    ];
   };
 }
