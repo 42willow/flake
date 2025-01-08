@@ -8,6 +8,7 @@
   # NixOS Flakes   | @nixflakes @nf
   # Home Manager   | @homemanager @hm
   # MyNixOS        | @mynixos @mn
+  # Noogle         | @noogle @n
 
   programs.firefox.profiles.default.search = {
     force = true;
@@ -126,6 +127,23 @@
             params = [
               {
                 name = "q";
+                value = "{searchTerms}";
+              }
+            ];
+          }
+        ];
+      };
+
+      "Noogle" = {
+        definedAliases = ["@noogle" "@n"];
+        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+
+        urls = [
+          {
+            template = "https://noogle.dev/q";
+            params = [
+              {
+                name = "term";
                 value = "{searchTerms}";
               }
             ];
