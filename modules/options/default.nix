@@ -26,7 +26,7 @@ in {
         enable =
           mkEnableOption "Enable GUI programs"
           // {
-            default = cfg.programs.enable;
+            default = cfg.desktop.enable;
           };
       };
       tui = {
@@ -155,10 +155,15 @@ in {
         };
     };
     desktop = {
+      enable =
+        mkEnableOption "Enable desktop environment"
+        // {
+          default = true;
+        };
       hyprland.enable =
         mkEnableOption "Enable Hyprland and its ecosystem"
         // {
-          default = cfg.programs.gui.enable;
+          default = cfg.desktop.enable;
         };
     };
   };

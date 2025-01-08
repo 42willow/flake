@@ -1,4 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  osConfig,
+  lib,
+  ...
+}: let
+  cfg = osConfig.settings.programs.tui;
+in {
   imports = [
     # ./nvim
     ./bat.nix # core
@@ -8,7 +15,9 @@
     ./yazi.nix # files
   ];
 
-  home.packages = with pkgs; [
-    peaclock
-  ];
+  config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [
+      peaclock
+    ];
+  };
 }

@@ -9,6 +9,11 @@
     ./../../users
   ];
 
+  # TODO: testing, remove later
+  settings.programs.categories.web.zen.enable = true;
+  # settings.programs.categories.core.enable = false;
+  #
+
   nixpkgs.config.permittedInsecurePackages = [
     "electron-27.3.11"
   ];

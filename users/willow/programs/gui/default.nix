@@ -1,4 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  osConfig,
+  lib,
+  ...
+}: let
+  cfg = osConfig.settings.programs.gui;
+in {
   imports = [
     ./browsers # browsers
     ./waybar # core
@@ -11,49 +18,51 @@
     ./zed.nix # dev
   ];
 
-  home.packages = with pkgs; [
-    # Utils
-    keepassxc
-    localsend
-    gparted
-    polkit_gnome
+  config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [
+      # Utils
+      keepassxc
+      localsend
+      gparted
+      polkit_gnome
 
-    # Recreation
-    vesktop
-    prismlauncher
-    calibre
+      # Recreation
+      vesktop
+      prismlauncher
+      calibre
 
-    # Privacy
-    tor-browser
-    veracrypt
+      # Privacy
+      tor-browser
+      veracrypt
 
-    # Multimedia
-    vlc
-    eog
-    nautilus
-    darktable
+      # Multimedia
+      vlc
+      eog
+      nautilus
+      darktable
 
-    # Programming
-    kitty
-    vscode
+      # Programming
+      kitty
+      vscode
 
-    # Graphic design
-    aseprite
-    krita
-    inkscape
+      # Graphic design
+      aseprite
+      krita
+      inkscape
 
-    # 3D design
-    blender
-    openscad
+      # 3D design
+      blender
+      openscad
 
-    # Education
-    obsidian
-    logseq
-    speedcrunch
-    libreoffice
-    planify
-  ];
-  # ++ (with inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}; [
-  #     # ghostty # terminal
-  #   ]);
+      # Education
+      obsidian
+      logseq
+      speedcrunch
+      libreoffice
+      planify
+    ];
+    # ++ (with inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}; [
+    #     # ghostty # terminal
+    #   ]);
+  };
 }
