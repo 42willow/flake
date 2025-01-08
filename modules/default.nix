@@ -2,7 +2,8 @@
   imports = [
     ./network
     ./nix
-    ./pkgs
+    ./options
+    ./programs
     ./services
     ./themes
   ];

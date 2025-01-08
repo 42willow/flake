@@ -1,9 +1,17 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ./../../modules
     ./../../users
   ];
+
+  # TODO: testing, remove later
+  # settings.programs.categories.core.enable = false;
+  #
 
   nixpkgs.config.permittedInsecurePackages = [
     "electron-27.3.11"

@@ -1,29 +1,44 @@
 {
   config,
   osConfig,
+  lib,
   ...
-}: {
-  programs.home-manager.enable = true;
-
-  home = {
-    username = "willow";
-    homeDirectory = osConfig.users.users.willow.home;
-    stateVersion = "24.05";
-  };
-
-  nix.settings = {
-    warn-dirty = false;
-    allowed-users = ["willow"];
-    trusted-users = ["root" "willow"];
-  };
-
+}: let
+  # TODO: move to osConfig
+  cfg = config.willow;
+in {
   imports = [
-    ./core
-    ./pkgs
+    ./desktop
+    ./programs
     ./scripts
     ./services
+    ./system
     ./themes
   ];
 
-  nixpkgs.config.allowUnfree = true;
+  options.willow = {
+    enable =
+      lib.mkEnableOption "willow's home configuration"
+      // {
+        default = true;
+      };
+  };
+
+  config = lib.mkIf cfg.enable {
+    programs.home-manager.enable = true;
+
+    home = {
+      username = "willow";
+      homeDirectory = osConfig.users.users.willow.home;
+      stateVersion = "24.05";
+    };
+
+    # TODO: move this elsewhere
+    nix.settings = {
+      warn-dirty = false;
+      allowed-users = ["willow"];
+      trusted-users = ["root" "willow"];
+    };
+    nixpkgs.config.allowUnfree = true;
+  };
 }

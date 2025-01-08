@@ -33,6 +33,7 @@
   };
 
   # https://github.com/NixOS/nixpkgs/issues/195936#issuecomment-1366902737
+  # can remove after https://github.com/NixOS/nixpkgs/issues/53631 is closed
   environment.sessionVariables.GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" (with pkgs.gst_all_1; [
     gst-plugins-good
     gst-plugins-bad
@@ -40,10 +41,7 @@
     gst-libav
   ]);
 
-  security = {
-    polkit.enable = true;
-    rtkit.enable = true; # optional but recommended
-  };
+  security.polkit.enable = true;
 
   console.useXkbConfig = true; # Use XKB configuration for TTYs
 
