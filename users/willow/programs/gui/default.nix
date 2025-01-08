@@ -1,14 +1,14 @@
 {pkgs, ...}: {
   imports = [
-    ./browsers
-    ./waybar
-    ./cura.nix
-    ./kitty.nix
-    ./obs-studio.nix
-    ./spicetify.nix
-    ./thunderbird.nix
-    ./tofi.nix
-    ./zed.nix
+    ./browsers # browsers
+    ./waybar # core
+    ./cura.nix # 3dp
+    ./kitty.nix # core
+    ./obs-studio.nix # media
+    ./spicetify.nix # music
+    ./thunderbird.nix # mail
+    ./tofi.nix # core
+    ./zed.nix # dev
   ];
 
   home.packages = with pkgs; [

@@ -5,14 +5,6 @@
 }: let
   cfg = config.settings.desktop.hyprland;
 in {
-  options.settings.desktop.hyprland = {
-    enable =
-      lib.mkEnableOption "hyprland"
-      // {
-        default = config.settings.desktop.enable;
-      };
-  };
-
   config = lib.mkIf cfg.enable {
     nix.settings = {
       substituters = ["https://hyprland.cachix.org"];

@@ -4,17 +4,17 @@
   ...
 }: {
   imports = [
-    ./beets.nix
-    ./bun.nix
-    ./direnv.nix
-    ./eza.nix
-    ./fzf.nix
-    ./git.nix
-    ./nushell.nix
-    ./ripgrep.nix
-    ./starship.nix
-    ./zoxide.nix
-    ./zsh.nix
+    ./beets.nix # music
+    ./bun.nix # dev
+    ./direnv.nix # dev
+    ./eza.nix # core
+    ./fzf.nix # tools
+    ./git.nix # core
+    ./nushell.nix # core
+    ./ripgrep.nix # tools
+    ./starship.nix # core
+    ./zoxide.nix # core
+    ./zsh.nix # core
   ];
 
   home.packages = with pkgs;

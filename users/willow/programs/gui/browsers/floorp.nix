@@ -1,20 +1,13 @@
 {
-  config,
+  osConfig,
   lib,
   ...
 }: let
-  cfg = config.willow.programs.browsers.floorp;
+  cfg = osConfig.settings.programs.categories.web.floorp;
 in {
-  options.willow.programs.browsers.floorp = {
-    enable =
-      lib.mkEnableOption "Floorp configuration"
-      // {
-        default = false;
-      };
-  };
   config = lib.mkIf cfg.enable {
     programs.floorp = {
-      enable = false;
+      enable = true;
       profiles.default = {
         settings = {
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;

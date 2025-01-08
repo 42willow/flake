@@ -1,9 +1,9 @@
 {
-  config,
+  osConfig,
   lib,
   ...
 }: let
-  cfg = config.willow.programs.browsers.firefox;
+  cfg = osConfig.settings.programs.categories.web.firefox;
 in {
   # Inspired by https://github.com/SystematicError/dotfiles/blob/master/users/systematic/modules/firefox.nix
 
@@ -17,14 +17,6 @@ in {
   #   enable = true;
   #   profile = "default";
   # };
-  options.willow.programs.browsers.firefox = {
-    enable =
-      lib.mkEnableOption "Firefox configuration"
-      // {
-        default = config.willow.programs.browsers.enable;
-        defaultText = lib.literalExpression "config.willow.programs.browsers.enable";
-      };
-  };
   config = lib.mkIf cfg.enable {
     programs.firefox = {
       enable = true;

@@ -1,18 +1,10 @@
 {
-  config,
+  osConfig,
   lib,
   ...
 }: let
-  cfg = config.willow.programs.browsers.chromium;
+  cfg = osConfig.settings.programs.categories.web.chromium;
 in {
-  options.willow.programs.browsers.chromium = {
-    enable =
-      lib.mkEnableOption "Chromium configuration"
-      // {
-        default = config.willow.programs.browsers.enable;
-        defaultText = lib.literalExpression "config.willow.programs.browsers.enable";
-      };
-  };
   config = lib.mkIf cfg.enable {
     programs.chromium = {
       enable = true;

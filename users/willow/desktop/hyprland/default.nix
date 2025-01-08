@@ -1,10 +1,10 @@
 {
-  config,
+  osConfig,
   lib,
   pkgs,
   ...
 }: let
-  cfg = config.willow.desktop.hyprland;
+  cfg = osConfig.settings.desktop.hyprland;
 in {
   imports = [
     ./binds.nix
@@ -15,14 +15,6 @@ in {
     ./hyprpaper.nix
     ./hyprlock.nix
   ];
-
-  options.willow.desktop.hyprland = {
-    enable =
-      lib.mkEnableOption "Enable Hyprland"
-      // {
-        default = config.willow.desktop.enable;
-      };
-  };
 
   config = lib.mkIf cfg.enable {
     wayland.windowManager.hyprland = {

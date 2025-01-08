@@ -4,6 +4,7 @@
   lib,
   ...
 }: let
+  # TODO: move to osConfig
   cfg = config.willow;
 in {
   imports = [
