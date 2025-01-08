@@ -5,7 +5,8 @@
   lib,
   ...
 }: let
-  cfg = osConfig.settings.programs.cli;
+  inherit (lib) optionals concatLists;
+  cfg = osConfig.settings.programs;
 in {
   imports = [
     ./beets.nix # music
@@ -20,41 +21,45 @@ in {
     ./zoxide.nix # core
     ./zsh.nix # core
   ];
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf cfg.cli.enable {
     home.packages = with pkgs;
-      [
-        # Utils
-        tldr
-        fastfetch
-        just
-        killall
-        playerctl
-        grim
-        slurp
-        wl-clipboard
-        ddcutil
-        brightnessctl
+    with inputs;
+      concatLists [
+        (optionals cfg.categories.tools.enable [
+          catppuccin-whiskers.packages."${pkgs.system}".whiskers
+          catppuccin-catwalk.packages."${pkgs.system}".catwalk
 
-        # Node
-        nodejs
-        nodePackages.npm
-        pnpm
+          # Utils
+          tldr
+          fastfetch
+          just
+          killall
+          playerctl
+          grim
+          slurp
+          wl-clipboard
+          ddcutil
+          brightnessctl
+        ])
 
-        # Nix
-        alejandra
-        statix
-        deadnix
-        devenv
-        direnv
+        (optionals cfg.categories.dev.enable [
+          # Node
+          nodejs
+          nodePackages.npm
+          pnpm
 
-        # Rust
-        cargo
-        rustc
-        gcc # needed for rust-analyzer
-      ]
-      ++ (with inputs; [
-        catppuccin-whiskers.packages."${pkgs.system}".whiskers
-        catppuccin-catwalk.packages."${pkgs.system}".catwalk
-      ]);
+          # Nix
+          alejandra
+          statix
+          deadnix
+          devenv
+          direnv
+
+          # Rust
+          cargo
+          rustc
+          gcc # needed for rust-analyzer
+        ])
+      ];
   };
 }

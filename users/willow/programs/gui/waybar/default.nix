@@ -1,151 +1,160 @@
-{...}: {
-  programs.waybar = {
-    enable = true;
-    style = builtins.readFile ./style.css;
-    settings = {
-      mainBar = {
-        layer = "top";
-        position = "top";
-        spacing = 0;
-        height = 45;
+{
+  lib,
+  osConfig,
+  ...
+}: let
+  cfg = osConfig.settings.programs;
+in {
+  config = lib.mkIf (cfg.gui.enable
+    && cfg.categories.core.enable) {
+    programs.waybar = {
+      enable = true;
+      style = builtins.readFile ./style.css;
+      settings = {
+        mainBar = {
+          layer = "top";
+          position = "top";
+          spacing = 0;
+          height = 45;
 
-        # modules
-        modules-left = [
-          "custom/logo"
-          "hyprland/workspaces"
-        ];
-        modules-center = [
-          "clock"
-          "mpris"
-          "custom/recording"
-        ];
-        modules-right = [
-          "tray"
-          "cpu"
-          "network"
-          "pulseaudio"
-          "battery"
-          "custom/power"
-        ];
+          # modules
+          modules-left = [
+            "custom/logo"
+            "hyprland/workspaces"
+          ];
+          modules-center = [
+            "clock"
+            "mpris"
+            "custom/recording"
+          ];
+          modules-right = [
+            "tray"
+            "cpu"
+            "network"
+            "pulseaudio"
+            "battery"
+            "custom/power"
+          ];
 
-        # widgets
-        mpris = {
-          interval = 1;
-          format = "{status_icon} {title} - {artist}";
-          tooltip-format = "Album = {album}\n\n{position} / {length}";
-          status-icons = {
-            playing = "";
-            paused = "";
-            stopped = "󱓻";
+          # widgets
+          mpris = {
+            interval = 1;
+            format = "{status_icon} {title} - {artist}";
+            tooltip-format = "Album = {album}\n\n{position} / {length}";
+            status-icons = {
+              playing = "";
+              paused = "";
+              stopped = "󱓻";
+            };
+            ignored-players = ["firefox"];
           };
-          ignored-players = ["firefox"];
-        };
 
-        memory = {
-          interval = 5;
-          format = "󰍛 {}%";
-          max-length = 10;
-        };
-
-        cpu = {
-          interval = 5;
-          format = " {usage}%";
-        };
-
-        tray = {
-          spacing = 10;
-        };
-
-        clock = {
-          tooltip-format = "<tt>{calendar}</tt>";
-          format-alt = "  {:%a, %d %b %Y}";
-          format = "  {:%I:%M %p}";
-        };
-
-        network = {
-          format-wifi = "{icon}";
-          format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
-          format-ethernet = "󰀂";
-          format-disconnected = "󰖪";
-          tooltip-format-wifi = "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}";
-          tooltip-format-ethernet = "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}";
-          tooltip-format-disconnected = "Disconnected";
-          on-click-release = "~/.config/tofi/scripts/wifi.sh &";
-          interval = 5;
-          nospacing = 1;
-        };
-
-        pulseaudio = {
-          format = "{icon}";
-          format-bluetooth = "󰂰";
-          nospacing = 1;
-          tooltip-format = "Volume  = {volume}%";
-          format-muted = "󰝟";
-          format-icons = {
-            headphone = "";
-            default = ["󰖀" "󰕾" ""];
+          memory = {
+            interval = 5;
+            format = "󰍛 {}%";
+            max-length = 10;
           };
-          on-click = "pavucontrol";
-          scroll-step = 1;
-        };
 
-        battery = {
-          format = "{capacity}% {icon}";
-          format-icons = {
-            charging = ["󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅"];
-            default = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+          cpu = {
+            interval = 5;
+            format = " {usage}%";
           };
-          format-full = "Charged ";
-          interval = 5;
-          states = {
-            warning = 20;
-            critical = 10;
-          };
-          tooltip = false;
-        };
 
-        "hyprland/workspaces" = {
-          on-click = "activate";
-          format = "{icon}";
-          format-icons = {
-            default = "";
-            "1" = "1";
-            "2" = "2";
-            "3" = "3";
-            "4" = "4";
-            "5" = "5";
-            "6" = "6";
-            "7" = "7";
-            "8" = "8";
-            "9" = "9";
-            active = "󱓻";
-            urgent = "󱓻";
+          tray = {
+            spacing = 10;
           };
-          persistent-workspaces = {
-            "1" = [];
-            "2" = [];
-            "3" = [];
-            "4" = [];
-            "5" = [];
-          };
-        };
 
-        "custom/power" = {
-          format = "󰤆";
-          tooltip = false;
-          # TODO
-          on-click-release = "~/.config/tofi/scripts/power_menu.sh";
-        };
-        "custom/logo" = {
-          format = "  ";
-          tooltip = false;
-          on-click-release = "tofi-drun";
-        };
-        "custom/recording" = {
-          # TODO
-          exec = "exec $HOME/.config/hypr/scripts/screend.sh";
-          exec-on-event = false;
-          on-click = "killall wl-screenrec";
+          clock = {
+            tooltip-format = "<tt>{calendar}</tt>";
+            format-alt = "  {:%a, %d %b %Y}";
+            format = "  {:%I:%M %p}";
+          };
+
+          network = {
+            format-wifi = "{icon}";
+            format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
+            format-ethernet = "󰀂";
+            format-disconnected = "󰖪";
+            tooltip-format-wifi = "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}";
+            tooltip-format-ethernet = "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}";
+            tooltip-format-disconnected = "Disconnected";
+            on-click-release = "~/.config/tofi/scripts/wifi.sh &";
+            interval = 5;
+            nospacing = 1;
+          };
+
+          pulseaudio = {
+            format = "{icon}";
+            format-bluetooth = "󰂰";
+            nospacing = 1;
+            tooltip-format = "Volume  = {volume}%";
+            format-muted = "󰝟";
+            format-icons = {
+              headphone = "";
+              default = ["󰖀" "󰕾" ""];
+            };
+            on-click = "pavucontrol";
+            scroll-step = 1;
+          };
+
+          battery = {
+            format = "{capacity}% {icon}";
+            format-icons = {
+              charging = ["󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅"];
+              default = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+            };
+            format-full = "Charged ";
+            interval = 5;
+            states = {
+              warning = 20;
+              critical = 10;
+            };
+            tooltip = false;
+          };
+
+          "hyprland/workspaces" = {
+            on-click = "activate";
+            format = "{icon}";
+            format-icons = {
+              default = "";
+              "1" = "1";
+              "2" = "2";
+              "3" = "3";
+              "4" = "4";
+              "5" = "5";
+              "6" = "6";
+              "7" = "7";
+              "8" = "8";
+              "9" = "9";
+              active = "󱓻";
+              urgent = "󱓻";
+            };
+            persistent-workspaces = {
+              "1" = [];
+              "2" = [];
+              "3" = [];
+              "4" = [];
+              "5" = [];
+            };
+          };
+
+          "custom/power" = {
+            format = "󰤆";
+            tooltip = false;
+            # TODO
+            on-click-release = "~/.config/tofi/scripts/power_menu.sh";
+          };
+          "custom/logo" = {
+            format = "  ";
+            tooltip = false;
+            on-click-release = "tofi-drun";
+          };
+          "custom/recording" = {
+            # TODO
+            exec = "exec $HOME/.config/hypr/scripts/screend.sh";
+            exec-on-event = false;
+            on-click = "killall wl-screenrec";
+          };
         };
       };
     };

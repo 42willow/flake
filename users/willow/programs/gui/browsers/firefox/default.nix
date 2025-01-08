@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  cfg = osConfig.settings.programs.categories.web.firefox;
+  cfg = osConfig.settings.programs.categories.web;
 in {
   # Inspired by https://github.com/SystematicError/dotfiles/blob/master/users/systematic/modules/firefox.nix
 

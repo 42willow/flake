@@ -4,7 +4,8 @@
   lib,
   ...
 }: let
-  cfg = osConfig.settings.programs.tui;
+  inherit (lib) optionals concatLists;
+  cfg = osConfig.settings.programs;
 in {
   imports = [
     # ./nvim
@@ -15,9 +16,12 @@ in {
     ./yazi.nix # files
   ];
 
-  config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      peaclock
-    ];
+  config = lib.mkIf cfg.tui.enable {
+    home.packages = with pkgs;
+      concatLists [
+        (optionals cfg.categories.tools.enable [
+          peaclock
+        ])
+      ];
   };
 }

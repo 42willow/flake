@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  cfg = osConfig.settings.programs.categories.web.chromium;
+  cfg = osConfig.settings.programs.categories.web;
 in {
   config = lib.mkIf cfg.enable {
     programs.chromium = {

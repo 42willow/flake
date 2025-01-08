@@ -4,7 +4,8 @@
   lib,
   ...
 }: let
-  cfg = osConfig.settings.programs.gui;
+  inherit (lib) optionals concatLists;
+  cfg = osConfig.settings.programs;
 in {
   imports = [
     ./browsers # browsers
@@ -18,49 +19,73 @@ in {
     ./zed.nix # dev
   ];
 
-  config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      # Utils
-      keepassxc
-      localsend
-      gparted
-      polkit_gnome
+  config = lib.mkIf cfg.gui.enable {
+    home.packages = with pkgs;
+      concatLists [
+        # Core
+        (optionals cfg.categories.core.enable [
+          kitty
+        ])
 
-      # Recreation
-      vesktop
-      prismlauncher
-      calibre
+        # Tools
+        (optionals cfg.categories.tools.enable [
+          keepassxc
+          localsend
+          gparted
+          polkit_gnome
+        ])
 
-      # Privacy
-      tor-browser
-      veracrypt
+        # Fun
+        (optionals cfg.categories.fun.enable [
+          vesktop
+          prismlauncher
+          calibre
+        ])
 
-      # Multimedia
-      vlc
-      eog
-      nautilus
-      darktable
+        # Privacy
+        (optionals cfg.categories.privacy.enable [
+          tor-browser
+          veracrypt
+        ])
 
-      # Programming
-      kitty
-      vscode
+        # Multimedia
+        (optionals cfg.categories.media.enable [
+          vlc
+          eog
+          darktable
+        ])
 
-      # Graphic design
-      aseprite
-      krita
-      inkscape
+        # Filesystem
+        (optionals cfg.categories.fs.enable [
+          nautilus
+        ])
 
-      # 3D design
-      blender
-      openscad
+        # Development
+        (optionals cfg.categories.dev.enable [
+          vscode
+        ])
 
-      # Education
-      obsidian
-      logseq
-      speedcrunch
-      libreoffice
-      planify
-    ];
+        # Design
+        (optionals cfg.categories.design.enable [
+          # Graphic design
+          aseprite
+          krita
+          inkscape
+
+          # 3D design
+          blender
+          openscad
+        ])
+
+        # Education
+        (optionals cfg.categories.edu.enable [
+          obsidian
+          logseq
+          speedcrunch
+          libreoffice
+          planify
+        ])
+      ];
     # ++ (with inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}; [
     #     # ghostty # terminal
     #   ]);

@@ -3,11 +3,11 @@
   lib,
   ...
 }: let
-  cfg = osConfig.settings.programs.categories.web.floorp;
+  cfg = osConfig.settings.programs.categories.web;
 in {
   config = lib.mkIf cfg.enable {
     programs.floorp = {
-      enable = true;
+      enable = false;
       profiles.default = {
         settings = {
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;

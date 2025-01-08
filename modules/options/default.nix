@@ -48,13 +48,28 @@ in {
           // {
             default = cfg.programs.categories.enable;
           };
+        design.enable =
+          mkEnableOption "Enable design programs"
+          // {
+            default = cfg.programs.categories.enable;
+          };
         dev.enable =
           mkEnableOption "Enable development programs"
           // {
             default = cfg.programs.categories.enable;
           };
+        edu.enable =
+          mkEnableOption "Enable educational programs"
+          // {
+            default = cfg.programs.categories.enable;
+          };
         fs.enable =
           mkEnableOption "Enable file management programs"
+          // {
+            default = cfg.programs.categories.enable;
+          };
+        fun.enable =
+          mkEnableOption "Enable fun programs"
           // {
             default = cfg.programs.categories.enable;
           };
@@ -78,13 +93,13 @@ in {
           // {
             default = cfg.programs.categories.enable;
           };
-        social.enable =
-          mkEnableOption "Enable social media programs"
+        printing.enable =
+          mkEnableOption "Enable 3D printing programs"
           // {
             default = cfg.programs.categories.enable;
           };
-        printing.enable =
-          mkEnableOption "Enable 3D printing programs"
+        privacy.enable =
+          mkEnableOption "Enable privacy programs"
           // {
             default = cfg.programs.categories.enable;
           };
@@ -93,38 +108,11 @@ in {
           // {
             default = cfg.programs.categories.enable;
           };
-        web = {
-          enable =
-            mkEnableOption "Enable browsers"
-            // {
-              default = cfg.programs.categories.enable;
-            };
-          chromium.enable =
-            mkEnableOption "Enable Chromium"
-            // {
-              default = cfg.programs.categories.web.enable;
-            };
-          firefox.enable =
-            mkEnableOption "Enable Firefox"
-            // {
-              default = cfg.programs.categories.web.enable;
-            };
-          floorp.enable =
-            mkEnableOption "Enable Floorp"
-            // {
-              default = false;
-            };
-          tor.enable =
-            mkEnableOption "Enable Tor"
-            // {
-              default = cfg.programs.categories.web.enable;
-            };
-          zen.enable =
-            mkEnableOption "Enable Zen"
-            // {
-              default = cfg.programs.categories.web.enable;
-            };
-        };
+        web.enable =
+          mkEnableOption "Enable browsers"
+          // {
+            default = cfg.programs.categories.enable;
+          };
       };
     };
     system = {

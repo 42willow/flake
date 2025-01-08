@@ -10,7 +10,6 @@
   ];
 
   # TODO: testing, remove later
-  settings.programs.categories.web.zen.enable = true;
   # settings.programs.categories.core.enable = false;
   #
 
