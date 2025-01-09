@@ -1,26 +1,42 @@
-{pkgs, ...}: {
-  # imports = [
-  #   ./../../modules/core/user.nix
-  # ];
-  # bootloader.enable = false;
-  boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
-    initrd.availableKernelModules = ["xhci_pci" "usbhid" "usb_storage"];
-    loader = {
-      grub.enable = false;
-      generic-extlinux-compatible.enable = true;
-    };
+{
+  modulesPath,
+  lib,
+  ...
+}: let
+  inherit (lib) mkIf;
+  swapSpace = 1;
+  swapFile = "/swapfile";
+in {
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+    # (modulesPath + "/installer/sd-card/sd-image.nix")
+    (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")
+    # (modulesPath + "/installer/sd-card/sd-image-aarch64-installer.nix")
+    # (modulesPath + "/installer/sd-card/sd-image-raspberrypi.nix")
+  ];
+
+  fileSystems."/" = {
+    device = "/dev/disk/by-label/NIXOS_SD";
+    fsType = "ext4";
   };
 
-  fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-label/NIXOS_SD";
-      fsType = "ext4";
-      options = ["noatime"];
-    };
+  swapDevices = mkIf (swapSpace != null) [
+    {
+      device = swapFile;
+      size = swapSpace * 1024;
+    }
+  ];
+
+  # sdImage = {
+  #   # bzip2 compression takes loads of time with emulation, skip it. Enable this if you're low on space.
+  #   compressImage = lib.mkDefault false;
+  # };
+
+  boot.initrd.availableKernelModules = ["usbhid"];
+
+  boot.loader = {
+    grub.enable = false;
+    generic-extlinux-compatible.enable = true;
+    # raspberryPi.firmwareConfig = ["force_turbo=1"];
   };
-
-  services.openssh.enable = true;
-
-  hardware.enableRedistributableFirmware = true;
 }
