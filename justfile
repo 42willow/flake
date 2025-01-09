@@ -3,7 +3,7 @@ switch:
   # sudo nixos-rebuild switch --flake /etc/nixos#earthy
 
 anemone:
-  nixos-rebuild switch --flake .#anemone --target-host willow@anemone --build-host willow@anemone --verbose
+  sudo nix build ".#nixosConfigurations.anemone.config.system.build.sdImage"
 
 clean:
   nh clean all

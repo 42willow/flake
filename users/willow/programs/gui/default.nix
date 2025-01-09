@@ -29,17 +29,17 @@ in {
 
         # Tools
         (optionals cfg.categories.tools.enable [
+          gparted
           keepassxc
           localsend
-          gparted
           polkit_gnome
         ])
 
         # Fun
         (optionals cfg.categories.fun.enable [
-          vesktop
-          prismlauncher
           calibre
+          prismlauncher
+          vesktop
         ])
 
         # Privacy
@@ -50,9 +50,9 @@ in {
 
         # Multimedia
         (optionals cfg.categories.media.enable [
-          vlc
-          eog
           darktable
+          eog
+          vlc
         ])
 
         # Filesystem
@@ -69,8 +69,8 @@ in {
         (optionals cfg.categories.design.enable [
           # Graphic design
           aseprite
-          krita
           inkscape
+          krita
 
           # 3D design
           blender
@@ -79,11 +79,11 @@ in {
 
         # Education
         (optionals cfg.categories.edu.enable [
-          obsidian
-          logseq
-          speedcrunch
           libreoffice
+          logseq
+          obsidian
           planify
+          speedcrunch
         ])
       ];
     # ++ (with inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}; [

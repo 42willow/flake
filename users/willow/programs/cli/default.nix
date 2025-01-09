@@ -26,39 +26,40 @@ in {
     with inputs;
       concatLists [
         (optionals cfg.categories.tools.enable [
-          catppuccin-whiskers.packages."${pkgs.system}".whiskers
           catppuccin-catwalk.packages."${pkgs.system}".catwalk
+          catppuccin-whiskers.packages."${pkgs.system}".whiskers
 
           # Utils
-          tldr
+          brightnessctl
+          ddcutil
           fastfetch
+          grim
           just
           killall
           playerctl
-          grim
           slurp
+          tldr
           wl-clipboard
-          ddcutil
-          brightnessctl
         ])
 
         (optionals cfg.categories.dev.enable [
           # Node
-          nodejs
           nodePackages.npm
+          nodejs
           pnpm
 
           # Nix
           alejandra
-          statix
           deadnix
           devenv
           direnv
+          nix-inspect
+          statix
 
           # Rust
           cargo
-          rustc
           gcc # needed for rust-analyzer
+          rustc
         ])
       ];
   };
