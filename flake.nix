@@ -73,7 +73,6 @@
     ...
   } @ inputs: let
     username = "willow";
-    lib = nixpkgs.lib;
   in {
     nixosConfigurations = {
       earthy = nixpkgs.lib.nixosSystem {
