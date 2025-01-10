@@ -36,6 +36,11 @@ in {
         transfer.fsckObjects = true;
         fetch.fsckObjects = true;
         receive.fsckObjects = true;
+
+        # ssh signing
+        commit.gpgsign = true;
+        gpg.format = "ssh";
+        user.signingkey = "/home/willow/.ssh/id_ed25519"; # TODO: use agenix
       };
 
       aliases = {
