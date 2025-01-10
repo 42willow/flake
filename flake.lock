@@ -495,6 +495,22 @@
         "type": "github"
       }
     },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1736283893,
+        "narHash": "sha256-BG1FfTexFwNty5VhYjaQLMR6CMPfI3QRcaZrFQYu2EM=",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "4f339f6be2b61662f957c2ee9eda0fa597d8a6d6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1734424634,
@@ -589,6 +605,7 @@
         "catppuccin-catwalk": "catppuccin-catwalk",
         "catppuccin-whiskers": "catppuccin-whiskers",
         "home-manager": "home-manager_3",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "spicetify-nix": "spicetify-nix",

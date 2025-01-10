@@ -21,6 +21,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    inputs.agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     # home-manager
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
@@ -39,17 +46,18 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    # neovim
-    # nixvim = {
-    #   url = "github:nix-community/nixvim/";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     # firefox
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # wallpapers
+    wallpapers = {
+      url = "github:42willow/wallpapers";
+      flake = false;
+    };
+
     # textfox = {
     #   url = "github:adriankarlen/textfox";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -58,12 +66,11 @@
     #   url = "github:42willow/cascade";
     #   flake = false;
     # };
-
-    # wallpapers
-    wallpapers = {
-      url = "github:42willow/wallpapers";
-      flake = false;
-    };
+    # neovim
+    # nixvim = {
+    #   url = "github:nix-community/nixvim/";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs = {

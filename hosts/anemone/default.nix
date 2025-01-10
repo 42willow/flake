@@ -1,6 +1,7 @@
 {
   modulesPath,
   lib,
+  inputs,
   ...
 }: let
   inherit (lib) mkIf;
@@ -8,6 +9,7 @@
   swapFile = "/swapfile";
 in {
   imports = [
+    inputs.nixos-hardware.nixosModules.raspberry-pi-3
     (modulesPath + "/installer/scan/not-detected.nix")
     # (modulesPath + "/installer/sd-card/sd-image.nix")
     (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")
@@ -32,16 +34,24 @@ in {
   services = {
     klipper = {
       enable = true;
+      user = "klipper";
+      group = "klipper";
+      configFile = ./printer.cfg;
+    };
+    moonraker = {
+      enable = true;
     };
     mainsail = {
       enable = true;
     };
   };
 
-  # sdImage = {
-  #   # bzip2 compression takes loads of time with emulation, skip it. Enable this if you're low on space.
-  #   compressImage = lib.mkDefault false;
-  # };
+  networking.wireless.enable = true;
+
+  sdImage = {
+    # bzip2 compression takes loads of time with emulation, skip it. Enable this if you're low on space.
+    compressImage = lib.mkDefault false;
+  };
 
   boot.initrd.availableKernelModules = ["usbhid"];
 
