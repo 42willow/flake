@@ -21,12 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    inputs.agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+    raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix?ref=v0.4.1";
 
     # home-manager
     home-manager = {
