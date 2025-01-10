@@ -40,7 +40,9 @@ in {
         # ssh signing
         commit.gpgsign = true;
         gpg.format = "ssh";
-        user.signingkey = "/home/willow/.ssh/id_ed25519"; # TODO: use agenix
+        # TODO: use agenix
+        user.signingkey = "/home/willow/.ssh/id_ed25519";
+        gpg.ssh.allowedSignersFile = "/home/willow/.ssh/allowed_signers";
       };
 
       aliases = {
