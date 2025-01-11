@@ -11,6 +11,7 @@ in {
     ./privacy.nix
     ./restic.nix
     ./sddm.nix
+    ./xfce.nix
   ];
 
   options.settings.services = {
