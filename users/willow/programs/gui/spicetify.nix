@@ -12,9 +12,6 @@ in {
 
   config = lib.mkIf (cfg.gui.enable
     && cfg.categories.music.enable) {
-    nixpkgs.config.allowUnfreePredicate = pkg:
-      builtins.elem (lib.getName pkg) ["spotify"];
-
     programs.spicetify = {
       enable = true;
       enabledExtensions = with spicePkgs.extensions; [

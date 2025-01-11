@@ -7,7 +7,12 @@
     ./age.nix
   ];
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+    warn-dirty = false;
+    allowed-users = ["willow"];
+    trusted-users = ["root" "willow"];
+  };
 
   time.timeZone = "Australia/Sydney";
 

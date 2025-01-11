@@ -32,13 +32,5 @@ in {
       homeDirectory = osConfig.users.users.willow.home;
       stateVersion = "24.05";
     };
-
-    # TODO: move this elsewhere
-    nix.settings = {
-      warn-dirty = false;
-      allowed-users = ["willow"];
-      trusted-users = ["root" "willow"];
-    };
-    nixpkgs.config.allowUnfree = true;
   };
 }
