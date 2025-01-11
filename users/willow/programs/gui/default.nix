@@ -2,6 +2,7 @@
   pkgs,
   osConfig,
   lib,
+  inputs,
   ...
 }: let
   inherit (lib) optionals concatLists;
@@ -85,9 +86,10 @@ in {
           planify
           speedcrunch
         ])
-      ];
-    # ++ (with inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}; [
-    #     # ghostty # terminal
-    #   ]);
+      ]
+      ++ (with inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}; [
+        # ghostty # terminal
+        lightburn
+      ]);
   };
 }
