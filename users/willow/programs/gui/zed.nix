@@ -19,11 +19,18 @@ in {
           };
           version = "2";
         };
-        ui_font_size = 16;
-        buffer_font_size = 16;
+
         tab_size = 2;
         ensure_final_newline_on_save = true;
         remove_trailing_whitespace_on_save = true;
+
+        ui_font_size = 16;
+        ui_font_family = "Maple Mono";
+        buffer_font_size = 16;
+        buffer_font_family = "Maple Mono";
+        terminal_font_size = 16;
+        terminal_font_family = "Maple Mono";
+
         languages = {
           Python = {
             editor = {
