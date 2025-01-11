@@ -3,11 +3,11 @@
     # See https://wiki.hyprland.org/Configuring/
 
     monitor = [
-      "DP-1, preferred, 0x0, 1.5"
-      "eDP-1, preferred, 2560x500, 1"
+      # "DP-1, preferred, 0x0, 1.5"
+      # "eDP-1, preferred, 2560x500, 1"
       # "eDP-1, disabled"
-      # "DP-1, 2560x1440, 0x0, 1"
-      # "eDP-1, 1920x1080, 2560x0, 1"
+      "DP-1, 2560x1440, 0x0, 1"
+      "eDP-1, 1920x1080, 2560x0, 1"
       # "DP-1, 1920x1080, 0x0, 1"
       # "eDP-1, 1920x1080, 1920x0, 1"
     ];

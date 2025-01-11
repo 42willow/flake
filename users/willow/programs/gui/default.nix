@@ -86,10 +86,10 @@ in {
           planify
           speedcrunch
         ])
-      ]
-      ++ (with inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}; [
-        # ghostty # terminal
-        lightburn
-      ]);
+      ];
+    # ++ (with inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}; [
+    # ghostty # terminal
+    # lightburn
+    # ]);
   };
 }
