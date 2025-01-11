@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  inherit (lib) mkEnableOption;
+  inherit (lib) mkEnableOption mkOption types;
 
   cfg = config.settings;
 in {
@@ -116,6 +116,11 @@ in {
       };
     };
     system = {
+      mainUser = mkOption {
+        type = types.str;
+        description = "The username of the main user for your system";
+        default = "willow";
+      };
       bluetooth.enable =
         mkEnableOption "Enable Bluetooth"
         // {

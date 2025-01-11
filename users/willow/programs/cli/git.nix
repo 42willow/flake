@@ -1,6 +1,7 @@
 {
   lib,
   osConfig,
+  config,
   ...
 }: let
   cfg = osConfig.settings.programs;
@@ -37,12 +38,11 @@ in {
         fetch.fsckObjects = true;
         receive.fsckObjects = true;
 
-        # ssh signing
+        # commit signing
         commit.gpgsign = true;
         gpg.format = "ssh";
-        # TODO: use agenix
-        user.signingkey = "/home/willow/.ssh/id_ed25519";
-        gpg.ssh.allowedSignersFile = "/home/willow/.ssh/allowed_signers";
+        user.signingkey = osConfig.age.secrets.keys-gh.path;
+        gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.ssh/allowed_signers";
       };
 
       aliases = {

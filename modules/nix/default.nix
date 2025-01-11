@@ -1,9 +1,12 @@
 {
   pkgs,
-  config,
   lib,
   ...
 }: {
+  imports = [
+    ./age.nix
+  ];
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   time.timeZone = "Australia/Sydney";

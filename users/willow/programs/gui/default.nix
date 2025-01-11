@@ -2,7 +2,6 @@
   pkgs,
   osConfig,
   lib,
-  inputs,
   ...
 }: let
   inherit (lib) optionals concatLists;
