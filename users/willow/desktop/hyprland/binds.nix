@@ -50,14 +50,14 @@
     bind =
       [
         ", xf86wlan, exec, nmcli radio wifi toggle"
-        # ", xf86tools, exec, /home/willow/.dotfiles/tofi/power_menu.sh" # TODO
+        # ", xf86tools, exec, /home/willow/.dotfiles/tofi/power_menu.sh" # TODO))
         ", xf86bluetooth, exec, bluetoothctl power toggle"
-        # ", xf86keyboard, exec, hyprctl keyword input:kb_variant colemak" # TODO: choose another bind
+        # ", xf86keyboard, exec, hyprctl keyword input:kb_variant colemak" # TODO)) choose another bind
         ", xf86favorites, exec, hyprctl dispatch pin"
         ", xf86audiomicmute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
         ", xf86calculator, exec, speedcrunch"
         # ~ Executables ~
-        # TODO
+        # TODO))
         # "$mod, Print, exec, ~/.config/hypr/scripts/screen.sh"
         # "$altMod, Print, exec, ~/.config/hypr/scripts/screen.sh audio"
         # "$altMod, C, exec, ~/.config/hypr/scripts/hyprpicker.sh"
@@ -105,8 +105,8 @@
 
         # ~ Sudo mods ~
 
-        # "$sudoMod, R, exec, ~/.config/hypr/scripts/reload.sh" TODO
-        # "$sudoMod, P, exec, ~/.config/tofi/scripts/power_menu.sh" # TODO
+        # "$sudoMod, R, exec, ~/.config/hypr/scripts/reload.sh" TODO))
+        # "$sudoMod, P, exec, ~/.config/tofi/scripts/power_menu.sh" # TODO))
         "$sudoMod, M, exit"
         "$sudoMod, S, exec, kitty --hold nh os switch"
       ]

@@ -13,8 +13,7 @@
 # inoremap <M-i> <Right>|cnoremap <M-i> <Right>|
 {...}: {
   programs.nixvim.keymaps = [
-    # Colemak keybinds
-    # TODO
+    # TODO)) Colemak keybinds
     # down
     {
       mode = "n";

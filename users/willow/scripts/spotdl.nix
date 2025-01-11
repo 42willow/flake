@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  # TODO: Add queuing for multiple URLs
+  # TODO)) Add queuing for multiple URLs
   bdl = pkgs.writeShellScriptBin "bdl" ''
     echo "Please enter the Spotify URL:"
     read -r url

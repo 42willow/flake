@@ -141,7 +141,7 @@ in {
           "custom/power" = {
             format = "󰤆";
             tooltip = false;
-            # TODO
+            # TODO))
             on-click-release = "~/.config/tofi/scripts/power_menu.sh";
           };
           "custom/logo" = {
@@ -150,7 +150,7 @@ in {
             on-click-release = "tofi-drun";
           };
           "custom/recording" = {
-            # TODO
+            # TODO))
             exec = "exec $HOME/.config/hypr/scripts/screend.sh";
             exec-on-event = false;
             on-click = "killall wl-screenrec";
