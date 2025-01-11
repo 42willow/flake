@@ -26,8 +26,8 @@ in {
     with inputs;
       concatLists [
         (optionals cfg.categories.tools.enable [
-          catppuccin-catwalk.packages."${pkgs.system}".catwalk
-          catppuccin-whiskers.packages."${pkgs.system}".whiskers
+          catppuccin.packages."${pkgs.system}".catwalk
+          catppuccin.packages."${pkgs.system}".whiskers
 
           # Utils
           brightnessctl

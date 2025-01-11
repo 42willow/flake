@@ -1,26 +1,30 @@
 {
   description = "NixOS configuration of 42willow";
   inputs = {
-    # TODO: reduce inputs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # theme management
-    catppuccin.url = "github:catppuccin/nix";
-    # catppuccin.url = "path:/home/willow/git/sw/catppuccin-nix";
+    # themes
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs-unstable";
+        nixpkgs-stable.follows = "";
+        home-manager.follows = "";
+        home-manager-stable.follows = "";
+        nuscht-search.follows = "";
+        catppuccin-v1_1.follows = "";
+        catppuccin-v1_2.follows = "";
+      };
+    };
     stylix = {
       url = "github:danth/stylix/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    catppuccin-catwalk = {
-      url = "github:catppuccin/catwalk";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    catppuccin-whiskers = {
-      url = "github:catppuccin/whiskers";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "";
+      inputs.git-hooks.follows = "";
     };
 
+    # hardware
     raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix?ref=v0.4.1";
 
     # home-manager
@@ -32,7 +36,7 @@
     # spicetify
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     # secrets
@@ -44,7 +48,7 @@
     # firefox
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     # wallpapers
@@ -55,16 +59,17 @@
 
     # textfox = {
     #   url = "github:adriankarlen/textfox";
-    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
     # };
+
     # firefox-cascade = {
     #   url = "github:42willow/cascade";
     #   flake = false;
     # };
-    # neovim
+
     # nixvim = {
     #   url = "github:nix-community/nixvim/";
-    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
     # };
   };
 

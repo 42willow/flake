@@ -5,8 +5,8 @@
   catppuccin = {
     flavor = "macchiato";
     accent = "pink";
+    cache.enable = true;
 
     tty.enable = true;
-    sddm.enable = true;
   };
 }

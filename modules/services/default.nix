@@ -10,8 +10,8 @@ in {
     ./printing.nix
     ./privacy.nix
     ./restic.nix
-    ./sddm.nix
-    ./xfce.nix
+    # ./sddm.nix
+    # ./xfce.nix
   ];
 
   options.settings.services = {

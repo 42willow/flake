@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   services.displayManager.sddm = {
-    enable = false; # sddm is being funky
+    enable = true;
     package = pkgs.kdePackages.sddm;
     wayland.enable = true;
   };

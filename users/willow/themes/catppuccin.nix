@@ -8,5 +8,7 @@
     # TODO: light flavor
     accent = "pink";
     enable = true;
+
+    cache.enable = true;
   };
 }
