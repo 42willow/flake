@@ -29,7 +29,6 @@ in {
 
         # Tools
         (optionals cfg.categories.tools.enable [
-          gparted
           keepassxc
           localsend
           polkit_gnome

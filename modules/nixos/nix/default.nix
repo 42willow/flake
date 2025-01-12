@@ -42,6 +42,7 @@
 
   environment = {
     systemPackages = with pkgs; [
+      gparted
       vim
       wget
       curl
