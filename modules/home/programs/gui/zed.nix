@@ -25,11 +25,11 @@ in {
         remove_trailing_whitespace_on_save = true;
 
         ui_font_size = 16;
-        ui_font_family = "Maple Mono";
+        ui_font_family = "Maple Mono NF";
         buffer_font_size = 16;
-        buffer_font_family = "Maple Mono";
+        buffer_font_family = "Maple Mono NF";
         terminal_font_size = 16;
-        terminal_font_family = "Maple Mono";
+        terminal_font_family = "Maple Mono NF";
 
         languages = {
           Python = {
