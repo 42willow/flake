@@ -17,11 +17,6 @@ in {
     # (modulesPath + "/installer/sd-card/sd-image-raspberrypi.nix")
   ];
 
-  nix.settings = {
-    extra-substituters = ["https://nix-community.cachix.org"];
-    extra-trusted-public-keys = ["nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="];
-  };
-
   raspberry-pi-nix = {
     board = "bcm2711"; # raspberry pi {2, 3, 4}
     # uboot.enable = false; # disable uboot as it just gets stuck

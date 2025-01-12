@@ -12,6 +12,17 @@
     warn-dirty = false;
     allowed-users = ["willow"];
     trusted-users = ["root" "willow"];
+
+    # cachix
+    extra-substituters = ["https://nix-community.cachix.org"];
+    extra-trusted-public-keys = ["nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="];
+  };
+
+  nixpkgs.config = {
+    permittedInsecurePackages = [
+      "electron-27.3.11"
+    ];
+    allowUnfree = true;
   };
 
   time.timeZone = "Australia/Sydney";
@@ -28,8 +39,6 @@
     LC_TELEPHONE = "en_AU.UTF-8";
     LC_TIME = "en_AU.UTF-8";
   };
-
-  nixpkgs.config.allowUnfree = true;
 
   environment = {
     systemPackages = with pkgs; [

@@ -12,7 +12,7 @@
         inherit inputs;
       };
 
-      users.willow = import ./willow;
+      users.willow = import ./home.nix;
     };
 
     users.users.willow = {
