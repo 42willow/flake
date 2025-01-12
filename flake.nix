@@ -19,13 +19,21 @@
     };
     stylix = {
       url = "github:danth/stylix/release-24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "";
-      inputs.git-hooks.follows = "";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+        flake-utils.follows = "flake-utils";
+        flake-compat.follows = "";
+        git-hooks.follows = "";
+        home-manager.follows = "";
+      };
     };
 
     # hardware
-    raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix?ref=v0.4.1";
+    raspberry-pi-nix = {
+      url = "github:nix-community/raspberry-pi-nix?ref=v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # home-manager
     home-manager = {
@@ -36,13 +44,21 @@
     # spicetify
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs = {
+        nixpkgs.follows = "nixpkgs-unstable";
+        flake-compat.follows = "";
+      };
     };
 
     # secrets
     agenix = {
       url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs = {
+        nixpkgs.follows = "nixpkgs-unstable";
+        systems.follows = "systems";
+        darwin.follows = "";
+        home-manager.follows = "";
+      };
     };
 
     # firefox
@@ -55,6 +71,15 @@
     wallpapers = {
       url = "github:42willow/wallpapers";
       flake = false;
+    };
+
+    # reduce inputs
+    systems = {
+      url = "github:nix-systems/default";
+    };
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
     };
 
     # textfox = {

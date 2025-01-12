@@ -9,7 +9,7 @@ clean:
   nh clean all
 
 update:
-  nh os switch -u
+  NIX_CONFIG="access-tokens = github.com=$(gh auth token)" nix flake update
 
 boot:
   nh os boot
