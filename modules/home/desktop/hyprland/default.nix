@@ -7,13 +7,14 @@
   cfg = osConfig.settings.desktop.hyprland;
 in {
   imports = [
+    ./autostart.nix
     ./binds.nix
+    ./env.nix
+    ./hypridle.nix
+    ./hyprlock.nix
+    ./hyprpaper.nix
     ./rules.nix
     ./settings.nix
-    ./env.nix
-    ./autostart.nix
-    ./hyprpaper.nix
-    ./hyprlock.nix
   ];
 
   config = lib.mkIf cfg.enable {
