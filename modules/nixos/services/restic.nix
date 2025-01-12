@@ -34,10 +34,10 @@ in {
 
     services.restic.backups = {
       remotebackup = {
-        passwordFile = "/home/willow/flake/secrets/restic";
+        passwordFile = "${config.age.secrets.restic.path}";
         paths = [
           "/home/willow/docs"
-          "/home/willow/git"
+          "/home/willow/dev"
           "/home/willow/media"
         ];
         repository = "/mnt/share/restic";

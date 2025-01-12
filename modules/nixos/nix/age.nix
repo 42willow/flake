@@ -37,13 +37,23 @@ in {
     ];
 
     secrets = {
-      keys-gh = mkSecret {
+      gh = mkSecret {
         file = "gh";
         owner = mainUser;
         group = userGroup;
       };
-      keys-gh-pub = mkSecret {
+      gh-pub = mkSecret {
         file = "gh-pub";
+        owner = mainUser;
+        group = userGroup;
+      };
+      restic = mkSecret {
+        file = "restic";
+        owner = mainUser;
+        group = userGroup;
+      };
+      samba = mkSecret {
+        file = "samba";
         owner = mainUser;
         group = userGroup;
       };

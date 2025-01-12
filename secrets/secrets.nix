@@ -7,4 +7,6 @@ let
 in {
   "gh.age".publicKeys = users ++ hosts;
   "gh-pub.age".publicKeys = users ++ hosts;
+  "samba.age".publicKeys = users ++ hosts;
+  "restic.age".publicKeys = users ++ hosts;
 }

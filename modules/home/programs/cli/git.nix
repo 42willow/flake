@@ -41,7 +41,7 @@ in {
         # commit signing
         commit.gpgsign = true;
         gpg.format = "ssh";
-        user.signingkey = osConfig.age.secrets.keys-gh.path;
+        user.signingkey = osConfig.age.secrets.gh.path;
         gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.ssh/allowed_signers";
       };
 
