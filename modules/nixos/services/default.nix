@@ -9,7 +9,7 @@ in {
     ./pipewire.nix
     ./printing.nix
     ./privacy.nix
-    ./restic.nix
+    # ./restic.nix
     # ./sddm.nix
     ./tlp.nix
     # ./xfce.nix
