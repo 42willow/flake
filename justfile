@@ -11,6 +11,9 @@ clean:
 update:
   NIX_CONFIG="access-tokens = github.com=$(gh auth token)" nix flake update
 
+repair:
+  sudo nix-store --verify --check-contents --repair
+
 boot:
   nh os boot
 
