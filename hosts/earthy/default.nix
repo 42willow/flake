@@ -1,8 +1,13 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: let
+  inherit (inputs) self;
+in {
   imports = [
     ./hardware-configuration.nix
-    ./../../modules
-    ./../../users
+    "${self}/modules"
   ];
   # TODO)) do I need this here?
   nix.settings = {
