@@ -11,6 +11,22 @@ in {
     programs.zed-editor = {
       enable = true;
       package = pkgs.zed-editor.fhsWithPackages (pkgs: [pkgs.zlib]); # Discord RPC requires zlib
+
+      # see https://github.com/zed-industries/extensions/tree/main/extensions
+      extensions = [
+        "discord-presence"
+        "html"
+        "ini"
+        "just"
+        "nix"
+        "scss"
+        "svelte"
+        "tera"
+        "toml"
+        "typst"
+      ];
+
+      # see https://zed.dev/docs/configuring-zed
       userSettings = {
         assistant = {
           default_model = {
