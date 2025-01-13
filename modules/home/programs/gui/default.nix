@@ -10,7 +10,7 @@ in {
   imports = [
     ./browsers # browsers
     ./waybar # core
-    ./cura.nix # 3dp
+    # ./cura.nix # 3dp
     ./kitty.nix # core
     ./obs-studio.nix # media
     ./spicetify.nix # music
