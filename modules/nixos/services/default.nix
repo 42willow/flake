@@ -10,7 +10,7 @@ in {
     ./printing.nix
     ./privacy.nix
     ./restic.nix
-    # ./sddm.nix
+    ./sddm.nix
     ./tlp.nix
     # ./xfce.nix
   ];

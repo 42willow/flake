@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    ./desktop
     ./fonts.nix
   ];
 

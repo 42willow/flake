@@ -66,7 +66,7 @@
         # "mod, code:60, exec, rofimoji"
 
         ", Print, exec, grim -g \"$(slurp -d -c f5bde6)\" - | wl-copy"
-        "$mod, space, exec, tofi-drun --drun-launch=true --fuzzy-match=true --font /usr/share/fonts/OTF/MonaspiceNeNerdFont-Regular.otf"
+        "$mod, space, exec, tofi-drun --drun-launch=true --fuzzy-match=true"
         "$mod, Q, exec, kitty"
         "$mod, F, exec, zen"
         "$mod, E, exec, nautilus"

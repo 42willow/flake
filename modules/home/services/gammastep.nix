@@ -1,6 +1,6 @@
 {...}: {
   services.gammastep = {
-    enable = true;
+    enable = false;
     tray = true;
     provider = "manual";
     latitude = -38.0;
