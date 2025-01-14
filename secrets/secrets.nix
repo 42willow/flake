@@ -9,4 +9,5 @@ in {
   "gh-pub.age".publicKeys = users ++ hosts;
   "samba.age".publicKeys = users ++ hosts;
   "restic.age".publicKeys = users ++ hosts;
+  "wifi.age".publicKeys = users ++ hosts;
 }

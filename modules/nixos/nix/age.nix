@@ -57,6 +57,11 @@ in {
         owner = mainUser;
         group = userGroup;
       };
+      wifi = mkSecret {
+        file = "wifi";
+        owner = mainUser;
+        group = userGroup;
+      };
     };
   };
 }
