@@ -62,7 +62,7 @@ in {
             "󰋞 /media/pictures" = " ";
             "󰋞 /media/videos" = " ";
             "󰋞 /media/3dp" = " ";
-            "󰋞 /dev" = "󱌢 ";
+            "󰋞 /git" = "󱌢 ";
             "󰋞 /.config" = " ";
           };
         };

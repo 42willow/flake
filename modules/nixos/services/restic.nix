@@ -37,7 +37,7 @@ in {
         passwordFile = "${config.age.secrets.restic.path}";
         paths = [
           "/home/willow/docs"
-          "/home/willow/dev"
+          "/home/willow/git"
           "/home/willow/media"
         ];
         repository = "/mnt/share/restic";
