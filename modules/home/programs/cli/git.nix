@@ -10,6 +10,7 @@ in {
     && cfg.categories.core.enable) {
     programs.git = {
       enable = true;
+      lfs.enable = true;
 
       userName = "willow";
       userEmail = "42willow" + "@" + "pm.me";
