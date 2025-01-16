@@ -22,7 +22,7 @@ in {
       # browsing = true;
       # defaultShared = true;
       openFirewall = true;
-      # use the command `
+      # use `lpinfo -m` to list printer drivers
       drivers = [pkgs.gutenprint pkgs.mfcl8690cdwcupswrapper];
     };
 
