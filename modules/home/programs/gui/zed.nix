@@ -15,6 +15,7 @@ in {
       # see https://github.com/zed-industries/extensions/tree/main/extensions
       extensions = [
         "discord-presence"
+        "git-firefly"
         "html"
         "ini"
         "just"
