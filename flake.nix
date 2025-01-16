@@ -1,5 +1,43 @@
 {
   description = "NixOS configuration of 42willow";
+
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: {
+    nixosConfigurations = {
+      earthy = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./hosts/earthy
+          home-manager.nixosModules.home-manager
+        ];
+        specialArgs = {
+          inherit self inputs;
+        };
+      };
+      anemone = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./hosts/anemone
+          home-manager.nixosModules.home-manager
+        ];
+        specialArgs = {
+          inherit self inputs;
+        };
+      };
+      lily = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./hosts/lily
+          home-manager.nixosModules.home-manager
+        ];
+        specialArgs = {
+          inherit self inputs;
+        };
+      };
+    };
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -96,50 +134,5 @@
     #   url = "github:nix-community/nixvim/";
     #   inputs.nixpkgs.follows = "nixpkgs-unstable";
     # };
-  };
-
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: let
-    username = "willow";
-  in {
-    nixosConfigurations = {
-      earthy = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/earthy
-          home-manager.nixosModules.home-manager
-        ];
-        specialArgs = {
-          host = "earthy";
-          inherit self inputs username;
-        };
-      };
-      anemone = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
-        modules = [
-          ./hosts/anemone
-          home-manager.nixosModules.home-manager
-        ];
-        specialArgs = {
-          host = "anemone";
-          inherit self inputs username;
-        };
-      };
-      lily = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/lily
-          home-manager.nixosModules.home-manager
-        ];
-        specialArgs = {
-          host = "lily";
-          inherit self inputs username;
-        };
-      };
-    };
   };
 }

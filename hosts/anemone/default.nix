@@ -9,6 +9,7 @@
   swapFile = "/swapfile";
 in {
   imports = [
+    # TODO)) hardware-configuration!
     inputs.raspberry-pi-nix.nixosModules.raspberry-pi
     (modulesPath + "/installer/scan/not-detected.nix")
     # (modulesPath + "/installer/sd-card/sd-image.nix")
@@ -16,6 +17,8 @@ in {
     # (modulesPath + "/installer/sd-card/sd-image-aarch64-installer.nix")
     # (modulesPath + "/installer/sd-card/sd-image-raspberrypi.nix")
   ];
+
+  nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux"; # TODO)) move to hardware-configuration
 
   raspberry-pi-nix = {
     board = "bcm2711"; # raspberry pi {2, 3, 4}
