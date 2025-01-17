@@ -12,6 +12,7 @@ in {
     ./bat.nix # core
     ./btop.nix # core
     ./gitui.nix # dev
+    ./lazygit.nix # dev
     ./ncmpcpp.nix # music
     ./yazi.nix # files
   ];
