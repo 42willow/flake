@@ -1,10 +1,5 @@
 # Bspwm settings
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{...}: let
   mod = "super";
   altMod = "alt";
 in {
