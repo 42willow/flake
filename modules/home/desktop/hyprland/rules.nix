@@ -1,4 +1,4 @@
-{...}: {
+{
   wayland.windowManager.hyprland.settings = {
     # See https://wiki.hyprland.org/Configuring/Window-Rules/
 

@@ -1,4 +1,4 @@
-{...}: {
+{
   # TODO)) tidy up, this is all messy
 
   services.picom = {

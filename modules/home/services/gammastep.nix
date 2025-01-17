@@ -1,4 +1,4 @@
-{...}: {
+{
   services.gammastep = {
     enable = false;
     tray = true;

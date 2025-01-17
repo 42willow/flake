@@ -1,4 +1,4 @@
-{...}: {
+{
   imports = [
     ./firefox # default: enabled
     ./chromium.nix # default: enabled

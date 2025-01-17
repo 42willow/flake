@@ -1,4 +1,4 @@
-{...}: {
+{
   programs.firefox.policies = {
     AppAutoUpdate = false;
     BackgroundAppUpdate = false;

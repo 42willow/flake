@@ -1,4 +1,4 @@
-{...}: {
+{
   wayland.windowManager.hyprland.settings = {
     binds = {
       scroll_event_delay = 0; # default: 300

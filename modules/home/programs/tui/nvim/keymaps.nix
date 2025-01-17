@@ -11,7 +11,7 @@
 # inoremap <M-u> <Up>|cnoremap <M-u> <Up>|
 # inoremap <M-e> <Down>|cnoremap <M-e> <Down>|
 # inoremap <M-i> <Right>|cnoremap <M-i> <Right>|
-{...}: {
+{
   programs.nixvim.keymaps = [
     # TODO)) Colemak keybinds
     # down

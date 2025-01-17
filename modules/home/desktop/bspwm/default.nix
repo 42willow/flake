@@ -1,5 +1,5 @@
 # Bspwm settings
-{...}: let
+let
   mod = "super";
   altMod = "alt";
 in {
