@@ -12,6 +12,7 @@ in {
     ./waybar # core
     # ./cura.nix # 3dp
     ./kitty.nix # core
+    ./lightburn.nix # cnc
     ./obs-studio.nix # media
     ./spicetify.nix # music
     ./thunderbird.nix # mail
