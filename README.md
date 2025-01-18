@@ -45,6 +45,14 @@
   </a>
 </p>
 
+<details>
+<summary>Preview</summary>
+
+https://github.com/42Willow/dotfiles/assets/70784752/c05e9d59-6c2d-466e-ab67-82bc5a7e0394
+
+Preview last updated: `Feb 18, 2024`
+</details>
+
 ---
 
 > [!CAUTION]
