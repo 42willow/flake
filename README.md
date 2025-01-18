@@ -72,6 +72,7 @@ Option defaults are all for `earthy`, which is my main machine.
 - `earthy`: ThinkPad X1 Yoga Gen 4
 - `anemone`: Raspberry Pi 3B+
 - `lily`: Portable Recovery ISO
+- `zinnia`: WSL2 Host
 
 ## Installation
 
