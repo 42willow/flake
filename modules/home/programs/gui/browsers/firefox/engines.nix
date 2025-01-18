@@ -23,7 +23,6 @@
       "YouTube" = {
         definedAliases = ["@youtube" "@yt"];
         iconUpdateURL = "https://www.youtube.com/s/desktop/8b6c1f4c/img/favicon_144x144.png";
-
         urls = [
           {
             template = "https://www.youtube.com/results";
@@ -40,7 +39,6 @@
       "NixOS Packages" = {
         definedAliases = ["@nixpkgs" "@np"];
         icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-
         urls = [
           {
             template = "https://search.nixos.org/packages";
@@ -61,7 +59,6 @@
       "NixOS Options" = {
         definedAliases = ["@nixopts" "@no"];
         icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-
         urls = [
           {
             template = "https://search.nixos.org/options";
@@ -82,7 +79,6 @@
       "NixOS Flakes" = {
         definedAliases = ["@nixflakes" "@nf"];
         icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-
         urls = [
           {
             template = "https://search.nixos.org/flakes";
@@ -100,10 +96,29 @@
         ];
       };
 
+      "NixOS Wiki" = {
+        definedAliases = ["@nixwiki" "@nw"];
+        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+        urls = [
+          {
+            template = "https://wiki.nixos.org/w/index.php";
+            params = [
+              {
+                name = "channel";
+                value = "unstable";
+              }
+              {
+                name = "search";
+                value = "{searchTerms}";
+              }
+            ];
+          }
+        ];
+      };
+
       "Home Manager" = {
         definedAliases = ["@homemanager" "@hm"];
         icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-
         urls = [
           {
             template = "https://home-manager-options.extranix.com";
@@ -120,7 +135,6 @@
       "MyNixOS" = {
         definedAliases = ["@mynixos" "@mn"];
         icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake-white.svg";
-
         urls = [
           {
             template = "https://mynixos.com/search";
@@ -137,7 +151,6 @@
       "Noogle" = {
         definedAliases = ["@noogle" "@n"];
         icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-
         urls = [
           {
             template = "https://noogle.dev/q";
