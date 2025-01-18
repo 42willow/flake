@@ -5,6 +5,16 @@
   ...
 }: let
   cfg = osConfig.settings.programs;
+
+  prettierFmt = {
+    formatter.external = {
+      command = lib.getExe pkgs.nodePackages.prettier;
+      arguments = [
+        "--stdin-filepath"
+        "{buffer_path}"
+      ];
+    };
+  };
 in {
   config = lib.mkIf (cfg.gui.enable
     && cfg.categories.dev.enable) {
@@ -49,6 +59,9 @@ in {
         terminal_font_family = "Maple Mono NF";
 
         languages = {
+          HTML = prettierFmt;
+          JavaScript = prettierFmt;
+          CSS = prettierFmt;
           Python = {
             editor = {
               tab_size = 4;
