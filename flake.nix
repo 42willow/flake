@@ -35,6 +35,15 @@
           inherit self inputs;
         };
       };
+      zinnia = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./hosts/zinnia
+          home-manager.nixosModules.home-manager
+        ];
+        specialArgs = {
+          inherit self inputs;
+        };
+      };
     };
   };
 
