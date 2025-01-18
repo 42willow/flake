@@ -1,4 +1,51 @@
-# 42willow's nixdots
+<h3 align="center">
+  <img src="docs/assets/flake.png" width="100" alt="Nix Logo" /><br />
+  <img src="docs/assets/transparent.png" height="30" width="0px" alt="" />
+  42willow's flake
+  <img src="docs/assets/transparent.png" height="30" width="0px" alt="" />
+</h3>
+
+<h6 align="center">
+  <a href="#hosts">Hosts</a>
+  ·
+  <a href="#installation">Installation</a>
+  ·
+  <a href="#credits">Credits</a>
+</h6>
+
+<p align="center">
+  <img
+    src="docs/assets/macchiato.png"
+    width="400"
+    alt="Catppuccin Macchiato Palette"
+  />
+</p>
+
+<p align="center">
+  <a href="https://github.com/42willow/flake/stargazers">
+    <img
+      alt="Stargazers"
+      src="https://img.shields.io/github/stars/42willow/flake?style=for-the-badge&logo=starship&color=7dc4e4&logoColor=white&labelColor=363a4f"
+  /></a>
+  <a href="https://github.com/42willow/flake">
+    <img
+      alt="Repo Size"
+      src="https://img.shields.io/github/repo-size/42willow/flake.svg?style=for-the-badge&logo=github&color=a6da95&logoColor=white&labelColor=363a4f"
+  /></a>
+  <a href="https://github.com/42willow/flake/issues">
+    <img
+      alt="Issues"
+      src="https://img.shields.io/github/issues/42willow/flake?style=for-the-badge&logo=gitbook&color=f5a97f&logoColor=white&labelColor=363a4f"
+  /></a>
+  <a href="https://github.com/42willow/flake/tree/main/LICENSE">
+    <img
+      alt="GitHub License"
+      src="https://img.shields.io/github/license/42willow/flake?style=for-the-badge&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgY2xhc3M9Imx1Y2lkZSBsdWNpZGUtc2NhbGUiPjxwYXRoIGQ9Im0xNiAxNiAzLTggMyA4Yy0uODcuNjUtMS45MiAxLTMgMXMtMi4xMy0uMzUtMy0xWiIvPjxwYXRoIGQ9Im0yIDE2IDMtOCAzIDhjLS44Ny42NS0xLjkyIDEtMyAxcy0yLjEzLS4zNS0zLTFaIi8%2BPHBhdGggZD0iTTcgMjFoMTAiLz48cGF0aCBkPSJNMTIgM3YxOCIvPjxwYXRoIGQ9Ik0zIDdoMmMyIDAgNS0xIDctMiAyIDEgNSAyIDcgMmgyIi8%2BPC9zdmc%2B&logoColor=%23cad3f5&labelColor=%23363a4f&color=%23c6a0f6"
+    />
+  </a>
+</p>
+
+---
 
 > [!CAUTION]
 > I do not know what I am doing!
