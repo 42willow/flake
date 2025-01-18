@@ -1,21 +1,19 @@
+# TODO)) hardware-configuration!
 {
   modulesPath,
   lib,
   inputs,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit (lib) mkIf self;
   swapSpace = 1;
   swapFile = "/swapfile";
 in {
   imports = [
-    # TODO)) hardware-configuration!
-    inputs.raspberry-pi-nix.nixosModules.raspberry-pi
     (modulesPath + "/installer/scan/not-detected.nix")
-    # (modulesPath + "/installer/sd-card/sd-image.nix")
-    # (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")
-    # (modulesPath + "/installer/sd-card/sd-image-aarch64-installer.nix")
-    # (modulesPath + "/installer/sd-card/sd-image-raspberrypi.nix")
+    inputs.raspberry-pi-nix.nixosModules.raspberry-pi
+
+    "${self}/modules/nixos"
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux"; # TODO)) move to hardware-configuration
