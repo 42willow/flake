@@ -70,7 +70,7 @@ in {
           # Graphic design
           aseprite
           inkscape
-          krita
+          # krita TODO)) enable when/if the cache is fixed
 
           # 3D design
           blender
