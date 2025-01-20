@@ -24,6 +24,7 @@ in {
 
       # see https://github.com/zed-industries/extensions/tree/main/extensions
       extensions = [
+        "astro"
         "discord-presence"
         "git-firefly"
         "html"
