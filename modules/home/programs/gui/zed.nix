@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 
   prettierFmt = {
     formatter.external = {

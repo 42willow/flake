@@ -7,7 +7,7 @@
 }: let
   inherit (lib.strings) concatStrings;
 
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
   ss = symbol: style: {
     inherit symbol;
     format = "[$symbol ](${style})";

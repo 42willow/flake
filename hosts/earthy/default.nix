@@ -11,6 +11,11 @@ in {
     "${self}/modules"
   ];
 
+  # nixos configuration
+  nest = {
+    desktop.enable = true;
+  };
+
   # samba
   environment.systemPackages = [pkgs.cifs-utils];
   fileSystems."/mnt/share" = {

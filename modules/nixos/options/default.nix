@@ -5,9 +5,9 @@
 }: let
   inherit (lib) mkEnableOption mkOption types;
 
-  cfg = config.settings;
+  cfg = config.nest;
 in {
-  options.settings = {
+  options.nest = {
     programs = {
       enable =
         mkEnableOption "Enable all programs"
@@ -151,7 +151,7 @@ in {
       enable =
         mkEnableOption "Enable desktop environment"
         // {
-          default = true;
+          default = false;
         };
       hyprland.enable =
         mkEnableOption "Enable Hyprland and its ecosystem"

@@ -4,13 +4,13 @@
   lib,
   ...
 }: let
-  cfg = config.settings.services.backups;
+  cfg = config.nest.services.backups;
 in {
-  options.settings.services.backups = {
+  options.nest.services.backups = {
     enable =
       lib.mkEnableOption "Enable restic backups"
       // {
-        default = config.settings.services.enable;
+        default = config.nest.services.enable;
         defaultText = lib.literalExpression "Whether to enable restic backups";
       };
   };

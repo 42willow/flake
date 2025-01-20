@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  cfg = config.settings.desktop.hyprland;
+  cfg = config.nest.desktop.hyprland;
 in {
   config = lib.mkIf cfg.enable {
     nix.settings = {

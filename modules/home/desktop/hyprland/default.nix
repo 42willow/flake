@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = osConfig.settings.desktop.hyprland;
+  cfg = osConfig.nest.desktop.hyprland;
 in {
   imports = [
     ./autostart.nix

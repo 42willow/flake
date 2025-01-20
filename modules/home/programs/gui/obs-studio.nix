@@ -4,7 +4,7 @@
   osConfig,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
   config = lib.mkIf (cfg.gui.enable
     && cfg.categories.media.enable) {

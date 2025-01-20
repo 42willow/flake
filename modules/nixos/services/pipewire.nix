@@ -4,13 +4,13 @@
   lib,
   ...
 }: let
-  cfg = config.settings.services.pipewire;
+  cfg = config.nest.services.pipewire;
 in {
-  options.settings.services.pipewire = {
+  options.nest.services.pipewire = {
     enable =
       lib.mkEnableOption "Pipewire"
       // {
-        default = config.settings.services.enable;
+        default = config.nest.services.enable;
         defaultText = lib.literalExpression "Whether to enable pipewire support";
       };
   };

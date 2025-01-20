@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  cfg = config.settings.services;
+  cfg = config.nest.services;
 in {
   imports = [
     ./pipewire.nix
@@ -15,7 +15,7 @@ in {
     # ./xfce.nix
   ];
 
-  options.settings.services = {
+  options.nest.services = {
     enable =
       lib.mkEnableOption "System services"
       // {

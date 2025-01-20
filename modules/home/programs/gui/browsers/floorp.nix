@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  cfg = osConfig.settings.programs.categories.web;
+  cfg = osConfig.nest.programs.categories.web;
 in {
   config = lib.mkIf cfg.enable {
     programs.floorp = {

@@ -6,7 +6,7 @@
   ...
 }: let
   inherit (lib) optionals concatLists;
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
   imports = [
     ./beets.nix # music

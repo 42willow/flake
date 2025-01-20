@@ -5,7 +5,7 @@
   osConfig,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in {
   imports = [inputs.spicetify-nix.homeManagerModules.default];

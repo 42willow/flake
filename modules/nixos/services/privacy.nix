@@ -3,13 +3,13 @@
   lib,
   ...
 }: let
-  cfg = config.settings.services.privacy;
+  cfg = config.nest.services.privacy;
 in {
-  options.settings.services.privacy = {
+  options.nest.services.privacy = {
     enable =
       lib.mkEnableOption "Privacy"
       // {
-        default = config.settings.services.enable;
+        default = config.nest.services.enable;
         defaultText = lib.literalExpression "Whether to enable tor support";
       };
   };

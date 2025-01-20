@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
   config = lib.mkIf (cfg.tui.enable
     && cfg.categories.music.enable) {
