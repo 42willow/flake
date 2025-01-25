@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  config,
   ...
 }: {
   config = {
@@ -20,6 +21,7 @@
       extraGroups = ["networkmanager" "wheel" "dialout"];
       home = "/home/willow";
       shell = pkgs.zsh;
+      initialHashedPassword = config.age.secrets.initial-passwd.path;
     };
   };
 }

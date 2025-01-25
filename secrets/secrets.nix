@@ -10,4 +10,5 @@ in {
   "samba.age".publicKeys = users ++ hosts;
   "restic.age".publicKeys = users ++ hosts;
   "wifi.age".publicKeys = users ++ hosts;
+  "initial-passwd.age".publicKeys = users ++ hosts;
 }

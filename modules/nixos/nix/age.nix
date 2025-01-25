@@ -62,6 +62,11 @@ in {
         owner = mainUser;
         group = userGroup;
       };
+      initial-passwd = mkSecret {
+        file = "initial-passwd";
+        owner = mainUser;
+        group = userGroup;
+      };
     };
   };
 }
