@@ -121,7 +121,10 @@
     # wallpapers
     wallpapers = {
       url = "github:42willow/wallpapers";
-      flake = false;
+      inputs = {
+        nixpkgs.follows = "nixpkgs-unstable";
+        systems.follows = "systems";
+      };
     };
 
     # reduce inputs

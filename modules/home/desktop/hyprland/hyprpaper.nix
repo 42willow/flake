@@ -1,14 +1,18 @@
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   services.hyprpaper = {
     enable = true;
     settings = {
       preload = [
-        "${inputs.wallpapers}/dist/Macchiato/Kurzgesagt-Black_Hole_1.png"
-        "${inputs.wallpapers}/dist/Macchiato/Kurzgesagt-Black_Hole_2.png"
+        "${inputs.wallpapers.packages.${pkgs.system}.macchiato}/macchiato/images/art/kurzgesagt/black_hole_1.png"
+        "${inputs.wallpapers.packages.${pkgs.system}.macchiato}/macchiato/images/art/kurzgesagt/black_hole_2.png"
       ];
       wallpaper = [
-        "eDP-1, ${inputs.wallpapers}/dist/Macchiato/Kurzgesagt-Black_Hole_1.png"
-        "DP-1, ${inputs.wallpapers}/dist/Macchiato/Kurzgesagt-Black_Hole_2.png"
+        "eDP-1, ${inputs.wallpapers.packages.${pkgs.system}.macchiato}/macchiato/images/art/kurzgesagt/black_hole_1.png"
+        "DP-1, ${inputs.wallpapers.packages.${pkgs.system}.macchiato}/macchiato/images/art/kurzgesagt/black_hole_2.png"
       ];
       splash = false;
     };

@@ -47,7 +47,7 @@ in {
 
       # ── Background ────────────────────────────────────────────────────────
       background = {
-        path = "${inputs.wallpapers}/dist/Macchiato/Kurzgesagt-Unknown_Lifeform.png";
+        path = "${inputs.wallpapers.packages.${pkgs.system}.macchiato}/macchiato/images/art/kurzgesagt/unknown_lifeform.png";
         blur_passes = 2;
       };
 

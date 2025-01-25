@@ -241,18 +241,38 @@
         "type": "github"
       }
     },
-    "nixpkgs": {
+    "nixos-wsl": {
+      "inputs": {
+        "flake-compat": [],
+        "nixpkgs": "nixpkgs"
+      },
       "locked": {
-        "lastModified": 1736867362,
-        "narHash": "sha256-i/UJ5I7HoqmFMwZEH6vAvBxOrjjOJNU739lnZnhUln8=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "9c6b49aeac36e2ed73a8c472f1546f6d9cf1addc",
+        "lastModified": 1736095716,
+        "narHash": "sha256-csysw/Szu98QDiA2lhWk9seYOyCebeVEWL89zh1cduM=",
+        "owner": "nix-community",
+        "repo": "NixOS-WSL",
+        "rev": "63c3b4ed1712a3a0621002cd59bfdc80875ecbb0",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
-        "ref": "nixos-24.11",
+        "owner": "nix-community",
+        "ref": "main",
+        "repo": "NixOS-WSL",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1733384649,
+        "narHash": "sha256-K5DJ2LpPqht7K76bsxetI+YHhGGRyVteTPRQaIIKJpw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "190c31a89e5eec80dd6604d7f9e5af3802a58a13",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-24.05",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -269,6 +289,22 @@
       "original": {
         "owner": "nixos",
         "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1736867362,
+        "narHash": "sha256-i/UJ5I7HoqmFMwZEH6vAvBxOrjjOJNU739lnZnhUln8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "9c6b49aeac36e2ed73a8c472f1546f6d9cf1addc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-24.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -309,7 +345,8 @@
         "catppuccin": "catppuccin",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs",
+        "nixos-wsl": "nixos-wsl",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "raspberry-pi-nix": "raspberry-pi-nix",
         "spicetify-nix": "spicetify-nix",
@@ -560,13 +597,20 @@
       }
     },
     "wallpapers": {
-      "flake": false,
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
       "locked": {
-        "lastModified": 1730430470,
-        "narHash": "sha256-VphUa6Twvck3jadyanWEpDbT2r4G4hgcGKVhLU0rdro=",
+        "lastModified": 1737716574,
+        "narHash": "sha256-hiIZlGleK6264f2tiUS38aFPnqtT03DF27jWKHUm+3U=",
         "owner": "42willow",
         "repo": "wallpapers",
-        "rev": "83ac22ce34287c43e676f21cc98132f9c49f56e9",
+        "rev": "c788b67e23ed341862b6fb19b992423d1b122ca7",
         "type": "github"
       },
       "original": {
