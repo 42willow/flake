@@ -16,6 +16,12 @@ in {
   config = lib.mkIf cfg.enable {
     programs.firefox = {
       enable = true;
+      profiles.testing = {
+        id = 1;
+        settings = {
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        };
+      };
       profiles.willow = {
         settings = {
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
