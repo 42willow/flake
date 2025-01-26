@@ -136,15 +136,10 @@
       inputs.systems.follows = "systems";
     };
 
-    # textfox = {
-    #   url = "github:adriankarlen/textfox";
-    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
-    # };
-
-    # firefox-cascade = {
-    #   url = "github:42willow/cascade";
-    #   flake = false;
-    # };
+    firefox-cascade = {
+      url = "github:cascadefox/cascade";
+      flake = false;
+    };
 
     # nixvim = {
     #   url = "github:nix-community/nixvim/";

@@ -68,7 +68,7 @@
         ", Print, exec, grim -g \"$(slurp -d -c f5bde6)\" - | wl-copy"
         "$mod, space, exec, tofi-drun --drun-launch=true --fuzzy-match=true"
         "$mod, Q, exec, kitty"
-        "$mod, F, exec, zen"
+        "$mod, F, exec, firefox"
         "$mod, E, exec, nautilus"
         "$mod, X, exec, zeditor"
         "$mod, L, exec, hyprlock"

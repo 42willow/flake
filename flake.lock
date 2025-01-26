@@ -117,6 +117,22 @@
         "type": "github"
       }
     },
+    "firefox-cascade": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1707704545,
+        "narHash": "sha256-GMXSpNaShNu/Bce6TTnlgzGHV8MhHRVICv8hJqMi70w=",
+        "owner": "cascadefox",
+        "repo": "cascade",
+        "rev": "8fbe98934fa58f934f7ed5253367396519b320a4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cascadefox",
+        "repo": "cascade",
+        "type": "github"
+      }
+    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
@@ -343,6 +359,7 @@
       "inputs": {
         "agenix": "agenix",
         "catppuccin": "catppuccin",
+        "firefox-cascade": "firefox-cascade",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "nixos-wsl": "nixos-wsl",

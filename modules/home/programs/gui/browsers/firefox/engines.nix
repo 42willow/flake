@@ -10,7 +10,7 @@
   # MyNixOS        | @mynixos @mn
   # Noogle         | @noogle @n
 
-  programs.firefox.profiles.default.search = {
+  programs.firefox.profiles.willow.search = {
     force = true;
     default = "DuckDuckGo";
     engines = {
