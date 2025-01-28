@@ -28,7 +28,7 @@ in {
         };
         # Firefox Cascade config
         userChrome = ''
-          @import '${inputs.firefox-cascade}/chrome/includes/cascade-config-mouse.css';
+          @import '${inputs.firefox-cascade}/chrome/includes/cascade-config.css';
           @import '${inputs.firefox-cascade}/integrations/catppuccin/cascade-macchiato.css';
 
           @import '${inputs.firefox-cascade}/chrome/includes/cascade-layout.css';
@@ -37,12 +37,6 @@ in {
 
           @import '${inputs.firefox-cascade}/chrome/includes/cascade-nav-bar.css';
           @import '${inputs.firefox-cascade}/chrome/includes/cascade-tabs.css';
-
-          :root {
-            --uc-toolbar-position: 4;
-            --uc-border-radius: 12px;
-            --uc-accent-colour: var(--uc-identity-colour-pink);
-          }
         '';
       };
     };

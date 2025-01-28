@@ -19,7 +19,7 @@
       EmailTracking = true;
     };
     EncryptedMediaExtensions.Enabled = true;
-    ExtensionUpdate = false;
+    ExtensionUpdate = true;
     NoDefaultBookmarks = true;
     # PasswordManagerEnabled = false;
     UserMessaging = {
