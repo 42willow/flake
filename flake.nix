@@ -54,15 +54,7 @@
     # themes
     catppuccin = {
       url = "github:catppuccin/nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs-unstable";
-        nixpkgs-stable.follows = "";
-        home-manager.follows = "";
-        home-manager-stable.follows = "";
-        nuscht-search.follows = "";
-        catppuccin-v1_1.follows = "";
-        catppuccin-v1_2.follows = "";
-      };
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     stylix = {
       url = "github:danth/stylix/release-24.11";
@@ -97,6 +89,7 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs = {
         nixpkgs.follows = "nixpkgs-unstable";
+        systems.follows = "systems";
         flake-compat.follows = "";
       };
     };
