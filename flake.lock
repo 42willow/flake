@@ -114,11 +114,11 @@
     "firefox-cascade": {
       "flake": false,
       "locked": {
-        "lastModified": 1738030830,
-        "narHash": "sha256-qwaC/nHgE0r5FlIcNGJl3n+yvSk5ZMKVlS9ZiM/2/Fk=",
+        "lastModified": 1738051195,
+        "narHash": "sha256-Ab9KPCt1bWRj2+yU3s5n0SVCctVxeIPuT6H+HQqheQQ=",
         "owner": "cascadefox",
         "repo": "cascade",
-        "rev": "b4bf618069e2169e50edaafa5aa5a9baeadb2373",
+        "rev": "8239e304844beb854c068a273f1171f7fadd5212",
         "type": "github"
       },
       "original": {

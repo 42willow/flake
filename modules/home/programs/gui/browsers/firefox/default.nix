@@ -22,6 +22,7 @@ in {
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
       };
+      profiles.guest.id = 2;
       profiles.willow = {
         settings = {
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
@@ -37,6 +38,8 @@ in {
 
           @import '${inputs.firefox-cascade}/chrome/includes/cascade-nav-bar.css';
           @import '${inputs.firefox-cascade}/chrome/includes/cascade-tabs.css';
+
+          @import '${inputs.firefox-cascade}/integrations/tabcenter-reborn/cascade-tcr.css';
         '';
       };
     };
