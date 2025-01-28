@@ -10,6 +10,7 @@
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
     warn-dirty = false;
+    keep-going = true;
     allowed-users = ["willow"];
     trusted-users = ["root" "willow"];
 
