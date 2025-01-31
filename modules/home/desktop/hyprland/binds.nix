@@ -71,6 +71,7 @@
         "$mod, F, exec, firefox"
         "$mod, E, exec, nautilus"
         "$mod, X, exec, zeditor"
+        "$mod, T, exec, discord"
         "$mod, L, exec, hyprlock"
         "$mod, P, exec, hyprctl dispatch pin"
 
