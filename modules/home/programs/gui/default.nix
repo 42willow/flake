@@ -40,6 +40,9 @@ in {
           calibre
           prismlauncher
           vesktop
+          (discord.override {
+            withOpenASAR = true;
+          })
         ])
 
         # Privacy
