@@ -12,12 +12,13 @@
     DisableFormHistory = true;
     DontCheckDefaultBrowser = true;
     OfferToSaveLogins = false;
-    EnableTrackingProtection = {
-      Value = true;
-      Cryptomining = true;
-      Fingerprinting = true;
-      EmailTracking = true;
-    };
+    # breaks Google login
+    # EnableTrackingProtection = {
+    #   Value = true;
+    #   Cryptomining = true;
+    #   Fingerprinting = true;
+    #   EmailTracking = true;
+    # };
     EncryptedMediaExtensions.Enabled = true;
     ExtensionUpdate = true;
     NoDefaultBookmarks = true;
