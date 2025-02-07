@@ -2,10 +2,15 @@
   pkgs,
   osConfig,
   lib,
+  inputs,
   ...
 }: let
   inherit (lib) optionals concatLists;
   cfg = osConfig.settings.programs;
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    system = "x86_64-linux";
+    config.allowUnfree = true;
+  };
 in {
   imports = [
     ./browsers # browsers
@@ -84,14 +89,12 @@ in {
         (optionals cfg.categories.edu.enable [
           libreoffice
           logseq
-          obsidian
           planify
           speedcrunch
         ])
-      ];
-    # ++ (with inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}; [
-    # ghostty # terminal
-    # lightburn
-    # ]);
+      ]
+      ++ (with pkgs-unstable; [
+        obsidian
+      ]);
   };
 }
