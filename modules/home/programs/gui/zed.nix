@@ -2,10 +2,14 @@
   osConfig,
   lib,
   pkgs,
+  inputs,
   ...
 }: let
   cfg = osConfig.settings.programs;
-
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    system = "x86_64-linux";
+    config.allowUnfree = true;
+  };
   prettierFmt = {
     formatter.external = {
       command = lib.getExe pkgs.nodePackages.prettier;
@@ -20,10 +24,12 @@ in {
     && cfg.categories.dev.enable) {
     programs.zed-editor = {
       enable = true;
-      package = pkgs.zed-editor.fhsWithPackages (pkgs: [pkgs.zlib]); # Discord RPC requires zlib
+      package = pkgs-unstable.zed-editor.fhsWithPackages (pkgs: [pkgs.zlib]); # Discord RPC requires zlib
 
       # see https://github.com/zed-industries/extensions/tree/main/extensions
       extensions = [
+        "catppuccin-icons"
+        "emmet"
         "discord-presence"
         "git-firefly"
         "html"
@@ -39,13 +45,15 @@ in {
 
       # see https://zed.dev/docs/configuring-zed
       userSettings = {
-        assistant = {
-          default_model = {
-            provider = "copilot_chat";
-            model = "gpt-4o";
-          };
-          version = "2";
-        };
+        # assistant = {
+        #   default_model = {
+        #     provider = "copilot_chat";
+        #     model = "gpt-4o";
+        #   };
+        #   version = "2";
+        # };
+
+        icon_theme = "Catppuccin Macchiato";
 
         tab_size = 2;
         ensure_final_newline_on_save = true;
