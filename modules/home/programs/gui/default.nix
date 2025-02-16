@@ -53,7 +53,6 @@ in {
         # Privacy
         (optionals cfg.categories.privacy.enable [
           tor-browser
-          veracrypt
         ])
 
         # Multimedia
@@ -94,6 +93,7 @@ in {
         ])
       ]
       ++ (with pkgs-unstable; [
+        veracrypt
         obsidian
       ]);
   };
