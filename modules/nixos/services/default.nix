@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   config,
   ...
 }: let
@@ -34,6 +35,11 @@ in {
         variant = "colemak,";
         options = "grp:alt_space_toggle, caps:backspace, shift:both_capslock_cancel";
       };
+
+      udev.packages = [
+        pkgs.platformio-core
+        pkgs.openocd
+      ];
     };
   };
 }
