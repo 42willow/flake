@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./age.nix
+    ./virtualisation.nix
   ];
 
   nix.settings = {
