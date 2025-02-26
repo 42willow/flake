@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   wayland.windowManager.hyprland.settings = {
     binds = {
       scroll_event_delay = 0; # default: 300
@@ -74,6 +74,7 @@
         "$mod, T, exec, discord"
         "$mod, L, exec, hyprlock"
         "$mod, P, exec, hyprctl dispatch pin"
+        "$mod, R, exec, ${pkgs.kooha}/bin/kooha"
 
         # ~ Windows ~
 

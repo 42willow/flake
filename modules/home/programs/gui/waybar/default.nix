@@ -149,12 +149,6 @@ in {
             tooltip = false;
             on-click-release = "tofi-drun";
           };
-          "custom/recording" = {
-            # TODO))
-            exec = "exec $HOME/.config/hypr/scripts/screend.sh";
-            exec-on-event = false;
-            on-click = "killall wl-screenrec";
-          };
         };
       };
     };
