@@ -27,6 +27,9 @@ in {
       profiles.willow = {
         settings = {
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          "network.dns.disablePrefetch" = false;
+          "network.prefetch-next" = true;
+          "network.predictor.enable-prefetch" = true;
         };
         # Firefox Cascade config
         userChrome = ''
