@@ -48,24 +48,22 @@
   };
   swapDevices = [];
 
-  # graphics
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver
-      vaapiIntel
-    ];
+  hardware = {
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        intel-media-driver
+        vaapiIntel
+      ];
+    };
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+    i2c.enable = true; # needed for ddcutil
   };
 
-  # bluetooth
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
   services.blueman.enable = true;
-
-  # i2c
-  hardware.i2c.enable = true; # needed for ddcutil
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

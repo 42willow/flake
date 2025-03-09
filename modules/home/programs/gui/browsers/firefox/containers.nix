@@ -1,4 +1,4 @@
-{...}: {
+{
   programs.firefox.profiles.willow = {
     containersForce = true;
     containers = {
