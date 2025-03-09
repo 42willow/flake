@@ -25,6 +25,8 @@
     initrd.kernelModules = [];
     kernelModules = ["kvm-intel"];
     extraModulePackages = [];
+
+    supportedFilesystems = ["ntfs"];
   };
 
   # file systems
