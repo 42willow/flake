@@ -28,7 +28,6 @@ in {
 
       # see https://github.com/zed-industries/extensions/tree/main/extensions
       extensions = [
-        "catppuccin-icons"
         "emmet"
         "discord-presence"
         "git-firefly"
@@ -45,15 +44,13 @@ in {
 
       # see https://zed.dev/docs/configuring-zed
       userSettings = {
-        # assistant = {
-        #   default_model = {
-        #     provider = "copilot_chat";
-        #     model = "gpt-4o";
-        #   };
-        #   version = "2";
-        # };
-
-        icon_theme = "Catppuccin Macchiato";
+        assistant = {
+          default_model = {
+            provider = "copilot_chat";
+            model = "gpt-4o";
+          };
+          version = "2";
+        };
 
         tab_size = 2;
         ensure_final_newline_on_save = true;
