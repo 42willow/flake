@@ -50,8 +50,18 @@ in {
           "--keep-weekly 5"
           "--keep-monthly 12"
         ];
-        extraBackupArgs = [
-          "--exclude=\"node_modules/*\""
+        exclude = [
+          "secrets"
+          ".cache/"
+          # rust
+          ".cargo/"
+          ".rustup/"
+          "target/"
+          # node
+          "node_modules/"
+          # python
+          "venv/"
+          ".venv/"
         ];
       };
     };
