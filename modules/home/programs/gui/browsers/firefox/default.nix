@@ -29,6 +29,9 @@ in {
         willow = {
           settings = {
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+            "browser.ml.chat.enabled" = false;
+            "sidebar.revamp" = true;
+            "sidebar.verticalTabs" = true;
             "network.dns.disablePrefetch" = false;
             "network.prefetch-next" = true;
             "network.predictor.enable-prefetch" = true;
