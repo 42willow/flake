@@ -61,7 +61,7 @@ in {
     enable = true;
 
     keybindings = {
-      "${mod} + q" = "kitty";
+      "${mod} + q" = "ghostty";
       "${mod} + c" = "bspc node -c";
       "${mod} + m" = "tofi-drun --drun-launch=true --fuzzy-match=true";
       # "${mod} + r" = "bspc node @focused:/ --rotate 90";

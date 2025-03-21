@@ -16,6 +16,7 @@ in {
     ./browsers # browsers
     ./waybar # core
     # ./cura.nix # 3dp
+    ./ghostty.nix # core
     ./kitty.nix # core
     ./lightburn.nix # cnc
     ./obs-studio.nix # media
@@ -29,9 +30,9 @@ in {
     home.packages = with pkgs;
       concatLists [
         # Core
-        (optionals cfg.categories.core.enable [
-          kitty
-        ])
+        # (optionals cfg.categories.core.enable [
+        #   kitty
+        # ])
 
         # Tools
         (optionals cfg.categories.tools.enable [

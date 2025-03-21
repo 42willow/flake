@@ -10,9 +10,9 @@
     # See https://wiki.hyprland.org/Configuring/Workspace-Rules/
 
     workspace = [
-      "special:scratchpad, on-created-empty:kitty, gapsout:50"
-      "special:btop, on-created-empty:kitty btop, gapsout:50"
-      "special:mpd, on-created-empty:kitty ncmpcpp, gapsout:50"
+      "special:scratchpad, on-created-empty:ghostty, gapsout:50"
+      "special:btop, on-created-empty:ghostty -e btop, gapsout:50"
+      "special:mpd, on-created-empty:ghostty -e ncmpcpp, gapsout:50"
     ];
   };
 }

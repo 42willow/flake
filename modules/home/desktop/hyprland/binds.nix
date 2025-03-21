@@ -67,7 +67,7 @@
 
         ", Print, exec, grim -g \"$(slurp -d -c f5bde6)\" - | wl-copy"
         "$mod, space, exec, tofi-drun --drun-launch=true --fuzzy-match=true"
-        "$mod, Q, exec, kitty"
+        "$mod, Q, exec, ghostty"
         "$mod, F, exec, firefox"
         "$mod, E, exec, nautilus"
         "$mod, X, exec, zeditor"
@@ -110,7 +110,6 @@
         # "$sudoMod, R, exec, ~/.config/hypr/scripts/reload.sh" TODO))
         # "$sudoMod, P, exec, ~/.config/tofi/scripts/power_menu.sh" # TODO))
         "$sudoMod, M, exit"
-        "$sudoMod, S, exec, kitty --hold nh os switch"
       ]
       ++ (
         # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}

@@ -8,7 +8,7 @@ By default, programs are enabled if the main category is enabled and sub-categor
 
 ## Sub-categories
 
-- `core`: programs that I always use (eg. `kitty`)
+- `core`: programs that I always use (eg. `ghostty`)
 - `dev`: development (eg. `zed`)
 - `fs`: file management (eg. `nautilus`)
 - `gaming`: games (eg. `steam`)
