@@ -11,6 +11,10 @@
       "QT_AUTO_SCREEN_SCALE_FACTOR,1"
       "MOZ_ENABLE_WAYLAND,1"
       "XDG_SESSION_TYPE,wayland"
+      "INPUT_METHOD,fcitx5"
+      "GTK_IM_MODULE,fcitx5"
+      "QT_IM_MODULE,fcitx5"
+      "XMODIFIERS,@im=fcitx5"
     ];
   };
 }

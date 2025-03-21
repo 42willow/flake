@@ -8,5 +8,6 @@
     cache.enable = true;
 
     tty.enable = true;
+    fcitx5.enable = true;
   };
 }
