@@ -5,6 +5,15 @@
   ...
 }: let
   cfg = osConfig.settings.programs.categories.web;
+  ffConfig = {
+    "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+    "browser.ml.chat.enabled" = false;
+    "sidebar.revamp" = true;
+    "sidebar.verticalTabs" = true;
+    "network.dns.disablePrefetch" = false;
+    "network.prefetch-next" = true;
+    "network.predictor.enable-prefetch" = true;
+  };
 in {
   # Inspired by https://github.com/SystematicError/dotfiles/blob/master/users/systematic/modules/firefox.nix
 
@@ -21,21 +30,11 @@ in {
       profiles = {
         testing = {
           id = 1;
-          settings = {
-            "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-          };
+          settings = ffConfig;
         };
         guest.id = 2;
         willow = {
-          settings = {
-            "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-            "browser.ml.chat.enabled" = false;
-            "sidebar.revamp" = true;
-            "sidebar.verticalTabs" = true;
-            "network.dns.disablePrefetch" = false;
-            "network.prefetch-next" = true;
-            "network.predictor.enable-prefetch" = true;
-          };
+          settings = ffConfig;
           # Firefox Cascade config
           userChrome = ''
             @import '${inputs.firefox-cascade}/chrome/includes/cascade-config.css';
