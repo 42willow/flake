@@ -23,7 +23,7 @@ in {
     ./spicetify.nix # music
     ./thunderbird.nix # mail
     ./tofi.nix # core
-    ./zed.nix # dev
+    ./zed # dev
   ];
 
   config = lib.mkIf cfg.gui.enable {

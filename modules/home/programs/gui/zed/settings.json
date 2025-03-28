@@ -1,0 +1,88 @@
+{
+  "assistant": {
+    "default_model": {
+      "model": "gpt-4o",
+      "provider": "copilot_chat"
+    },
+    "version": "2"
+  },
+  "auto_install_extensions": {
+    "catppuccin-icons": true,
+    "discord-presence": true,
+    "emmet": true,
+    "git-firefly": true,
+    "html": true,
+    "ini": true,
+    "just": true,
+    "nix": true,
+    "scss": true,
+    "svelte": true,
+    "tera": true,
+    "toml": true,
+    "typst": true
+  },
+  "buffer_font_family": "Maple Mono NF",
+  "buffer_font_size": 16,
+  "ensure_final_newline_on_save": true,
+  "icon_theme": "Catppuccin Macchiato",
+  "languages": {
+    "CSS": {
+      "formatter": {
+        "external": {
+          "arguments": ["--stdin-filepath", "{buffer_path}"],
+          "command": "prettierd"
+        }
+      }
+    },
+    "HTML": {
+      "formatter": {
+        "external": {
+          "arguments": ["--stdin-filepath", "{buffer_path}"],
+          "command": "prettierd"
+        }
+      }
+    },
+    "JavaScript": {
+      "formatter": {
+        "external": {
+          "arguments": ["--stdin-filepath", "{buffer_path}"],
+          "command": "prettierd"
+        }
+      }
+    },
+    "Markdown": {
+      "editor": {
+        "remove_trailing_whitespace_on_save": false
+      }
+    },
+    "Nix": {
+      "formatter": {
+        "external": {
+          "command": "alejandra"
+        }
+      },
+      "language_severs": ["nil", "!nixd"]
+    },
+    "Python": {
+      "editor": {
+        "format_on_save": true,
+        "tab_size": 4
+      }
+    },
+    "Rust": {
+      "editor": {
+        "tab_size": 4
+      }
+    }
+  },
+  "remove_trailing_whitespace_on_save": true,
+  "tab_size": 2,
+  "terminal_font_family": "Maple Mono NF",
+  "terminal_font_size": 16,
+  "theme": {
+    "dark": "Catppuccin Macchiato (pink)",
+    "light": "Catppuccin Macchiato (pink)"
+  },
+  "ui_font_family": "Maple Mono NF",
+  "ui_font_size": 16
+}
