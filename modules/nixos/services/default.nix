@@ -7,6 +7,7 @@
   cfg = config.settings.services;
 in {
   imports = [
+    ./fwupd.nix
     ./i18n.nix
     ./pipewire.nix
     ./printing.nix
