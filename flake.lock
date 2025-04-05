@@ -364,8 +364,7 @@
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "systems": "systems",
-        "wallpapers": "wallpapers",
-        "zen-browser": "zen-browser"
+        "wallpapers": "wallpapers"
       }
     },
     "rpi-bluez-firmware-src": {
@@ -630,26 +629,6 @@
       "original": {
         "owner": "42willow",
         "repo": "wallpapers",
-        "type": "github"
-      }
-    },
-    "zen-browser": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs-unstable"
-        ]
-      },
-      "locked": {
-        "lastModified": 1743739551,
-        "narHash": "sha256-38tiroIuRMsMUytpqcrLClfeJrxLkLZzxAR1rSq52wM=",
-        "owner": "youwen5",
-        "repo": "zen-browser-flake",
-        "rev": "287c1385da165c2737a70d8275237144aae9c3ac",
-        "type": "github"
-      },
-      "original": {
-        "owner": "youwen5",
-        "repo": "zen-browser-flake",
         "type": "github"
       }
     }

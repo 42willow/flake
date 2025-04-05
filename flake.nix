@@ -104,12 +104,6 @@
       };
     };
 
-    # firefox
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
     # wallpapers
     wallpapers = {
       url = "github:42willow/wallpapers";
