@@ -35,6 +35,7 @@
     '';
   };
 in {
+  catppuccin.hyprlock.useDefaultConfig = false;
   programs.hyprlock = {
     enable = true;
     # package = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.hyprlock;
