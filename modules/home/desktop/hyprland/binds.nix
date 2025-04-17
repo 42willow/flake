@@ -71,7 +71,7 @@
         "$mod, F, exec, firefox"
         "$mod, E, exec, nautilus"
         "$mod, X, exec, zeditor"
-        "$mod, T, exec, discord"
+        "$mod, T, exec, vesktop"
         "$mod, L, exec, hyprlock"
         "$mod, P, exec, hyprctl dispatch pin"
         "$mod, R, exec, ${pkgs.kooha}/bin/kooha"
