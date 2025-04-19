@@ -30,7 +30,7 @@ in {
       profiles = {
         testing = {
           id = 1;
-          settings = ffConfig;
+          # settings = ffConfig;
         };
         guest.id = 2;
         willow = {
