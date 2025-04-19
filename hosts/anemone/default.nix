@@ -13,6 +13,8 @@ in {
     "${self}/modules"
   ];
 
+  disabledModules = ["profiles/base.nix"];
+
   settings = {
     programs.enable = false;
     system.services = {
