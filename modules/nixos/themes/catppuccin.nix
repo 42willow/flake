@@ -1,13 +1,23 @@
-{inputs, ...}: {
+{
+  inputs,
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.settings.desktop;
+in {
   imports = [
     inputs.catppuccin.nixosModules.catppuccin
   ];
-  catppuccin = {
-    flavor = "macchiato";
-    accent = "pink";
-    cache.enable = true;
 
-    tty.enable = true;
-    fcitx5.enable = true;
+  config = lib.mkIf cfg.enable {
+    catppuccin = {
+      flavor = "macchiato";
+      accent = "pink";
+      cache.enable = true;
+
+      tty.enable = true;
+      fcitx5.enable = true;
+    };
   };
 }

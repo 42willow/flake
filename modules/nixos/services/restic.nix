@@ -4,17 +4,8 @@
   lib,
   ...
 }: let
-  cfg = config.settings.services.backups;
+  cfg = config.settings.system.services.backups;
 in {
-  options.settings.services.backups = {
-    enable =
-      lib.mkEnableOption "Enable restic backups"
-      // {
-        default = config.settings.services.enable;
-        defaultText = lib.literalExpression "Whether to enable restic backups";
-      };
-  };
-
   config = lib.mkIf cfg.enable {
     users = {
       users.restic = {

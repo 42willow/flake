@@ -4,17 +4,8 @@
   lib,
   ...
 }: let
-  cfg = config.settings.services.pipewire;
+  cfg = config.settings.system.services.sound;
 in {
-  options.settings.services.pipewire = {
-    enable =
-      lib.mkEnableOption "Pipewire"
-      // {
-        default = config.settings.services.enable;
-        defaultText = lib.literalExpression "Whether to enable pipewire support";
-      };
-  };
-
   config = lib.mkIf cfg.enable {
     # Enable sound with pipewire
     hardware.pulseaudio.enable = false;

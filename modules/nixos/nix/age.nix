@@ -7,7 +7,7 @@
   inherit (config.settings.system) mainUser;
   inherit (inputs) self;
 
-  sshDir = config.home-manager.users.${mainUser}.home.homeDirectory + "/.ssh";
+  sshDir = config.users.users.${mainUser}.home + "/.ssh";
   userGroup = config.users.users.${mainUser}.group;
 
   # https://github.com/isabelroses/dotfiles/blob/0827bb1893b8072b65c66a6919f8abbe6df9a55a/modules/flake/lib/secrets.nix

@@ -121,31 +121,43 @@ in {
         description = "The username of the main user for your system";
         default = "willow";
       };
-      bluetooth.enable =
-        mkEnableOption "Enable Bluetooth"
-        // {
-          default = true;
-        };
-      sound.enable =
-        mkEnableOption "Enable sound"
-        // {
-          default = true;
-        };
-      printing.enable =
-        mkEnableOption "Enable printing"
-        // {
-          default = true;
-        };
-      networking.enable =
-        mkEnableOption "Enable networking"
-        // {
-          default = true;
-        };
-      security.enable =
-        mkEnableOption "Enable security"
-        // {
-          default = true;
-        };
+      services = {
+        enable =
+          mkEnableOption "Enable system services"
+          // {
+            default = true;
+          };
+        bluetooth.enable =
+          mkEnableOption "Enable Bluetooth"
+          // {
+            default = cfg.system.services.enable;
+          };
+        sound.enable =
+          mkEnableOption "Enable sound"
+          // {
+            default = cfg.system.services.enable;
+          };
+        printing.enable =
+          mkEnableOption "Enable printing"
+          // {
+            default = cfg.system.services.enable;
+          };
+        networking.enable =
+          mkEnableOption "Enable networking"
+          // {
+            default = cfg.system.services.enable;
+          };
+        security.enable =
+          mkEnableOption "Enable security"
+          // {
+            default = cfg.system.services.enable;
+          };
+        backups.enable =
+          mkEnableOption "Enable backups"
+          // {
+            default = cfg.system.services.enable;
+          };
+      };
     };
     desktop = {
       enable =

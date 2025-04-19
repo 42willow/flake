@@ -1,4 +1,11 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  osConfig,
+  lib,
+  ...
+}: let
+  cfg = osConfig.settings.programs.categories.music;
+
   # TODO)) Add queuing for multiple URLs
   bdl = pkgs.writeShellScriptBin "bdl" ''
     echo "Please enter the Spotify URL:"
@@ -21,5 +28,7 @@
     echo "All operations completed successfully."
   '';
 in {
-  home.packages = [bdl];
+  config = lib.mkIf cfg.enable {
+    home.packages = [bdl];
+  };
 }

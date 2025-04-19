@@ -1,3 +1,4 @@
+# disabled in default.nix
 {
   services.xserver = {
     enable = true;

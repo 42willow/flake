@@ -4,17 +4,8 @@
   lib,
   ...
 }: let
-  cfg = config.settings.services.printing;
+  cfg = config.settings.system.services.printing;
 in {
-  options.settings.services.printing = {
-    enable =
-      lib.mkEnableOption "Printing"
-      // {
-        default = config.settings.services.enable;
-        defaultText = lib.literalExpression "Whether to enable printing support";
-      };
-  };
-
   config = lib.mkIf cfg.enable {
     services.printing = {
       enable = true;

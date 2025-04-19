@@ -4,27 +4,18 @@
   config,
   ...
 }: let
-  cfg = config.settings.services;
+  cfg = config.settings.system.services;
 in {
   imports = [
-    ./fwupd.nix
     ./i18n.nix
     ./pipewire.nix
     ./printing.nix
     ./privacy.nix
     ./restic.nix
     # ./sddm.nix
-    ./tlp.nix
     # ./xfce.nix
   ];
 
-  options.settings.services = {
-    enable =
-      lib.mkEnableOption "System services"
-      // {
-        default = true;
-      };
-  };
   config = lib.mkIf cfg.enable {
     services = {
       gnome.gnome-keyring.enable = true;

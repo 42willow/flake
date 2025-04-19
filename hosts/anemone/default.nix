@@ -5,7 +5,8 @@
   inputs,
   ...
 }: let
-  inherit (lib) mkIf self;
+  inherit (lib) mkIf;
+  inherit (inputs) self;
   swapSpace = 1;
   swapFile = "/swapfile";
 in {
@@ -13,8 +14,18 @@ in {
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.raspberry-pi-nix.nixosModules.raspberry-pi
 
-    "${self}/modules/nixos"
+    "${self}/modules"
+    # "${self}/profiles/minimal.nix"
   ];
+
+  settings = {
+    programs.enable = false;
+    system.services = {
+      enable = false;
+      networking.enable = true;
+    };
+    desktop.enable = false;
+  };
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux"; # TODO)) move to hardware-configuration
 
@@ -59,9 +70,11 @@ in {
     }
   ];
 
-  services.openssh.enable = true;
-
   services = {
+    openssh = {
+      enable = true;
+      settings.PasswordAuthentication = false;
+    };
     klipper = {
       enable = true;
       user = "klipper";
