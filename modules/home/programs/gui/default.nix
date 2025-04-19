@@ -39,6 +39,7 @@ in {
           keepassxc
           localsend
           polkit_gnome
+          qbittorrent
         ])
 
         # Fun
