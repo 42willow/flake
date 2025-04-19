@@ -55,6 +55,7 @@ in {
           direnv
           nix-inspect
           statix
+          nix-output-monitor
 
           # Rust
           cargo

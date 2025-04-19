@@ -69,13 +69,10 @@
     };
 
     # hardware
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";
       inputs.flake-compat.follows = "";
-    };
-    raspberry-pi-nix = {
-      url = "github:nix-community/raspberry-pi-nix?ref=v0.4.1";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # home-manager
