@@ -3,7 +3,8 @@ let
   users = [willow];
 
   earthy = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGjlkj30M2jBvR6LjUF7Utrz2/WeVXL58CVl4jtXalUw";
-  hosts = [earthy];
+  anemone = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMimrxKTvYT+gKm3+f0i1EHQLQ+bJOxcvdL65a2XCLa0";
+  hosts = [earthy anemone];
 in {
   "gh.age".publicKeys = users ++ hosts;
   "gh-pub.age".publicKeys = users ++ hosts;
