@@ -17,9 +17,12 @@ in {
 
   settings = {
     programs.enable = false;
-    system.services = {
-      enable = false;
-      networking.enable = true;
+    system = {
+      hostName = "anemone";
+      services = {
+        enable = false;
+        networking.enable = true;
+      };
     };
     desktop.enable = false;
   };
@@ -31,8 +34,8 @@ in {
     };
     klipper = {
       enable = true;
-      user = "klipper";
-      group = "klipper";
+      # user = "klipper";
+      # group = "klipper";
       configFile = ./printer.cfg;
     };
     moonraker = {

@@ -4,7 +4,7 @@
   ...
 }: {
   networking = {
-    hostName = "earthy";
+    hostName = config.settings.system.hostName;
     networkmanager = {
       enable = true;
       # https://github.com/Janik-Haag/nm2nix

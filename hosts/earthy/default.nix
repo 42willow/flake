@@ -11,6 +11,8 @@ in {
     "${self}/modules"
   ];
 
+  settings.system.hostName = "earthy";
+
   # samba
   environment.systemPackages = [pkgs.cifs-utils];
   fileSystems."/mnt/share" = {

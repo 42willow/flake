@@ -121,6 +121,11 @@ in {
         description = "The username of the main user for your system";
         default = "willow";
       };
+      hostName = mkOption {
+        type = types.str;
+        description = "The hostname of your system";
+        default = "nixos";
+      };
       services = {
         enable =
           mkEnableOption "Enable system services"
