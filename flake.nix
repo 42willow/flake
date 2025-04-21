@@ -1,5 +1,5 @@
 {
-  description = "NixOS configuration of 42willow";
+  description = "willow's nix flake ^-^";
 
   outputs = {
     self,
