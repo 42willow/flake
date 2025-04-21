@@ -1,6 +1,7 @@
 {
   modulesPath,
   inputs,
+  pkgs,
   ...
 }: let
   inherit (inputs) self;
@@ -16,7 +17,14 @@ in {
   disabledModules = ["profiles/base.nix"];
 
   settings = {
-    programs.enable = false;
+    programs = {
+      enable = false;
+      cli.enable = true;
+      categories = {
+        enable = false;
+        core.enable = true;
+      };
+    };
     system = {
       hostName = "anemone";
       services = {
@@ -30,7 +38,10 @@ in {
   services = {
     openssh = {
       enable = true;
-      settings.PasswordAuthentication = false;
+      settings = {
+        PasswordAuthentication = true;
+        PermitRootLogin = "yes";
+      };
     };
     klipper = {
       enable = true;
@@ -45,4 +56,6 @@ in {
       enable = true;
     };
   };
+
+  environment.systemPackages = [pkgs.ghostty.terminfo];
 }
