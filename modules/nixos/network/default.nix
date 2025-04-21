@@ -4,7 +4,7 @@
   ...
 }: {
   networking = {
-    hostName = config.settings.system.hostName;
+    inherit (config.settings.system) hostName;
     networkmanager = {
       enable = true;
       # https://github.com/Janik-Haag/nm2nix
@@ -45,7 +45,5 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    networkmanagerapplet
-  ];
+  environment.systemPackages = [pkgs.networkmanagerapplet];
 }
