@@ -9,7 +9,7 @@ anemone-sd:
 alias a-dep := anemone-deploy
 [group('anemone')]
 anemone-deploy:
-  nixos-rebuild switch --flake .#anemone --target-host root@10.10.1.245 --verbose
+  nixos-rebuild switch --flake .#anemone --target-host root@10.10.1.245 --verbose --log-format internal-json -v |& nom --json
 
 [group('nixos')]
 clean:
