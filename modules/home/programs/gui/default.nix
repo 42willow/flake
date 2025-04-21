@@ -40,6 +40,7 @@ in {
           localsend
           polkit_gnome
           qbittorrent
+          popsicle
         ])
 
         # Fun
