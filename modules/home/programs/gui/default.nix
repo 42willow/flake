@@ -29,12 +29,6 @@ in {
   config = lib.mkIf cfg.gui.enable {
     home.packages = with pkgs;
       concatLists [
-        # Core
-        # (optionals cfg.categories.core.enable [
-        #   kitty
-        # ])
-
-        # Tools
         (optionals cfg.categories.tools.enable [
           keepassxc
           localsend
@@ -43,7 +37,6 @@ in {
           popsicle
         ])
 
-        # Fun
         (optionals cfg.categories.fun.enable [
           calibre
           prismlauncher
@@ -53,31 +46,26 @@ in {
           })
         ])
 
-        # Privacy
         (optionals cfg.categories.privacy.enable [
           tor-browser
         ])
 
-        # Multimedia
         (optionals cfg.categories.media.enable [
           darktable
           eog
           vlc
         ])
 
-        # Filesystem
         (optionals cfg.categories.fs.enable [
           nautilus
         ])
 
-        # Development
         (optionals cfg.categories.dev.enable [
           vscode
         ])
 
-        # Design
         (optionals cfg.categories.design.enable [
-          # Graphic design
+          # graphic design
           aseprite
           inkscape
           krita
@@ -87,7 +75,6 @@ in {
           openscad
         ])
 
-        # Education
         (optionals cfg.categories.edu.enable [
           libreoffice
           logseq
@@ -95,9 +82,16 @@ in {
           speedcrunch
         ])
       ]
-      ++ (with pkgs-unstable; [
-        veracrypt
-        obsidian
-      ]);
+      ++ (with pkgs-unstable;
+        concatLists [
+          (optionals cfg.categories.tools.enable [
+            veracrypt
+            obsidian
+          ])
+
+          (optionals cfg.categories.design.enable [
+            cura-appimage
+          ])
+        ]);
   };
 }

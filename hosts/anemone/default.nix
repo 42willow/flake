@@ -8,6 +8,9 @@
 in {
   imports = [
     ./hardware.nix
+    ./klipper.nix
+    ./mainsail.nix
+    ./moonraker.nix
     inputs.nixos-hardware.nixosModules.raspberry-pi-3
     (modulesPath + "/installer/scan/not-detected.nix")
     (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")
@@ -35,25 +38,11 @@ in {
     desktop.enable = false;
   };
 
-  services = {
-    openssh = {
-      enable = true;
-      settings = {
-        PasswordAuthentication = true;
-        PermitRootLogin = "yes";
-      };
-    };
-    klipper = {
-      enable = true;
-      # user = "klipper";
-      # group = "klipper";
-      configFile = ./printer.cfg;
-    };
-    moonraker = {
-      enable = true;
-    };
-    mainsail = {
-      enable = true;
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = true;
+      PermitRootLogin = "yes";
     };
   };
 
