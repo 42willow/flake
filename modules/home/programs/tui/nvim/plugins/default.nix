@@ -1,4 +1,4 @@
-{
+{osConfig, ...}: {
   # imports = [
   #   ./copilot.nix
   # ];
@@ -6,7 +6,7 @@
     colorschemes.catppuccin = {
       enable = true;
       settings = {
-        flavour = "macchiato";
+        flavour = osConfig.catppuccin.flavor;
       };
     };
 

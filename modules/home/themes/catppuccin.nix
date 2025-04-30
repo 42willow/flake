@@ -12,9 +12,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     catppuccin = {
-      flavor = "macchiato";
-      # TODO)) light flavor
-      accent = "pink";
+      inherit (osConfig.catppuccin) flavor accent;
       enable = true;
     };
   };

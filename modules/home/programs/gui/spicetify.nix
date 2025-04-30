@@ -28,7 +28,7 @@ in {
         removeTopSpacing
       ];
       theme = spicePkgs.themes.catppuccin;
-      colorScheme = "macchiato";
+      colorScheme = osConfig.catppuccin.flavor;
     };
   };
 }

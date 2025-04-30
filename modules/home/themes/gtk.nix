@@ -12,8 +12,7 @@ in {
       iconTheme = {
         name = "Papirus-Dark";
         package = pkgs.catppuccin-papirus-folders.override {
-          flavor = "macchiato";
-          accent = "pink";
+          inherit (osConfig.catppuccin) flavor accent;
         };
       };
     };
