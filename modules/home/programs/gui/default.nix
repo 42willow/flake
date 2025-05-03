@@ -33,8 +33,8 @@ in {
           keepassxc
           localsend
           polkit_gnome
-          qbittorrent
           popsicle
+          qbittorrent
         ])
 
         (optionals cfg.categories.fun.enable [
@@ -76,6 +76,7 @@ in {
         ])
 
         (optionals cfg.categories.edu.enable [
+          drawio
           libreoffice
           logseq
           planify
@@ -85,8 +86,8 @@ in {
       ++ (with pkgs-unstable;
         concatLists [
           (optionals cfg.categories.tools.enable [
-            veracrypt
             obsidian
+            veracrypt
           ])
 
           (optionals cfg.categories.design.enable [

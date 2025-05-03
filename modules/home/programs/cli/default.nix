@@ -39,6 +39,7 @@ in {
           playerctl
           slurp
           tldr
+          typst
           wl-clipboard
         ])
 
@@ -54,8 +55,8 @@ in {
           devenv
           direnv
           nix-inspect
-          statix
           nix-output-monitor
+          statix
 
           # Rust
           cargo
