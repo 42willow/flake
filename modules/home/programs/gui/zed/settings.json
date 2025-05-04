@@ -25,6 +25,14 @@
   "buffer_font_size": 16,
   "ensure_final_newline_on_save": true,
   "icon_theme": "Catppuccin Macchiato",
+  "lsp": {
+    "tinymist": {
+      "settings": {
+        "exportPdf": "onSave",
+        "fontPaths": ["."]
+      }
+    }
+  },
   "languages": {
     "CSS": {
       "formatter": {

@@ -24,6 +24,7 @@ in {
     ./thunderbird.nix # mail
     ./tofi.nix # core
     ./zed # dev
+    ./zathura.nix # media
   ];
 
   config = lib.mkIf cfg.gui.enable {
@@ -53,7 +54,7 @@ in {
         (optionals cfg.categories.media.enable [
           darktable
           eog
-          vlc
+          mpv
         ])
 
         (optionals cfg.categories.fs.enable [
@@ -68,7 +69,6 @@ in {
           # graphic design
           aseprite
           inkscape
-          krita
 
           # 3D design
           blender
@@ -79,7 +79,6 @@ in {
           drawio
           libreoffice
           logseq
-          planify
           speedcrunch
         ])
       ]

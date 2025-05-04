@@ -14,6 +14,7 @@ in {
     catppuccin = {
       inherit (osConfig.catppuccin) flavor accent;
       enable = true;
+      zathura.enable = false;
     };
   };
 }
