@@ -41,10 +41,6 @@
       fsType = "vfat";
       options = ["fmask=0022" "dmask=0022"];
     };
-    "/run/media/arch" = {
-      device = "/dev/disk/by-uuid/17a0b73e-30de-424f-9f3c-44294696695a";
-      fsType = "btrfs";
-    };
   };
   swapDevices = [];
 
