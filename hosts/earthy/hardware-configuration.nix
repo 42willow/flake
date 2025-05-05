@@ -31,14 +31,18 @@
 
   # file systems
   fileSystems = {
-    "/" =
-    { device = "/dev/disk/by-uuid/75293ea9-4307-498d-96b7-8672bd8dcb83";
+    "/" = {
+      device = "/dev/disk/by-uuid/75293ea9-4307-498d-96b7-8672bd8dcb83";
       fsType = "ext4";
     };
-    "/boot" =
-    { device = "/dev/disk/by-uuid/0821-BB6D";
+    "/boot" = {
+      device = "/dev/disk/by-uuid/0821-BB6D";
       fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
+      options = ["fmask=0077" "dmask=0077"];
+    };
+    "/run/media/shared" = {
+      device = "/dev/disk/by-uuid/75293ea9-4307-498d-96b7-8672bd8dcb83";
+      fsType = "ntfs";
     };
   };
   swapDevices = [];
