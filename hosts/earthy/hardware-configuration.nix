@@ -40,10 +40,6 @@
       fsType = "vfat";
       options = ["fmask=0077" "dmask=0077"];
     };
-    "/run/media/shared" = {
-      device = "/dev/disk/by-uuid/75293ea9-4307-498d-96b7-8672bd8dcb83";
-      fsType = "ntfs";
-    };
   };
   swapDevices = [];
 
