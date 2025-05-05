@@ -49,7 +49,6 @@
       wget
       curl
       git
-      iwd # iwctl for recovery
     ];
   };
 
