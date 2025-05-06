@@ -15,7 +15,7 @@ in {
 
   # samba
   environment.systemPackages = [pkgs.cifs-utils];
-  fileSystems."/mnt/share" = {
+  fileSystems."/mnt/nas" = {
     device = "//192.168.1.30/thinkpad_backup/";
     fsType = "cifs";
     options = let

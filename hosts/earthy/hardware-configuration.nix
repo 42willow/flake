@@ -40,6 +40,11 @@
       fsType = "vfat";
       options = ["fmask=0077" "dmask=0077"];
     };
+    "/mnt/shared" = {
+      device = "/dev/nvme0n1p5";
+      fsType = "ntfs";
+      options = ["rw"];
+    };
   };
   swapDevices = [];
 

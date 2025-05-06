@@ -31,7 +31,7 @@ in {
           "/home/willow/git"
           "/home/willow/media"
         ];
-        repository = "/mnt/share/restic";
+        repository = "/mnt/nas/restic";
         timerConfig = {
           OnCalendar = "daily";
           Persistent = true;
