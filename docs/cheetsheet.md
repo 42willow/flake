@@ -1,5 +1,9 @@
 # Nix cheat sheet
 
+> [!warning]
+> this is bad, improvements coming soon™
+
+
 ## `nix-env` package management
 
 | action              | Ubuntu                       | Nix                          | notes                                                                   |
@@ -66,4 +70,3 @@ Remember to commit/stage to git first, as this command will change files.
 ```bash
 nix run github:astro/deadnix -- -eq .
 ```
-

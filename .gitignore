@@ -1,3 +1,5 @@
 .flake.nix.swp
 todo.md
 result
+node_modules
+**/.vitepress/cache

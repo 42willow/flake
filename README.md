@@ -1,8 +1,8 @@
 <h3 align="center">
-  <img src="docs/assets/flake.png" width="100" alt="Nix Logo" /><br />
-  <img src="docs/assets/transparent.png" height="30" width="0px" alt="" />
+  <img src="docs/public/flake-macchiato.png" width="100" alt="Nix Logo" /><br />
+  <img src="docs/public/transparent.png" height="30" width="0px" alt="" />
   42willow's flake
-  <img src="docs/assets/transparent.png" height="30" width="0px" alt="" />
+  <img src="docs/public/transparent.png" height="30" width="0px" alt="" />
 </h3>
 
 <h6 align="center">
@@ -15,7 +15,7 @@
 
 <p align="center">
   <img
-    src="docs/assets/macchiato.png"
+    src="docs/public/macchiato.png"
     width="400"
     alt="Catppuccin Macchiato Palette"
   />
