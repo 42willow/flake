@@ -8,7 +8,6 @@
   cfg = osConfig.settings.programs;
 in {
   imports = [
-    # ./nvim
     ./bat.nix # core
     ./btop.nix # core
     ./gitui.nix # dev
