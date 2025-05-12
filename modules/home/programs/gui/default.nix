@@ -77,6 +77,7 @@ in {
 
         (optionals cfg.categories.edu.enable [
           drawio
+          ganttproject-bin
           libreoffice
           logseq
           speedcrunch
