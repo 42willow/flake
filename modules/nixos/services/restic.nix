@@ -27,9 +27,14 @@ in {
       remotebackup = {
         passwordFile = "${config.age.secrets.restic.path}";
         paths = [
-          "/home/willow/docs"
-          "/home/willow/git"
-          "/home/willow/media"
+          "/mnt/shared/docs"
+          "/mnt/shared/git"
+          "/mnt/shared/media"
+          "/mnt/shared/formulate"
+          "/home/willow/.config"
+          "/home/willow/.ssh"
+          "/home/willow/flake"
+          "/etc/ssh"
         ];
         repository = "/mnt/nas/restic";
         timerConfig = {
