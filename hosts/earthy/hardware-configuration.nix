@@ -43,7 +43,7 @@
     "/mnt/shared" = {
       device = "/dev/nvme0n1p5";
       fsType = "ntfs";
-      options = ["rw"];
+      options = ["rw" "uid=1000" "gid=100"];
     };
   };
   swapDevices = [];
