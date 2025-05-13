@@ -32,19 +32,14 @@
       "Mod+Shift+Slash".action.show-hotkey-overlay = [];
       "Mod+B".action.power-off-monitors = [];
 
-      "Mod+Q".action.spawn = "ghostty";
-      "Mod+X".action.spawn = "zeditor";
-      "Mod+T".action.spawn = "vesktop";
       "Mod+F".action.spawn = "firefox";
-      "Mod+E".action.spawn = "nautilus";
       "Mod+L".action.spawn = "hyprlock";
+      "Mod+Q".action.spawn = "ghostty";
       "Mod+R".action.spawn = lib.getExe pkgs.kooha;
+      "Mod+T".action.spawn = "vesktop";
+      "Mod+X".action.spawn = "zeditor";
       "Mod+Space".action.spawn = ["tofi-drun" "--drun-launch=true" "--fuzzy-match=true"];
 
-      "Mod+H".action.focus-column-left = [];
-      "Mod+J".action.focus-window-down = [];
-      "Mod+K".action.focus-window-up = [];
-      "Mod+L".action.focus-column-right = [];
       "Mod+N".action.focus-column-left = [];
       "Mod+E".action.focus-window-down = [];
       "Mod+I".action.focus-window-up = [];
