@@ -46,5 +46,21 @@ in {
     };
   };
 
+  firewall = {
+    allowedTCPPortRanges = [
+      {
+        from = 51000;
+        to = 51999;
+      }
+    ]; # vsftpd
+    connectionTrackingModules = ["ftp"];
+  };
+
+  services.vsftpd = {
+    enable = true;
+    writeEnable = true;
+    localUsers = true;
+  };
+
   environment.systemPackages = [pkgs.ghostty.terminfo];
 }

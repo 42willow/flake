@@ -124,9 +124,12 @@
       flake = false;
     };
 
-    # nixvim = {
-    #   url = "github:nix-community/nixvim/";
-    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
-    # };
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs-unstable";
+        nixpkgs-stable.follows = "nixpkgs";
+      };
+    };
   };
 }
