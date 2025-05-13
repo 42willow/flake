@@ -35,24 +35,25 @@ in {
       "Mod+E".action.focus-workspace-down = [];
       "Mod+I".action.focus-workspace-up = [];
       "Mod+O".action.focus-column-right = [];
-      "Mod+A".action.focus-column-left = [];
-      "Mod+R".action.focus-workspace-down = [];
-      "Mod+S".action.focus-workspace-up = [];
-      "Mod+T".action.focus-column-right = [];
 
       "Alt+N".action.move-column-left = [];
       "Alt+E".action.move-column-to-workspace-down = [];
       "Alt+I".action.move-column-to-workspace-up = [];
       "Alt+O".action.move-column-right = [];
-      "Alt+A".action.move-column-left = [];
-      "Alt+R".action.move-column-to-workspace-down = [];
-      "Alt+S".action.move-column-to-workspace-up = [];
-      "Alt+T".action.move-column-right = [];
+
+      "Mod+K".action.focus-window-down = [];
+      "Mod+H".action.focus-window-up = [];
+
+      "Alt+K".action.move-window-down = [];
+      "Alt+H".action.move-window-up = [];
 
       "Mod+Comma".action.consume-window-into-column = [];
       "Mod+Period".action.expel-window-from-column = [];
 
-      "Mod+M".action.maximize-column = [];
+      "Mod+R".action.switch-preset-column-width = [];
+      "Alt+R".action.switch-preset-window-height = [];
+      "Mod+S".action.maximize-column = [];
+      "Alt+S".action.fullscreen-window = [];
 
       "Mod+WheelScrollDown" = {
         cooldown-ms = 150;
