@@ -1,17 +1,17 @@
 {
-  inputs,
   pkgs,
   osConfig,
-  lib,
   config,
+  lib,
   ...
 }: {
-  # imports = [
-  #   inputs.niri.homeModules.niri
-  # ];
+  imports = [
+    ./binds.nix
+  ];
 
   programs.niri.settings = {
     animations.enable = true;
+    prefer-no-csd = true;
     spawn-at-startup = [
       {
         command = [(lib.getExe pkgs.xwayland-satellite-unstable)];
@@ -23,49 +23,32 @@
 
     input = {
       keyboard.xkb = {
-        # layout = "us";
-        # variant = "colemak";
         inherit (osConfig.services.xserver.xkb) layout variant options;
       };
     };
-    binds = {
-      "Mod+Shift+Slash".action.show-hotkey-overlay = [];
-      "Mod+B".action.power-off-monitors = [];
 
-      "Mod+F".action.spawn = "firefox";
-      "Mod+L".action.spawn = "hyprlock";
-      "Mod+Q".action.spawn = "ghostty";
-      "Mod+R".action.spawn = lib.getExe pkgs.kooha;
-      "Mod+T".action.spawn = "vesktop";
-      "Mod+X".action.spawn = "zeditor";
-      "Mod+Space".action.spawn = ["tofi-drun" "--drun-launch=true" "--fuzzy-match=true"];
+    screenshot-path = "${config.xdg.userDirs.pictures}/screenshots/screenshot-%Y-%m-%d_%H:%M:%S.png";
 
-      "Mod+N".action.focus-column-left = [];
-      "Mod+E".action.focus-window-down = [];
-      "Mod+I".action.focus-window-up = [];
-      "Mod+O".action.focus-column-right = [];
+    layout = {
+      gaps = 0;
+      center-focused-column = "never";
 
-      "Mod+C".action.close-window = [];
-      "Mod+Escape".action.toggle-overview = [];
+      preset-column-widths = [
+        {proportion = 1.0 / 3.0;}
+        {proportion = 1.0 / 2.0;}
+        {proportion = 2.0 / 3.0;}
+      ];
+      default-column-width.proportion = 0.5;
 
-      "Mod+Shift+Q".action.quit = [];
+      border = {
+        enable = true;
+        width = 2;
 
-      "Mod+WheelScrollDown" = {
-        cooldown-ms = 150;
-        action.focus-workspace-down = [];
+        active.color = "#b4befe";
+        inactive.color = "#1e1e2e";
       };
-      "Mod+WheelScrollUp" = {
-        cooldown-ms = 150;
-        action.focus-workspace-up = [];
-      };
-      "Mod+Ctrl+WheelScrollDown" = {
-        cooldown-ms = 150;
-        action.move-column-to-workspace-down = [];
-      };
-      "Mod+Ctrl+WheelScrollUp" = {
-        cooldown-ms = 150;
-        action.move-column-to-workspace-up = [];
-      };
+      focus-ring.enable = false;
+      insert-hint.display.color = "#b4befe80";
     };
   };
 }
