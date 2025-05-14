@@ -8,7 +8,7 @@
 in {
   programs.niri.settings.binds =
     {
-      # === Actions ====
+      # ==== Actions ====
       "Mod+Shift+Slash".action.show-hotkey-overlay = [];
       "Mod+B".action.power-off-monitors = [];
 
@@ -25,27 +25,38 @@ in {
       "Mod+F".action.spawn = "firefox";
       "Mod+L".action.spawn = lib.getExe config.programs.hyprlock.package;
       "Mod+P".action.spawn = lib.getExe pkgs.kooha;
-      "Mod+Q".action.spawn = lib.getExe config.programs.ghostty.package;
-      "Mod+W".action.spawn = lib.getExe pkgs.vesktop;
-      "Mod+X".action.spawn = "zed-editor";
+      "Mod+Q".action.spawn = "ghostty";
+      "Mod+T".action.spawn = lib.getExe pkgs.vesktop;
+      "Mod+W".action.spawn = "nautilus";
+      "Mod+X".action.spawn = "zeditor";
       "Mod+Space".action.spawn = ["${lib.getExe' pkgs.tofi "tofi-drun"}" "--drun-launch=true" "--fuzzy-match=true"];
 
       # ==== Windows ====
-      "Mod+N".action.focus-column-left = [];
-      "Mod+E".action.focus-workspace-down = [];
-      "Mod+I".action.focus-workspace-up = [];
-      "Mod+O".action.focus-column-right = [];
+      "Mod+N".action.focus-column-or-monitor-left = [];
+      "Mod+E".action.focus-window-or-workspace-down = [];
+      "Mod+I".action.focus-window-or-workspace-up = [];
+      "Mod+O".action.focus-column-or-monitor-right = [];
+      "Mod+Shift+WheelScrollUp".action.focus-column-or-monitor-left = [];
+      "Mod+WheelScrollDown".action.focus-window-or-workspace-down = [];
+      "Mod+WheelScrollUp".action.focus-window-or-workspace-up = [];
+      "Mod+Shift+WheelScrollDown".action.focus-column-or-monitor-right = [];
 
-      "Alt+N".action.move-column-left = [];
-      "Alt+E".action.move-column-to-workspace-down = [];
-      "Alt+I".action.move-column-to-workspace-up = [];
-      "Alt+O".action.move-column-right = [];
+      "Alt+N".action.move-column-left-or-to-monitor-left = [];
+      "Alt+E".action.move-window-down-or-to-workspace-down = [];
+      "Alt+I".action.move-window-up-or-to-workspace-up = [];
+      "Alt+O".action.move-column-right-or-to-monitor-right = [];
+      "Alt+Shift+WheelScrollUp".action.move-column-left-or-to-monitor-left = [];
+      "Alt+WheelScrollDown".action.move-window-down-or-to-workspace-down = [];
+      "Alt+WheelScrollUp".action.move-window-up-or-to-workspace-up = [];
+      "Alt+Shift+WheelScrollDown".action.move-column-right-or-to-monitor-right = [];
 
-      "Mod+K".action.focus-window-down = [];
-      "Mod+H".action.focus-window-up = [];
+      "Mod+Shift+N".action.focus-monitor-left = [];
+      "Mod+Shift+O".action.focus-monitor-right = [];
 
-      "Alt+K".action.move-window-down = [];
-      "Alt+H".action.move-window-up = [];
+      "Alt+Shift+N".action.move-workspace-to-monitor-left = [];
+      "Alt+Shift+E".action.move-workspace-down = [];
+      "Alt+Shift+I".action.move-workspace-up = [];
+      "Alt+Shift+O".action.move-workspace-to-monitor-right = [];
 
       "Mod+Comma".action.consume-window-into-column = [];
       "Mod+Period".action.expel-window-from-column = [];
@@ -53,28 +64,33 @@ in {
       "Mod+R".action.switch-preset-column-width = [];
       "Alt+R".action.switch-preset-window-height = [];
       "Mod+S".action.maximize-column = [];
-      "Alt+S".action.fullscreen-window = [];
+      "Alt+S".action.reset-window-height = [];
 
-      "Mod+WheelScrollDown" = {
-        cooldown-ms = 150;
-        action.focus-workspace-down = [];
-      };
-      "Mod+WheelScrollUp" = {
-        cooldown-ms = 150;
-        action.focus-workspace-up = [];
-      };
-      "Alt+WheelScrollDown" = {
-        cooldown-ms = 150;
-        action.move-column-to-workspace-down = [];
-      };
-      "Alt+WheelScrollUp" = {
-        cooldown-ms = 150;
-        action.move-column-to-workspace-up = [];
+      # === Special Keys ====
+      #
+      # ", xf86monbrightnessup, exec, brightnessctl set +5%"
+      # ", xf86monbrightnessdown, exec, brightnessctl set 5%-"
+      XF86MonBrightnessUp = {
+        cooldown-ms = 50;
+        action.spawn = [
+          "brightnessctl"
+          "set"
+          "+5%"
+        ];
       };
 
-      # === Sound ====
+      XF86MonBrightnessDown = {
+        cooldown-ms = 50;
+        action.spawn = [
+          "brightnessctl"
+          "set"
+          "5%-"
+        ];
+      };
+
       XF86AudioRaiseVolume = {
         allow-when-locked = true;
+        cooldown-ms = 50;
         action.spawn = [
           wpctl
           "set-volume"
@@ -86,6 +102,7 @@ in {
       };
       XF86AudioLowerVolume = {
         allow-when-locked = true;
+        cooldown-ms = 50;
         action.spawn = [
           wpctl
           "set-volume"
@@ -111,6 +128,39 @@ in {
           "toggle"
         ];
       };
+
+      XF86AudioPlay = {
+        allow-when-locked = true;
+        action.spawn = [
+          "playerctl"
+          "play-pause"
+        ];
+      };
+
+      XF86AudioPause = {
+        allow-when-locked = true;
+        action.spawn = [
+          "playerctl"
+          "play-pause"
+        ];
+      };
+
+      XF86AudioNext = {
+        allow-when-locked = true;
+        action.spawn = [
+          "playerctl"
+          "next"
+        ];
+      };
+
+      XF86AudioPrev = {
+        allow-when-locked = true;
+        action.spawn = [
+          "playerctl"
+          "previous"
+        ];
+      };
+      # TODO)) not working
     }
     // lib.foldl' (
       attr: i:
