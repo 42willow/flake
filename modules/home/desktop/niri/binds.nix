@@ -67,9 +67,6 @@ in {
       "Alt+S".action.reset-window-height = [];
 
       # === Special Keys ====
-      #
-      # ", xf86monbrightnessup, exec, brightnessctl set +5%"
-      # ", xf86monbrightnessdown, exec, brightnessctl set 5%-"
       XF86MonBrightnessUp = {
         cooldown-ms = 50;
         action.spawn = [
@@ -78,7 +75,6 @@ in {
           "+5%"
         ];
       };
-
       XF86MonBrightnessDown = {
         cooldown-ms = 50;
         action.spawn = [
@@ -87,7 +83,6 @@ in {
           "5%-"
         ];
       };
-
       XF86AudioRaiseVolume = {
         allow-when-locked = true;
         cooldown-ms = 50;
@@ -128,7 +123,6 @@ in {
           "toggle"
         ];
       };
-
       XF86AudioPlay = {
         allow-when-locked = true;
         action.spawn = [
@@ -136,7 +130,6 @@ in {
           "play-pause"
         ];
       };
-
       XF86AudioPause = {
         allow-when-locked = true;
         action.spawn = [
@@ -144,7 +137,6 @@ in {
           "play-pause"
         ];
       };
-
       XF86AudioNext = {
         allow-when-locked = true;
         action.spawn = [
@@ -152,7 +144,6 @@ in {
           "next"
         ];
       };
-
       XF86AudioPrev = {
         allow-when-locked = true;
         action.spawn = [
@@ -160,7 +151,6 @@ in {
           "previous"
         ];
       };
-      # TODO)) not working
     }
     // lib.foldl' (
       attr: i:
