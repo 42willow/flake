@@ -103,7 +103,7 @@
 
     # wallpapers
     wallpapers = {
-      url = "github:42willow/wallpapers";
+      url = "github:42willow/wallpapers/ff1073562ef3d0c11098e86f21787f0e84d549c2";
       inputs = {
         nixpkgs.follows = "nixpkgs-unstable";
         systems.follows = "systems";

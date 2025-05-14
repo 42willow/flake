@@ -630,16 +630,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1745834681,
-        "narHash": "sha256-6SCCHyyzglBAr9LP0t9s1pIRq2zvvvz/Zc4Xoh+d1BI=",
+        "lastModified": 1746842901,
+        "narHash": "sha256-Q2cVmmIA3xjNqZPRPrbl2ZUf/DEa8QEFvLgiUXL3ENg=",
         "owner": "42willow",
         "repo": "wallpapers",
-        "rev": "44b86aecec59af491e633d0775e019d11e7a5fc5",
+        "rev": "ff1073562ef3d0c11098e86f21787f0e84d549c2",
         "type": "github"
       },
       "original": {
         "owner": "42willow",
         "repo": "wallpapers",
+        "rev": "ff1073562ef3d0c11098e86f21787f0e84d549c2",
         "type": "github"
       }
     },
