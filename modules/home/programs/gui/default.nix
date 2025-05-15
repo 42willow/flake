@@ -13,11 +13,10 @@
   };
 in {
   imports = [
-    ./browsers # browsers
+    ./browsers
+    ./terminals
     ./waybar # core
     # ./cura.nix # 3dp
-    ./ghostty.nix # core
-    ./kitty.nix # core
     ./lightburn.nix # cnc
     ./obs-studio.nix # media
     ./spicetify.nix # music

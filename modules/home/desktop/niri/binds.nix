@@ -25,7 +25,7 @@ in {
       "Mod+F".action.spawn = "firefox";
       "Mod+L".action.spawn = lib.getExe config.programs.hyprlock.package;
       "Mod+P".action.spawn = lib.getExe pkgs.kooha;
-      "Mod+Q".action.spawn = "ghostty";
+      "Mod+Q".action.spawn = lib.getExe config.programs.alacritty.package;
       "Mod+T".action.spawn = lib.getExe pkgs.vesktop;
       "Mod+W".action.spawn = "nautilus";
       "Mod+X".action.spawn = "zeditor";
