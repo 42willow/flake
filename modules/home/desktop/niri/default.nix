@@ -31,7 +31,14 @@
             y = 0;
           };
         };
-      DP-2 = default;
+      DP-2 =
+        default
+        // {
+          position = {
+            x = 0;
+            y = 0;
+          };
+        };
       eDP-1 =
         default
         // {
