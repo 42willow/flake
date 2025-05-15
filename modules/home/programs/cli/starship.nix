@@ -27,15 +27,11 @@ in {
       enableNushellIntegration = config.programs.nushell.enable;
 
       settings = {
-        add_newline = true;
-        format = concatStrings [
-          "[╭╴](purple)$os"
-          "$all[╰─󰁔](purple)$character"
-        ];
+        add_newline = false;
 
         character = {
-          success_symbol = "";
-          error_symbol = "";
+          success_symbol = "[❯](pink)";
+          error_symbol = "[❯](red)";
         };
 
         username = {

@@ -20,6 +20,21 @@ in {
         size = 10000;
         path = "${config.xdg.dataHome}/zsh/history";
       };
+      initExtra = ''
+        PROMPT_NEEDS_NEWLINE=false
+
+        precmd() {
+          if [[ "$PROMPT_NEEDS_NEWLINE" == true ]]; then
+            echo
+          fi
+          PROMPT_NEEDS_NEWLINE=true
+        }
+
+        clear() {
+          PROMPT_NEEDS_NEWLINE=false
+          command clear
+        }
+      '';
     };
   };
 }
