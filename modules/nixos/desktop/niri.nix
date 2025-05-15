@@ -1,8 +1,6 @@
 {
   pkgs,
-  lib,
   inputs,
-  config,
   ...
 }: {
   imports = [inputs.niri.nixosModules.niri];

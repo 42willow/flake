@@ -5,8 +5,6 @@
   osConfig,
   ...
 }: let
-  inherit (lib.strings) concatStrings;
-
   cfg = osConfig.settings.programs;
   ss = symbol: style: {
     inherit symbol;
