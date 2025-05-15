@@ -15,6 +15,7 @@ in {
     ./eza.nix # core
     ./fzf.nix # tools
     ./git.nix # core
+    ./hyfetch.nix # tools
     ./nushell.nix # core
     ./ripgrep.nix # tools
     ./starship.nix # core
@@ -32,7 +33,6 @@ in {
           # Utils
           brightnessctl
           ddcutil
-          fastfetch
           grim
           just
           killall
