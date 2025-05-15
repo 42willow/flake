@@ -15,23 +15,22 @@ in {
         clockSupport = true;
         taglibSupport = true;
       };
-      # adapted for colemak
       bindings = [
         # navigation
         {
-          key = "n";
+          key = "e";
           command = "scroll_down";
         }
         {
-          key = "e";
+          key = "i";
           command = "scroll_up";
         }
         {
-          key = "N";
+          key = "E";
           command = ["select_item" "scroll_down"];
         }
         {
-          key = "E";
+          key = "I";
           command = ["select_item" "scroll_up"];
         }
         # move items
