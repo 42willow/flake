@@ -17,7 +17,7 @@ in {
       cache.enable = true;
 
       tty.enable = true;
-      fcitx5.enable = true;
+      fcitx5.enable = config.i18n.inputMethod.enable;
     };
   };
 }
