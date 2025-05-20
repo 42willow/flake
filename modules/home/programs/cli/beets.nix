@@ -24,12 +24,11 @@ in {
     };
     programs.beets = {
       enable = true;
+      mpdIntegration.enableUpdate = true;
       settings = {
         plugins = [
           "fetchart"
           "thumbnails"
-          "mpdupdate"
-          "mpdstats"
           "mbsync"
           "edit"
         ];

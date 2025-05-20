@@ -47,6 +47,11 @@ in {
         owner = mainUser;
         group = userGroup;
       };
+      lastfm = mkSecret {
+        file = "lastfm";
+        owner = mainUser;
+        group = userGroup;
+      };
       restic = mkSecret {
         file = "restic";
         owner = mainUser;

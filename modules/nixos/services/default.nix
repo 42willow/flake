@@ -8,6 +8,7 @@
 in {
   imports = [
     ./i18n.nix
+    ./mpdscribble.nix
     ./pipewire.nix
     ./printing.nix
     ./privacy.nix
