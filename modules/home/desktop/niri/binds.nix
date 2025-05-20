@@ -52,11 +52,15 @@ in {
 
       "Mod+Shift+N".action.focus-monitor-left = [];
       "Mod+Shift+O".action.focus-monitor-right = [];
+      "Mod+MouseBack".action.focus-monitor-left = [];
+      "Mod+MouseForward".action.focus-monitor-right = [];
 
       "Alt+Shift+N".action.move-workspace-to-monitor-left = [];
       "Alt+Shift+E".action.move-workspace-down = [];
       "Alt+Shift+I".action.move-workspace-up = [];
       "Alt+Shift+O".action.move-workspace-to-monitor-right = [];
+      "Alt+MouseBack".action.move-workspace-to-monitor-left = [];
+      "Alt+MouseForward".action.move-workspace-to-monitor-right = [];
 
       "Mod+Comma".action.consume-window-into-column = [];
       "Mod+Period".action.expel-window-from-column = [];
