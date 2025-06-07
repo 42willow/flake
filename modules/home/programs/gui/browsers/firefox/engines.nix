@@ -12,17 +12,17 @@
 
   programs.firefox.profiles.willow.search = {
     force = true;
-    default = "DuckDuckGo";
+    default = "ddg";
     engines = {
-      "Bing".metaData.hidden = true;
-      "Wikipedia (en)".metaData.hidden = true;
-      "eBay".metaData.hidden = true;
+      "bing".metaData.hidden = true;
+      "wikipedia".metaData.hidden = true;
+      "ebay".metaData.hidden = true;
 
-      "Google".metaData.alias = "@g";
+      "google".metaData.alias = "@g";
 
-      "YouTube" = {
+      "youtube" = {
         definedAliases = ["@youtube" "@yt"];
-        iconUpdateURL = "https://www.youtube.com/s/desktop/8b6c1f4c/img/favicon_144x144.png";
+        icon = "https://www.youtube.com/s/desktop/8b6c1f4c/img/favicon_144x144.png";
         urls = [
           {
             template = "https://www.youtube.com/results";

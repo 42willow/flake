@@ -1,8 +1,7 @@
-# disabled in default.nix
 {pkgs, ...}: {
   services.displayManager.sddm = {
-    enable = true;
+    enable = false;
     package = pkgs.kdePackages.sddm;
-    # wayland.enable = true;
+    wayland.enable = true;
   };
 }

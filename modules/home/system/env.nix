@@ -6,7 +6,7 @@
     ];
 
     sessionVariables = {
-      FLAKE = "${config.home.homeDirectory}/flake";
+      NH_FLAKE = "${config.home.homeDirectory}/flake";
     };
   };
 }

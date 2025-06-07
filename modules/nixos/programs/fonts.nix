@@ -30,8 +30,8 @@ in {
         atkinson-hyperlegible
 
         # monospace
-        maple-mono-NF
-        (nerdfonts.override {fonts = ["Monaspace"];})
+        maple-mono.NF
+        nerd-fonts.monaspace
 
         # fonts for none latin languages
         noto-fonts-cjk-sans

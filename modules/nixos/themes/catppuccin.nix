@@ -18,6 +18,7 @@ in {
 
       tty.enable = true;
       fcitx5.enable = config.i18n.inputMethod.enable;
+      sddm.enable = config.services.displayManager.sddm.enable;
     };
   };
 }

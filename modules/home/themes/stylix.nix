@@ -7,7 +7,7 @@
 }: let
   cfg = osConfig.settings.desktop;
 in {
-  imports = [inputs.stylix.homeManagerModules.stylix];
+  imports = [inputs.stylix.homeModules.stylix];
 
   config = lib.mkIf cfg.enable {
     stylix = {
@@ -16,7 +16,6 @@ in {
 
       targets = {
         gtk.enable = true;
-        firefox.enable = true;
       };
 
       override = {

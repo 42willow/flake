@@ -20,7 +20,7 @@ in {
         size = 10000;
         path = "${config.xdg.dataHome}/zsh/history";
       };
-      initExtra = ''
+      initContent = ''
         PROMPT_NEEDS_NEWLINE=false
 
         precmd() {
