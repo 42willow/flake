@@ -1,7 +1,7 @@
 {
   imports = [
-    ./firefox # default: enabled
-    ./chromium.nix # default: enabled
-    ./floorp.nix # default: disabled
+    ./firefox
+    ./chromium.nix
+    # ./floorp.nix
   ];
 }

@@ -7,7 +7,7 @@
 in {
   config = lib.mkIf cfg.enable {
     programs.floorp = {
-      enable = false;
+      enable = true;
       profiles.default = {
         settings = {
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;

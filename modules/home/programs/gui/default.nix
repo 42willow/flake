@@ -18,7 +18,7 @@ in {
     ./waybar # core
     # ./cura.nix # 3dp
     # ./lightburn.nix # cnc
-    ./obs-studio.nix # media
+    # ./obs-studio.nix # media
     ./spicetify.nix # music
     ./thunderbird.nix # mail
     ./tofi.nix # core
