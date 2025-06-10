@@ -82,6 +82,14 @@
       keyboard.xkb = {
         inherit (osConfig.services.xserver.xkb) layout variant options;
       };
+      touchpad = {
+        accel-speed = 0.4;
+      };
+      focus-follows-mouse = {
+        # allow focus-follows-mouse only when it will not scroll the view
+        enable = true;
+        max-scroll-amount = "0%";
+      };
     };
 
     screenshot-path = "${config.xdg.userDirs.pictures}/screenshots/screenshot-%Y-%m-%d_%H:%M:%S.png";
