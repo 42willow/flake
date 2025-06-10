@@ -55,7 +55,7 @@
         # ", xf86keyboard, exec, hyprctl keyword input:kb_variant colemak" # TODO)) choose another bind
         ", xf86favorites, exec, hyprctl dispatch pin"
         ", xf86audiomicmute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-        ", xf86calculator, exec, speedcrunch"
+        ", xf86calculator, exec, qalculate-qt"
         # ~ Executables ~
         # TODO))
         # "$mod, Print, exec, ~/.config/hypr/scripts/screen.sh"

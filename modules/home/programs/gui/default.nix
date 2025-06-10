@@ -79,7 +79,7 @@ in {
           ganttproject-bin
           libreoffice
           logseq
-          speedcrunch
+          qalculate-qt
         ])
       ]
       ++ (with pkgs-unstable;

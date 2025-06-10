@@ -4,7 +4,7 @@
 
     windowrulev2 = [
       "float,class:(KeePassXC)"
-      "float,class:(speedcrunch)"
+      "float,class:(qalculate-qt)"
     ];
 
     # See https://wiki.hyprland.org/Configuring/Workspace-Rules/
