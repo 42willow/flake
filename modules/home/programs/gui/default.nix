@@ -70,7 +70,7 @@ in {
           inkscape
 
           # 3D design
-          blender
+          # blender
           openscad
         ])
 
@@ -78,7 +78,7 @@ in {
           drawio
           ganttproject-bin
           libreoffice
-          logseq
+          # logseq
           qalculate-qt
         ])
       ]
