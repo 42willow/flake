@@ -6,10 +6,10 @@
   ...
 }: let
   cfg = osConfig.settings.programs;
-  ss = symbol: style: {
-    inherit symbol;
-    format = "[$symbol ](${style})";
-  };
+  # ss = symbol: style: {
+  #   inherit symbol;
+  #   format = "[$symbol ](${style})";
+  # };
   ssv = symbol: style: {
     inherit symbol;
     format = "via [$symbol](${style})";
@@ -36,75 +36,40 @@ in {
           style_user = "white";
           style_root = "black";
           format = "[$user]($style) ";
-          show_always = true;
+          show_always = false;
         };
 
         directory = {
-          truncation_length = 3;
-          truncation_symbol = "…/";
-          home_symbol = "󰋞 ";
+          truncation_length = 10;
+          truncate_to_repo = true;
           read_only_style = "197";
           read_only = "  ";
-          format = "at [$path]($style)[$read_only]($read_only_style) ";
+          format = "[$path]($style)[$read_only]($read_only_style) ";
 
-          substitutions = {
-            "󰋞 /docs" = "󰈙 ";
-            "󰈙 /school" = "󰑴 ";
-            "󰋞 /downloads" = " ";
-            "󰋞 /tmp" = " ";
-            "󰋞 /media/music" = " ";
-            "󰋞 /media/pictures" = " ";
-            "󰋞 /media/videos" = " ";
-            "󰋞 /media/3dp" = " ";
-            "󰋞 /git" = "󱌢 ";
-            "󰋞 /.config" = " ";
-          };
+          # substitutions = {
+          # "󰋞 /docs" = "󰈙 ";
+          # "󰈙 /school" = "󰑴 ";
+          # "󰋞 /downloads" = " ";
+          # "󰋞 /tmp" = " ";
+          # "󰋞 /media/music" = " ";
+          # "󰋞 /media/pictures" = " ";
+          # "󰋞 /media/videos" = " ";
+          # "󰋞 /media/3dp" = " ";
+          # "󰋞 /git" = "󱌢 ";
+          # "󰋞 /.config" = " ";
+          # };
         };
 
-        os = {
-          style = "bold white";
-          format = "[$symbol]($style)";
-
-          symbols = {
-            Arch = "";
-            Artix = "";
-            Debian = "";
-            # Kali = "󰠥";
-            EndeavourOS = "";
-            Fedora = "";
-            NixOS = "";
-            openSUSE = "";
-            SUSE = "";
-            Ubuntu = "";
-            Raspbian = "";
-            #elementary = "";
-            #Coreos = "";
-            Gentoo = "";
-            #mageia = ""
-            CentOS = "";
-            #sabayon = "";
-            #slackware = "";
-            Mint = "";
-            Alpine = "";
-            #aosc = "";
-            #devuan = "";
-            Manjaro = "";
-            #rhel = "";
-            Macos = "󰀵";
-            Linux = "";
-            Windows = "";
-          };
-        };
-
-        container = ss " 󰏖" "yellow dimmed";
-        python = ss "" "yellow";
-        nodejs = ss " " "yellow";
-        lua = ss "󰢱 " "blue";
-        rust = ss "" "red";
-        java = ss " " "red";
-        c = ss " " "blue";
-        golang = ss "" "blue";
-        docker_context = ss " " "blue";
+        # container = ss " 󰏖" "yellow dimmed";
+        # python = ss "" "yellow";
+        # nodejs = ss " " "yellow";
+        # lua = ss "󰢱 " "blue";
+        # rust = ss "" "red";
+        # java = ss " " "red";
+        # c = ss " " "blue";
+        # golang = ss "" "blue";
+        # docker_context = ss " " "blue";
+        bun.disabled = true;
 
         nix_shell = ssv " " "blue";
 
@@ -115,10 +80,11 @@ in {
           truncation_symbol = "…/";
           style = "bold green";
         };
+
         git_status = {
           format = "[\\($all_status$ahead_behind\\)]($style) ";
           style = "bold green";
-          conflicted = "🏳";
+          conflicted = " ";
           up_to_date = " ";
           untracked = " ";
           ahead = "⇡\${count}";
