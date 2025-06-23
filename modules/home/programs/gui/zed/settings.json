@@ -1,11 +1,37 @@
 {
-  "assistant": {
+  // Helix
+  "vim_mode": true,
+  "vim": {
+    "default_mode": "helix_normal"
+  },
+  "relative_line_numbers": true,
+  "cursor_blink": false,
+  "scrollbar": {
+    "show": "never"
+  },
+  "scroll_beyond_last_line": "off",
+  "vertical_scroll_margin": 5,
+
+  // Editor
+  "ensure_final_newline_on_save": true,
+  "remove_trailing_whitespace_on_save": true,
+  "tab_size": 2,
+
+  // AI
+  "agent": {
+    "default_profile": "ask",
     "default_model": {
-      "model": "gpt-4o",
+      "model": "gpt-4.1",
       "provider": "copilot_chat"
     },
     "version": "2"
   },
+  "show_edit_predictions": false,
+  "features": {
+    "edit_prediction_provider": "copilot"
+  },
+
+  // Extensions
   "auto_install_extensions": {
     "catppuccin-icons": true,
     "discord-presence": true,
@@ -21,10 +47,21 @@
     "toml": true,
     "typst": true
   },
+
+  // Appearance
   "buffer_font_family": "Maple Mono NF",
   "buffer_font_size": 16,
-  "ensure_final_newline_on_save": true,
+  "terminal_font_family": "Maple Mono NF",
+  "terminal_font_size": 16,
+  "ui_font_family": "Maple Mono NF",
+  "ui_font_size": 16,
   "icon_theme": "Catppuccin Macchiato",
+  "theme": {
+    "dark": "Catppuccin Macchiato (pink)",
+    "light": "Catppuccin Macchiato (pink)"
+  },
+
+  // Languages
   "lsp": {
     "tinymist": {
       "settings": {
@@ -59,8 +96,12 @@
       }
     },
     "Markdown": {
-      "editor": {
-        "remove_trailing_whitespace_on_save": false
+      "remove_trailing_whitespace_on_save": false,
+      "formatter": {
+        "external": {
+          "arguments": ["--stdin-filepath", "{buffer_path}"],
+          "command": "prettierd"
+        }
       }
     },
     "Nix": {
@@ -69,28 +110,13 @@
           "command": "alejandra"
         }
       },
-      "language_severs": ["nil", "!nixd"]
+      "language_servers": ["nil", "!nixd"]
     },
     "Python": {
-      "editor": {
-        "format_on_save": true,
-        "tab_size": 4
-      }
+      "tab_size": 4
     },
     "Rust": {
-      "editor": {
-        "tab_size": 4
-      }
+      "tab_size": 4
     }
-  },
-  "remove_trailing_whitespace_on_save": true,
-  "tab_size": 2,
-  "terminal_font_family": "Maple Mono NF",
-  "terminal_font_size": 16,
-  "theme": {
-    "dark": "Catppuccin Macchiato (pink)",
-    "light": "Catppuccin Macchiato (pink)"
-  },
-  "ui_font_family": "Maple Mono NF",
-  "ui_font_size": 16
+  }
 }

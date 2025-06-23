@@ -1,0 +1,53 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      // "j k": ["workspace::SendKeystrokes", "escape"]
+    }
+  },
+
+  // Helix
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "n": "vim::Left",
+      "e": "vim::Down",
+      "i": "vim::Up",
+      "o": "vim::Right",
+      "backspace": null,
+      "%": "editor::SelectAll"
+    }
+  },
+  {
+    "context": "vim_mode == helix_normal && !menu",
+    "bindings": {
+      "k": "vim::InsertBefore",
+      "shift-k": "vim::InsertFirstNonWhitespace",
+
+      "j": "vim::MoveToNextMatch",
+      "shift-j": "vim::MoveToPreviousMatch",
+
+      "space b n": "pane::ActivatePreviousItem",
+      "space b o": "pane::ActivateNextItem",
+
+      "g n": "vim::StartOfLine",
+      "g o": "vim::EndOfLine",
+
+      "shift-e": "vim::ScrollDown",
+      "shift-i": "vim::ScrollUp"
+    }
+  }
+]
