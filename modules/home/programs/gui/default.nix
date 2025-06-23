@@ -19,6 +19,7 @@ in {
     # ./cura.nix # 3dp
     # ./lightburn.nix # cnc
     # ./obs-studio.nix # media
+    ./quickshell.nix # core
     ./spicetify.nix # music
     ./thunderbird.nix # mail
     ./tofi.nix # core

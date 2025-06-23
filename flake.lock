@@ -590,6 +590,26 @@
         "type": "github"
       }
     },
+    "quickshell": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1750417777,
+        "narHash": "sha256-QfBNyjcJ10rUWn2TIrsZC6hFLNKCzi6dHeb04s+EGhI=",
+        "ref": "refs/heads/master",
+        "rev": "e0457dda90778e7bebf78334b00fc0e71cb7999b",
+        "revCount": 589,
+        "type": "git",
+        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -602,6 +622,7 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "quickshell": "quickshell",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "systems": "systems_2",
