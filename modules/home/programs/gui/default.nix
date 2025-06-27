@@ -81,6 +81,7 @@ in {
           libreoffice
           # logseq
           qalculate-qt
+          blanket
         ])
       ]
       ++ (with pkgs-unstable;
