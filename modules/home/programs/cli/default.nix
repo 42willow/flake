@@ -31,6 +31,7 @@ in {
           catppuccin.packages."${pkgs.system}".whiskers
 
           # Utils
+          archivebox
           brightnessctl
           ddcutil
           grim

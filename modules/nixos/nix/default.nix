@@ -23,6 +23,7 @@
   nixpkgs.config = {
     permittedInsecurePackages = [
       "electron-27.3.11"
+      "python3.12-django-3.1.14"
     ];
     allowUnfree = true;
   };
