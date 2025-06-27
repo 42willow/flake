@@ -71,7 +71,10 @@
     ];
     spawn-at-startup = [
       {
-        command = [(lib.getExe pkgs.xwayland-satellite-unstable) "qs"];
+        command = [(lib.getExe pkgs.xwayland-satellite-unstable)];
+      }
+      {
+        command = ["qs"];
       }
     ];
     environment = {
