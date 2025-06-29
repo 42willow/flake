@@ -42,6 +42,7 @@ in {
           calibre
           prismlauncher
           vesktop
+          hexchat
           (discord.override {
             withOpenASAR = true;
           })
