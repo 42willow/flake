@@ -8,7 +8,8 @@
 in {
   imports = [
     ./hardware-configuration.nix
-    "${self}/modules"
+    "${self}/modules/home"
+    "${self}/modules/nixos"
   ];
 
   settings.system.hostName = "earthy";

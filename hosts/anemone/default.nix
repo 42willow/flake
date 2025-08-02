@@ -14,7 +14,8 @@ in {
     inputs.nixos-hardware.nixosModules.raspberry-pi-3
     (modulesPath + "/installer/scan/not-detected.nix")
     (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")
-    "${self}/modules"
+    "${self}/modules/home"
+    "${self}/modules/nixos"
   ];
 
   disabledModules = ["profiles/base.nix"];

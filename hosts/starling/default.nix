@@ -7,11 +7,14 @@
 }: let
   inherit (inputs) self;
 in {
-  nixpkgs.hostPlatform = lib.mkDefault "aarch64-darwin";
+  imports = [
+    "${self}/modules/darwin"
+  ];
 
-  security.pam.services.sudo_local.touchIdAuth = true;
-
-  system = {
-    stateVersion = 6;
+  networking = {
+    computerName = "starling";
+    hostName = "starling";
   };
+
+  nixpkgs.hostPlatform = lib.mkDefault "aarch64-darwin";
 }
