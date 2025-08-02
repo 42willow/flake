@@ -26,7 +26,7 @@
     },
     "version": "2"
   },
-  "show_edit_predictions": false,
+  "show_edit_predictions": true,
   "features": {
     "edit_prediction_provider": "copilot"
   },
