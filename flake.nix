@@ -3,12 +3,24 @@
 
   outputs = {
     self,
-    nixpkgs,
+    nixos-stable,
+    nix-darwin,
     home-manager,
     ...
   } @ inputs: {
+    darwinConfigurations = {
+      starling = nix-darwin.lib.darwinSystem {
+        modules = [
+          ./hosts/starling
+          home-manager.darwinModules.home-manager
+        ];
+        specialArgs = {
+          inherit self inputs;
+        };
+      };
+    };
     nixosConfigurations = {
-      earthy = nixpkgs.lib.nixosSystem {
+      earthy = nixos-stable.lib.nixosSystem {
         modules = [
           ./hosts/earthy
           home-manager.nixosModules.home-manager
@@ -17,7 +29,7 @@
           inherit self inputs;
         };
       };
-      anemone = nixpkgs.lib.nixosSystem {
+      anemone = nixos-stable.lib.nixosSystem {
         modules = [
           ./hosts/anemone
           home-manager.nixosModules.home-manager
@@ -26,7 +38,7 @@
           inherit self inputs;
         };
       };
-      lily = nixpkgs.lib.nixosSystem {
+      lily = nixos-stable.lib.nixosSystem {
         modules = [
           ./hosts/lily
           home-manager.nixosModules.home-manager
@@ -35,7 +47,7 @@
           inherit self inputs;
         };
       };
-      zinnia = nixpkgs.lib.nixosSystem {
+      zinnia = nixos-stable.lib.nixosSystem {
         modules = [
           ./hosts/zinnia
           home-manager.nixosModules.home-manager
@@ -48,13 +60,23 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    darwin-stable.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
+    # darwin-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
+      # url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "darwin-stable";
+    };
+
 
     # themes
     catppuccin = {
       url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixos-unstable";
     };
     stylix = {
       url = "github:danth/stylix/release-25.05";
@@ -77,14 +99,14 @@
     # home-manager
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixos-stable";
     };
 
     # spicetify
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs = {
-        nixpkgs.follows = "nixpkgs-unstable";
+        nixpkgs.follows = "nixos-unstable";
         systems.follows = "systems";
       };
     };
@@ -93,7 +115,7 @@
     agenix = {
       url = "github:ryantm/agenix";
       inputs = {
-        nixpkgs.follows = "nixpkgs-unstable";
+        nixpkgs.follows = "nixos-unstable";
         systems.follows = "systems";
         darwin.follows = "";
         home-manager.follows = "";
@@ -104,7 +126,7 @@
     wallpapers = {
       url = "github:42willow/wallpapers/ff1073562ef3d0c11098e86f21787f0e84d549c2";
       inputs = {
-        nixpkgs.follows = "nixpkgs-unstable";
+        nixpkgs.follows = "nixos-unstable";
         systems.follows = "systems";
       };
     };
@@ -126,15 +148,15 @@
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs = {
-        nixpkgs.follows = "nixpkgs-unstable";
-        nixpkgs-stable.follows = "nixpkgs";
+        nixpkgs.follows = "nixos-unstable";
+        nixpkgs-stable.follows = "nixos-stable";
       };
     };
 
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
 
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixos-unstable";
     };
   };
 }

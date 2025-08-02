@@ -7,7 +7,7 @@
   ...
 }: let
   cfg = osConfig.settings.programs;
-  pkgs-unstable = import inputs.nixpkgs-unstable {
+  pkgs-unstable = import inputs.nixos-unstable {
     system = "x86_64-linux";
     config.allowUnfree = true;
   };
