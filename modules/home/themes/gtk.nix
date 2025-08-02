@@ -1,5 +1,4 @@
 {
-  pkgs,
   osConfig,
   lib,
   ...
@@ -9,12 +8,12 @@ in {
   config = lib.mkIf cfg.enable {
     gtk = {
       enable = true;
-      iconTheme = {
-        name = "Papirus-Dark";
-        package = pkgs.catppuccin-papirus-folders.override {
-          inherit (osConfig.catppuccin) flavor accent;
-        };
-      };
+      # iconTheme = {
+      #   name = "Papirus-Dark";
+      #   package = pkgs.catppuccin-papirus-folders.override {
+      #     inherit (osConfig.catppuccin) flavor accent;
+      #   };
+      # };
     };
   };
 }

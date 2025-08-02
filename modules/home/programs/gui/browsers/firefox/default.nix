@@ -31,11 +31,16 @@ in {
         default.extensions.force = true;
         testing = {
           id = 1;
+          extensions.force = true;
           # settings = ffConfig;
         };
-        guest.id = 2;
+        guest = {
+          id = 2;
+          extensions.force = true;
+        };
         willow = {
           id = 3;
+          extensions.force = true;
           settings = ffConfig;
           # Firefox Cascade config
           userChrome = ''
