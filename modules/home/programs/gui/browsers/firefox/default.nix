@@ -28,12 +28,14 @@ in {
       enable = true;
 
       profiles = {
+        default.extensions.force = true;
         testing = {
           id = 1;
           # settings = ffConfig;
         };
         guest.id = 2;
         willow = {
+          id = 3;
           settings = ffConfig;
           # Firefox Cascade config
           userChrome = ''
