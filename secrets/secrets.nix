@@ -2,9 +2,10 @@ let
   willow = builtins.readFile ../keys/willow.pub;
   users = [willow];
 
+  starling = builtins.readFile ../keys/starling.pub;
   earthy = builtins.readFile ../keys/earthy.pub;
   anemone = builtins.readFile ../keys/anemone.pub;
-  hosts = [earthy anemone];
+  hosts = [starling earthy anemone];
 in {
   "gh.age".publicKeys = users ++ hosts;
   "gh-pub.age".publicKeys = users ++ hosts;
