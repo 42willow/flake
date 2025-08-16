@@ -1,4 +1,3 @@
-# disabled in default.nix
 {pkgs, ...}: {
   virtualisation.podman = {
     enable = true;

@@ -1,11 +1,15 @@
 {
   imports = [
     ./desktop
-    ./network
-    ./nix
     ./options
     ./programs
     ./services
     ./themes
+
+    ./network.nix
+    ./nix.nix
+    ./vm.nix
+
+    ../shared
   ];
 }

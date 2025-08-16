@@ -3,3 +3,4 @@ todo.md
 result
 node_modules
 **/.vitepress/cache
+.DS_Store

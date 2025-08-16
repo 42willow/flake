@@ -4,22 +4,25 @@
   config,
   ...
 }: let
-  inherit (config.settings.system) mainUser;
   inherit (inputs) self;
 
-  sshDir = config.users.users.${mainUser}.home + "/.ssh";
-  userGroup = config.users.users.${mainUser}.group;
+  mainUser = if config ? settings && config.settings ? system && config.settings.system ? mainUser
+      then config.settings.system.mainUser
+      else null;
+
+  userGroup = if mainUser != null then config.users.users.${mainUser}.group else null;
+  sshDir = if mainUser != null then config.users.users.${mainUser}.home + "/.ssh" else null;
 
   # https://github.com/isabelroses/dotfiles/blob/0827bb1893b8072b65c66a6919f8abbe6df9a55a/modules/flake/lib/secrets.nix
   mkSecret = {
     file,
-    owner ? "root",
-    group ? "root",
     mode ? "400",
     ...
   }: {
     file = "${self}/secrets/${file}.age";
-    inherit owner group mode;
+    owner = if mainUser != null then mainUser else "root";
+    group = if userGroup != null then userGroup else "root";
+    inherit mode;
   };
 in {
   imports = [
@@ -33,39 +36,26 @@ in {
   age = {
     identityPaths = [
       "/etc/ssh/ssh_host_ed25519_key"
-      "${sshDir}/id_ed25519"
-    ];
+    ] ++ (if sshDir != null then ["${sshDir}/id_ed25519" ] else []);
 
     secrets = {
       gh = mkSecret {
         file = "gh";
-        owner = mainUser;
-        group = userGroup;
       };
       gh-pub = mkSecret {
         file = "gh-pub";
-        owner = mainUser;
-        group = userGroup;
       };
       lastfm = mkSecret {
         file = "lastfm";
-        owner = mainUser;
-        group = userGroup;
       };
       restic = mkSecret {
         file = "restic";
-        owner = mainUser;
-        group = userGroup;
       };
       samba = mkSecret {
         file = "samba";
-        owner = mainUser;
-        group = userGroup;
       };
       wifi = mkSecret {
         file = "wifi";
-        owner = mainUser;
-        group = userGroup;
       };
     };
   };

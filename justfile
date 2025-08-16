@@ -2,7 +2,7 @@ default:
   just --list
 
 starling:
-   sudo nix run nix-darwin/nix-darwin-25.05#darwin-rebuild --extra-experimental-features "nix-command flakes" -- switch --flake ~/Documents/git/flake#starling
+   sudo nix run nix-darwin/nix-darwin-25.05#darwin-rebuild --extra-experimental-features "nix-command flakes" -- switch --flake ~/Documents/git/flake#starling --impure
 
 alias a-sd := anemone-deploy
 [group('anemone')]
