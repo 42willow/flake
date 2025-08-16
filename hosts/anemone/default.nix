@@ -47,7 +47,7 @@ in {
     };
   };
 
-  firewall = {
+  networking.firewall = {
     allowedTCPPortRanges = [
       {
         from = 51000;
