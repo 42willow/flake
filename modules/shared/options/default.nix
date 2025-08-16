@@ -182,6 +182,11 @@ in {
         // {
           default = true;
         };
+      niri.enable =
+        mkEnableOption "Enable Niri twm"
+        // {
+          default = cfg.desktop.enable;
+        };
       hyprland.enable =
         mkEnableOption "Enable Hyprland and its ecosystem"
         // {

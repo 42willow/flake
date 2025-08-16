@@ -17,8 +17,8 @@ in {
     home = let
       mkLink = config.lib.file.mkOutOfStoreSymlink;
 
-      settingsFile = mkLink "${config.home.homeDirectory}/flake/modules/home/programs/gui/zed/settings.json";
-      keymapFile = mkLink "${config.home.homeDirectory}/flake/modules/home/programs/gui/zed/keymap.json";
+      settingsFile = mkLink "${config.home.homeDirectory}/flake/user/programs/gui/zed/settings.json";
+      keymapFile = mkLink "${config.home.homeDirectory}/flake/user/programs/gui/zed/keymap.json";
     in {
       packages = [
         (pkgs-unstable.zed-editor.fhsWithPackages (pkgs: [pkgs.zlib]))
