@@ -1,6 +1,6 @@
 {
   // Helix
-  "vim_mode": true,
+  "vim_mode": false,
   "vim": {
     "default_mode": "helix_normal"
   },
