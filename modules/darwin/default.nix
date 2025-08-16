@@ -10,7 +10,7 @@
     # };
   };
 
-  # ouchID for sudo authentication
+  # touchID for sudo authentication
   security.pam.services.sudo_local.touchIdAuth = true;
 
   programs.zsh.enable = true;
