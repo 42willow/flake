@@ -12,6 +12,5 @@ in {
   "lastfm.age".publicKeys = users ++ hosts;
   "restic.age".publicKeys = users ++ hosts;
   "samba.age".publicKeys = users ++ hosts;
-  "school-id.age".publicKeys = users ++ hosts;
   "wifi.age".publicKeys = users ++ hosts;
 }
