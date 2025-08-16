@@ -1,4 +1,11 @@
-{self, ...}: let
+{
+  self,
+  pkgs,
+  config,
+  ...
+}: let
+  inherit (config.settings.system) user;
+
   keys = [
     "${self}/keys/anemone.pub"
     "${self}/keys/earthy.pub"
@@ -7,6 +14,7 @@
 in {
   imports = [
     ./desktop
+    ./home
     ./programs
     ./services
     ./system
