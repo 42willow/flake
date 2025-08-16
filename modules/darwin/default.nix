@@ -1,10 +1,14 @@
-{
+{config, ...}: let
+  inherit (config.settings.system) user;
+in {
   imports = [./homebrew.nix ../shared];
+
+  users.users.${user.name}.home = user.home;
 
   system = {
     stateVersion = 6;
 
-    primaryUser = builtins.getEnv "SUDO_USER"; # not declarative, needs to be built with impure
+    primaryUser = user.name;
 
     # defaults = {
     # };
