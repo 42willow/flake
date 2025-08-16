@@ -72,7 +72,6 @@
       inputs.nixpkgs.follows = "darwin-stable";
     };
 
-
     # themes
     catppuccin = {
       url = "github:catppuccin/nix";

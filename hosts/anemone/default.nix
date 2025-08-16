@@ -14,7 +14,7 @@ in {
     inputs.nixos-hardware.nixosModules.raspberry-pi-3
     (modulesPath + "/installer/scan/not-detected.nix")
     (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")
-    "${self}/modules/home"
+    "${self}/user"
     "${self}/modules/nixos"
   ];
 

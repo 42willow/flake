@@ -1,5 +1,5 @@
 {
-  imports = [ ./homebrew.nix ];
+  imports = [./homebrew.nix ../shared];
 
   system = {
     stateVersion = 6;

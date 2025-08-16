@@ -9,7 +9,6 @@
 in {
   imports = [
     "${self}/modules/darwin"
-    "${self}/modules/shared"
   ];
 
   networking = {

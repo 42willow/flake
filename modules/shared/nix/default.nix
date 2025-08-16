@@ -2,7 +2,9 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  primaryUser = builtins.getEnv "SUDO_USER";
+in {
   imports = [
     ./age.nix
   ];
@@ -11,8 +13,8 @@
     experimental-features = ["nix-command" "flakes"];
     warn-dirty = false;
     keep-going = true;
-    allowed-users = ["willow"];
-    trusted-users = ["root" "willow"];
+    allowed-users = ["willow" primaryUser];
+    trusted-users = ["root" "willow" primaryUser];
 
     # cachix
     extra-substituters = ["https://nix-community.cachix.org"];
