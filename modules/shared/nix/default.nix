@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: let
+{config, ...}: let
   inherit (config.settings.system) user;
 in {
   imports = [
