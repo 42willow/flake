@@ -116,10 +116,22 @@ in {
       };
     };
     system = {
-      mainUser = mkOption {
-        type = types.str;
-        description = "The username of the main user for your system";
-        default = "willow";
+      user = {
+        name = mkOption {
+          type = types.str;
+          description = "The username of the main user for your system";
+          default = "willow";
+        };
+        home = mkOption {
+          type = types.path;
+          description = "The home directory of the main user for your system";
+          default = "/home/${cfg.system.user.name}";
+        };
+        group = mkOption {
+          type = types.str;
+          description = "The group of the main user for your system";
+          default = "users";
+        };
       };
       hostName = mkOption {
         type = types.str;

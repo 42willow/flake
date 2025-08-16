@@ -1,15 +1,35 @@
 {
+  self,
+  pkgs,
+  config,
+  ...
+}: let
+  inherit (config.settings.system) user;
+
+  keys = [
+    "${self}/keys/anemone.pub"
+    "${self}/keys/earthy.pub"
+    "${self}/keys/willow.pub"
+  ];
+in {
   imports = [
     ./desktop
-    ./options
+    ./home
     ./programs
     ./services
+    ./system
     ./themes
-
-    ./network.nix
-    ./nix.nix
-    ./vm.nix
 
     ../shared
   ];
+
+  users.users.${user.name} = {
+    isNormalUser = true;
+    extraGroups = ["networkmanager" "wheel" "dialout"];
+    home = user.home;
+    shell = pkgs.zsh;
+    initialHashedPassword = "";
+    openssh.authorizedKeys.keyFiles = keys;
+  };
+  users.users.root.openssh.authorizedKeys.keyFiles = keys;
 }

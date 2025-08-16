@@ -14,7 +14,6 @@ in {
     ./direnv.nix # dev
     ./eza.nix # core
     ./fzf.nix # tools
-    ./git.nix # core
     ./hyfetch.nix # tools
     ./nushell.nix # core
     ./ripgrep.nix # tools

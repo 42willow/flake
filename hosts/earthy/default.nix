@@ -8,7 +8,6 @@
 in {
   imports = [
     ./hardware-configuration.nix
-    "${self}/user"
     "${self}/modules/nixos"
   ];
 
