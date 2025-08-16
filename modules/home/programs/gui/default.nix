@@ -77,12 +77,12 @@ in {
         ])
 
         (optionals cfg.categories.edu.enable [
-          drawio
-          ganttproject-bin
+          # drawio
+          # ganttproject-bin
           libreoffice
           # logseq
           qalculate-qt
-          blanket
+          # blanket
         ])
       ]
       ++ (with pkgs-unstable;
