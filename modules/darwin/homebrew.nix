@@ -21,7 +21,6 @@
       "bun"
       "gh"
       "gitui"
-      "helix"
       "just"
       "libqalculate"
       "mpd"

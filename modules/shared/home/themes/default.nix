@@ -1,6 +1,5 @@
 {
   imports = [
-    ./cli
-    ./tui
+    ./catppuccin.nix
   ];
 }

@@ -12,7 +12,11 @@ in {
 
   config = lib.mkIf cfg.enable {
     catppuccin = {
-      inherit (osConfig.catppuccin) flavor accent;
+      # inherit (osConfig.catppuccin) flavor accent;
+      # https://github.com/catppuccin/nix/pull/477
+      flavor = "macchiato";
+      accent = "pink";
+
       enable = true;
       zathura.enable = false;
     };

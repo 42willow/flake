@@ -3,6 +3,7 @@
 in {
   imports = [
     ./programs
+    ./themes
   ];
 
   programs.home-manager.enable = true;
