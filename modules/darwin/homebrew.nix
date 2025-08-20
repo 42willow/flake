@@ -27,12 +27,10 @@
       "ncmpcpp"
       "pnpm"
       "sketchybar" # TODO)) remove
-      "skhd" # TODO)) replace
       "spicetify-cli"
       "starship"
       "syncthing"
       "typst"
-      "yabai"
       "yazi"
       "zoxide"
     ];

@@ -1,7 +1,7 @@
 {config, ...}: let
   inherit (config.settings.system) user;
 in {
-  imports = [./homebrew.nix ../shared];
+  imports = [./desktop ./homebrew.nix ../shared];
 
   users.users.${user.name}.home = user.home;
 
