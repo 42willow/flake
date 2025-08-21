@@ -6,6 +6,10 @@
 }: let
   cfg = osConfig.settings.programs;
 in {
+  imports = [
+    ./moxide.nix
+  ];
+
   config = lib.mkIf (cfg.tui.enable
     && cfg.categories.dev.enable) {
     programs.helix = {
@@ -18,12 +22,18 @@ in {
             command = lib.getExe pkgs.emmet-language-server;
             args = ["--stdio"];
           };
+          markdown-oxide.command = lib.getExe pkgs.markdown-oxide;
         };
         language = [
           {
             name = "html";
             roots = [".git"];
             language-servers = ["emmet-lsp"];
+          }
+          {
+            name = "markdown";
+            language-servers = ["markdown-oxide"];
+            soft-wrap.enable = true;
           }
         ];
       };
