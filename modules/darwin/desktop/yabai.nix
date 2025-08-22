@@ -16,7 +16,9 @@
       bottom_padding = 12;
       left_padding = 12;
       right_padding = 12;
-      window_gap = 6;
+
+      window_gap = 12;
+      window_shadow = "off";
     };
   };
 }
