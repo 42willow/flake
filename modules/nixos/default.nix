@@ -24,9 +24,9 @@ in {
   ];
 
   users.users.${user.name} = {
+    inherit (user) home;
     isNormalUser = true;
     extraGroups = ["networkmanager" "wheel" "dialout"];
-    home = user.home;
     shell = pkgs.zsh;
     initialHashedPassword = "";
     openssh.authorizedKeys.keyFiles = keys;

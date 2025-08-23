@@ -15,10 +15,10 @@
     mode ? "400",
     ...
   }: {
-    file = "${self}/secrets/${file}.age";
-    owner = user.name;
-    group = user.group;
     inherit mode;
+    inherit (user) group;
+    owner = user.name;
+    file = "${self}/secrets/${file}.age";
   };
 in {
   imports = [
