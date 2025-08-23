@@ -7,55 +7,34 @@
     nix-darwin,
     home-manager,
     ...
-  } @ inputs: {
-    darwinConfigurations = {
-      starling = nix-darwin.lib.darwinSystem {
+  } @ inputs: let
+    mkNixosSystem = name: hostPath:
+      nixos-stable.lib.nixosSystem {
         modules = [
-          ./hosts/starling
+          hostPath
+          home-manager.nixosModules.home-manager
+        ];
+        specialArgs = {inherit self inputs;};
+      };
+
+    mkDarwinSystem = name: hostPath:
+      nix-darwin.lib.darwinSystem {
+        modules = [
+          hostPath
           home-manager.darwinModules.home-manager
         ];
-        specialArgs = {
-          inherit self inputs;
-        };
+        specialArgs = {inherit self inputs;};
       };
+  in {
+    nixosConfigurations = builtins.mapAttrs mkNixosSystem {
+      earthy = ./hosts/earthy;
+      anemone = ./hosts/anemone;
+      lily = ./hosts/lily;
+      zinnia = ./hosts/zinnia;
     };
-    nixosConfigurations = {
-      earthy = nixos-stable.lib.nixosSystem {
-        modules = [
-          ./hosts/earthy
-          home-manager.nixosModules.home-manager
-        ];
-        specialArgs = {
-          inherit self inputs;
-        };
-      };
-      anemone = nixos-stable.lib.nixosSystem {
-        modules = [
-          ./hosts/anemone
-          home-manager.nixosModules.home-manager
-        ];
-        specialArgs = {
-          inherit self inputs;
-        };
-      };
-      lily = nixos-stable.lib.nixosSystem {
-        modules = [
-          ./hosts/lily
-          home-manager.nixosModules.home-manager
-        ];
-        specialArgs = {
-          inherit self inputs;
-        };
-      };
-      zinnia = nixos-stable.lib.nixosSystem {
-        modules = [
-          ./hosts/zinnia
-          home-manager.nixosModules.home-manager
-        ];
-        specialArgs = {
-          inherit self inputs;
-        };
-      };
+
+    darwinConfigurations = builtins.mapAttrs mkDarwinSystem {
+      starling = ./hosts/starling;
     };
   };
 
