@@ -62,8 +62,8 @@ Hostnames are listed in this [gist](https://gist.github.com/42Willow/bd33bd408de
 - `starling`: Macbook Air M3
 - `earthy`: ThinkPad X1 Yoga Gen 4
 - `anemone`: Raspberry Pi 3B+
-- `lily`: Portable Recovery ISO
-- `zinnia`: WSL2 Host
+- `lily`: Portable Recovery ISO <kbd>WIP</kbd>
+- `zinnia`: WSL2 Host <kbd>WIP</kbd>
 
 ## Credits
 
