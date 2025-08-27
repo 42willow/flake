@@ -55,32 +55,15 @@ Preview last updated: `Feb 18, 2024`
 
 ---
 
-> [!CAUTION]
-> I do not know what I am doing!
-
-These are my new dotfiles (migrating from arch over at https://github.com/42willow/dotfiles)
-
-> [!WARNING]
-> You should _not_ look at this for inspiration until it's complete, actually, you should probably never look at this for inspiration.
-> If you are looking for inspiration, check out the [credits/configurations](#configurations) section, make sure to properly credit the original authors!
-
 ## Hosts
 
 Hostnames are listed in this [gist](https://gist.github.com/42Willow/bd33bd408deced515cd05fd7512b2597).
 
-Option defaults are all for `earthy`, which is my main machine.
+- `starling`: Macbook Air M3
 - `earthy`: ThinkPad X1 Yoga Gen 4
 - `anemone`: Raspberry Pi 3B+
-- `lily`: Portable Recovery ISO
-- `zinnia`: WSL2 Host
-
-## Installation
-
-1. Clone the repository
-
-   ```bash
-   nix run nixpkgs#git clone https://github.com/42willow/flake.git --extra-experimental-features "nix-command flakes"
-   ```
+- `lily`: Portable Recovery ISO <kbd>WIP</kbd>
+- `zinnia`: WSL2 Host <kbd>WIP</kbd>
 
 ## Credits
 
