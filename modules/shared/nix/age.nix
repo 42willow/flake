@@ -44,7 +44,7 @@ in {
       gh = mkSecret {
         file = "gh";
       };
-      gh-pub = mkSecret {
+      ghPub = mkSecret {
         file = "gh-pub";
       };
       lastfm = mkSecret {
