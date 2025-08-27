@@ -36,7 +36,6 @@
     ];
 
     casks = [
-      "alacritty"
       "angry-ip-scanner"
       "anki"
       "calibre"

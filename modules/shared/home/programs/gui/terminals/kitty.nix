@@ -8,7 +8,7 @@ in {
   config = lib.mkIf (cfg.gui.enable
     && cfg.categories.core.enable) {
     programs.kitty = {
-      enable = true;
+      enable = false;
       settings = {
         confirm_os_window_close = 0;
         cursor_blink_interval = 0;

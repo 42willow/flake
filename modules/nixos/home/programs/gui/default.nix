@@ -14,7 +14,6 @@
 in {
   imports = [
     ./browsers
-    ./terminals
     ./waybar # core
     # ./cura.nix # 3dp
     # ./lightburn.nix # cnc
