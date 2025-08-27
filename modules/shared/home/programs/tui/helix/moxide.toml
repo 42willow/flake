@@ -33,7 +33,7 @@ new_file_folder_path = ""
 # as well as the Today, Tomorrow, Yesterday, and Daily... lsp commands
 #
 # This is also imported from obsidian if not specified: specifically the option titled "New file location"
-daily_notes_folder = ""
+daily_notes_folder = "daily"
 
 
 # Whether markdown links should include an extension or not
