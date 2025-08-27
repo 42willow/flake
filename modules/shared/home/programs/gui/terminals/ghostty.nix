@@ -9,7 +9,8 @@
 in {
   # ghostty is broken on darwin
   config = lib.mkIf (cfg.gui.enable
-    && cfg.categories.core.enable && !pkgs.stdenv.hostPlatform.isDarwin) {
+    && cfg.categories.core.enable
+    && !pkgs.stdenv.hostPlatform.isDarwin) {
     programs.ghostty = {
       enable = false;
       enableBashIntegration = config.programs.bash.enable;
