@@ -7,12 +7,14 @@
 }: let
   cfg = osConfig.settings.programs;
 in {
-  # ghostty is broken on darwin
   config = lib.mkIf (cfg.gui.enable
-    && cfg.categories.core.enable
-    && !pkgs.stdenv.hostPlatform.isDarwin) {
+    && cfg.categories.core.enable) {
     programs.ghostty = {
-      enable = false;
+      enable = true;
+
+      # ghostty is broken on darwin
+      package = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin null;
+
       enableBashIntegration = config.programs.bash.enable;
       enableFishIntegration = config.programs.fish.enable;
       enableZshIntegration = config.programs.zsh.enable;
