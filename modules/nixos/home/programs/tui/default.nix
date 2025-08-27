@@ -9,7 +9,6 @@
 in {
   imports = [
     ./bat.nix # core
-    ./btop.nix # core
     ./gitui.nix # dev
     # ./lazygit.nix # dev
     ./ncmpcpp.nix # music
