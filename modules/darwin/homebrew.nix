@@ -36,6 +36,7 @@
     ];
 
     casks = [
+      "altserver"
       "angry-ip-scanner"
       "anki"
       "calibre"
@@ -49,13 +50,14 @@
       "karabiner-elements"
       "keepassxc"
       "keka"
+      "linearmouse"
       "microsoft-excel"
       "microsoft-word"
       "middleclick"
       "monitorcontrol"
+      "notunes"
       "obsidian"
       "prismlauncher"
-      "scroll-reverser"
       "spotify"
       "thunderbird"
       "vesktop"
