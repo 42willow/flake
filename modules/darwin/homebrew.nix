@@ -46,7 +46,7 @@
       "ghostty"
       "iina"
       "inkscape"
-      "karabiner-elements"
+      "karabiner-elements" # TODO)) replace with kanata
       "keepassxc"
       "keka"
       "microsoft-excel"
