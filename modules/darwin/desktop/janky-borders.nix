@@ -1,6 +1,6 @@
 {
   services.jankyborders = {
-    enable = true;
+    enable = false;
 
     width = 6.0;
     hidpi = true;
