@@ -16,24 +16,59 @@ in {
       enable = true;
       defaultEditor = true;
 
-      languages = {
+      languages =
+      let
+        prettierd = {
+          command = lib.getExe pkgs.prettierd;
+          args = ["--stdin-filepath" "%{buffer_name}"];
+        };
+      in {
         language-server = {
           emmet-lsp = {
             command = lib.getExe pkgs.emmet-language-server;
             args = ["--stdio"];
           };
+          typescript-lsp = {
+            command = lib.getExe pkgs.typescript-language-server;
+            args = ["--stdio"];
+          };
+          css-lsp = {
+            command = lib.getExe' pkgs.vscode-langservers-extracted "vscode-css-language-server";
+            args = ["--stdio"];
+          };
+
           markdown-oxide.command = lib.getExe pkgs.markdown-oxide;
         };
         language = [
           {
+            name = "nix";
+            formatter.command = lib.getExe pkgs.alejandra;
+          }
+          {
             name = "html";
             roots = [".git"];
             language-servers = ["emmet-lsp"];
+            formatter = prettierd;
           }
           {
             name = "markdown";
             language-servers = ["markdown-oxide"];
             soft-wrap.enable = true;
+          }
+          {
+            name = "typescript";
+            language-servers = ["typescript-lsp"];
+            formatter = prettierd;
+          }
+          {
+            name = "javascript";
+            language-servers = ["javascript-lsp"];
+            formatter = prettierd;
+          }
+          {
+            name = "css";
+            language-servers = ["css-lsp"];
+            formatter = prettierd;
           }
         ];
       };
@@ -71,6 +106,10 @@ in {
 
             l = "open_below";
             L = "open_above";
+
+            z = {
+              e = "scroll_down";
+            };
 
             "space".w = {
               # Window Mode
