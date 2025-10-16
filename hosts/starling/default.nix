@@ -10,6 +10,7 @@
 in {
   imports = [
     "${self}/modules/darwin"
+    ./stars.nix
   ];
 
   networking = {
