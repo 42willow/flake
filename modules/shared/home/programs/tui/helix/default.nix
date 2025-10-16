@@ -16,8 +16,7 @@ in {
       enable = true;
       defaultEditor = true;
 
-      languages =
-      let
+      languages = let
         prettierd = {
           command = lib.getExe pkgs.prettierd;
           args = ["--stdin-filepath" "%{buffer_name}"];
@@ -36,12 +35,17 @@ in {
             command = lib.getExe' pkgs.vscode-langservers-extracted "vscode-css-language-server";
             args = ["--stdio"];
           };
+          nil = {
+            command = lib.getExe pkgs.nil;
+          };
 
           markdown-oxide.command = lib.getExe pkgs.markdown-oxide;
         };
         language = [
           {
             name = "nix";
+            language-servers = ["nil"];
+            auto-format = true;
             formatter.command = lib.getExe pkgs.alejandra;
           }
           {
@@ -127,8 +131,9 @@ in {
             };
 
             g = {
-              #goto
               n = "goto_line_start";
+              e = "move_line_down";
+              i = "move_line_up";
               o = "goto_line_end";
             };
 
@@ -161,12 +166,13 @@ in {
 
             g = {
               n = "goto_line_start";
+              e = "extend_line_down";
+              i = "extend_line_up";
               o = "goto_line_end";
             };
           };
         };
       };
     };
-    # home.packages = [pkgs.helix];
   };
 }
