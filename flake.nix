@@ -43,7 +43,7 @@
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     darwin-stable.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
-    # darwin-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    darwin-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";

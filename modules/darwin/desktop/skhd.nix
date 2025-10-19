@@ -1,6 +1,6 @@
 {
   services.skhd = {
-    enable = false;
+    enable = true;
 
     skhdConfig = ''
       alt - escape : yabai -m space --toggle mission-control
