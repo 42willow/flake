@@ -136,11 +136,6 @@ in {
               i = "move_line_up";
               o = "goto_line_end";
             };
-
-            "space".b = {
-              n = "goto_previous_buffer";
-              o = "goto_next_buffer";
-            };
           };
           select = {
             n = "extend_char_left";
