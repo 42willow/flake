@@ -53,8 +53,8 @@
 
     # themes
     catppuccin = {
-      url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "nixos-unstable";
+      url = "github:catppuccin/nix/release-25.05";
+      inputs.nixpkgs.follows = "nixos-stable";
     };
     stylix = {
       url = "github:danth/stylix/release-25.05";
