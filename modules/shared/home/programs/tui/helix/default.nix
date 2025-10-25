@@ -38,6 +38,15 @@ in {
           nil = {
             command = lib.getExe pkgs.nil;
           };
+          tinymist = {
+            command = lib.getExe pkgs.tinymist;
+            config = {
+              exportPdf = "onType";
+              outputPath = "$root/target/$dir/$name";
+              formatterMode = "typstyle";
+              formatterPrintWidth = 80;
+            };
+          };
 
           markdown-oxide.command = lib.getExe pkgs.markdown-oxide;
         };
@@ -73,6 +82,12 @@ in {
             name = "css";
             language-servers = ["css-lsp"];
             formatter = prettierd;
+          }
+          {
+            name = "typst";
+            language-servers = ["tinymist"];
+            soft-wrap.enable = true;
+            auto-format = true;
           }
         ];
       };
