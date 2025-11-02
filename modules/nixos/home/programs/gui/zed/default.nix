@@ -29,8 +29,8 @@ in {
         pkgs.prettierd
         pkgs.kdePackages.qtdeclarative # QML
       ];
-      file.".config/zed/settings.json".source = settingsFile;
-      file.".config/zed/keymap.json".source = keymapFile;
+      xdg.configFile."zed/settings.json".source = settingsFile;
+      xdg.configFile."zed/keymap.json".source = keymapFile;
     };
   };
 }
