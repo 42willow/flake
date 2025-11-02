@@ -39,7 +39,6 @@
           alt-t = "exec-and-forget open -a Vesktop";
           alt-w = "exec-and-forget open -a Finder -n";
 
-
           # https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
           alt-tab = "workspace-back-and-forth";
         }
