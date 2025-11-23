@@ -2,9 +2,15 @@
   osConfig,
   lib,
   pkgs,
+  inputs,
   ...
 }: let
   cfg = osConfig.settings.programs;
+
+  pkgs-unstable = import inputs.darwin-unstable {
+    system = "aarch64-darwin";
+    config.allowUnfree = true;
+  };
 in {
   imports = [
     ./moxide.nix
@@ -47,6 +53,10 @@ in {
               formatterPrintWidth = 80;
             };
           };
+          openscad-lsp = {
+            command = lib.getExe pkgs-unstable.openscad-lsp;
+            args = ["--stdio"];
+          };
 
           markdown-oxide.command = lib.getExe pkgs.markdown-oxide;
         };
@@ -67,6 +77,7 @@ in {
             name = "markdown";
             language-servers = ["markdown-oxide"];
             soft-wrap.enable = true;
+            formatter.command = lib.getExe pkgs.mdformat;
           }
           {
             name = "typescript";
@@ -87,6 +98,11 @@ in {
             name = "typst";
             language-servers = ["tinymist"];
             soft-wrap.enable = true;
+            auto-format = true;
+          }
+          {
+            name = "openscad";
+            language-servers = ["openscad-lsp"];
             auto-format = true;
           }
         ];
