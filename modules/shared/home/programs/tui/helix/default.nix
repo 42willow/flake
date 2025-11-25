@@ -3,6 +3,7 @@
   lib,
   pkgs,
   inputs,
+  config,
   ...
 }: let
   cfg = osConfig.settings.programs;
@@ -18,6 +19,8 @@ in {
 
   config = lib.mkIf (cfg.tui.enable
     && cfg.categories.dev.enable) {
+    xdg.configFile.".dprint.jsonc".text = builtins.toJSON (import ./dprint-conf.nix {inherit pkgs;});
+
     programs.helix = {
       enable = true;
       defaultEditor = true;
@@ -26,6 +29,10 @@ in {
         prettierd = {
           command = lib.getExe pkgs.prettierd;
           args = ["--stdin-filepath" "%{buffer_name}"];
+        };
+        dprint = {
+          command = lib.getExe pkgs.dprint;
+          args = ["fmt" "--config" "${config.xdg.configHome}/.dprint.jsonc" "--stdin" "%{buffer_name}"];
         };
       in {
         language-server = {
@@ -57,7 +64,6 @@ in {
             command = lib.getExe pkgs-unstable.openscad-lsp;
             args = ["--stdio"];
           };
-
           markdown-oxide.command = lib.getExe pkgs.markdown-oxide;
         };
         language = [
@@ -76,8 +82,8 @@ in {
           {
             name = "markdown";
             language-servers = ["markdown-oxide"];
-            soft-wrap.enable = true;
-            formatter.command = lib.getExe pkgs.mdformat;
+            formatter = dprint;
+            auto-format = true;
           }
           {
             name = "typescript";
