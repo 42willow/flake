@@ -13,26 +13,34 @@
     config.allowUnfree = true;
   };
 in {
-  imports = [
-    ./moxide.nix
-  ];
-
   config = lib.mkIf (cfg.tui.enable
     && cfg.categories.dev.enable) {
-    xdg.configFile.".dprint.jsonc".text = builtins.toJSON (import ./dprint-conf.nix {inherit pkgs;});
+    xdg.configFile.".prettierrc.json".text = builtins.toJSON (import ./prettier.nix {inherit pkgs;});
+    xdg.configFile.".dprint.jsonc".text = builtins.toJSON (import ./dprint.nix {inherit pkgs;});
+    xdg.configFile."moxide/settings.toml".source = ./moxide.toml;
 
     programs.helix = {
       enable = true;
       defaultEditor = true;
 
       languages = let
-        prettierd = {
-          command = lib.getExe pkgs.prettierd;
-          args = ["--stdin-filepath" "%{buffer_name}"];
+        prettier = lang: {
+          command = lib.getExe pkgs.nodePackages.prettier;
+          args = [
+            "--parser"
+            lang
+            "--config"
+            "${config.xdg.configHome}/.prettierrc.json"
+          ];
         };
+
         dprint = {
           command = lib.getExe pkgs.dprint;
-          args = ["fmt" "--config" "${config.xdg.configHome}/.dprint.jsonc" "--stdin" "%{buffer_name}"];
+          args = [
+            "fmt"
+            "--config"
+            "${config.xdg.configHome}/.dprint.jsonc"
+          ];
         };
       in {
         language-server = {
@@ -40,12 +48,28 @@ in {
             command = lib.getExe pkgs.emmet-language-server;
             args = ["--stdio"];
           };
+          svelte-lsp = {
+            command = lib.getExe pkgs.svelte-language-server;
+            args = ["--stdio"];
+          };
           typescript-lsp = {
             command = lib.getExe pkgs.typescript-language-server;
             args = ["--stdio"];
           };
+          json-lsp = {
+            command = lib.getExe' pkgs.vscode-langservers-extracted "vscode-json-language-server";
+            args = ["--stdio"];
+          };
           css-lsp = {
             command = lib.getExe' pkgs.vscode-langservers-extracted "vscode-css-language-server";
+            args = ["--stdio"];
+          };
+          html-lsp = {
+            command = lib.getExe' pkgs.vscode-langservers-extracted "vscode-html-language-server";
+            args = ["--stdio"];
+          };
+          markdown-lsp = {
+            command = lib.getExe' pkgs.vscode-langservers-extracted "vscode-markdown-language-server";
             args = ["--stdio"];
           };
           nil = {
@@ -69,47 +93,73 @@ in {
         language = [
           {
             name = "nix";
-            language-servers = ["nil"];
             auto-format = true;
+            language-servers = ["nil"];
             formatter.command = lib.getExe pkgs.alejandra;
           }
           {
             name = "html";
-            roots = [".git"];
-            language-servers = ["emmet-lsp"];
-            formatter = prettierd;
+            auto-format = true;
+            language-servers = ["emmet-lsp" "html-lsp"];
+            formatter = prettier "html";
+          }
+          {
+            name = "svelte";
+            auto-format = true;
+            language-servers = ["svelte-lsp"];
+            formatter = prettier "html";
           }
           {
             name = "markdown";
-            language-servers = ["markdown-oxide"];
-            formatter = dprint;
             auto-format = true;
+            language-servers = ["markdown-oxide" "markdown-lsp"];
+            formatter = dprint;
+            soft-wrap.enable = true;
           }
           {
             name = "typescript";
+            auto-format = true;
             language-servers = ["typescript-lsp"];
-            formatter = prettierd;
+            formatter = prettier "html";
           }
           {
             name = "javascript";
+            auto-format = true;
             language-servers = ["javascript-lsp"];
-            formatter = prettierd;
+            formatter = prettier "html";
           }
           {
             name = "css";
+            auto-format = true;
             language-servers = ["css-lsp"];
-            formatter = prettierd;
+            formatter = prettier "html";
           }
           {
             name = "typst";
+            auto-format = true;
             language-servers = ["tinymist"];
             soft-wrap.enable = true;
-            auto-format = true;
           }
           {
             name = "openscad";
-            language-servers = ["openscad-lsp"];
             auto-format = true;
+            language-servers = ["openscad-lsp"];
+          }
+          {
+            name = "json";
+            auto-format = true;
+            language-servers = ["json-lsp"];
+            formatter = dprint;
+          }
+          {
+            name = "toml";
+            auto-format = true;
+            formatter = dprint;
+          }
+          {
+            name = "yaml";
+            auto-format = true;
+            formatter = dprint;
           }
         ];
       };
