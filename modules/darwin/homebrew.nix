@@ -26,7 +26,6 @@
       "mpd"
       "ncmpcpp"
       "pnpm"
-      "sketchybar" # TODO)) remove
       "spicetify-cli"
       "starship"
       "syncthing"
