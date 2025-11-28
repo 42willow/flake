@@ -12,12 +12,10 @@
       "felixkratz/formulae"
       "jackielii/tap"
       "koekeishiya/formulae"
-      "oven-sh/bun"
     ];
 
     brews = [
       # these will gradually be replaced with nixpkgs
-      "bun"
       "gh"
       "just"
       "libqalculate"

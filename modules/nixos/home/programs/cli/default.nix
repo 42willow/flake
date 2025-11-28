@@ -10,11 +10,9 @@
 in {
   imports = [
     ./beets.nix
-    ./bun.nix
     ./direnv.nix
     ./hyfetch.nix
     ./nushell.nix
-    ./zsh.nix
   ];
   config = lib.mkIf cfg.cli.enable {
     home.packages = with pkgs;

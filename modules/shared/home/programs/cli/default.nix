@@ -10,6 +10,7 @@
 in {
   imports = [
     ./bat.nix
+    ./bun.nix
     ./eza.nix
     ./fzf.nix
     ./git.nix
