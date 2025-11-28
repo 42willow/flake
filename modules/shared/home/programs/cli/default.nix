@@ -9,6 +9,7 @@
   cfg = osConfig.settings.programs;
 in {
   imports = [
+    ./bat.nix
     ./eza.nix
     ./fzf.nix
     ./git.nix

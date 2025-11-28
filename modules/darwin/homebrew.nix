@@ -17,10 +17,8 @@
 
     brews = [
       # these will gradually be replaced with nixpkgs
-      "bat"
       "bun"
       "gh"
-      "gitui"
       "just"
       "libqalculate"
       "mpd"

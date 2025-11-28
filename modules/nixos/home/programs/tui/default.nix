@@ -8,11 +8,9 @@
   cfg = osConfig.settings.programs;
 in {
   imports = [
-    ./bat.nix # core
-    ./gitui.nix # dev
     # ./lazygit.nix # dev
-    ./ncmpcpp.nix # music
-    ./yazi.nix # files
+    ./ncmpcpp.nix
+    ./yazi.nix
   ];
 
   config = lib.mkIf cfg.tui.enable {
