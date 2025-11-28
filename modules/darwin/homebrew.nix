@@ -21,11 +21,8 @@
       "libqalculate"
       "mpd"
       "ncmpcpp"
-      "pnpm"
       "spicetify-cli"
       "syncthing"
-      "tldr"
-      "typst"
       "yazi"
     ];
 
