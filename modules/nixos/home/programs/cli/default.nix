@@ -9,17 +9,12 @@
   cfg = osConfig.settings.programs;
 in {
   imports = [
-    ./beets.nix # music
-    ./bun.nix # dev
-    ./direnv.nix # dev
-    ./eza.nix # core
-    ./fzf.nix # tools
-    ./hyfetch.nix # tools
-    ./nushell.nix # core
-    ./ripgrep.nix # tools
-    ./starship.nix # core
-    ./zoxide.nix # core
-    ./zsh.nix # core
+    ./beets.nix
+    ./bun.nix
+    ./direnv.nix
+    ./hyfetch.nix
+    ./nushell.nix
+    ./zsh.nix
   ];
   config = lib.mkIf cfg.cli.enable {
     home.packages = with pkgs;

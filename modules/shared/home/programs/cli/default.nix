@@ -9,7 +9,13 @@
   cfg = osConfig.settings.programs;
 in {
   imports = [
+    ./eza.nix
+    ./fzf.nix
     ./git.nix
+    ./ripgrep.nix
+    ./starship.nix
+    ./zoxide.nix
+    ./zsh.nix
   ];
 
   config = lib.mkIf cfg.cli.enable {

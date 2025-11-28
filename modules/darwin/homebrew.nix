@@ -27,12 +27,10 @@
       "ncmpcpp"
       "pnpm"
       "spicetify-cli"
-      "starship"
       "syncthing"
       "tldr"
       "typst"
       "yazi"
-      "zoxide"
     ];
 
     casks = [
