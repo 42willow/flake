@@ -22,7 +22,8 @@ in {
       settings = {
         gtk-single-instance = true;
         macos-titlebar-style = "hidden";
-
+        window-padding-x = 15;
+        window-padding-y = 15;
         font-family = "Maple Mono NF";
       };
     };
