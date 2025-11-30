@@ -107,7 +107,7 @@ in {
             name = "svelte";
             auto-format = true;
             language-servers = ["svelte-lsp"];
-            formatter = prettier "html";
+            formatter = prettier "svelte";
           }
           {
             name = "markdown";
@@ -120,19 +120,19 @@ in {
             name = "typescript";
             auto-format = true;
             language-servers = ["typescript-lsp"];
-            formatter = prettier "html";
+            formatter = prettier "typescript";
           }
           {
             name = "javascript";
             auto-format = true;
             language-servers = ["javascript-lsp"];
-            formatter = prettier "html";
+            formatter = prettier "javascript";
           }
           {
             name = "css";
             auto-format = true;
             language-servers = ["css-lsp"];
-            formatter = prettier "html";
+            formatter = prettier "css";
           }
           {
             name = "typst";
