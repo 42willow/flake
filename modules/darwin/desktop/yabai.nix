@@ -1,12 +1,7 @@
-{inputs, ...}: let
-  pkgs-unstable = import inputs.darwin-unstable {
-    system = "aarch64-darwin";
-    config.allowUnfree = true;
-  };
-in {
+{pkgs, ...}: {
   services.yabai = {
     enable = true;
-    package = pkgs-unstable.yabai;
+    package = pkgs.unstable.yabai;
     enableScriptingAddition = true;
 
     config = {

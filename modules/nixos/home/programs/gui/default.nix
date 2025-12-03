@@ -2,15 +2,10 @@
   pkgs,
   osConfig,
   lib,
-  inputs,
   ...
 }: let
   inherit (lib) optionals concatLists;
   cfg = osConfig.settings.programs;
-  pkgs-unstable = import inputs.nixos-unstable {
-    system = "x86_64-linux";
-    config.allowUnfree = true;
-  };
 in {
   imports = [
     ./browsers
@@ -84,7 +79,7 @@ in {
           # blanket
         ])
       ]
-      ++ (with pkgs-unstable;
+      ++ (with pkgs.unstable;
         concatLists [
           (optionals cfg.categories.tools.enable [
             obsidian

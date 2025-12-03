@@ -6,6 +6,7 @@
     nixos-stable,
     nix-darwin,
     home-manager,
+    nixpkgs,
     ...
   } @ inputs: let
     mkNixosSystem = name: hostPath:
@@ -25,6 +26,8 @@
         ];
         specialArgs = {inherit self inputs;};
       };
+
+    forAllSystems = nixpkgs.lib.genAttrs ["x86_64-linux" "aarch64-darwin"];
   in {
     nixosConfigurations = builtins.mapAttrs mkNixosSystem {
       earthy = ./hosts/earthy;
@@ -36,6 +39,14 @@
     darwinConfigurations = builtins.mapAttrs mkDarwinSystem {
       starling = ./hosts/starling;
     };
+
+    overlays = import ./overlays.nix {
+      inherit inputs;
+      inherit self;
+    };
+
+    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
   };
 
   inputs = {

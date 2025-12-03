@@ -15,6 +15,7 @@ in {
   imports = [
     ./desktop
     ./home
+    ./nix
     ./programs
     ./services
     ./system

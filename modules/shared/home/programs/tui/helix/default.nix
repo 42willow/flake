@@ -2,16 +2,10 @@
   osConfig,
   lib,
   pkgs,
-  inputs,
   config,
   ...
 }: let
   cfg = osConfig.settings.programs;
-
-  pkgs-unstable = import inputs.darwin-unstable {
-    system = "aarch64-darwin";
-    config.allowUnfree = true;
-  };
 in {
   config = lib.mkIf (cfg.tui.enable
     && cfg.categories.dev.enable) {
@@ -72,6 +66,7 @@ in {
             command = lib.getExe' pkgs.vscode-langservers-extracted "vscode-markdown-language-server";
             args = ["--stdio"];
           };
+          discord-rpc-lsp.command = lib.getExe pkgs.discord-rpc-lsp;
           nil = {
             command = lib.getExe pkgs.nil;
           };
@@ -85,80 +80,76 @@ in {
             };
           };
           openscad-lsp = {
-            command = lib.getExe pkgs-unstable.openscad-lsp;
+            command = lib.getExe pkgs.unstable.openscad-lsp;
             args = ["--stdio"];
           };
           markdown-oxide.command = lib.getExe pkgs.markdown-oxide;
         };
-        language = [
+        language = map (lang:
+          lang
+          // {
+            auto-format =
+              if (builtins.hasAttr "auto-format" lang) && (lang.auto-format == false)
+              then false
+              else true;
+            language-servers = ["discord-rpc-lsp"] ++ (lang.language-servers or []);
+          }) [
           {
             name = "nix";
-            auto-format = true;
             language-servers = ["nil"];
             formatter.command = lib.getExe pkgs.alejandra;
           }
           {
             name = "html";
-            auto-format = true;
             language-servers = ["emmet-lsp" "html-lsp"];
             formatter = prettier "html";
           }
           {
             name = "svelte";
-            auto-format = true;
             language-servers = ["svelte-lsp"];
             formatter = prettier "svelte";
           }
           {
             name = "markdown";
-            auto-format = true;
             language-servers = ["markdown-oxide" "markdown-lsp"];
             formatter = dprint;
             soft-wrap.enable = true;
           }
           {
             name = "typescript";
-            auto-format = true;
             language-servers = ["typescript-lsp"];
             formatter = prettier "typescript";
           }
           {
             name = "javascript";
-            auto-format = true;
             language-servers = ["javascript-lsp"];
             formatter = prettier "javascript";
           }
           {
             name = "css";
-            auto-format = true;
             language-servers = ["css-lsp"];
             formatter = prettier "css";
           }
           {
             name = "typst";
-            auto-format = true;
             language-servers = ["tinymist"];
             soft-wrap.enable = true;
           }
           {
             name = "openscad";
-            auto-format = true;
             language-servers = ["openscad-lsp"];
           }
           {
             name = "json";
-            auto-format = true;
             language-servers = ["json-lsp"];
             formatter = dprint;
           }
           {
             name = "toml";
-            auto-format = true;
             formatter = dprint;
           }
           {
             name = "yaml";
-            auto-format = true;
             formatter = dprint;
           }
         ];
