@@ -7,7 +7,7 @@
     config = {
       focus_follows_mouse = "autoraise";
 
-      mouse_modifier = "cmd";
+      mouse_modifier = "fn";
       mouse_action1 = "move";
       mouse_action2 = "resize";
 
