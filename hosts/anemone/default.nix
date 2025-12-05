@@ -8,9 +8,9 @@
 in {
   imports = [
     ./hardware.nix
-    ./klipper.nix
     ./mainsail.nix
     ./moonraker.nix
+    ./klipper
     inputs.nixos-hardware.nixosModules.raspberry-pi-3
     (modulesPath + "/installer/scan/not-detected.nix")
     (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")

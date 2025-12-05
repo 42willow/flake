@@ -5,9 +5,9 @@
     address = "0.0.0.0";
     port = 7125;
     settings = {
-      server = {
-        max_upload_size = 32768; # in MB
-      };
+      # server = {
+      #   max_upload_size = 32768; # in MB
+      # };
       octoprint_compat = {};
       history = {};
       authorization = {
