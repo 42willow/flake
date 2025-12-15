@@ -32,6 +32,8 @@ in {
           command = lib.getExe pkgs.dprint;
           args = [
             "fmt"
+            "--stdin"
+            "%{buffer_name}"
             "--config"
             "${config.xdg.configHome}/.dprint.jsonc"
           ];
