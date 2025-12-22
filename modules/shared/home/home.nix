@@ -4,6 +4,7 @@ in {
   imports = [
     ./programs
     ./scripts
+    ./services
     ./themes
   ];
 
