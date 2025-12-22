@@ -12,5 +12,7 @@ in {
   "lastfm.age".publicKeys = users ++ hosts;
   "restic.age".publicKeys = users ++ hosts;
   "samba.age".publicKeys = users ++ hosts;
+  "syncthing-earthy.age".publicKeys = users ++ hosts;
+  "syncthing-starling.age".publicKeys = users ++ hosts;
   "wifi.age".publicKeys = users ++ hosts;
 }
