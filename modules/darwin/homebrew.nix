@@ -22,7 +22,6 @@
       "mpd"
       "ncmpcpp"
       "spicetify-cli"
-      "syncthing"
       "yazi"
     ];
 
