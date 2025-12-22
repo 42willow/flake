@@ -56,12 +56,6 @@ in {
       samba = mkSecret {
         file = "samba";
       };
-      syncthingEarthy = mkSecret {
-        file = "syncthing-earthy";
-      };
-      syncthingStarling = mkSecret {
-        file = "syncthing-starling";
-      };
       wifi = mkSecret {
         file = "wifi";
       };

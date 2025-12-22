@@ -7,12 +7,10 @@
 }: let
   inherit (pkgs.stdenv) isDarwin;
   inherit (osConfig.settings.system) hostName;
-  inherit (osConfig.age) secrets;
 
   devices = {
-    # this is an anti-pattern as cleartext is placed into nix store, doesn't matter in this case
-    starling.id = builtins.readFile secrets.syncthingEarthy.path;
-    earthy.id = builtins.readFile secrets.syncthingStarling.path;
+    starling.id = "3NK35IK-ZONOPLB-R277NP3-MUTEU33-PFKOWCZ-U3SB6ZO-YPIBVY5-UTCTIQK";
+    earthy.id = "CARNCAO-VNEVXKV-R3NIN2R-APRWTXC-4QCKEVX-ZQI7LZG-GZHAUFU-4XCJYQQ";
   };
   allDevices = builtins.attrNames devices;
 in {
@@ -35,6 +33,9 @@ in {
 
     settings = {
       inherit devices;
+      options = {
+        relaysEnabled = false;
+      };
       folders = {
         docs = {
           label = "Documents";
