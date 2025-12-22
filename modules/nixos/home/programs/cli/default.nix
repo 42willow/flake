@@ -9,7 +9,6 @@
   cfg = osConfig.settings.programs;
 in {
   imports = [
-    ./beets.nix
     ./direnv.nix
     ./hyfetch.nix
     ./nushell.nix

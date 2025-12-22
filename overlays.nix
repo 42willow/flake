@@ -3,8 +3,8 @@
   inputs,
   ...
 }: {
-  darwin-unstable = final: _prev: {
-    unstable = import inputs.darwin-unstable {
+  nixpkgs-unstable = final: _prev: {
+    unstable = import inputs.nixpkgs-unstable {
       system = final.system;
       config.allowUnfree = true;
     };

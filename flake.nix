@@ -53,12 +53,11 @@
     nixos-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    darwin-stable.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
-    darwin-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    darwin-stable.url = "github:nixos/nixpkgs/nixpkgs-25.05-darwin";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
-      # url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "darwin-stable";
     };
 

@@ -3,6 +3,7 @@
 in {
   imports = [
     ./programs
+    ./scripts
     ./themes
   ];
 

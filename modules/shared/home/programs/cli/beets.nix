@@ -2,13 +2,15 @@
   lib,
   osConfig,
   config,
+  pkgs,
   ...
 }: let
   cfg = osConfig.settings.programs;
+  inherit (pkgs) stdenv;
 in {
   config = lib.mkIf (cfg.cli.enable
     && cfg.categories.music.enable) {
-    systemd.user.services.mpdstats = {
+    systemd.user.services.mpdstats = lib.mkIf stdenv.isLinux {
       Unit = {
         Description = "Beets MPDStats daemon";
         Requires = ["mpd.service"];
@@ -32,8 +34,13 @@ in {
           "mbsync"
           "edit"
         ];
-        directory = "${config.xdg.userDirs.music}";
-        library = "${config.home.homeDirectory}/media/music_library.db";
+        # directory =
+        #   if stdenv.isLinux
+        #   then "${config.xdg.userDirs.music}"
+        #   else "${config.xdg.userDirs.music}/music";
+        # library = "${config.home.homeDirectory}/media/music_library.db";
+        directory = "${config.xdg.userDirs.music}/music";
+        library = "${config.xdg.userDirs.music}/music_library.db";
         import = {
           copy = true;
           write = true;
