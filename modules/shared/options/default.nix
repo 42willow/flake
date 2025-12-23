@@ -175,9 +175,9 @@ in {
             default = cfg.system.services.enable;
           };
         backups.enable =
-          mkEnableOption "Enable backups"
+          mkEnableOption "Enable restic"
           // {
-            default = cfg.system.services.enable;
+            default = false;
           };
       };
     };
