@@ -18,6 +18,13 @@ in {
     };
   };
 
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "yes";
+    };
+  };
+
   # samba
   environment.systemPackages = [pkgs.cifs-utils];
   fileSystems."/mnt/nas" = {
