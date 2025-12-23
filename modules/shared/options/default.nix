@@ -154,6 +154,11 @@ in {
           // {
             default = cfg.system.services.enable;
           };
+        sync.enable =
+          mkEnableOption "Enable syncthing"
+          // {
+            default = false;
+          };
         printing.enable =
           mkEnableOption "Enable printing"
           // {

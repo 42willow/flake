@@ -25,6 +25,7 @@ in {
         group = "staff";
         home = "/Users/${cfg.system.user.name}";
       };
+      services.sync.enable = true;
     };
   };
 

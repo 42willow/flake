@@ -11,7 +11,12 @@ in {
     "${self}/modules/nixos"
   ];
 
-  settings.system.hostName = "earthy";
+  settings = {
+    system = {
+      hostName = "earthy";
+      services.sync.enable = true;
+    };
+  };
 
   # samba
   environment.systemPackages = [pkgs.cifs-utils];
