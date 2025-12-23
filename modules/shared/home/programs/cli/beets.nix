@@ -11,9 +11,9 @@ in {
   config = lib.mkIf (cfg.cli.enable
     && cfg.categories.music.enable) {
     systemd.user.services.mpdstats =
-      lib.mkIf stdenv.isLinux
-      && config.services.mpd.enable
-      == true {
+      lib.mkIf (stdenv.isLinux
+        && config.services.mpd.enable)
+      {
         Unit = {
           Description = "Beets MPDStats daemon";
           Requires = ["mpd.service"];
@@ -27,6 +27,7 @@ in {
           Restart = "on-failure";
         };
       };
+
     programs.beets = {
       enable = true;
       mpdIntegration.enableUpdate = true;
