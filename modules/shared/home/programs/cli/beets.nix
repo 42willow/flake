@@ -10,20 +10,23 @@
 in {
   config = lib.mkIf (cfg.cli.enable
     && cfg.categories.music.enable) {
-    systemd.user.services.mpdstats = lib.mkIf stdenv.isLinux {
-      Unit = {
-        Description = "Beets MPDStats daemon";
-        Requires = ["mpd.service"];
-        After = ["mpd.service"];
-      };
+    systemd.user.services.mpdstats =
+      lib.mkIf stdenv.isLinux
+      && config.services.mpd.enable
+      == true {
+        Unit = {
+          Description = "Beets MPDStats daemon";
+          Requires = ["mpd.service"];
+          After = ["mpd.service"];
+        };
 
-      Install.WantedBy = ["default.target"];
+        Install.WantedBy = ["default.target"];
 
-      Service = {
-        ExecStart = "${config.programs.beets.package}/bin/beet mpdstats";
-        Restart = "on-failure";
+        Service = {
+          ExecStart = "${config.programs.beets.package}/bin/beet mpdstats";
+          Restart = "on-failure";
+        };
       };
-    };
     programs.beets = {
       enable = true;
       mpdIntegration.enableUpdate = true;
@@ -34,11 +37,6 @@ in {
           "mbsync"
           "edit"
         ];
-        # directory =
-        #   if stdenv.isLinux
-        #   then "${config.xdg.userDirs.music}"
-        #   else "${config.xdg.userDirs.music}/music";
-        # library = "${config.home.homeDirectory}/media/music_library.db";
         directory = "${config.xdg.userDirs.music}/music";
         library = "${config.xdg.userDirs.music}/music_library.db";
         import = {
