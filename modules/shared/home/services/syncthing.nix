@@ -1,12 +1,9 @@
 {
   config,
-  osConfig,
   pkgs,
-  lib,
   ...
 }: let
   inherit (pkgs.stdenv) isDarwin;
-  inherit (osConfig.settings.system) hostName;
 
   devices = {
     starling.id = "3NK35IK-ZONOPLB-R277NP3-MUTEU33-PFKOWCZ-U3SB6ZO-YPIBVY5-UTCTIQK";
@@ -14,48 +11,50 @@
   };
   allDevices = builtins.attrNames devices;
 in {
+  # https://github.com/nix-community/home-manager/issues/6542
+  # syncthing config not applied on switch on darwin
+  #
+  # touch ~/Library/Application\ Support/Syncthing/.launchd_update_config
+
   services.syncthing = {
     enable = true;
-
-    # key =
-    #   if hostName == "starling"
-    #   then secrets.syncthingStarlingKey
-    #   else if hostName == "earthy"
-    #   then secrets.syncthingEarthyKey
-    #   else null;
-
-    # cert =
-    #   if hostName == "starling"
-    #   then secrets.syncthingStarlingCert
-    #   else if hostName == "earthy"
-    #   then secrets.syncthingEarthyCert
-    #   else null;
 
     settings = {
       inherit devices;
       options = {
+        urAccepted = -1; # disable usage reporting
         relaysEnabled = false;
       };
       folders = {
         docs = {
           label = "Documents";
-          path = config.xdg.userDirs.documents;
           devices = allDevices;
+          path = config.xdg.userDirs.documents;
         };
         music = {
           label = "Music";
-          path = config.xdg.userDirs.music;
           devices = allDevices;
+          path = config.xdg.userDirs.music;
         };
-        # pictures = {
-        #   label = "Pictures";
-        #   path = config.xdg.userDirs.pictures;
-        #   devices = shared;
-        # };
-        # git = {
-        #   label = "Git";
-        #   path = if isDarwin then "${config.xdg.userDirs.documents}/git" else "~/git";
-        # };
+        pictures = {
+          label = "Pictures";
+          devices = allDevices;
+          path = config.xdg.userDirs.pictures;
+        };
+        # ignored in documents
+        git = {
+          label = "Git";
+          devices = allDevices;
+          path =
+            if isDarwin
+            then "${config.xdg.userDirs.documents}/git"
+            else "~/git";
+        };
+        videos = {
+          label = "Videos";
+          devices = allDevices;
+          path = config.xdg.userDirs.videos;
+        };
       };
     };
     extraOptions = ["--no-default-folder"]; # don't create default ~/Sync folder
