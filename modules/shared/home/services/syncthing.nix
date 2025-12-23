@@ -25,7 +25,7 @@ in {
         inherit devices;
         options = {
           urAccepted = -1; # disable usage reporting
-          relaysEnabled = false;
+          # relaysEnabled = false;
         };
         folders = {
           docs = {
