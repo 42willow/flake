@@ -2,11 +2,8 @@
   config,
   lib,
   osConfig,
-  pkgs,
   ...
 }: let
-  inherit (pkgs.stdenv) isDarwin;
-
   cfg = osConfig.settings.system.services.sync;
 
   devices = {
@@ -45,15 +42,6 @@ in {
             label = "Pictures";
             devices = allDevices;
             path = config.xdg.userDirs.pictures;
-          };
-          # ignored in documents
-          git = {
-            label = "Git";
-            devices = allDevices;
-            path =
-              if isDarwin
-              then "${config.xdg.userDirs.documents}/git"
-              else "~/git";
           };
           videos = {
             label = "Videos";
