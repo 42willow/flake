@@ -14,7 +14,10 @@ in {
   settings = {
     system = {
       hostName = "earthy";
-      services.sync.enable = true;
+      services = {
+        sync.enable = true;
+        navidrome.enable = true;
+      };
     };
   };
 
