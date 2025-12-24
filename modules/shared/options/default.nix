@@ -113,6 +113,9 @@ in {
         printing.enable =
           mkEnableOption "Enable printing"
           // {default = cfg.system.services.enable;};
+        navidrome.enable =
+          mkEnableOption "Enable navidrome"
+          // {default = false;};
         networking.enable =
           mkEnableOption "Enable networking"
           // {default = cfg.system.services.enable;};
