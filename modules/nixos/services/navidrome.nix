@@ -12,7 +12,7 @@ in {
 
       settings = {
         # TODO: use this value for beets
-        MusicFolder = "${config.home.homeDirectory}/media/music/music";
+        MusicFolder = "${config.settings.user.home}/media/music/music";
       };
     };
   };
