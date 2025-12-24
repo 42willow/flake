@@ -9,6 +9,7 @@ in {
   imports = [
     ./i18n.nix
     ./mpdscribble.nix
+    ./navidrome.nix
     ./pipewire.nix
     ./printing.nix
     ./privacy.nix
