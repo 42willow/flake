@@ -16,6 +16,7 @@
       alt + shift - o : yabai -m space --focus next
 
       alt - q : open -a Ghostty -n
+      alt - k : /Applications/Kando.app/Contents/MacOS/Kando --menu "Quick Access"
 
       ${builtins.concatStringsSep "\n" (
         builtins.genList (
