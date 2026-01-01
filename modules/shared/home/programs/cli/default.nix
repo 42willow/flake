@@ -9,6 +9,7 @@
   cfg = osConfig.settings.programs;
 in {
   imports = [
+    ./atuin.nix
     ./bat.nix
     ./beets.nix
     ./bun.nix
