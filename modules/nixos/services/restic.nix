@@ -16,7 +16,7 @@ in {
     };
 
     security.wrappers.restic = {
-      source = "${pkgs.restic.out}/bin/restic";
+      source = lib.getExe pkgs.restic;
       owner = "restic";
       group = "restic";
       permissions = "u=rwx,g=,o=";
