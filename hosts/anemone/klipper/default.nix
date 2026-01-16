@@ -8,15 +8,15 @@
 in {
   services.klipper = {
     enable = true;
-    # user = "klipper";
-    # group = "klipper";
-    # configDir =
+    user = "root";
+    group = "root";
 
+    mutableConfig = true;
+    configDir = "/var/lib/moonraker/config";
     configFile = pkgs.writeText "klipper.cfg" ''
       [include ${mainsail-config}/client.cfg]
-      [include ${./printer.cfg}]
-    '';
 
-    # environment.etc
+      ${builtins.readFile ./printer.cfg}
+    '';
   };
 }
