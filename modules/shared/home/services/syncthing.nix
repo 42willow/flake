@@ -19,7 +19,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     services.syncthing = {
-      enable = true;
+      enable = false;
 
       settings = {
         inherit devices;
