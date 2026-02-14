@@ -11,6 +11,7 @@ in {
     user = "root";
     group = "root";
 
+    logFile = "/var/lib/klipper/klipper.log";
     mutableConfig = true;
     configDir = "/var/lib/moonraker/config";
     configFile = pkgs.writeText "klipper.cfg" ''

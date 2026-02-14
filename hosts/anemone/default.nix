@@ -23,6 +23,7 @@ in {
     programs = {
       enable = false;
       cli.enable = true;
+      tui.enable = true;
       categories = {
         enable = false;
         core.enable = true;
