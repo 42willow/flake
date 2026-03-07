@@ -19,13 +19,13 @@
       "gh"
       "just"
       "libqalculate"
-      "mpd"
       "ncmpcpp"
       "spicetify-cli"
       "yazi"
     ];
 
     casks = [
+      "affinity"
       "altserver"
       "angry-ip-scanner"
       "anki"
@@ -41,6 +41,7 @@
       "karabiner-elements"
       "keepassxc"
       "keka"
+      "krita"
       "lightburn"
       "linearmouse"
       "microsoft-excel"
@@ -50,13 +51,13 @@
       "notunes"
       "obsidian"
       "openscad@snapshot"
+      "orcaslicer"
       "prismlauncher"
       "spotify"
       "thunderbird"
       "utm"
       "vesktop"
       "yaak"
-      "krita"
     ];
   };
 }
