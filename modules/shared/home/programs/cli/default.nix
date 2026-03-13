@@ -54,6 +54,9 @@ in {
           gcc # needed for rust-analyzer
           rustc
 
+          # zig
+          zig
+
           # python
           uv
         ])

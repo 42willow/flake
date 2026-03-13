@@ -86,6 +86,7 @@ in {
             args = ["--stdio"];
           };
           markdown-oxide.command = lib.getExe pkgs.markdown-oxide;
+          zls.command = lib.getExe pkgs.zls;
         };
         language = map (lang:
           lang
@@ -153,6 +154,10 @@ in {
           {
             name = "yaml";
             formatter = dprint;
+          }
+          {
+            name = "zig";
+            language-servers = ["zls"];
           }
         ];
       };
