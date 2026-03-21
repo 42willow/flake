@@ -16,13 +16,18 @@
         animation_speed = 100;
         # sliver_height = 0.5;
       };
+
       swipe = {
+        sensitivity = 0.8;
+        deceleration = 10;
+        continuous = false;
+
         gesture = {
           fingers_count = 3;
           direction = "Natural";
         };
-        deceleration = 10;
       };
+
       padding = {
         top = 10;
         bottom = 10;
