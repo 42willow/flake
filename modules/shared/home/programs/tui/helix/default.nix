@@ -68,10 +68,6 @@ in {
             command = lib.getExe' pkgs.vscode-langservers-extracted "vscode-markdown-language-server";
             args = ["--stdio"];
           };
-          discord-rpc-lsp.command = lib.getExe pkgs.discord-rpc-lsp;
-          nil = {
-            command = lib.getExe pkgs.nil;
-          };
           tinymist = {
             command = lib.getExe pkgs.tinymist;
             config = {
@@ -85,8 +81,11 @@ in {
             command = lib.getExe pkgs.unstable.openscad-lsp;
             args = ["--stdio"];
           };
+          discord-rpc-lsp.command = lib.getExe pkgs.discord-rpc-lsp;
+          nil.command = lib.getExe pkgs.nil;
           markdown-oxide.command = lib.getExe pkgs.markdown-oxide;
           zls.command = lib.getExe pkgs.zls;
+          hls.command = lib.getExe' pkgs.haskell-language-server "haskell-language-server-wrapper";
         };
         language = map (lang:
           lang
@@ -158,6 +157,10 @@ in {
           {
             name = "zig";
             language-servers = ["zls"];
+          }
+          {
+            name = "haskell";
+            language-servers = ["hls"];
           }
         ];
       };

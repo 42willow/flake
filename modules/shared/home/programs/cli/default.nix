@@ -57,6 +57,9 @@ in {
           # zig
           zig
 
+          # haskell
+          ghc
+
           # python
           uv
         ])
