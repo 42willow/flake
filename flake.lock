@@ -574,6 +574,26 @@
         "type": "github"
       }
     },
+    "paneru": {
+      "inputs": {
+        "nixpkgs": [
+          "nixos-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1773933154,
+        "narHash": "sha256-pf7lPEwjTZsIq5EGDSr9YKhUo/wgHDu6tKIcSKvSH1U=",
+        "owner": "karinushka",
+        "repo": "paneru",
+        "rev": "8fd46a4e066ac2aa0145b8b48b5c5bd3ff049393",
+        "type": "github"
+      },
+      "original": {
+        "owner": "karinushka",
+        "repo": "paneru",
+        "type": "github"
+      }
+    },
     "quickshell": {
       "inputs": {
         "nixpkgs": [
@@ -610,6 +630,7 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "paneru": "paneru",
         "quickshell": "quickshell",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",

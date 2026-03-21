@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   services.yabai = {
-    enable = true;
+    enable = false;
     package = pkgs.unstable.yabai;
     enableScriptingAddition = true;
 
