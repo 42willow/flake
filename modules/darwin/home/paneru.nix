@@ -4,7 +4,7 @@
   ];
 
   services.paneru = {
-    enable = true;
+    enable = false;
 
     settings = {
       options = {

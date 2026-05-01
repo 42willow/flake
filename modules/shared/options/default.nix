@@ -89,6 +89,11 @@ in {
           description = "The group of the main user for your system";
           default = "users";
         };
+        flakeDir = mkOption {
+          type = types.path;
+          description = "The directory of this flake, used for symlinks";
+          default = "${cfg.system.user.home}/flake";
+        };
       };
 
       hostName = mkOption {
