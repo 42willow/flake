@@ -22,6 +22,7 @@ default_keys = false
 
 [keys]
 # https://docs.rs/livesplit-hotkey/0.8.0/livesplit_hotkey/enum.KeyCode.html
+# note: this means the keybinds are for QWERTY
 
 # Save the current state to the restore file and exit.
 # Restore this with the --restore option when starting glide.
@@ -91,7 +92,7 @@ default_keys = false
 "Alt + Space" = "toggle_focus_floating"
 
 # Toggle whether the focused node takes up the whole screen.
-"Alt + E" = "toggle_fullscreen"
+"Alt + Escape" = "toggle_fullscreen"
 
 #
 # Utilities
@@ -101,6 +102,9 @@ default_keys = false
 # DISABLED by default; see exec_cmd in Cargo.toml.
 # "Alt + Shift + V" = { "exec" = ["bash", "-c", "echo 'hello world' >/tmp/test.txt"] }
 "Alt + Q" = { "exec" = ["open", "-a", "Ghostty", "-n"] }
+"Alt + E" = { "exec" = ["open", "-a", "Helium"] }
+"Alt + F" = { "exec" = ["open", "-a", "Vesktop"] }
+"Alt + W" = { "exec" = ["open", "-a", "Finder"] }
 
 #
 # Developer commands
