@@ -20,10 +20,13 @@ in {
 
   settings = {
     system = {
-      user = {
+      user = let
+        home = "/Users/${cfg.system.user.name}";
+      in {
+        inherit home;
         name = builtins.getEnv "SUDO_USER";
         group = "staff";
-        home = "/Users/${cfg.system.user.name}";
+        flakeDir = "${home}/Documents/git/flake";
       };
       services.sync.enable = true;
     };
@@ -32,9 +35,10 @@ in {
   nix = {
     linux-builder = {
       enable = true;
-      # systems = ["aarch64-linux"];
+      systems = ["aarch64-linux"];
       # config.boot.binfmt.emulatedSystems = ["x86_64-linux" "aarch64-linux"];
     };
+    settings.trusted-users = ["@admin"];
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-darwin";
