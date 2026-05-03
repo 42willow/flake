@@ -12,6 +12,7 @@
     dontNpmPrune = true;
     npmDepsHash = "sha256-MG1DiutTelg6GQwIbMya+mQTx6UoDoRHZvAkVYC9deI=";
   });
+
   # prettier-plugin-organize-imports = pkgs.buildNpmPackage (_finalAttrs: {
   #   pname = "prettier-plugin-organize-imports";
   #   version = "4.3.0";
@@ -24,6 +25,7 @@
   #   dontNpmPrune = true;
   #   npmDepsHash = "";
   # });
+
   prettier-plugin-tailwindcss = pkgs.buildNpmPackage (_finalAttrs: {
     pname = "prettier-plugin-tailwindcss";
     version = "0.7.1";
@@ -36,6 +38,19 @@
     dontNpmPrune = true;
     npmDepsHash = "sha256-dTStXc92F4Izcg2mfWfhu8DzIqXoOHJlOAR2uYTjCvk=";
   });
+  # missing npm lockfile (uses pnpm)
+  # prettier-plugin-astro = pkgs.buildNpmPackage (_finalAttrs: {
+  #   pname = "prettier-plugin-astro";
+  #   version = "0.14.1";
+  #   src = pkgs.fetchFromGitHub {
+  #     owner = "withastro";
+  #     repo = "prettier-plugin-astro";
+  #     rev = "v0.14.1";
+  #     hash = "sha256-XGPz4D2UKOonet0tX3up5mCxw3/69XYPScxb9l7nzpE=";
+  #   };
+  #   dontNpmPrune = true;
+  #   npmDepsHash = "";
+  # });
 in {
   printWidth = 120;
   bracketSameLine = true;
@@ -43,11 +58,16 @@ in {
     "${prettier-plugin-svelte}/lib/node_modules/prettier-plugin-svelte/plugin.js"
     # "${prettier-plugin-organize-imports}/lib/node_modules/prettier-plugin-organize-imports/index.js"
     "${prettier-plugin-tailwindcss}/lib/node_modules/prettier-plugin-tailwindcss/dist/index.mjs"
+    # "${prettier-plugin-astro}/lib/node_modules/prettier-plugin-astro/index.js"
   ];
   overrides = [
     {
       files = "*.svelte";
       options = {parser = "svelte";};
+    }
+    {
+      files = "*.astro";
+      options = {parser = "astro";};
     }
   ];
 }

@@ -48,6 +48,10 @@ in {
             command = lib.getExe pkgs.svelte-language-server;
             args = ["--stdio"];
           };
+          astro-lsp = {
+            command = lib.getExe pkgs.astro-language-server;
+            args = ["--stdio"];
+          };
           typescript-lsp = {
             command = lib.getExe pkgs.typescript-language-server;
             args = ["--stdio"];
@@ -110,6 +114,10 @@ in {
             name = "svelte";
             language-servers = ["svelte-lsp"];
             formatter = prettier "svelte";
+          }
+          {
+            name = "astro";
+            language-servers = ["astro-lsp"];
           }
           {
             name = "markdown";
