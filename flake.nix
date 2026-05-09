@@ -147,7 +147,7 @@
     };
 
     quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      url = "git+https://git.outfoxxed.me/quickshell/quickshell";
 
       inputs.nixpkgs.follows = "nixos-unstable";
     };

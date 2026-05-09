@@ -11,9 +11,9 @@ pkgs.unstable.rustPlatform.buildRustPackage {
     owner = "glide-wm";
     repo = "glide";
     rev = "main";
-    hash = "sha256-HIyJmc8+jq2iZvS1jdVOxHieq8VoYgfC6r4Q1TSdymg=";
+    hash = "sha256-p9unwYgNzhQVvQKTnc3/EhG9te6X4lzCMEUC+bNrfiE=";
   };
-  cargoHash = "sha256-jQChxxu9DOwcS2RizjrGiE8E1cYsKwcJjMLNvqL7zWo=";
+  cargoHash = "sha256-E0SrvvAfJmIVYjZv9htxR/VoQyO0MdDFSWZ04tO0g1Y=";
 
   buildFeatures = ["exec_cmd"];
 
