@@ -40,24 +40,24 @@ default_keys = false
 "Alt + Semicolon" = { move_focus = "right" }
 
 # Move the focused window in the specified direction.
-# "Alt + Shift + H" = { move_node = "left" }
-# "Alt + Shift + J" = { move_node = "down" }
-# "Alt + Shift + K" = { move_node = "up" }
-# "Alt + Shift + L" = { move_node = "right" }
+"Alt + Shift + J" = { move_node = "left" }
+"Alt + Shift + K" = { move_node = "down" }
+"Alt + Shift + L" = { move_node = "up" }
+"Alt + Shift + Semicolon" = { move_node = "right" }
 
 # Resize the focused window in the specified direction by percentage.
-# "Alt + Ctrl + H" = { resize = { direction = "left", percent = 5 } }
-# "Alt + Ctrl + J" = { resize = { direction = "down", percent = 5 } }
-# "Alt + Ctrl + K" = { resize = { direction = "up", percent = 5 } }
-# "Alt + Ctrl + L" = { resize = { direction = "right", percent = 5 } }
+"Alt + Ctrl + J" = { resize = { direction = "left", percent = 5 } }
+"Alt + Ctrl + K" = { resize = { direction = "down", percent = 5 } }
+"Alt + Ctrl + L" = { resize = { direction = "up", percent = 5 } }
+"Alt + Ctrl + Semicolon" = { resize = { direction = "right", percent = 5 } }
 
 # Move up or down the tree hierarchy, selecting a parent or child node
 # respectively. These commands change which node is selected (similar to
 # move_focus) rather than moving windows. The selected node affects subsequent
 # operations like move_node, split, or group commands.
 # Note: The selected node is not currently shown visually.
-"Alt + A" = "ascend"
-"Alt + D" = "descend"
+# "Alt + A" = "ascend"
+# "Alt + D" = "descend"
 
 # # Toggle between saved layouts on the active space. This allows you to access
 # # layouts from other screen sizes.
@@ -67,8 +67,8 @@ default_keys = false
 # Create a container above the current node in the specified orientation.
 # This has the effect of "splitting" the current window/node once a new node
 # is added.
-"Alt + Backslash" = { split = "horizontal" }
-"Alt + Equal" = { split = "vertical" }
+"Alt + V" = { split = "horizontal" }
+"Alt + H" = { split = "vertical" }
 
 # # Change the parent node to a horizontal or vertical group, also known as
 # # "tabbed" and "stacked" respectively. Groups show one window at a time,
@@ -92,7 +92,7 @@ default_keys = false
 "Alt + Space" = "toggle_focus_floating"
 
 # Toggle whether the focused node takes up the whole screen.
-"Alt + Escape" = "toggle_fullscreen"
+"Alt + S" = "toggle_fullscreen"
 
 #
 # Utilities
