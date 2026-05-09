@@ -18,7 +18,6 @@ in {
     ./thunderbird.nix # mail
     ./tofi.nix # core
     ./zed # dev
-    ./zathura.nix # media
   ];
 
   config = lib.mkIf cfg.gui.enable {

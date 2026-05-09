@@ -1,5 +1,6 @@
 {
   imports = [
     ./terminals
+    ./zathura.nix
   ];
 }

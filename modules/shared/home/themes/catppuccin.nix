@@ -18,7 +18,6 @@ in {
       accent = "pink";
 
       enable = true;
-      zathura.enable = false;
     };
   };
 }
