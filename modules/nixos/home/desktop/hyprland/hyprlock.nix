@@ -42,7 +42,7 @@ in {
   config = lib.mkIf cfg.enable {
     catppuccin.hyprlock.useDefaultConfig = false;
     programs.hyprlock = {
-      enable = true;
+      enable = false;
       # package = inputs.nixos-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.hyprlock;
       # See https://wiki.hyprland.org/Hypr-Ecosystem/hyprlock
       settings = {
