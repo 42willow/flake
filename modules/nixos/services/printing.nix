@@ -14,7 +14,7 @@ in {
       # defaultShared = true;
       openFirewall = true;
       # use `lpinfo -m` to list printer drivers
-      drivers = [pkgs.gutenprint pkgs.mfcl8690cdwcupswrapper];
+      drivers = [pkgs.gutenprint pkgs.unstable.mfcl8690cdwcupswrapper];
     };
 
     services.avahi = {

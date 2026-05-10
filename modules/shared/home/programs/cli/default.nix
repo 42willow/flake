@@ -38,7 +38,7 @@ in {
         (optionals cfg.categories.dev.enable [
           # node
           nodePackages.npm
-          nodejs
+          # nodejs
           pnpm
 
           # nix
