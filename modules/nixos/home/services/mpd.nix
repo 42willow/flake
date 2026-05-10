@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   config,
   osConfig,
@@ -31,7 +30,7 @@ in {
 
       mpd-discord-rpc = {
         enable = true;
-        package = inputs.nixos-unstable.legacyPackages.${pkgs.system}.mpd-discord-rpc;
+        package = pkgs.unstable.mpd-discord-rpc;
         settings = {
           format = {
             details = "$title";

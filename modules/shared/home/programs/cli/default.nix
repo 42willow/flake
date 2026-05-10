@@ -27,8 +27,8 @@ in {
     with inputs;
       concatLists [
         (optionals cfg.categories.tools.enable [
-          catppuccin.packages."${pkgs.system}".catwalk
-          catppuccin.packages."${pkgs.system}".whiskers
+          catppuccin.packages."${pkgs.stdenv.hostPlatform.system}".catwalk
+          catppuccin.packages."${pkgs.stdenv.hostPlatform.system}".whiskers
 
           # archivebox
           just

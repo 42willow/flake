@@ -33,7 +33,7 @@ in {
         size = 24;
       };
 
-      image = "${inputs.wallpapers.packages.${pkgs.system}.macchiato}/share/wallpapers/macchiato/images/art/kurzgesagt/on_a_moon.png";
+      image = "${inputs.wallpapers.packages.${pkgs.stdenv.hostPlatform.system}.macchiato}/share/wallpapers/macchiato/images/art/kurzgesagt/on_a_moon.png";
     };
   };
 }
