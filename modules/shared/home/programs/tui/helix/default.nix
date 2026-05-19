@@ -88,6 +88,7 @@ in {
           discord-rpc-lsp.command = lib.getExe pkgs.discord-rpc-lsp;
           nil.command = lib.getExe pkgs.nil;
           markdown-oxide.command = lib.getExe pkgs.markdown-oxide;
+          rust-analyzer.command = lib.getExe pkgs.rust-analyzer;
           zls.command = lib.getExe pkgs.zls;
           hls.command = lib.getExe' pkgs.haskell-language-server "haskell-language-server-wrapper";
         };
@@ -104,6 +105,11 @@ in {
             name = "nix";
             language-servers = ["nil"];
             formatter.command = lib.getExe pkgs.alejandra;
+          }
+          {
+            name = "rust";
+            language-servers = ["rust-analyzer"];
+            formatter.command = lib.getExe pkgs.rustfmt;
           }
           {
             name = "html";
