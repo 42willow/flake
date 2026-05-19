@@ -103,7 +103,7 @@ default_keys = false
 # "Alt + Shift + V" = { "exec" = ["bash", "-c", "echo 'hello world' >/tmp/test.txt"] }
 "Alt + Q" = { "exec" = ["open", "-a", "Ghostty", "-n"] }
 "Alt + E" = { "exec" = ["open", "-a", "Helium"] }
-"Alt + F" = { "exec" = ["open", "-a", "Vesktop"] }
+"Alt + F" = { "exec" = ["open", "-a", "Legcord"] }
 "Alt + W" = { "exec" = ["open", "-a", "Finder"] }
 
 #
