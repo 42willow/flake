@@ -7,6 +7,7 @@ in {
     ./home
     ./homebrew.nix
     ./nix
+    ./services
   ];
 
   users.users.${user.name}.home = user.home;
