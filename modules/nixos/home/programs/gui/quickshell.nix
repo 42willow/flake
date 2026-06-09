@@ -10,7 +10,7 @@ in {
   config = lib.mkIf (cfg.gui.enable
     && cfg.categories.core.enable) {
     home.packages = [
-      inputs.quickshell.packages.${pkgs.system}.default
+      inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
     qt.enable = true;
   };

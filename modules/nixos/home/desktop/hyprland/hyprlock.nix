@@ -42,8 +42,8 @@ in {
   config = lib.mkIf cfg.enable {
     catppuccin.hyprlock.useDefaultConfig = false;
     programs.hyprlock = {
-      enable = true;
-      # package = inputs.nixos-unstable.legacyPackages.${pkgs.system}.hyprlock;
+      enable = false;
+      # package = inputs.nixos-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.hyprlock;
       # See https://wiki.hyprland.org/Hypr-Ecosystem/hyprlock
       settings = {
         general = {
@@ -53,7 +53,7 @@ in {
 
         # ── Background ────────────────────────────────────────────────────────
         background = {
-          path = "${inputs.wallpapers.packages.${pkgs.system}.macchiato}/share/wallpapers/macchiato/images/art/kurzgesagt/unknown_lifeform.png";
+          path = "${inputs.wallpapers.packages.${pkgs.stdenv.hostPlatform.system}.macchiato}/share/wallpapers/macchiato/images/art/kurzgesagt/unknown_lifeform.png";
           blur_passes = 2;
         };
 

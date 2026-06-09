@@ -46,7 +46,7 @@ in {
         ])
 
         (optionals cfg.categories.media.enable [
-          darktable
+          # darktable
           eog
           mpv
         ])
@@ -55,9 +55,9 @@ in {
           nautilus
         ])
 
-        (optionals cfg.categories.dev.enable [
-          vscode
-        ])
+        # (optionals cfg.categories.dev.enable [
+        #   vscode
+        # ])
 
         (optionals cfg.categories.design.enable [
           # graphic design

@@ -5,14 +5,14 @@
 }: {
   nixpkgs-unstable = final: _prev: {
     unstable = import inputs.nixpkgs-unstable {
-      system = final.system;
+      system = final.stdenv.hostPlatform.system;
       config.allowUnfree = true;
     };
   };
 
   nixos-unstable = final: _prev: {
     unstable = import inputs.nixos-unstable {
-      system = final.system;
+      system = final.stdenv.hostPlatform.system;
       config.allowUnfree = true;
     };
   };
