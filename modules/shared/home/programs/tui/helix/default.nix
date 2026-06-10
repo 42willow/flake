@@ -19,7 +19,7 @@ in {
 
       languages = let
         prettier = lang: {
-          command = lib.getExe pkgs.nodePackages.prettier;
+          command = lib.getExe pkgs.prettier;
           args = [
             "--parser"
             lang

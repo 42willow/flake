@@ -50,24 +50,24 @@
   };
 
   inputs = {
-    nixos-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixos-stable.url = "github:nixos/nixpkgs/nixos-26.05";
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    darwin-stable.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
+    darwin-stable.url = "github:nixos/nixpkgs/nixpkgs-26.05-darwin";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "darwin-stable";
     };
 
     # themes
     catppuccin = {
-      url = "github:catppuccin/nix/release-25.11";
+      url = "github:catppuccin/nix/release-26.05";
       inputs.nixpkgs.follows = "nixos-stable";
     };
     stylix = {
-      url = "github:danth/stylix/release-25.11";
+      url = "github:danth/stylix/release-26.05";
       # inputs = {
       #   nixpkgs.follows = "nixpkgs";
       #   systems.follows = "systems";
@@ -86,7 +86,7 @@
 
     # home-manager
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixos-stable";
     };
 

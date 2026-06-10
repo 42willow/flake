@@ -8,7 +8,7 @@ in {
   config = lib.mkIf (cfg.gui.enable
     && cfg.categories.media.enable) {
     programs.zathura = {
-      enable = true;
+      enable = false;
 
       options = {
         selection-clipboard = "clipboard";

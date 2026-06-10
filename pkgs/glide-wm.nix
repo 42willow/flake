@@ -10,18 +10,21 @@ pkgs.unstable.rustPlatform.buildRustPackage {
   src = fetchFromGitHub {
     owner = "glide-wm";
     repo = "glide";
-    rev = "main";
-    hash = "sha256-p9unwYgNzhQVvQKTnc3/EhG9te6X4lzCMEUC+bNrfiE=";
+    rev = "v0.2.13";
+    hash = "sha256-xF5Tu2cdrzY9e/Q1EmhXITHDfTro+NTcCYXi6cLzb1o=";
   };
-  cargoHash = "sha256-E0SrvvAfJmIVYjZv9htxR/VoQyO0MdDFSWZ04tO0g1Y=";
+  cargoHash = "sha256-cVLVhN2ZQstujSgOcLG81QtCMWBkj3UXv9MQvxAxbdo=";
 
-  buildFeatures = ["exec_cmd"];
+  # skip tests blocked by Nix sandbox
+  checkFlags = [
+    "--skip=sys::bundle::tests::launch_cli_with_open_runs_command_through_helper"
+    "--skip=sys::bundle::tests::launch_cli_with_open_captures_failure_output"
+  ];
 
   meta = with lib; {
     description = "A tiling window manager for macOS";
     homepage = "https://github.com/glide-wm/glide";
     license = licenses.asl20;
-    maintainers = [];
     platforms = platforms.darwin;
     mainProgram = "glide";
   };

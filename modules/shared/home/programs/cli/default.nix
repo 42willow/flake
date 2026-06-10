@@ -37,9 +37,6 @@ in {
           typst
         ])
         (optionals cfg.categories.dev.enable [
-          # node
-          nodePackages.npm
-          # nodejs
           pnpm
 
           # nix
