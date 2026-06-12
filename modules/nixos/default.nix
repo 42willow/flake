@@ -5,6 +5,7 @@
   ...
 }: let
   inherit (config.settings.system) user;
+  inherit (config.settings.programs.terminal.shell) userShell;
 
   keys = [
     "${self}/keys/anemone.pub"
@@ -28,7 +29,13 @@ in {
     inherit (user) home;
     isNormalUser = true;
     extraGroups = ["networkmanager" "wheel" "dialout"];
-    shell = pkgs.zsh;
+    shell =
+      if userShell == "zsh"
+      then pkgs.zsh
+      else if userShell == "nushell"
+      then pkgs.nushell
+      else pkgs.bash;
+
     initialHashedPassword = "";
     openssh.authorizedKeys.keyFiles = keys;
   };

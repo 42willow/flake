@@ -10,7 +10,10 @@
 in {
   imports = [
     ./hyfetch.nix
+    ./ncmpcpp.nix
     ./nushell.nix
+    ./yazi.nix
+    # ./lazygit.nix # dev
   ];
   config = lib.mkIf cfg.cli.enable {
     home.packages = with pkgs;
@@ -21,6 +24,7 @@ in {
           ddcutil
           grim
           killall
+          peaclock
           playerctl
           slurp
           wl-clipboard

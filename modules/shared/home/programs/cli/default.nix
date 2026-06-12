@@ -12,11 +12,14 @@ in {
     ./atuin.nix
     ./bat.nix
     ./beets.nix
+    ./btop.nix
     ./bun.nix
     ./direnv.nix
     ./eza.nix
     ./fzf.nix
     ./git.nix
+    ./gitui.nix
+    ./helix
     ./ripgrep.nix
     ./starship.nix
     ./zoxide.nix

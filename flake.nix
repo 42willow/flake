@@ -45,7 +45,11 @@
       inherit self;
     };
 
-    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    packages = forAllSystems (system:
+      import ./pkgs {
+        pkgs = nixpkgs.legacyPackages.${system};
+        inherit inputs self;
+      });
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
   };
 

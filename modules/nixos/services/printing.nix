@@ -23,6 +23,7 @@ in {
       openFirewall = true;
     };
 
+    # TODO enable this with services.printing.profiles.enable
     hardware.printers = {
       ensurePrinters = [
         {
