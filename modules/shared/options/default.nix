@@ -8,20 +8,58 @@
   cfg = config.nest;
 in {
   options.nest = {
-    # TODO: use different namespace
     profile = mkOption {
-      type = types.enum ["desktop" "server" "minimal"];
-      default = "minimal"; # TODO minimal config is default
-      description = "The system profile preset to apply.";
+      type = types.nullOr (types.enum ["desktop" "server"]);
+      default = null;
+      description = "The system profile preset to apply. If null, the system falls back to the minimal defaults.";
     };
 
     programs = {
-      # no platform namespaces for programs e.g. cli.darwin
-      # internal implementation will ignore programs that
-      # doesn't
-      enable = mkEnableOption "programs";
-      cli.enable = mkEnableOption "CLI programs";
-      gui.enable = mkEnableOption "GUI programs";
+      enable = mkEnableOption "programs" // {default = true;};
+      cli = mkEnableOption "CLI programs" // {default = true;};
+      gui = mkEnableOption "GUI programs";
+
+      games.enable = mkEnableOption "games";
+      media.enable = mkEnableOption "media and creative tools";
+      productivity.enable = mkEnableOption "productivity programs";
+      social.enable = mkEnableOption "social programs";
+
+      utilities = {
+        git.enable = mkEnableOption "git version control" // {default = true;};
+        btop.enable = mkEnableOption "btop resource monitor";
+      };
+
+      browsers = {
+        helium.enable = mkEnableOption "helium browser"; # TODO not in nixpkgs yet https://github.com/NixOS/nixpkgs/pull/498572
+        firefox.enable = mkEnableOption "firefox browser";
+        floorp.enable = mkEnableOption "floorp browser";
+      };
+
+      terminal = {
+        emulator = {
+          ghostty.enable = mkEnableOption "ghostty";
+          alacritty.enable = mkEnableOption "alacritty";
+          kitty.enable = mkEnableOption "kitty";
+        };
+        shell = {
+          atuin.enable = mkEnableOption "atuin shell history";
+          starship.enable = mkEnableOption "starship prompt" // {default = cfg.programs.terminal.tools.enable;};
+          zsh.enable = mkEnableOption "zsh";
+          nushell.enable = mkEnableOption "nushell";
+          userShell = lib.mkOption {
+            type = lib.types.enum ["zsh" "nushell" "bash"];
+            default = "zsh";
+            description = "The primary interactive shell the user account.";
+          };
+        };
+        tools = {
+          enable = mkEnableOption "modern terminal utilities";
+          bat.enable = mkEnableOption "bat" // {default = cfg.programs.terminal.tools.enable;};
+          eza.enable = mkEnableOption "eza" // {default = cfg.programs.terminal.tools.enable;};
+          fzf.enable = mkEnableOption "fzf" // {default = cfg.programs.terminal.tools.enable;};
+          zoxide.enable = mkEnableOption "zoxide" // {default = cfg.programs.terminal.tools.enable;};
+        };
+      };
 
       devtools = {
         enable = mkEnableOption "developer tools";
@@ -35,37 +73,8 @@ in {
         zig.enable = mkEnableOption "zig tooling";
 
         web = {
-          enable = mkEnableOption "web tooling";
           pnpm.enable = lib.mkEnableOption "pnpm package manager";
           bun.enable = lib.mkEnableOption "bun runtime and toolchain";
-        };
-      };
-
-      games.enable = mkEnableOption "games";
-      media.enable = mkEnableOption "media and creative tools";
-      productivity.enable = mkEnableOption "productivity programs";
-      social.enable = mkEnableOption "social programs";
-      browsers = {
-        enable = mkEnableOption "web browsers";
-        helium.enable = mkEnableOption "helium browser"; # TODO not in nixpkgs yet https://github.com/NixOS/nixpkgs/pull/498572
-        firefox.enable = mkEnableOption "firefox browser";
-        floorp.enable = mkEnableOption "floorp browser";
-      };
-
-      terminal = {
-        emulator = {
-          ghostty.enable = mkEnableOption "ghostty";
-          alacritty.enable = mkEnableOption "alacritty";
-          kitty.enable = mkEnableOption "kitty";
-        };
-        shell = {
-          zsh.enable = mkEnableOption "zsh";
-          nushell.enable = mkEnableOption "nushell";
-          userShell = lib.mkOption {
-            type = lib.types.enum ["zsh" "nushell" "bash"];
-            default = "zsh";
-            description = "The primary interactive shell the user account.";
-          };
         };
       };
     };
@@ -98,31 +107,6 @@ in {
         type = types.str;
         description = "The hostname of your system.";
       };
-
-      services = {
-        enable = mkEnableOption "core system services";
-        backups = {
-          # TODO: move this to shared/
-          enable = mkEnableOption "backups via restic";
-        };
-        bluetooth.enable = mkEnableOption "Bluetooth";
-        # not available on darwin
-        networking = {
-          enable = mkEnableOption "networking" // {default = cfg.system.services.enable;};
-          profiles.enable = mkEnableOption "NetworkManager profiles" // {default = true;}; # TODO
-          tailscale.enable = mkEnableOption "tailscale"; # TODO
-          tor.enable = mkEnableOption "TOR network";
-        };
-        # not available on darwin
-        printing = {
-          enable = mkEnableOption "printing";
-          profiles = mkEnableOption "printing profiles" // {default = true;}; # TODO
-        };
-        # not available on darwin
-        sound.enable = mkEnableOption "sound";
-        ssh.enable = mkEnableOption "SSH server";
-        sync.enable = mkEnableOption "syncthing";
-      };
     };
 
     desktop = {
@@ -131,23 +115,48 @@ in {
       hyprland.enable = mkEnableOption "Hyprland";
     };
 
-    selfhost = {
-      enable = mkEnableOption "selfhosted applications";
-      # caddy.enable = mkEnableOption "caddy"; not needed with cloudflared
-      kanidm.enable = mkEnableOption "kanidm";
-      cloudflared.enable = mkEnableOption "cloudflared";
-      pihole.enable = mkEnableOption "pihole"; # TODO or coredns or adguard home for "split horizon DNS" maybe?
-
-      atuin.enable = mkEnableOption "atuin";
-      pds.enable = mkEnableOption "pds";
-      tangled.knot.enable = mkEnableOption "tangled knot";
-      glance.enable = mkEnableOption "tangled knot";
-      printing3d = {
-        enable = mkEnableOption "3D printing"; # TODO
-        klipper.enable = mkEnableOption "klipper";
-        mainsail.enable = mkEnableOption "mainsail";
+    services = {
+      enable = mkEnableOption "core system services" // {default = true;};
+      backups = {
+        # TODO: move this to shared/
+        enable = mkEnableOption "backups via restic";
       };
-      navidrome.enable = mkEnableOption "navidrome";
+      bluetooth.enable = mkEnableOption "Bluetooth";
+      # not available on darwin
+      networking = {
+        enable = mkEnableOption "networking" // {default = cfg.system.services.enable;};
+        profiles.enable = mkEnableOption "NetworkManager profiles" // {default = true;};
+        tailscale.enable = mkEnableOption "tailscale";
+        tor.enable = mkEnableOption "TOR network";
+      };
+      # not available on darwin
+      printing = {
+        enable = mkEnableOption "printing";
+        profiles = mkEnableOption "printing profiles" // {default = true;};
+      };
+      # not available on darwin
+      sound.enable = mkEnableOption "sound";
+      ssh.enable = mkEnableOption "SSH server";
+      sync.enable = mkEnableOption "syncthing";
+
+      selfhost = {
+        enable = mkEnableOption "selfhosting services";
+        # caddy.enable = mkEnableOption "caddy"; not needed with cloudflared
+        kanidm.enable = mkEnableOption "kanidm";
+        cloudflared.enable = mkEnableOption "cloudflared";
+        pihole.enable = mkEnableOption "pihole"; # TODO or coredns or adguard home for "split horizon DNS" maybe?
+
+        atuin.enable = mkEnableOption "atuin";
+        pds.enable = mkEnableOption "pds";
+        tangled.knot.enable = mkEnableOption "tangled knot";
+        glance.enable = mkEnableOption "tangled knot";
+        printing3d = {
+          enable = mkEnableOption "3D printing"; # TODO
+          klipper.enable = mkEnableOption "klipper";
+          mainsail.enable = mkEnableOption "mainsail";
+        };
+        navidrome.enable = mkEnableOption "navidrome";
+      };
     };
   };
 }

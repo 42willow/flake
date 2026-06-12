@@ -8,6 +8,10 @@
   profiles = {
     # defaults from options.nix
     minimal = {
+      programs = {
+        enable = lib.mkDefault true;
+        cli = lib.mkDefault true;
+      };
       system.services = {
         enable = lib.mkDefault true;
         networking.enable = lib.mkDefault true;
@@ -23,22 +27,22 @@
         cli.enable = lib.mkDefault true;
         gui.enable = lib.mkDefault true;
 
-        games.enable = true;
-        media.enable = true;
-        productivity.enable = true;
-        social.enable = true;
+        games.enable = lib.mkDefault true;
+        media.enable = lib.mkDefault true;
+        productivity.enable = lib.mkDefault true;
+        social.enable = lib.mkDefault true;
         browsers = {
-          enable = true;
-          helium.enable = true;
-          firefox.enable = true;
+          helium.enable = lib.mkDefault true;
+          firefox.enable = lib.mkDefault true;
         };
 
         terminal = {
           emulator.ghostty.enable = lib.mkDefault true;
           shell = {
-            zsh.enable = true;
+            zsh.enable = lib.mkDefault true;
             userShell = "zsh";
           };
+          tools.enable = lib.mkDefault true;
         };
       };
       system.services = {
@@ -58,13 +62,11 @@
     server = {
       programs = {
         enable = lib.mkDefault true;
-        cli.enable = lib.mkDefault true;
+        cli = lib.mkDefault true;
 
         terminal = {
-          enable = lib.mkDefault true;
-          emulator.ghostty.enable = lib.mkDefault true;
           shell = {
-            zsh.enable = true;
+            zsh.enable = lib.mkDefault true;
             userShell = "zsh";
           };
         };
