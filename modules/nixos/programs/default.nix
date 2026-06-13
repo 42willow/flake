@@ -4,7 +4,7 @@
   ...
 }: let
   cfg = config.nest.programs;
-in{
+in {
   imports = [
     ./fonts.nix
   ];

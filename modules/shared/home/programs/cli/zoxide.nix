@@ -7,7 +7,7 @@
   cfg = osConfig.nest.programs;
 in {
   config = lib.mkIf (cfg.cli
-    &&cfg.terminal.tools.zoxide.enable) {
+    && cfg.terminal.tools.zoxide.enable) {
     programs.zoxide = {
       enable = true;
       enableBashIntegration = config.programs.bash.enable;

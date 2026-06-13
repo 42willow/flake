@@ -6,7 +6,8 @@
 }: let
   cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf cfg.cli { # TODO options
+  config = lib.mkIf cfg.cli {
+    # TODO options
     programs.zsh = {
       enable = true;
       enableCompletion = true;

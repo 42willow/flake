@@ -2,7 +2,9 @@
   config,
   pkgs,
   ...
-}: let cfg = config.nest.services.networking; in {
+}: let
+  cfg = config.nest.services.networking;
+in {
   networking = {
     inherit (config.nest.system) hostName;
     networkmanager = {
