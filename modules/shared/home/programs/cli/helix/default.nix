@@ -8,9 +8,11 @@
   cfg = osConfig.nest.programs;
 in {
   config = lib.mkIf cfg.cli {
-    xdg.configFile.".prettierrc.json".text = builtins.toJSON (import ./prettier.nix {inherit pkgs;});
-    xdg.configFile.".dprint.jsonc".text = builtins.toJSON (import ./dprint.nix {inherit pkgs;});
-    xdg.configFile."moxide/settings.toml".source = ./moxide.toml;
+    xdg.configFile = {
+      ".dprint.jsonc".text = builtins.toJSON (import ./dprint.nix {inherit pkgs;});
+      ".prettierrc.json".text = builtins.toJSON (import ./prettier.nix {inherit pkgs;});
+      "moxide/settings.toml".source = ./moxide.toml;
+    };
 
     programs.helix = {
       enable = true;

@@ -12,8 +12,11 @@ in {
       lfs.enable = true;
 
       settings = {
-        user.name = "willow";
-        user.email = "42willow" + "@" + "pm.me";
+        user = {
+          name = "willow";
+          email = "42willow" + "@" + "pm.me";
+          signingkey = osConfig.age.secrets.gh.path;
+        };
 
         aliases = {
           co = "checkout";
@@ -50,7 +53,6 @@ in {
         # commit signing
         commit.gpgsign = true;
         gpg.format = "ssh";
-        user.signingkey = osConfig.age.secrets.gh.path;
         gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.ssh/allowed_signers";
       };
     };

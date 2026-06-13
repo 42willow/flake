@@ -5,7 +5,7 @@
 }: let
   cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.cli) {
+  config = lib.mkIf cfg.cli {
     programs.bat.enable = cfg.terminal.tools.bat.enable;
   };
 }
