@@ -9,7 +9,7 @@
     nixpkgs,
     ...
   } @ inputs: let
-    mkNixosSystem = name: hostPath:
+    mkNixosSystem = _name: hostPath:
       nixos-stable.lib.nixosSystem {
         modules = [
           hostPath
@@ -18,7 +18,7 @@
         specialArgs = {inherit self inputs;};
       };
 
-    mkDarwinSystem = name: hostPath:
+    mkDarwinSystem = _name: hostPath:
       nix-darwin.lib.darwinSystem {
         modules = [
           hostPath

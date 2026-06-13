@@ -8,7 +8,7 @@
   };
   plugins = with pkgs;
     dprint-plugins.getPluginList (
-      plugins:
+      _plugins:
         with dprint-plugins; [
           dprint-plugin-json
           dprint-plugin-markdown
