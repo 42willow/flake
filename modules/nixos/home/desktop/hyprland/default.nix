@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = osConfig.settings.desktop.hyprland;
+  cfg = osConfig.nest.desktop;
 in {
   imports = [
     ./autostart.nix
@@ -17,7 +17,7 @@ in {
     ./settings.nix
   ];
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (cfg.enable && cfg.hyprland.enable) {
     wayland.windowManager.hyprland = {
       enable = true;
     };

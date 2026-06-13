@@ -3,9 +3,9 @@
   osConfig,
   ...
 }: let
-  cfg = osConfig.settings.desktop.hyprland;
+  cfg = osConfig.nest.desktop;
 in {
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (cfg.enable && cfg.hyprland.enable) {
     services.hypridle = {
       enable = false;
       settings = {

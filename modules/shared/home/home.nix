@@ -1,5 +1,5 @@
 {osConfig, ...}: let
-  inherit (osConfig.settings.system) user;
+  inherit (osConfig.nest.system) user;
 in {
   imports = [
     ./programs

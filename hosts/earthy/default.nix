@@ -11,10 +11,15 @@ in {
     "${self}/modules/nixos"
   ];
 
-  settings = {
+  nest = {
     system = {
       hostName = "earthy";
-      services.sync.enable = true;
+    };
+    services = {
+      syncthing.enable = true;
+      selfhost = {
+        mpd.enable = true;
+      };
     };
   };
 

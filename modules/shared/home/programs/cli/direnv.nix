@@ -4,10 +4,10 @@
   config,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.cli.enable
-    && cfg.categories.dev.enable) {
+  config = lib.mkIf (cfg.cli
+    && cfg.devtools.nix.enable) {
     programs.direnv = {
       enable = true;
       silent = true;

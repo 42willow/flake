@@ -6,7 +6,7 @@
 }: let
   inherit (inputs) self;
 
-  cfg = config.settings;
+  cfg = config.nest;
 in {
   imports = [
     "${self}/modules/darwin"
@@ -18,7 +18,7 @@ in {
     hostName = "starling";
   };
 
-  settings = {
+  nest = {
     system = {
       user = let
         home = "/Users/${cfg.system.user.name}";
@@ -28,7 +28,7 @@ in {
         group = "staff";
         flakeDir = "${home}/Documents/git/flake";
       };
-      services.sync.enable = true;
+      services.syncthing.enable = true;
     };
   };
 

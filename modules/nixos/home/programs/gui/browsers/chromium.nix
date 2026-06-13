@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = osConfig.settings.programs.categories.web;
+  cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (cfg.gui && cfg.browsers.chromium.enable) {
     programs.chromium = {
       enable = true;
       extensions = [

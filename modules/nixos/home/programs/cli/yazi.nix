@@ -3,10 +3,9 @@
   lib,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.tui.enable
-    && cfg.categories.fs.enable) {
-    programs.yazi.enable = true;
+  config = lib.mkIf cfg.cli {
+    programs.yazi.enable = false;
   };
 }

@@ -4,7 +4,7 @@
   inputs,
   ...
 }: let
-  cfg = osConfig.settings.programs.categories.web;
+  cfg = osConfig.nest.programs;
   ffConfig = {
     "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
     "browser.ml.chat.enabled" = false;
@@ -23,7 +23,7 @@ in {
     ./policies.nix
   ];
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (cfg.gui && cfg.browsers.firefox.enable) {
     programs.firefox = {
       enable = true;
 

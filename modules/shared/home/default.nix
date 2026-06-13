@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  inherit (config.settings.system) user;
+  inherit (config.nest.system) user;
 in {
   home-manager = {
     useGlobalPkgs = true;

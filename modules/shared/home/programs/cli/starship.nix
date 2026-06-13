@@ -5,7 +5,7 @@
   osConfig,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
   # ss = symbol: style: {
   #   inherit symbol;
   #   format = "[$symbol ](${style})";
@@ -15,8 +15,8 @@
     format = "via [$symbol](${style})";
   };
 in {
-  config = lib.mkIf (cfg.cli.enable
-    && cfg.categories.core.enable) {
+  config = lib.mkIf (cfg.cli
+    && cfg.terminal.shell.starship.enable) {
     programs.starship = {
       enable = true;
       enableBashIntegration = config.programs.bash.enable;

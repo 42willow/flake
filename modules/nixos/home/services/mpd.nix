@@ -5,7 +5,7 @@
   lib,
   ...
 }: let
-  cfg = osConfig.settings.programs.categories.music;
+  cfg = osConfig.nest.services.selfhost.mpd;
 in {
   config = lib.mkIf cfg.enable {
     services = {

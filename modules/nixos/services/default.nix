@@ -4,21 +4,22 @@
   config,
   ...
 }: let
-  cfg = config.settings.system.services;
+  cfg = config.nest.services;
 in {
   imports = [
     ./i18n.nix
     ./mpdscribble.nix
     ./pipewire.nix
     ./printing.nix
-    ./privacy.nix
     ./restic.nix
+    ./tor.nix
     # ./sddm.nix
     # ./xfce.nix
   ];
 
   config = lib.mkIf cfg.enable {
     services = {
+      # TODO some of these can probably be disabled for server environments
       gnome.gnome-keyring.enable = true;
       dbus.enable = true; # D-Bus message bus
       fstrim.enable = true; # SSD TRIM

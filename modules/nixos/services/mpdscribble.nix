@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  cfg = config.settings.programs.categories.music;
+  cfg = config.nest.services.selfhost.mpd;
 in {
   config = lib.mkIf cfg.enable {
     services.mpdscribble = {

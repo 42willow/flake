@@ -4,8 +4,8 @@
   config,
   ...
 }: let
-  inherit (config.settings.system) user;
-  inherit (config.settings.programs.terminal.shell) userShell;
+  inherit (config.nest.system) user;
+  inherit (config.nest.programs.terminal.shell) userShell;
 
   keys = [
     "${self}/keys/anemone.pub"

@@ -4,11 +4,11 @@
   lib,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
   # TODO: sync and dedicated server
-  config = lib.mkIf (cfg.cli.enable
-    && cfg.categories.core.enable) {
+  config = lib.mkIf (cfg.cli
+    && cfg.terminal.shell.atuin.enable) {
     programs.atuin = {
       enable = true;
 

@@ -8,7 +8,7 @@
   lib,
   ...
 }: let
-  cfg = osConfig.settings.desktop.hyprland;
+  cfg = osConfig.nest.desktop;
 
   scripts = {
     song-art = pkgs.writeShellScriptBin "song-art" ''
@@ -39,7 +39,7 @@
     '';
   };
 in {
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (cfg.enable && cfg.hyprland.enable) {
     catppuccin.hyprlock.useDefaultConfig = false;
     programs.hyprlock = {
       enable = false;

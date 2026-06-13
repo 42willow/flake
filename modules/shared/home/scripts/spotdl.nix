@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  cfg = osConfig.settings.programs.categories.music;
+  cfg = osConfig.nest.programs.categories.music;
 
   # TODO)) Add queuing for multiple URLs
   bdl = pkgs.writeShellScriptBin "bdl" ''

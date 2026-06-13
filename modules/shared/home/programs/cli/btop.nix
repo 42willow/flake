@@ -3,10 +3,9 @@
   lib,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.tui.enable
-    && cfg.categories.core.enable) {
+  config = lib.mkIf cfg.cli {
     programs.btop.enable = true;
   };
 }

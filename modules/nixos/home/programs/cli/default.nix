@@ -5,34 +5,30 @@
   lib,
   ...
 }: let
-  inherit (lib) optionals concatLists;
-  cfg = osConfig.settings.programs;
+  inherit (lib) optionals;
+  cfg = osConfig.nest;
 in {
   imports = [
     ./hyfetch.nix
     ./ncmpcpp.nix
     ./nushell.nix
     ./yazi.nix
-    # ./lazygit.nix # dev
+    ./lazygit.nix
   ];
-  config = lib.mkIf cfg.cli.enable {
+  config = lib.mkIf cfg.programs.cli {
     home.packages = with pkgs;
     with inputs;
-      concatLists [
-        (optionals cfg.categories.tools.enable [
-          brightnessctl
-          ddcutil
-          grim
-          killall
-          peaclock
-          playerctl
-          slurp
-          wl-clipboard
-        ])
-        (optionals cfg.categories.dev.enable [
-          # nix
-          nix-output-monitor
-        ])
+      [
+        nix-output-monitor
+      ]
+      ++ optionals cfg.desktop.enable [
+        brightnessctl
+        ddcutil
+        grim
+        killall
+        playerctl
+        slurp
+        wl-clipboard
       ];
   };
 }

@@ -2,13 +2,13 @@
   config,
   pkgs,
   ...
-}: {
+}: let cfg = config.nest.services.networking; in {
   networking = {
-    inherit (config.settings.system) hostName;
+    inherit (config.nest.system) hostName;
     networkmanager = {
       enable = true;
       # https://github.com/Janik-Haag/nm2nix
-      ensureProfiles = {
+      ensureProfiles = lib.mkIf cfg.profiles {
         environmentFiles = [config.age.secrets.wifi.path];
 
         # https://github.com/alyraffauf/nixcfg/blob/4ccc90fe11c63702879cf50b888ee460c185400d/common/wifi.nix

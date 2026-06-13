@@ -5,35 +5,49 @@
   ...
 }: let
   inherit (lib) optionals concatLists;
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
   imports = [
     ./browsers
-    ./waybar # core
-    # ./cura.nix # 3dp
-    # ./lightburn.nix # cnc
-    # ./obs-studio.nix # media
-    ./quickshell.nix # core
-    ./spicetify.nix # music
-    ./thunderbird.nix # mail
-    ./tofi.nix # core
-    ./zed # dev
+    ./waybar
+    ./cura.nix
+    # ./lightburn.nix
+    # ./obs-studio.nix
+    # ./quickshell.nix
+    ./spicetify.nix
+    ./thunderbird.nix
+    ./tofi.nix
+    ./zed
   ];
 
-  config = lib.mkIf cfg.gui.enable {
+  config = lib.mkIf cfg.gui {
     home.packages = with pkgs;
       concatLists [
-        (optionals cfg.categories.tools.enable [
+        [
           keepassxc
           localsend
           polkit_gnome
           popsicle
+          nautilus
+        ]
+
+        (optionals cfg.games.enable [
+          prismlauncher
+        ])
+
+        (optionals cfg.privacy.enable [
+          tor-browser
+        ])
+
+        (optionals cfg.media.enable [
+          # darktable
+          eog
+          mpv
+          calibre
           qbittorrent
         ])
 
-        (optionals cfg.categories.fun.enable [
-          calibre
-          prismlauncher
+        (optionals cfg.social.enable [
           vesktop
           hexchat
           (discord.override {
@@ -41,51 +55,28 @@ in {
           })
         ])
 
-        (optionals cfg.categories.privacy.enable [
-          tor-browser
-        ])
-
-        (optionals cfg.categories.media.enable [
-          # darktable
-          eog
-          mpv
-        ])
-
-        (optionals cfg.categories.fs.enable [
-          nautilus
-        ])
-
-        # (optionals cfg.categories.dev.enable [
-        #   vscode
-        # ])
-
-        (optionals cfg.categories.design.enable [
-          # graphic design
+        (optionals cfg.design.enable [
           aseprite
           inkscape
-
-          # 3D design
-          # blender
           openscad
         ])
 
-        (optionals cfg.categories.edu.enable [
-          # drawio
-          # ganttproject-bin
+        (optionals cfg.productivity.enable [
           libreoffice
-          # logseq
           qalculate-qt
-          # blanket
         ])
       ]
       ++ (with pkgs.unstable;
         concatLists [
-          (optionals cfg.categories.tools.enable [
-            obsidian
+          (optionals cfg.privacy.enable [
             veracrypt
           ])
 
-          (optionals cfg.categories.design.enable [
+          (optionals cfg.productivity.enable [
+            obsidian
+          ])
+
+          (optionals cfg.media.enable [
             cura-appimage
           ])
         ]);

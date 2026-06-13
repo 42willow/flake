@@ -5,10 +5,9 @@
   config,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.tui.enable
-    && cfg.categories.core.enable) {
+  config = lib.mkIf cfg.cli {
     xdg.configFile.".prettierrc.json".text = builtins.toJSON (import ./prettier.nix {inherit pkgs;});
     xdg.configFile.".dprint.jsonc".text = builtins.toJSON (import ./dprint.nix {inherit pkgs;});
     xdg.configFile."moxide/settings.toml".source = ./moxide.toml;

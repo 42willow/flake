@@ -5,10 +5,10 @@
   osConfig,
   ...
 }: let
-  cfg = osConfig.settings.desktop.niri;
+  cfg = osConfig.nest.desktop;
   wpctl = lib.getExe' pkgs.wireplumber "wpctl";
 in {
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (cfg.enable && cfg.niri.enable) {
     programs.niri.settings.binds =
       {
         # ==== Actions ====

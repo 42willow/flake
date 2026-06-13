@@ -9,17 +9,13 @@ in {
   programs = {
     enable = mkEnableOption "programs" // {default = true;};
     cli = mkEnableOption "CLI programs" // {default = true;};
-    gui = mkEnableOption "GUI programs";
+    gui = mkEnableOption "GUI programs" // {default = cfg.desktop.enable;};
 
     games.enable = mkEnableOption "games";
     media.enable = mkEnableOption "media and creative tools";
+    privacy.enable = mkEnableOption "privacy programs";
     productivity.enable = mkEnableOption "productivity programs";
     social.enable = mkEnableOption "social programs";
-
-    utilities = {
-      git.enable = mkEnableOption "git version control" // {default = true;};
-      btop.enable = mkEnableOption "btop resource monitor";
-    };
 
     browsers = {
       helium.enable = mkEnableOption "helium browser"; # TODO not in nixpkgs yet https://github.com/NixOS/nixpkgs/pull/498572
@@ -49,6 +45,7 @@ in {
         bat.enable = mkEnableOption "bat" // {default = cfg.programs.terminal.tools.enable;};
         eza.enable = mkEnableOption "eza" // {default = cfg.programs.terminal.tools.enable;};
         fzf.enable = mkEnableOption "fzf" // {default = cfg.programs.terminal.tools.enable;};
+        ripgrep.enable = mkEnableOption "ripgrep" // {default = cfg.programs.terminal.tools.enable;};
         zoxide.enable = mkEnableOption "zoxide" // {default = cfg.programs.terminal.tools.enable;};
       };
     };

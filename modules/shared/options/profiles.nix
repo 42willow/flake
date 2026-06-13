@@ -6,26 +6,11 @@
   cfg = config.nest;
 
   profiles = {
-    # defaults from options.nix
-    minimal = {
-      programs = {
-        enable = lib.mkDefault true;
-        cli = lib.mkDefault true;
-      };
-      system.services = {
-        enable = lib.mkDefault true;
-        networking.enable = lib.mkDefault true;
-      };
-    };
-
     desktop = {
       programs = {
         enable = lib.mkDefault true;
-        # we are already grouping for cli or gui which i prefer over grouping
-        # by categories as that is already the file tree and cant have both
-        # as the options are hierarchical
-        cli.enable = lib.mkDefault true;
-        gui.enable = lib.mkDefault true;
+        cli = lib.mkDefault true;
+        gui = lib.mkDefault true;
 
         games.enable = lib.mkDefault true;
         media.enable = lib.mkDefault true;
@@ -76,7 +61,6 @@
         enable = lib.mkDefault true;
         networking.enable = lib.mkDefault true;
         ssh.enable = lib.mkDefault true;
-        # TODO backups and config for them
       };
     };
   };

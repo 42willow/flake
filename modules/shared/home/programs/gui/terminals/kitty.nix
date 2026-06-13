@@ -3,10 +3,10 @@
   osConfig,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.gui.enable
-    && cfg.categories.core.enable) {
+  config = lib.mkIf (cfg.gui
+    && cfg.terminal.emulator.kitty.enable) {
     programs.kitty = {
       enable = false;
       settings = {

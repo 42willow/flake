@@ -3,10 +3,9 @@
   lib,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.cli.enable
-    && cfg.categories.core.enable) {
-    programs.bat.enable = true;
+  config = lib.mkIf (cfg.cli) {
+    programs.bat.enable = cfg.terminal.tools.bat.enable;
   };
 }

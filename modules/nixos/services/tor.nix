@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  cfg = config.settings.system.services.networking.tor;
+  cfg = config.nest.services.networking.tor;
 in {
   config = lib.mkIf cfg.enable {
     services.tor = {

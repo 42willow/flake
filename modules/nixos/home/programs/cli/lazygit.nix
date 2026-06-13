@@ -3,10 +3,9 @@
   lib,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.tui.enable
-    && cfg.categories.dev.enable) {
-    programs.lazygit.enable = true;
+  config = lib.mkIf cfg.cli {
+    programs.lazygit.enable = false;
   };
 }

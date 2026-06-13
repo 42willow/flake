@@ -4,10 +4,10 @@
   config,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.cli.enable
-    && cfg.categories.tools.enable) {
+  config = lib.mkIf (cfg.cli
+    && cfg.terminal.tools.fzf.enable) {
     programs.fzf = {
       enable = true;
       enableBashIntegration = config.programs.bash.enable;

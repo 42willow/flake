@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  cfg = config.settings.system.services.backups;
+  cfg = config.nest.services.backups;
 in {
   config = lib.mkIf cfg.enable {
     users = {
@@ -26,6 +26,7 @@ in {
     services.restic.backups = {
       remotebackup = {
         passwordFile = "${config.age.secrets.restic.path}";
+        # TODO move these to config (per-device and required)
         paths = [
           "/mnt/shared/docs"
           "/mnt/shared/git"

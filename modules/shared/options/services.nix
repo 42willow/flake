@@ -18,7 +18,7 @@ in {
       enable = mkEnableOption "networking" // {default = cfg.system.services.enable;};
       profiles.enable = mkEnableOption "NetworkManager profiles" // {default = true;};
       tailscale.enable = mkEnableOption "tailscale";
-      tor.enable = mkEnableOption "TOR network";
+      tor.enable = mkEnableOption "tor network";
     };
     # not available on darwin
     printing = {
@@ -28,11 +28,11 @@ in {
     # not available on darwin
     sound.enable = mkEnableOption "sound";
     ssh.enable = mkEnableOption "SSH server";
-    sync.enable = mkEnableOption "syncthing";
+    syncthing.enable = mkEnableOption "syncthing";
 
     selfhost = {
-      enable = mkEnableOption "selfhosting services";
       # caddy.enable = mkEnableOption "caddy"; not needed with cloudflared
+      mpd.enable = mkEnableOption "mpd";
       kanidm.enable = mkEnableOption "kanidm";
       cloudflared.enable = mkEnableOption "cloudflared";
       pihole.enable = mkEnableOption "pihole"; # TODO or coredns or adguard home for "split horizon DNS" maybe?
