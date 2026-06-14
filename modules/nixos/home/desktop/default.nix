@@ -2,6 +2,5 @@
   imports = [
     # ./bspwm
     ./niri
-    ./hyprland
   ];
 }

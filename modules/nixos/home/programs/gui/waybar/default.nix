@@ -20,7 +20,6 @@ in {
           # modules
           modules-left = [
             "custom/logo"
-            "hyprland/workspaces"
           ];
           modules-center = [
             "clock"
@@ -112,8 +111,7 @@ in {
             tooltip = false;
           };
 
-          "hyprland/workspaces" = {
-            on-click = "activate";
+          "niri/workspaces" = {
             format = "{icon}";
             format-icons = {
               default = "";
@@ -127,14 +125,6 @@ in {
               "8" = "8";
               "9" = "9";
               active = "󱓻";
-              urgent = "󱓻";
-            };
-            persistent-workspaces = {
-              "1" = [];
-              "2" = [];
-              "3" = [];
-              "4" = [];
-              "5" = [];
             };
           };
 
