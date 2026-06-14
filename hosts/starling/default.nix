@@ -22,9 +22,13 @@ in {
     system = {
       user = let
         home = "/Users/${cfg.system.user.name}";
+        envUser = builtins.getEnv "SUDO_USER";
       in {
         inherit home;
-        name = builtins.getEnv "SUDO_USER";
+        name =
+          if envUser != ""
+          then envUser
+          else "willow";
         group = "staff";
         flakeDir = "${home}/Documents/git/flake";
       };
