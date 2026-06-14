@@ -1,0 +1,51 @@
+name: Validate Nix Flake
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "**.nix"
+      - "**.lock"
+      - ".github/workflows/check.yml"
+
+permissions: {}
+
+jobs:
+  check-flake:
+    name: Check (${{ matrix.system }})
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            system: x86_64-linux
+            target_attr: nixosConfigurations
+          - os: macos-latest
+            system: aarch64-darwin
+            target_attr: darwinConfigurations
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: DeterminateSystems/magic-nix-cache-action@v14
+
+      - name: Evaluate Platform Configurations
+        run: |
+          echo "Fetching target configurations for ${{ matrix.target_attr }}..."
+
+          HOSTS=$(nix eval .#${{ matrix.target_attr }} --apply "builtins.attrNames" --json | jq -r '.[]')
+
+          for host in $HOSTS; do
+            echo "Validating host: $host"
+
+            nix eval .#${{ matrix.target_attr }}.$host.config.system.build.toplevel.drvPath --show-trace
+          done
