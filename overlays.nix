@@ -17,5 +17,5 @@
     };
   };
 
-  additions = final: _prev: import "${self}/pkgs" {pkgs = final;};
+  additions = final: _prev: import "${self}/pkgs" final.pkgs;
 }
