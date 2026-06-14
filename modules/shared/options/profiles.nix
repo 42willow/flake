@@ -65,14 +65,14 @@
     };
   };
 in {
-  options.nest.profile = mkOption {
+  options.profile = mkOption {
     type = types.nullOr (types.enum ["desktop" "server"]);
     default = null;
     description = "The system profile preset to apply. If null, the system falls back to the minimal defaults.";
   };
 
   config.nest =
-    if config.nest.profile != null
-    then profiles.${config.nest.profile}
+    if config.profile != null
+    then profiles.${config.profile}
     else {};
 }
