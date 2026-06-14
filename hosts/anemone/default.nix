@@ -19,24 +19,10 @@ in {
 
   disabledModules = ["profiles/base.nix"];
 
+  profile = "server";
   nest = {
-    programs = {
-      enable = false;
-      cli.enable = true;
-      tui.enable = true;
-      categories = {
-        enable = false;
-        core.enable = true;
-      };
-    };
-    system = {
-      hostName = "anemone";
-      services = {
-        enable = false;
-        networking.enable = true;
-      };
-    };
-    desktop.enable = false;
+    system.hostname = "anemone";
+    services.enable = false;
   };
 
   services.openssh = {

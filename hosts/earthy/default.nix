@@ -13,9 +13,7 @@ in {
 
   profile = "desktop";
   nest = {
-    system = {
-      hostName = "earthy";
-    };
+    system.hostName = "earthy";
     services = {
       syncthing.enable = true;
       selfhost = {

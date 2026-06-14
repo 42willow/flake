@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = osConfig.nest.programs.categories.music;
+  cfg = osConfig.nest.programs.media;
 
-  # TODO)) Add queuing for multiple URLs
+  # TODO Add queuing for multiple URLs
   bdl = pkgs.writeShellScriptBin "bdl" ''
     echo "Please enter the Spotify URL:"
     ${lib.getExe pkgs.unstable.spotdl} --version

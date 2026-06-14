@@ -30,7 +30,7 @@
           tools.enable = lib.mkDefault true;
         };
       };
-      system.services = {
+      services = {
         enable = lib.mkDefault true;
         backups.enable = lib.mkDefault true;
         bluetooth.enable = lib.mkDefault true;
@@ -57,7 +57,7 @@
         };
       };
 
-      system.services = {
+      services = {
         enable = lib.mkDefault true;
         networking.enable = lib.mkDefault true;
         ssh.enable = lib.mkDefault true;
