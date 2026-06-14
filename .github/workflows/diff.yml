@@ -55,7 +55,6 @@ jobs:
         uses: 42willow/nix-diff-action@main
         with:
           mode: diff-only
-          build: true
           attributes: |
             - displayName: "${{ matrix.host }} (${{ matrix.system }})"
               attribute: "${{ matrix.target_attr }}.${{ matrix.host }}.config.system.build.toplevel"
