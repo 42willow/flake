@@ -13,7 +13,7 @@ permissions: {}
 
 jobs:
   check-flake:
-    name: Check (${{ matrix.system }} - ${{ matrix.host }})
+    name: ${{ matrix.host }} (${{ matrix.system }})
     runs-on: ${{ matrix.os }}
 
     strategy:
