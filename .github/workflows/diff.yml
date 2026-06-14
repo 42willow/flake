@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   diff:
-    name: Diff (${{ matrix.system }} - ${{ matrix.host }})
+    name: ${{ matrix.host }} (${{ matrix.system }})
     runs-on: ${{ matrix.os }}
 
     strategy:
