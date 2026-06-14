@@ -11,6 +11,7 @@ in {
     "${self}/modules/nixos"
   ];
 
+  profile = "desktop";
   nest = {
     system = {
       hostName = "earthy";

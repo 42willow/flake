@@ -20,8 +20,6 @@ in {
   disabledModules = ["profiles/base.nix"];
 
   nest = {
-    profile = "minimal";
-
     programs = {
       enable = false;
       cli.enable = true;
