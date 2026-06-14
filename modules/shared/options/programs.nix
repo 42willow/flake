@@ -21,6 +21,7 @@ in {
       helium.enable = mkEnableOption "helium browser"; # TODO not in nixpkgs yet https://github.com/NixOS/nixpkgs/pull/498572
       firefox.enable = mkEnableOption "firefox browser";
       floorp.enable = mkEnableOption "floorp browser";
+      chromium.enable = mkEnableOption "chromium browser";
     };
 
     terminal = {

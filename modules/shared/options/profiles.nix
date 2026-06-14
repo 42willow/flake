@@ -19,6 +19,7 @@
         browsers = {
           helium.enable = lib.mkDefault true;
           firefox.enable = lib.mkDefault true;
+          chromium.enable = lib.mkDefault true;
         };
 
         terminal = {
