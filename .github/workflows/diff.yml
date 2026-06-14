@@ -1,0 +1,73 @@
+name: Diff Nix Flake
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  pull-requests: write
+  actions: read
+
+jobs:
+  diff:
+    name: Diff (${{ matrix.system }} - ${{ matrix.host }})
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            system: x86_64-linux
+            target_attr: nixosConfigurations
+            host: earthy
+          - os: ubuntu-latest
+            system: x86_64-linux
+            target_attr: nixosConfigurations
+            host: anemone
+          - os: ubuntu-latest
+            system: x86_64-linux
+            target_attr: nixosConfigurations
+            host: lily
+          - os: ubuntu-latest
+            system: x86_64-linux
+            target_attr: nixosConfigurations
+            host: zinnia
+          - os: macos-latest
+            system: aarch64-darwin
+            target_attr: darwinConfigurations
+            host: starling
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: DeterminateSystems/magic-nix-cache-action@v14
+
+      - name: Generate Nix Diff
+        uses: natsukium/nix-diff-action@v1.1.0
+        with:
+          mode: diff-only
+          # build: true
+          attributes: |
+            - displayName: "${{ matrix.host }} (${{ matrix.system }})"
+              attribute: "${{ matrix.target_attr }}.${{ matrix.host }}.config.system.build.toplevel"
+
+  comment:
+    name: Post Comment
+    needs: diff
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Aggregate and Post Diffs
+        uses: natsukium/nix-diff-action@v1.1.0
+        with:
+          mode: comment-only
+          github-token: ${{ secrets.GITHUB_TOKEN }}
