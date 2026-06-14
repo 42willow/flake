@@ -4,7 +4,7 @@
   osConfig,
   ...
 }: let
-  cfg = osConfig.settings.system.services.sync;
+  cfg = osConfig.nest.services.syncthing;
 
   devices = {
     starling.id = "3NK35IK-ZONOPLB-R277NP3-MUTEU33-PFKOWCZ-U3SB6ZO-YPIBVY5-UTCTIQK";

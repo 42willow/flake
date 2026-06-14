@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (inputs) self;
-  inherit (config.settings.system) user;
+  inherit (config.nest.system) user;
 
   sshDir = user.home + "/.ssh";
 

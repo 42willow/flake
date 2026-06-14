@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  cfg = osConfig.settings.desktop;
+  cfg = osConfig.nest.desktop;
 in {
   imports = [
     inputs.catppuccin.homeModules.catppuccin

@@ -3,7 +3,7 @@
   self,
   ...
 }: let
-  inherit (config.settings.system) user;
+  inherit (config.nest.system) user;
   inherit (self) outputs;
 in {
   imports = [
