@@ -22,7 +22,7 @@ jobs:
             target_attr: nixosConfigurations
             host: earthy
           - os: ubuntu-latest
-            system: x86_64-linux
+            system: aarch64-linux
             target_attr: nixosConfigurations
             host: anemone
           - os: ubuntu-latest
