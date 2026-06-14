@@ -10,10 +10,9 @@ in {
   imports = [
     ./browsers
     ./waybar
-    ./cura.nix
     # ./lightburn.nix
     # ./obs-studio.nix
-    # ./quickshell.nix
+    ./quickshell.nix
     ./spicetify.nix
     ./thunderbird.nix
     ./tofi.nix
