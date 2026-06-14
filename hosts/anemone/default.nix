@@ -21,7 +21,7 @@ in {
 
   profile = "server";
   nest = {
-    system.hostname = "anemone";
+    system.hostName = "anemone";
     services.enable = false;
   };
 
