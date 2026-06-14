@@ -11,7 +11,7 @@ in {
     networkmanager = {
       enable = true;
       # https://github.com/Janik-Haag/nm2nix
-      ensureProfiles = lib.mkIf cfg.profiles {
+      ensureProfiles = lib.mkIf cfg.profiles.enable {
         environmentFiles = [config.age.secrets.wifi.path];
 
         # https://github.com/alyraffauf/nixcfg/blob/4ccc90fe11c63702879cf50b888ee460c185400d/common/wifi.nix

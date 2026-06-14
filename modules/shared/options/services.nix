@@ -23,7 +23,7 @@ in {
     # not available on darwin
     printing = {
       enable = mkEnableOption "printing";
-      profiles = mkEnableOption "printing profiles" // {default = true;};
+      profiles.enable = mkEnableOption "printing profiles" // {default = true;};
     };
     # not available on darwin
     sound.enable = mkEnableOption "sound";
