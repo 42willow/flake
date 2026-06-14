@@ -18,6 +18,7 @@ in {
     hostName = "starling";
   };
 
+  profile = "desktop";
   nest = {
     system = {
       user = let
