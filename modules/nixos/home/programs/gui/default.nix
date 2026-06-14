@@ -44,6 +44,11 @@ in {
           mpv
           calibre
           qbittorrent
+
+          # TODO split up into design category
+          aseprite
+          inkscape
+          openscad
         ])
 
         (optionals cfg.social.enable [
@@ -52,12 +57,6 @@ in {
           (discord.override {
             withOpenASAR = true;
           })
-        ])
-
-        (optionals cfg.design.enable [
-          aseprite
-          inkscape
-          openscad
         ])
 
         (optionals cfg.productivity.enable [
