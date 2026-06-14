@@ -1,9 +1,9 @@
 {
-  lib,
   config,
+  lib,
   ...
 }: let
-  cfg = config.nest;
+  inherit (lib) mkOption types;
 
   profiles = {
     desktop = {
@@ -65,5 +65,14 @@
     };
   };
 in {
-  config.settings = profiles.${cfg.profile} or {};
+  options.nest.profile = mkOption {
+    type = types.nullOr (types.enum ["desktop" "server"]);
+    default = null;
+    description = "The system profile preset to apply. If null, the system falls back to the minimal defaults.";
+  };
+
+  config.nest =
+    if config.nest.profile != null
+    then profiles.${config.nest.profile}
+    else {};
 }

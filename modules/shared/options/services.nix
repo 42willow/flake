@@ -6,7 +6,7 @@
   inherit (lib) mkEnableOption;
   cfg = config.nest;
 in {
-  services = {
+  options.nest.services = {
     enable = mkEnableOption "core system services" // {default = true;};
     backups = {
       # TODO: move this to shared/

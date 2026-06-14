@@ -6,7 +6,7 @@
   inherit (lib) mkEnableOption;
   cfg = config.nest;
 in {
-  programs = {
+  options.nest.programs = {
     enable = mkEnableOption "programs" // {default = true;};
     cli = mkEnableOption "CLI programs" // {default = true;};
     gui = mkEnableOption "GUI programs" // {default = cfg.desktop.enable;};
