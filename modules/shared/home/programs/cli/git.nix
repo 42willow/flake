@@ -18,7 +18,7 @@ in {
           signingkey = osConfig.age.secrets.gh.path;
         };
 
-        aliases = {
+        alias = {
           co = "checkout";
           br = "branch";
           ci = "commit";
