@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: let
+{config, ...}: let
   cfg = config.nest.programs;
 in {
   imports = [
