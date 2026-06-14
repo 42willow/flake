@@ -1,0 +1,59 @@
+name: Validate Nix Flake
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "**"
+    paths:
+      - "**.nix"
+      - "**.lock"
+      - ".github/workflows/check.yml"
+
+permissions: {}
+
+jobs:
+  check-flake:
+    name: Check (${{ matrix.system }} - ${{ matrix.host }})
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            system: x86_64-linux
+            target_attr: nixosConfigurations
+            host: earthy
+          - os: ubuntu-latest
+            system: x86_64-linux
+            target_attr: nixosConfigurations
+            host: anemone
+          - os: ubuntu-latest
+            system: x86_64-linux
+            target_attr: nixosConfigurations
+            host: lily
+          - os: ubuntu-latest
+            system: x86_64-linux
+            target_attr: nixosConfigurations
+            host: zinnia
+          - os: macos-latest
+            system: aarch64-darwin
+            target_attr: darwinConfigurations
+            host: starling
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: DeterminateSystems/magic-nix-cache-action@v14
+
+      - name: Validate Host
+        run: |
+          nix eval .#${{ matrix.target_attr }}.${{ matrix.host }}.config.system.build.toplevel.drvPath --show-trace
