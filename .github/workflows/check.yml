@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - "**"
+      - "main"
     paths:
       - "**.nix"
       - "**.lock"
@@ -13,7 +13,7 @@ permissions: {}
 
 jobs:
   check-flake:
-    name: Check (${{ matrix.system }} - ${{ matrix.host }})
+    name: ${{ matrix.host }} (${{ matrix.system }})
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -25,7 +25,7 @@ jobs:
             target_attr: nixosConfigurations
             host: earthy
           - os: ubuntu-latest
-            system: x86_64-linux
+            system: aarch64-linux
             target_attr: nixosConfigurations
             host: anemone
           - os: ubuntu-latest

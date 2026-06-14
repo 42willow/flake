@@ -16,7 +16,7 @@ in {
         user.name = "willow";
         user.email = "42willow" + "@" + "pm.me";
 
-        aliases = {
+        alias = {
           co = "checkout";
           br = "branch";
           ci = "commit";
