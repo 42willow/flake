@@ -6,6 +6,6 @@
   cfg = osConfig.nest.programs;
 in {
   config = lib.mkIf cfg.cli {
-    programs.yazi.enable = false;
+    programs.yazi.enable = true;
   };
 }

@@ -63,8 +63,8 @@ in {
       zig.enable = mkEnableOption "zig tooling" // {default = cfg.programs.devtools.enable;};
 
       web = {
-        pnpm.enable = lib.mkEnableOption "pnpm package manager";
-        bun.enable = lib.mkEnableOption "bun runtime and toolchain";
+        pnpm.enable = lib.mkEnableOption "pnpm package manager" // {default = cfg.programs.devtools.enable;};
+        bun.enable = lib.mkEnableOption "bun runtime and toolchain" // {default = cfg.programs.devtools.enable;};
       };
     };
   };

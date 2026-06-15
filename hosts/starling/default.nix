@@ -35,6 +35,7 @@ in {
       };
     };
     services.syncthing.enable = true; # TODO enable syncthing (disabled in module) - requires disabling syncthing network which is flagged
+    programs.terminal.emulator.alacritty.enable = true;
   };
 
   nix = {

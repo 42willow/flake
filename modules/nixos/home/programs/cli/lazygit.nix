@@ -6,6 +6,6 @@
   cfg = osConfig.nest.programs;
 in {
   config = lib.mkIf cfg.cli {
-    programs.lazygit.enable = false;
+    programs.lazygit.enable = true;
   };
 }
