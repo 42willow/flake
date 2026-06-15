@@ -49,7 +49,6 @@
       };
       services = {
         enable = lib.mkDefault true;
-        backups.enable = lib.mkDefault true;
         bluetooth.enable = lib.mkDefault true;
         printing.enable = lib.mkDefault true;
         sound.enable = lib.mkDefault true;
