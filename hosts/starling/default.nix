@@ -1,11 +1,9 @@
 {
+  self,
   lib,
-  inputs,
   config,
   ...
 }: let
-  inherit (inputs) self;
-
   cfg = config.settings;
 in {
   imports = [
