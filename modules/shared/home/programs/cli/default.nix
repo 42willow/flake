@@ -30,14 +30,14 @@ in {
     home.packages = with pkgs;
     with inputs;
       concatLists [
-        (optionals cfg.terminal.tools.enable [
+        [
           catppuccin.packages."${pkgs.stdenv.hostPlatform.system}".catwalk
           catppuccin.packages."${pkgs.stdenv.hostPlatform.system}".whiskers
 
           just
           tldr
           typst
-        ])
+        ]
         (optionals cfg.devtools.enable [
           # TODO use categories
           pnpm
