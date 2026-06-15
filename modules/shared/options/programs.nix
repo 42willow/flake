@@ -32,7 +32,7 @@ in {
       };
       shell = {
         atuin.enable = mkEnableOption "atuin shell history";
-        starship.enable = mkEnableOption "starship prompt" // {default = cfg.programs.terminal.tools.enable;};
+        starship.enable = mkEnableOption "starship prompt";
         zsh.enable = mkEnableOption "zsh";
         nushell.enable = mkEnableOption "nushell";
         userShell = lib.mkOption {

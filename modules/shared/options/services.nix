@@ -7,7 +7,7 @@
   cfg = config.nest;
 in {
   options.nest.services = {
-    enable = mkEnableOption "core system services" // {default = true;};
+    enable = mkEnableOption "core system services" // {default = true;}; # TODO clarify what these are and if this option is needed
     backups = {
       # TODO: move this to shared/
       enable = mkEnableOption "backups via restic";

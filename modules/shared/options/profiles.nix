@@ -3,19 +3,40 @@
   lib,
   ...
 }: let
-  inherit (lib) mkOption types;
+  inherit (lib) mkOption types recursiveUpdate;
+
+  # base config for desktop and server profiles
+  # the default (no profile) is just the defaults outlined in the options
+  base = {
+    programs = {
+      enable = lib.mkDefault true;
+      cli = lib.mkDefault true;
+      terminal = {
+        shell = {
+          atuin.enable = true;
+          starship.enable = true;
+          zsh.enable = lib.mkDefault true;
+          userShell = "zsh";
+        };
+        tools.enable = lib.mkDefault true;
+      };
+    };
+    services = {
+      enable = lib.mkDefault true;
+      networking.enable = lib.mkDefault true;
+    };
+  };
 
   profiles = {
-    desktop = {
+    desktop = recursiveUpdate base {
       programs = {
-        enable = lib.mkDefault true;
-        cli = lib.mkDefault true;
         gui = lib.mkDefault true;
 
         games.enable = lib.mkDefault true;
         media.enable = lib.mkDefault true;
         productivity.enable = lib.mkDefault true;
         social.enable = lib.mkDefault true;
+
         browsers = {
           helium.enable = lib.mkDefault true;
           firefox.enable = lib.mkDefault true;
@@ -24,18 +45,12 @@
 
         terminal = {
           emulator.ghostty.enable = lib.mkDefault true;
-          shell = {
-            zsh.enable = lib.mkDefault true;
-            userShell = "zsh";
-          };
-          tools.enable = lib.mkDefault true;
         };
       };
       services = {
         enable = lib.mkDefault true;
         backups.enable = lib.mkDefault true;
         bluetooth.enable = lib.mkDefault true;
-        networking.enable = lib.mkDefault true;
         printing.enable = lib.mkDefault true;
         sound.enable = lib.mkDefault true;
       };
@@ -45,24 +60,8 @@
       };
     };
 
-    server = {
-      programs = {
-        enable = lib.mkDefault true;
-        cli = lib.mkDefault true;
-
-        terminal = {
-          shell = {
-            zsh.enable = lib.mkDefault true;
-            userShell = "zsh";
-          };
-        };
-      };
-
-      services = {
-        enable = lib.mkDefault true;
-        networking.enable = lib.mkDefault true;
-        ssh.enable = lib.mkDefault true;
-      };
+    server = recursiveUpdate base {
+      services.ssh.enable = lib.mkDefault true;
     };
   };
 in {

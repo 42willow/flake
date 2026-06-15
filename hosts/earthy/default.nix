@@ -20,6 +20,9 @@ in {
         mpd.enable = true;
       };
     };
+    programs = {
+      terminal.emulator.alacritty.enable = true;
+    };
   };
 
   # samba
