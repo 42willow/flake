@@ -18,9 +18,9 @@ in {
   config = lib.mkIf cfg.programs.cli {
     home.packages = with pkgs;
     with inputs;
-      [
+      (optionals cfg.programs.devtools.enable [
         nix-output-monitor
-      ]
+      ])
       ++ optionals cfg.desktop.enable [
         brightnessctl
         ddcutil

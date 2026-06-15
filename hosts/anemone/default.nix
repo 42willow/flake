@@ -23,6 +23,23 @@ in {
   nest = {
     system.hostName = "anemone";
     services.enable = false;
+    programs = {
+      terminal.tools = {
+        enable = false;
+        bat.enable = true;
+        zoxide.enable = true;
+      };
+      devtools.enable = false;
+    };
+  };
+
+  # programs that were previously disabled via categories.*.enable = false
+  home-manager.users.willow = {
+    programs = {
+      yazi.enable = false;
+      lazygit.enable = false;
+      gitui.enable = false;
+    };
   };
 
   services.openssh = {
