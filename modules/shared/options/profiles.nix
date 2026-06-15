@@ -47,6 +47,8 @@
         terminal = {
           emulator.ghostty.enable = lib.mkDefault true;
         };
+
+        devtools.enable = true;
       };
       services = {
         enable = lib.mkDefault true;

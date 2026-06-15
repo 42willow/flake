@@ -54,13 +54,13 @@ in {
     devtools = {
       enable = mkEnableOption "developer tools";
 
-      haskell.enable = mkEnableOption "haskell tooling";
-      nix.enable = mkEnableOption "nix tooling";
-      openscad.enable = mkEnableOption "openscad tooling";
-      python.enable = mkEnableOption "python tooling";
-      rust.enable = mkEnableOption "rust tooling";
-      typst.enable = mkEnableOption "typst tooling";
-      zig.enable = mkEnableOption "zig tooling";
+      haskell.enable = mkEnableOption "haskell tooling" // {default = cfg.programs.devtools.enable;};
+      nix.enable = mkEnableOption "nix tooling" // {default = cfg.programs.devtools.enable;};
+      openscad.enable = mkEnableOption "openscad tooling" // {default = cfg.programs.devtools.enable;};
+      python.enable = mkEnableOption "python tooling" // {default = cfg.programs.devtools.enable;};
+      rust.enable = mkEnableOption "rust tooling" // {default = cfg.programs.devtools.enable;};
+      typst.enable = mkEnableOption "typst tooling" // {default = cfg.programs.devtools.enable;};
+      zig.enable = mkEnableOption "zig tooling" // {default = cfg.programs.devtools.enable;};
 
       web = {
         pnpm.enable = lib.mkEnableOption "pnpm package manager";
