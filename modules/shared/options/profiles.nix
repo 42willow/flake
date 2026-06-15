@@ -34,6 +34,7 @@
 
         games.enable = lib.mkDefault true;
         media.enable = lib.mkDefault true;
+        privacy.enable = lib.mkDefault true;
         productivity.enable = lib.mkDefault true;
         social.enable = lib.mkDefault true;
 
