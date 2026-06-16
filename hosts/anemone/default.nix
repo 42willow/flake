@@ -23,6 +23,7 @@ in {
   nest = {
     system.hostName = "anemone";
     services.enable = false;
+    programs.enable = false;
   };
 
   services.openssh = {
