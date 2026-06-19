@@ -1,10 +1,10 @@
 {
+  self,
   inputs,
   pkgs,
   config,
   ...
 }: let
-  inherit (inputs) self;
   inherit (config.settings.system) user;
 
   sshDir = user.home + "/.ssh";
