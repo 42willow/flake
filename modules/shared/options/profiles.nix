@@ -15,8 +15,8 @@
         shell = {
           atuin.enable = true;
           starship.enable = true;
-          zsh.enable = lib.mkDefault true;
-          userShell = "zsh";
+          # zsh.enable = lib.mkDefault true; TODO
+          # userShell = "zsh"; TODO
         };
         tools.enable = lib.mkDefault true;
       };

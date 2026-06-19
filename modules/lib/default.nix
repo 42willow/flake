@@ -3,36 +3,51 @@
   lib,
   ...
 }: let
-  inherit (lib) mkEnableOption optionalAttrs toUpper getAttrFromPath setAttrByPath;
+  inherit (lib) mkEnableOption toUpper getAttrFromPath splitString;
 in {
-  # lib.mkExtensible
-  mkProgramOption = {
-    name,
-    type,
-    scope ? [], # e.g. ["terminal" "shell"]
-    useGlobalEnable ? true, # whether to respect programs and cli/gui toggles
-    default ?
-      if useGlobalEnable
-      then (config.nest.programs.enable && config.nest.programs.${type})
-      else false,
-    defaultText ?
-      if useGlobalEnable
-      then "nest.programs.enable and nest.programs.${type}"
-      else null,
-  }:
-    assert lib.asserts.assertOneOf "mkProgramOption" type ["gui" "cli"];
-    let
-      optPath = scope ++ [name];
-      enablePath = ["nest" "programs"] ++ optPath ++ ["enable"];
-    in {
-      options = setAttrByPath optPath {
-        enable =
-          mkEnableOption "${toUpper type} program ${name}"
-          // (
-            {inherit default;}
-            // optionalAttrs (defaultText != null) {inherit defaultText;}
-          );
+  _module.args.lib' = {
+    programType = let
+      base = type: {
+        programType = type;
+        description = null;
+        __functor = self: description: self // {inherit description;};
       };
-      enable = getAttrFromPath enablePath config;
+    in {
+      cli = base "cli";
+      gui = base "gui";
     };
+
+    mkProgramGroup = name: children: {inherit name children;};
+
+    mkProgramOptions = tree: let
+      get = path: getAttrFromPath (splitString "." path) config;
+      walk = ancestors:
+        builtins.mapAttrs (
+          name: value:
+            if value ? programType
+            then let
+              typ = value.programType;
+              desc = value.description or "${toUpper typ} program ${name}";
+              default =
+                config.nest.programs.enable
+                && config.nest.programs.${typ}
+                && lib.all (x: x) (map get ancestors);
+              defaultText =
+                "nest.programs.enable and nest.programs.${typ}"
+                + lib.optionalString (ancestors != [])
+                (" and " + lib.concatStringsSep " and " ancestors);
+            in
+              {enable = mkEnableOption desc // {inherit default defaultText;};}
+              // builtins.removeAttrs value ["programType" "description" "__functor"]
+            else if value ? children
+            then
+              {enable = mkEnableOption value.name;}
+              // walk (ancestors ++ ["nest.programs.${name}.enable"]) (value.children or {})
+            else if builtins.isAttrs value
+            then walk ancestors value
+            else value
+        );
+    in
+      walk [] tree;
+  };
 }

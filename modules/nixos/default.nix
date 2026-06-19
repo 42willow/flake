@@ -23,6 +23,7 @@ in {
     ./themes
 
     ../shared
+    ../lib
   ];
 
   users.users.${user.name} = {
