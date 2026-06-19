@@ -1,11 +1,9 @@
 {
+  self,
   pkgs,
-  inputs,
   config,
   ...
-}: let
-  inherit (inputs) self;
-in {
+}: {
   imports = [
     ./hardware-configuration.nix
     "${self}/modules/nixos"

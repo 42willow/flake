@@ -1,11 +1,11 @@
 {
+  self,
   inputs,
   pkgs,
   config,
   ...
 }: let
-  inherit (inputs) self;
-  inherit (config.nest.system) user;
+  inherit (config.settings.system) user;
 
   sshDir = user.home + "/.ssh";
 

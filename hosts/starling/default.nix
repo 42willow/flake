@@ -1,12 +1,10 @@
 {
+  self,
   lib,
-  inputs,
   config,
   ...
 }: let
-  inherit (inputs) self;
-
-  cfg = config.nest;
+  cfg = config.settings;
 in {
   imports = [
     "${self}/modules/darwin"

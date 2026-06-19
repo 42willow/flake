@@ -1,11 +1,10 @@
 {
+  self,
   modulesPath,
   inputs,
   pkgs,
   ...
-}: let
-  inherit (inputs) self;
-in {
+}: {
   imports = [
     ./hardware.nix
     ./mainsail.nix
