@@ -4,7 +4,7 @@
   config,
   ...
 }: let
-  cfg = config.settings;
+  cfg = config.nest;
 in {
   imports = [
     "${self}/modules/darwin"
