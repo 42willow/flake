@@ -22,7 +22,7 @@
     system = {
       user.shell = {
         zsh.enable = lib.mkDefault true;
-        userShell = "zsh";
+        shell = "zsh";
       };
     };
     services = {
