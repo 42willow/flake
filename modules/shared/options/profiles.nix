@@ -13,12 +13,16 @@
       cli = lib.mkDefault true;
       terminal = {
         shell = {
-          atuin.enable = true;
-          starship.enable = true;
-          # zsh.enable = lib.mkDefault true; TODO
-          # userShell = "zsh"; TODO
+          atuin.enable = lib.mkDefault true;
+          starship.enable = lib.mkDefault true;
         };
         tools.enable = lib.mkDefault true;
+      };
+    };
+    system = {
+      user.shell = {
+        zsh.enable = lib.mkDefault true;
+        userShell = "zsh";
       };
     };
     services = {

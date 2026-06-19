@@ -5,7 +5,6 @@
   ...
 }: let
   inherit (config.nest.system) user;
-  inherit (config.nest.programs.terminal.shell) userShell;
 
   keys = [
     "${self}/keys/anemone.pub"
@@ -31,9 +30,9 @@ in {
     isNormalUser = true;
     extraGroups = ["networkmanager" "wheel" "dialout"];
     shell =
-      if userShell == "zsh"
+      if user.shell == "zsh"
       then pkgs.zsh
-      else if userShell == "nushell"
+      else if user.shell == "nushell"
       then pkgs.nushell
       else pkgs.bash;
 
