@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  inherit (lib) mkEnableOption toUpper getAttrFromPath splitString;
+  inherit (lib) mkEnableOption toUpper getAttrFromPath splitString concatStringsSep;
 in {
   _module.args.lib' = {
     programType = let
@@ -21,7 +21,7 @@ in {
 
     mkProgramOptions = tree: let
       get = path: getAttrFromPath (splitString "." path) config;
-      walk = ancestors:
+      walk = prefix: ancestors:
         builtins.mapAttrs (
           name: value:
             if value ? programType
@@ -40,14 +40,17 @@ in {
               {enable = mkEnableOption desc // {inherit default defaultText;};}
               // builtins.removeAttrs value ["programType" "description" "__functor"]
             else if value ? children
-            then
+            then let
+              fullPath = prefix ++ [name];
+              ancestorStr = "nest.programs.${concatStringsSep "." fullPath}.enable";
+            in
               {enable = mkEnableOption value.name;}
-              // walk (ancestors ++ ["nest.programs.${name}.enable"]) (value.children or {})
+              // walk fullPath (ancestors ++ [ancestorStr]) (value.children or {})
             else if builtins.isAttrs value
-            then walk ancestors value
+            then walk (prefix ++ [name]) ancestors value
             else value
         );
     in
-      walk [] tree;
+      walk [] [] tree;
   };
 }

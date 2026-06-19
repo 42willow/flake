@@ -2,11 +2,8 @@
   lib,
   osConfig,
   ...
-}: let
-  cfg = osConfig.nest.programs;
-in {
-  config = lib.mkIf (cfg.cli
-    && cfg.terminal.tools.ripgrep.enable) {
+}: {
+  config = lib.mkIf osConfig.nest.programs.terminal.tools.ripgrep.enable {
     programs.ripgrep = {
       enable = true;
 
