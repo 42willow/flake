@@ -15,15 +15,13 @@
         shell = {
           atuin.enable = lib.mkDefault true;
           starship.enable = lib.mkDefault true;
+          zsh.enable = lib.mkDefault true;
         };
         tools.enable = lib.mkDefault true;
       };
     };
     system = {
-      user.shell = {
-        zsh.enable = lib.mkDefault true;
-        shell = "zsh";
-      };
+      user.shell = lib.mkDefault "zsh";
     };
     services = {
       enable = lib.mkDefault true;
