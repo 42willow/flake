@@ -49,7 +49,7 @@ jobs:
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: DeterminateSystems/magic-nix-cache-action@v14
+      - uses: Mic92/hestia@v1
 
       - name: Generate Nix Diff
         uses: 42willow/nix-diff-action@main
