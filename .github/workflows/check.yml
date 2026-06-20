@@ -52,7 +52,9 @@ jobs:
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: Mic92/hestia@v1
+      - uses: Mic92/hestia/action@v1
+        with:
+          version: v1
 
       - name: Validate Host
         run: |
