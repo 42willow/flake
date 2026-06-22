@@ -5,10 +5,9 @@
   pkgs,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.gui.enable
-    && cfg.categories.core.enable) {
+  config = lib.mkIf cfg.gui {
     home.packages = [
       inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];

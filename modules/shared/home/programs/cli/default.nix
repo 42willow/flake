@@ -6,37 +6,40 @@
   ...
 }: let
   inherit (lib) optionals concatLists;
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
   imports = [
     ./atuin.nix
     ./bat.nix
     ./beets.nix
+    ./btop.nix
     ./bun.nix
     ./direnv.nix
     ./eza.nix
     ./fzf.nix
     ./git.nix
+    ./gitui.nix
+    ./helix
     ./ripgrep.nix
     ./starship.nix
     ./zoxide.nix
     ./zsh.nix
   ];
 
-  config = lib.mkIf cfg.cli.enable {
+  config = lib.mkIf cfg.cli {
     home.packages = with pkgs;
     with inputs;
       concatLists [
-        (optionals cfg.categories.tools.enable [
+        [
           catppuccin.packages."${pkgs.stdenv.hostPlatform.system}".catwalk
           catppuccin.packages."${pkgs.stdenv.hostPlatform.system}".whiskers
 
-          # archivebox
           just
           tldr
           typst
-        ])
-        (optionals cfg.categories.dev.enable [
+        ]
+        (optionals cfg.devtools.enable [
+          # TODO use categories
           pnpm
 
           # nix

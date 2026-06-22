@@ -4,10 +4,9 @@
   config,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.cli.enable
-    && cfg.categories.tools.enable) {
+  config = lib.mkIf (cfg.cli) {
     programs.eza = {
       enable = true;
       icons = "auto";

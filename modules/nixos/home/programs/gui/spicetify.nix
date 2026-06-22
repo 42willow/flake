@@ -5,13 +5,13 @@
   osConfig,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
   imports = [inputs.spicetify-nix.homeManagerModules.default];
 
-  config = lib.mkIf (cfg.gui.enable
-    && cfg.categories.music.enable) {
+  config = lib.mkIf (cfg.gui
+    && cfg.media.enable) {
     programs.spicetify = {
       enable = true;
       enabledExtensions = with spicePkgs.extensions; [

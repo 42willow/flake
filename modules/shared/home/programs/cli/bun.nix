@@ -3,10 +3,9 @@
   osConfig,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.cli.enable
-    && cfg.categories.dev.enable) {
+  config = {
     programs.bun.enable = true;
   };
 }

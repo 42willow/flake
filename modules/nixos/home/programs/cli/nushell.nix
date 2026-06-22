@@ -4,12 +4,12 @@
   config,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.cli.enable
-    && cfg.categories.tools.enable) {
+  config = lib.mkIf (cfg.cli
+    && cfg.terminal.shell.nushell.enable) {
     programs.nushell = {
-      enable = false;
+      enable = true;
       extraConfig = ''
         $env.config = {
           show_banner: false,

@@ -5,12 +5,12 @@
   pkgs,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.gui.enable
-    && cfg.categories.dev.enable) {
+  config = lib.mkIf (cfg.gui
+    && cfg.devtools.enable) {
     home = let
-      inherit (osConfig.settings.system.user) flakeDir;
+      inherit (osConfig.nest.system.user) flakeDir;
       mkLink = config.lib.file.mkOutOfStoreSymlink;
       settingsFile = mkLink "${flakeDir}/modules/nixos/programs/gui/zed/settings.json";
       keymapFile = mkLink "${flakeDir}/modules/nixos/programs/gui/zed/keymap.json";

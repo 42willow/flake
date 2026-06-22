@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  cfg = osConfig.settings.desktop;
+  cfg = osConfig.nest.desktop;
 in {
   config = lib.mkIf cfg.enable {
     qt = {

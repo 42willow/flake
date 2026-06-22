@@ -5,11 +5,12 @@
   pkgs,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
   inherit (pkgs) stdenv;
 in {
-  config = lib.mkIf (cfg.cli.enable
-    && cfg.categories.music.enable) {
+  # TODO different config setting
+  config = lib.mkIf (cfg.cli
+    && cfg.media.enable) {
     systemd.user.services.mpdstats =
       lib.mkIf (stdenv.isLinux
         && config.services.mpd.enable)

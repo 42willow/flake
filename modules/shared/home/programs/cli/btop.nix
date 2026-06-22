@@ -6,6 +6,6 @@
   cfg = osConfig.nest.programs;
 in {
   config = lib.mkIf cfg.cli {
-    programs.bat.enable = cfg.terminal.tools.bat.enable;
+    programs.btop.enable = true;
   };
 }

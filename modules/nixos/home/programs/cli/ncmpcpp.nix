@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.tui.enable
-    && cfg.categories.music.enable) {
+  config = lib.mkIf (cfg.cli
+    && cfg.media.enable) {
     programs.ncmpcpp = {
       enable = true;
       package = pkgs.ncmpcpp.override {

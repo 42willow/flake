@@ -9,17 +9,17 @@
     "${self}/modules/nixos"
   ];
 
-  settings = {
-    system = {
-      hostName = "earthy";
-      services.sync.enable = true;
+  profile = "desktop";
+  nest = {
+    system.hostName = "earthy";
+    services = {
+      syncthing.enable = true;
+      selfhost = {
+        mpd.enable = true;
+      };
     };
-  };
-
-  services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin = "yes";
+    programs = {
+      terminal.emulator.alacritty.enable = true;
     };
   };
 
@@ -34,21 +34,28 @@
     in ["${automount_opts},credentials=${config.age.secrets.samba.path}"];
   };
 
-  # tlp
-  services.tlp = {
-    enable = true;
-    settings = {
-      CPU_ENERGY_PERF_POLICY_AC = "performance";
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
-      PLATFORM_PROFILE_ON_AC = "performance";
-      PLATFORM_PROFILE_ON_BAT = "low-power";
-      WIFI_PWR_ON_AC = "off"; # default: off
-      WIFI_PWR_ON_BAT = "off"; # default: on  todo)) trying to resolve samba frozen unit session slice issue
+  services = {
+    tlp = {
+      enable = true;
+      settings = {
+        CPU_ENERGY_PERF_POLICY_AC = "performance";
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
+        PLATFORM_PROFILE_ON_AC = "performance";
+        PLATFORM_PROFILE_ON_BAT = "low-power";
+        WIFI_PWR_ON_AC = "off"; # default: off
+        WIFI_PWR_ON_BAT = "off"; # default: on  todo)) trying to resolve samba frozen unit session slice issue
+      };
     };
-  };
 
-  # fwupd
-  services.fwupd = {
-    enable = true;
+    openssh = {
+      enable = true;
+      settings = {
+        PermitRootLogin = "yes";
+      };
+    };
+
+    fwupd = {
+      enable = true;
+    };
   };
 }

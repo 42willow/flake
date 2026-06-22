@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  cfg = config.settings.system.services.sound;
+  cfg = config.nest.services.sound;
 in {
   config = lib.mkIf cfg.enable {
     # Enable sound with pipewire

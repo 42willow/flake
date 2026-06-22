@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  cfg = config.settings.desktop;
+  cfg = config.nest.desktop;
 in {
   config = lib.mkIf cfg.enable {
     fonts = {

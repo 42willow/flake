@@ -4,17 +4,19 @@
   config,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.cli.enable
-    && cfg.categories.core.enable) {
+  config = lib.mkIf cfg.cli {
     programs.git = {
       enable = true;
       lfs.enable = true;
 
       settings = {
-        user.name = "willow";
-        user.email = "42willow" + "@" + "pm.me";
+        user = {
+          name = "willow";
+          email = "42willow" + "@" + "pm.me";
+          signingkey = osConfig.age.secrets.gh.path;
+        };
 
         alias = {
           co = "checkout";
@@ -51,7 +53,6 @@ in {
         # commit signing
         commit.gpgsign = true;
         gpg.format = "ssh";
-        user.signingkey = osConfig.age.secrets.gh.path;
         gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.ssh/allowed_signers";
       };
     };

@@ -4,7 +4,7 @@
   config,
   ...
 }: let
-  inherit (config.settings.system) user;
+  inherit (config.nest.system) user;
 
   keys = [
     "${self}/keys/anemone.pub"
@@ -22,13 +22,20 @@ in {
     ./themes
 
     ../shared
+    ../lib
   ];
 
   users.users.${user.name} = {
     inherit (user) home;
     isNormalUser = true;
     extraGroups = ["networkmanager" "wheel" "dialout"];
-    shell = pkgs.zsh;
+    shell =
+      if user.shell == "zsh"
+      then pkgs.zsh
+      else if user.shell == "nushell"
+      then pkgs.nushell
+      else pkgs.bash;
+
     initialHashedPassword = "";
     openssh.authorizedKeys.keyFiles = keys;
   };

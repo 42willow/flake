@@ -3,10 +3,9 @@
   osConfig,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.gui.enable
-    && cfg.categories.core.enable) {
+  config = lib.mkIf cfg.gui {
     programs.waybar = {
       enable = true;
       style = builtins.readFile ./style.css;

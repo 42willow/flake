@@ -18,24 +18,11 @@
 
   disabledModules = ["profiles/base.nix"];
 
-  settings = {
-    programs = {
-      enable = false;
-      cli.enable = true;
-      tui.enable = true;
-      categories = {
-        enable = false;
-        core.enable = true;
-      };
-    };
-    system = {
-      hostName = "anemone";
-      services = {
-        enable = false;
-        networking.enable = true;
-      };
-    };
-    desktop.enable = false;
+  profile = "server";
+  nest = {
+    system.hostName = "anemone";
+    services.enable = false;
+    programs.enable = false;
   };
 
   services.openssh = {

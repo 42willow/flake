@@ -4,10 +4,10 @@
   config,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.cli.enable
-    && cfg.categories.core.enable) {
+  config = lib.mkIf cfg.cli {
+    # TODO options
     programs.zsh = {
       enable = true;
       enableCompletion = true;

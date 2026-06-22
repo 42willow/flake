@@ -5,13 +5,14 @@
   config,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.tui.enable
-    && cfg.categories.core.enable) {
-    xdg.configFile.".prettierrc.json".text = builtins.toJSON (import ./prettier.nix {inherit pkgs;});
-    xdg.configFile.".dprint.jsonc".text = builtins.toJSON (import ./dprint.nix {inherit pkgs;});
-    xdg.configFile."moxide/settings.toml".source = ./moxide.toml;
+  config = lib.mkIf cfg.cli {
+    xdg.configFile = {
+      ".dprint.jsonc".text = builtins.toJSON (import ./dprint.nix {inherit pkgs;});
+      ".prettierrc.json".text = builtins.toJSON (import ./prettier.nix {inherit pkgs;});
+      "moxide/settings.toml".source = ./moxide.toml;
+    };
 
     programs.helix = {
       enable = true;

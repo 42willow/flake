@@ -5,11 +5,11 @@
   lib,
   ...
 }: let
-  cfg = config.settings.desktop.niri;
+  cfg = config.nest.desktop;
 in {
   imports = [inputs.niri.nixosModules.niri];
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (cfg.enable && cfg.niri.enable) {
     niri-flake.cache.enable = true;
     nixpkgs.overlays = [inputs.niri.overlays.niri];
 

@@ -4,7 +4,7 @@
   osConfig,
   ...
 }: let
-  inherit (osConfig.settings.system.user) flakeDir;
+  inherit (osConfig.nest.system.user) flakeDir;
   mkLink = config.lib.file.mkOutOfStoreSymlink;
   settingsFile = mkLink "${flakeDir}/modules/darwin/home/glide.toml";
 in {

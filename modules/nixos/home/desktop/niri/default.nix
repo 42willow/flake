@@ -5,13 +5,13 @@
   lib,
   ...
 }: let
-  cfg = osConfig.settings.desktop.niri;
+  cfg = osConfig.nest.desktop;
 in {
   imports = [
     ./binds.nix
   ];
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (cfg.enable && cfg.niri.enable) {
     programs.niri.settings = {
       animations.enable = true;
       prefer-no-csd = true;

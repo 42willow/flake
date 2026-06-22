@@ -4,10 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = osConfig.settings.programs;
+  cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.cli.enable
-    && cfg.categories.tools.enable) {
+  config = lib.mkIf cfg.cli {
     programs.hyfetch = {
       enable = true;
       settings = {

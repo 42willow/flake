@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  cfg = config.settings.system.services.printing;
+  cfg = config.nest.services.printing;
 in {
   config = lib.mkIf cfg.enable {
     services.printing = {
@@ -23,7 +23,7 @@ in {
       openFirewall = true;
     };
 
-    hardware.printers = {
+    hardware.printers = lib.mkIf cfg.profiles.enable {
       ensurePrinters = [
         {
           # http://localhost:631/printers/Brother-HL-5340D

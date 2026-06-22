@@ -4,7 +4,7 @@
   config,
   ...
 }: let
-  cfg = config.settings;
+  cfg = config.nest;
 in {
   imports = [
     "${self}/modules/darwin"
@@ -16,7 +16,8 @@ in {
     hostName = "starling";
   };
 
-  settings = {
+  profile = "desktop";
+  nest = {
     system = {
       user = let
         home = "/Users/${cfg.system.user.name}";
@@ -30,8 +31,9 @@ in {
         group = "staff";
         flakeDir = "${home}/Documents/git/flake";
       };
-      services.sync.enable = true;
     };
+    services.syncthing.enable = true; # TODO enable syncthing (disabled in module) - requires disabling syncthing network which is flagged
+    programs.terminal.emulator.alacritty.enable = true;
   };
 
   nix = {
