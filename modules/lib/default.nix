@@ -5,7 +5,7 @@
 }: let
   inherit (lib) mkEnableOption toUpper getAttrFromPath concatStringsSep optionalString;
 
-  traceLogs = false;
+  traceLogs = true;
   trace = msg: x:
     if traceLogs
     then builtins.trace msg x

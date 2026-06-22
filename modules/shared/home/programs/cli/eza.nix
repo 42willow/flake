@@ -6,8 +6,7 @@
 }: let
   cfg = osConfig.nest.programs;
 in {
-  config = lib.mkIf (cfg.cli
-    && cfg.terminal.tools.eza.enable) {
+  config = lib.mkIf (cfg.cli) {
     programs.eza = {
       enable = true;
       icons = "auto";
