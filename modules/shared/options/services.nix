@@ -47,6 +47,8 @@ in {
         mainsail.enable = mkEnableOption "mainsail";
       };
       navidrome.enable = mkEnableOption "navidrome";
+      radicale.enable = mkEnableOption "radicale CalDAV and CardDAV server";
+      linkwarden.enable = mkEnableOption "linkwarden";
     };
   };
 }
