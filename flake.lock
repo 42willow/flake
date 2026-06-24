@@ -114,6 +114,27 @@
         "type": "github"
       }
     },
+    "chiri": {
+      "inputs": {
+        "nixpkgs": [
+          "nixos-unstable"
+        ],
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1782075466,
+        "narHash": "sha256-GwCt72awJLG953DOorbYd3GfDUl+q2IND0a818Bnxt0=",
+        "owner": "chiriapp",
+        "repo": "chiri",
+        "rev": "677486808c7ff7ac21c4c60192d95cae43409c58",
+        "type": "github"
+      },
+      "original": {
+        "owner": "chiriapp",
+        "repo": "chiri",
+        "type": "github"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1733286231,
@@ -706,6 +727,7 @@
       "inputs": {
         "agenix": "agenix",
         "catppuccin": "catppuccin",
+        "chiri": "chiri",
         "darwin-stable": "darwin-stable",
         "firefox-cascade": "firefox-cascade",
         "flake-utils": "flake-utils",
@@ -740,6 +762,27 @@
         "owner": "rust-lang",
         "ref": "nightly",
         "repo": "rust-analyzer",
+        "type": "github"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "chiri",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1781580018,
+        "narHash": "sha256-BlTedbM77FmesD2ZqR73vhFy+y77UrhefV7IYw1pDsk=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "8bceba21a1ebea535c27c4dc723a0d5a4db9e386",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
         "type": "github"
       }
     },
