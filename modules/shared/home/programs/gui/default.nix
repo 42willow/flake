@@ -12,9 +12,12 @@ in {
     ./zathura.nix
   ];
 
-  config = lib.mkIf cfg.gui.enable {
-    home.packages = [
-      inputs.chiri.packages.${pkgs.stdenv.hostPlatform.system}.default
-    ];
+  config = {
+    # targets.darwin.linkApps.enable = false;
+    # targets.darwin.copyApps.enable = true;
+
+    # home.packages = [
+    #   inputs.chiri.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # ];
   };
 }
