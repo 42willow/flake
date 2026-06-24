@@ -1,6 +1,4 @@
 {
-  inputs,
-  pkgs,
   self,
   lib,
   config,
@@ -35,10 +33,6 @@ in {
       services.sync.enable = true;
     };
   };
-
-  # environment.systemPackages = [
-  #   inputs.chiri.packages.${pkgs.stdenv.hostPlatform.system}.default
-  # ];
 
   nix = {
     linux-builder = {

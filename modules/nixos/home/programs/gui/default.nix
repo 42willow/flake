@@ -76,6 +76,7 @@ in {
           # logseq
           qalculate-qt
           # blanket
+          inputs.chiri.packages.${pkgs.stdenv.hostPlatform.system}.default
         ])
       ]
       ++ (with pkgs.unstable;
