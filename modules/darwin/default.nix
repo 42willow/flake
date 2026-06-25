@@ -7,6 +7,7 @@ in {
     ./home
     ./homebrew.nix
     ./nix
+    ./programs.nix
     ./services
   ];
 

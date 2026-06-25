@@ -148,7 +148,11 @@
 
     quickshell = {
       url = "git+https://git.outfoxxed.me/quickshell/quickshell";
+      inputs.nixpkgs.follows = "nixos-unstable";
+    };
 
+    chiri = {
+      url = "github:chiriapp/chiri";
       inputs.nixpkgs.follows = "nixos-unstable";
     };
   };
