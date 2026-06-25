@@ -2,6 +2,7 @@
   pkgs,
   osConfig,
   lib,
+  inputs,
   ...
 }: let
   inherit (lib) optionals concatLists;
@@ -76,7 +77,7 @@ in {
           # logseq
           qalculate-qt
           # blanket
-          inputs.chiri.packages.${pkgs.stdenv.hostPlatform.system}.default
+          inputs.chiri.packages.${pkgs.stdenv.hostPlatform.system}.source
         ])
       ]
       ++ (with pkgs.unstable;
