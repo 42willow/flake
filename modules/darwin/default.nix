@@ -14,7 +14,7 @@ in {
   users.users.${user.name}.home = user.home;
 
   system = {
-    stateVersion = 6;
+    stateVersion = 7;
 
     primaryUser = user.name;
 
