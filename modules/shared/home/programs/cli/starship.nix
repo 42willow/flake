@@ -76,8 +76,8 @@ in {
         git_branch = {
           symbol = "󰊢 ";
           format = "on [$symbol$branch]($style) ";
-          truncation_length = 4;
-          truncation_symbol = "…/";
+          # truncation_length = 10;
+          # truncation_symbol = "…";
           style = "bold green";
         };
 
