@@ -27,8 +27,7 @@ in {
 
     config = {
       permittedInsecurePackages = [
-        "electron-27.3.11"
-        "python3.12-django-3.1.14"
+        "pnpm-10.29.2" # vesktop
       ];
       allowUnfree = true;
     };
