@@ -9,7 +9,7 @@
 in {
   config = lib.mkIf cfg.gui.enable {
     environment.systemPackages = [
-      inputs.chiri.packages.${pkgs.stdenv.hostPlatform.system}.source
+      inputs.chiri.packages.${pkgs.stdenv.hostPlatform.system}.default
       pkgs.unstable.aseprite
     ];
   };
