@@ -54,7 +54,7 @@ jobs:
           version: v1
 
       - name: Generate Nix Diff
-        uses: 42willow/nix-diff-action@main
+        uses: natsukium/nix-diff-action@v1.1.1
         with:
           mode: diff-only
           attributes: |
