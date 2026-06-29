@@ -9,12 +9,22 @@ starling:
 alias a-sd := anemone-sd
 [group('anemone')]
 anemone-sd:
-  sudo nom build ".#nixosConfigurations.anemone.config.system.build.sdImage"
+  nix build ".#nixosConfigurations.anemone.config.system.build.sdImage" \
+  --verbose \
+  --log-format internal-json -v \
+  |& nix run nixpkgs#nix-output-monitor -- --json
 
 alias a-dep := anemone-deploy
 [group('anemone')]
 anemone-deploy:
-  nixos-rebuild switch --flake .#anemone --target-host root@10.10.1.245 --verbose --log-format internal-json -v |& nom --json
+  nix run nixpkgs#nixos-rebuild-ng -- test \
+  --no-reexec \
+  --flake .#anemone \
+  --target-host root@10.10.1.245 \
+  --use-substitutes \
+  --verbose \
+  --log-format internal-json -v \
+  |& nix run nixpkgs#nix-output-monitor -- --json
 
 [group('nixos')]
 clean:
