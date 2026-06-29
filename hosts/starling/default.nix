@@ -38,7 +38,7 @@ in {
     linux-builder = {
       enable = true;
       systems = ["aarch64-linux"];
-      # config.boot.binfmt.emulatedSystems = ["x86_64-linux" "aarch64-linux"];
+      ephemeral = true;
     };
     settings.trusted-users = ["@admin"];
   };
