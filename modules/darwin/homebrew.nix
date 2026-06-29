@@ -42,7 +42,6 @@
       "keepassxc"
       "keka"
       "krita"
-      "lightburn"
       "linearmouse"
       "microsoft-excel"
       "microsoft-word"
