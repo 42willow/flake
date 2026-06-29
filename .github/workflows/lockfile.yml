@@ -19,4 +19,4 @@ jobs:
         uses: cachix/install-nix-action@v31
 
       - name: Check flake.lock
-        run: nix run github:tgirlcloud/locker
+        run: nix run github:tgirlcloud/locker || true

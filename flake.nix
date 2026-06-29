@@ -68,20 +68,21 @@
     };
     stylix = {
       url = "github:danth/stylix/release-26.05";
-      # inputs = {
-      #   nixpkgs.follows = "nixpkgs";
-      #   systems.follows = "systems";
-      #   flake-compat.follows = "";
-      #   git-hooks.follows = "";
-      #   home-manager.follows = "";
-      # };
+      inputs = {
+        nixpkgs.follows = "nixos-stable";
+        systems.follows = "systems";
+        flake-parts.follows = "flake-parts";
+      };
     };
 
     # hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";
-      inputs.flake-compat.follows = "";
+      inputs = {
+        nixpkgs.follows = "nixos-unstable";
+        flake-compat.follows = "";
+      };
     };
 
     # home-manager
@@ -116,16 +117,11 @@
       inputs = {
         nixpkgs.follows = "nixos-unstable";
         systems.follows = "systems";
+        lutgen-rs.inputs.flake-utils = {
+          follows = "flake-utils";
+          inputs.systems.follows = "systems";
+        };
       };
-    };
-
-    # reduce inputs
-    systems = {
-      url = "github:nix-systems/default";
-    };
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-      inputs.systems.follows = "systems";
     };
 
     firefox-cascade = {
@@ -143,7 +139,11 @@
 
     paneru = {
       url = "github:karinushka/paneru";
-      inputs.nixpkgs.follows = "nixos-unstable";
+      inputs = {
+        nixpkgs.follows = "nixos-unstable";
+        nix-darwin.follows = "nix-darwin";
+        flake-parts.follows = "flake-parts";
+      };
     };
 
     quickshell = {
@@ -154,6 +154,18 @@
     chiri = {
       url = "github:chiriapp/chiri";
       inputs.nixpkgs.follows = "nixos-unstable";
+    };
+
+    # reduce inputs
+    systems = {
+      url = "github:nix-systems/default";
+    };
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
     };
   };
 }
