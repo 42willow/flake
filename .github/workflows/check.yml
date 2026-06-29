@@ -12,6 +12,33 @@ on:
 permissions: {}
 
 jobs:
+  lint:
+    name: "Lint"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: Mic92/hestia/action@v1
+        with:
+          version: v1
+
+      - name: Run alejandra
+        run: nix run nixpkgs#alejandra -- --check .
+
+      - name: Run statix
+        run: nix run nixpkgs#statix -- check .
+
+      - name: Run deadnix
+        run: nix run nixpkgs#deadnix -- -eq .
+
   check-flake:
     name: ${{ matrix.host }} (${{ matrix.system }})
     runs-on: ${{ matrix.os }}
