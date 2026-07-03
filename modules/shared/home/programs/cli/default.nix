@@ -13,6 +13,7 @@ in {
     ./bat.nix
     ./beets.nix
     ./bun.nix
+    ./delta.nix
     ./direnv.nix
     ./eza.nix
     ./fzf.nix
