@@ -155,7 +155,7 @@ in {
           type = "Bookmarks";
           separator = " ";
           color = "Green";
-          behind_symbol = "";
+          behind_symbol = "+";
           surround_with_quotes = false;
           ignore_empty_commits = "None";
         }
