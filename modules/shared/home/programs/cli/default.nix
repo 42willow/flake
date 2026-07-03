@@ -17,6 +17,7 @@ in {
     ./eza.nix
     ./fzf.nix
     ./git.nix
+    ./jjui.nix
     ./jujutsu.nix
     ./ripgrep.nix
     ./starship.nix
