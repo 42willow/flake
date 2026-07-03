@@ -168,7 +168,13 @@ in {
           }
           {
             name = "yaml";
-            formatter = dprint;
+            formatter = {
+              command = lib.getExe pkgs.yamlfmt;
+              args = [
+                "--in"
+                "%{buffer_name}"
+              ];
+            };
           }
           {
             name = "zig";
