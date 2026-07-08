@@ -1,5 +1,5 @@
 {
-	programs.jjui = {
-		enable = true;
-	};
+  programs.jjui = {
+    enable = true;
+  };
 }
