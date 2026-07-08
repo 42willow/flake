@@ -24,32 +24,43 @@ in {
       outputs = let
         default = {
           backdrop-color = "#1e2030";
+          background-color = "#1e2030";
         };
       in {
-        DP-1 =
-          default
-          // {
-            position = {
-              x = 0;
-              y = 0;
-            };
-          };
-        DP-2 =
-          default
-          // {
-            position = {
-              x = 0;
-              y = 0;
-            };
-          };
+        # DP-1 =
+        #   default
+        #   // {
+        #     position = {
+        #       x = 0;
+        #       y = 0;
+        #     };
+        #   };
+        # DP-2 =
+        #   default
+        #   // {
+        #     position = {
+        #       x = 0;
+        #       y = 0;
+        #     };
+        #   };
         eDP-1 =
           default
           // {
             scale = 1;
             position = {
-              x = 2560;
+              # x = 2560;
+              x = 1024;
               y = 0;
             };
+          };
+        HDMI-A-1 =
+          default
+          // {
+            position = {
+              x = 0;
+              y = 0;
+            };
+            transform.rotation = 90;
           };
       };
       window-rules = [
