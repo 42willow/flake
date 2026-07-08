@@ -11,13 +11,12 @@ in {
     programs.hyfetch = {
       enable = true;
       settings = {
-        preset = "rainbow";
-        lightness = 0.8;
-        backend = "fastfetch";
+        preset = "nonbinary";
+        lightness = 0.5;
         mode = "rgb";
-        color_align = {
-          mode = "horizontal";
-        };
+        color_align.mode = "horizontal";
+        backend = "fastfetch";
+        pride_month_disable = false;
       };
     };
     home.packages = [
