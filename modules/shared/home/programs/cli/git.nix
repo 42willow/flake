@@ -56,6 +56,12 @@ in {
         gpg.format = "ssh";
         gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.ssh/allowed_signers";
       };
+
+      ignores = [
+        ".direnv"
+        "node_modules"
+        ".DS_Store"
+      ];
     };
     programs.gh.enable = true;
   };
