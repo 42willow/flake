@@ -184,6 +184,17 @@ in {
             name = "haskell";
             language-servers = ["hls"];
           }
+          # {
+          #   name = "kdl";
+          #   formatter = {
+          #     command = lib.getExe pkgs.kdlfmt;
+          #     args = [
+          #       "format"
+          #       "--stdin"
+          #       "%{buffer_name}"
+          #     ];
+          #   };
+          # }
         ];
       };
 
