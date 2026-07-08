@@ -21,48 +21,38 @@ in {
         theme = config.stylix.cursor.name;
       }; # TODO)) this doesn't fix the big cursor issue
 
-      outputs = let
-        default = {
-          backdrop-color = "#1e2030";
-          background-color = "#1e2030";
+      outputs = {
+        DP-1 = {
+          position = {
+            x = 0;
+            y = 0;
+          };
         };
-      in {
-        # DP-1 =
-        #   default
-        #   // {
-        #     position = {
-        #       x = 0;
-        #       y = 0;
-        #     };
-        #   };
-        # DP-2 =
-        #   default
-        #   // {
-        #     position = {
-        #       x = 0;
-        #       y = 0;
-        #     };
-        #   };
-        eDP-1 =
-          default
-          // {
-            scale = 1;
-            position = {
-              # x = 2560;
-              x = 1024;
-              y = 0;
-            };
+        DP-2 = {
+          position = {
+            x = 0;
+            y = 0;
           };
-        HDMI-A-1 =
-          default
-          // {
-            position = {
-              x = 0;
-              y = 0;
-            };
-            transform.rotation = 90;
+        };
+        eDP-1 = {
+          scale = 1;
+          position = {
+            # x = 2560;
+            x = 1024;
+            y = 0;
           };
+        };
+        HDMI-A-1 = {
+          position = {
+            x = 0;
+            y = 0;
+          };
+          transform.rotation = 90;
+        };
       };
+
+      overview.backdrop-color = "#1e2030";
+
       window-rules = [
         {
           geometry-corner-radius = let
@@ -131,6 +121,7 @@ in {
         };
         focus-ring.enable = false;
         insert-hint.display.color = "#f5bde680";
+        background-color = "#1e2030";
       };
     };
   };
