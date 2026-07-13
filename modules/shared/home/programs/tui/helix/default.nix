@@ -50,6 +50,10 @@ in {
             command = lib.getExe pkgs.svelte-language-server;
             args = ["--stdio"];
           };
+          vue-lsp = {
+            command = lib.getExe pkgs.vue-language-server;
+            args = ["--stdio"];
+          };
           astro-lsp = {
             command = lib.getExe pkgs.astro-language-server;
             args = ["--stdio"];
@@ -183,6 +187,10 @@ in {
           {
             name = "haskell";
             language-servers = ["hls"];
+          }
+          {
+            name = "vue";
+            language-servers = ["vue-lsp"];
           }
           # {
           #   name = "kdl";
