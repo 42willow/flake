@@ -113,6 +113,10 @@ default_keys = false
 # Print the current layout in the logs.
 "Alt + Shift + D" = "debug"
 
+[[window_rules]]
+if.app_id = "org.keepassxc.keepassxc"
+float = true
+
 [settings.experimental]
 # Show the current space index on the status icon.
 status_icon.space_index = false
