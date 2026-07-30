@@ -81,10 +81,10 @@ in {
           tinymist = {
             command = lib.getExe pkgs.tinymist;
             config = {
-              exportPdf = "onType";
-              outputPath = "$root/target/$dir/$name";
+              # exportPdf = "onType";
+              # outputPath = "$root/target/$dir/$name";
               formatterMode = "typstyle";
-              formatterPrintWidth = 80;
+              # formatterPrintWidth = 80;
             };
           };
           openscad-lsp = {
@@ -244,19 +244,22 @@ in {
               e = "scroll_down";
             };
 
-            "space".w = {
-              # Window Mode
-              n = "jump_view_left";
-              i = "jump_view_up";
-              e = "jump_view_down";
-              o = "jump_view_right";
+            space = {
+              o = ":lsp-workspace-command tinymist.startDefaultPreview";
+              w = {
+                # Window Mode
+                n = "jump_view_left";
+                i = "jump_view_up";
+                e = "jump_view_down";
+                o = "jump_view_right";
 
-              N = "swap_view_left";
-              I = "swap_view_up";
-              E = "swap_view_down";
-              O = "swap_view_right";
+                N = "swap_view_left";
+                I = "swap_view_up";
+                E = "swap_view_down";
+                O = "swap_view_right";
 
-              h = "hsplit";
+                h = "hsplit";
+              };
             };
 
             g = {
