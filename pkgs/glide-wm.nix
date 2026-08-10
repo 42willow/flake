@@ -10,10 +10,10 @@ pkgs.unstable.rustPlatform.buildRustPackage {
   src = fetchFromGitHub {
     owner = "glide-wm";
     repo = "glide";
-    rev = "v0.2.14";
-    hash = "sha256-aFyIINO98hCb5YU7oNpskWst1PERJUMNcY22X2EZam0=";
+    rev = "v0.2.15";
+    hash = "sha256-IY2kSs5kgbg1IeAQ6S5uA2gYwkLSir/cFkDKaPrLf8w=";
   };
-  cargoHash = "sha256-ghf0ZAzABpPVM/2z+80s4RAhre4V7xmyrBanpndGY5E=";
+  cargoHash = "sha256-/NR9nVUI1y7XCO4L/z9NoxRBxmVSqBUrYVnc0KRBen4=";
 
   # skip tests blocked by Nix sandbox
   checkFlags = [
