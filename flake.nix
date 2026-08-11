@@ -151,11 +151,6 @@
       inputs.nixpkgs.follows = "nixos-unstable";
     };
 
-    chiri = {
-      url = "github:chiriapp/chiri";
-      inputs.nixpkgs.follows = "nixos-unstable";
-    };
-
     # reduce inputs
     systems = {
       url = "github:nix-systems/default";
