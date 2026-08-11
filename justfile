@@ -2,7 +2,7 @@ default:
   just --list
 
 starling:
-  sudo nix --extra-experimental-features "nix-command flakes" run nix-darwin/nix-darwin-26.05#darwin-rebuild -- switch --flake ~/Documents/git/flake#starling --impure 2>&1 | nix run nixpkgs#nix-output-monitor --extra-experimental-features "nix-command flakes"
+  sudo nix --extra-experimental-features "nix-command flakes" run nix-darwin/nix-darwin-26.05#darwin-rebuild -- switch --flake ~/Documents/git/flake#starling 2>&1 | nix run nixpkgs#nix-output-monitor --extra-experimental-features "nix-command flakes"
   # sudo nix run nix-darwin/nix-darwin-25.05#darwin-rebuild --extra-experimental-features "nix-command flakes" -- switch --flake ~/Documents/git/flake#starling --impure
   # - sudo yabai --load-sa
 
