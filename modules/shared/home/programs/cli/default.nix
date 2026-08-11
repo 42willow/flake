@@ -40,7 +40,7 @@ in {
           typst
         ])
         (optionals cfg.categories.dev.enable [
-          pnpm
+          # pnpm
 
           # nix
           alejandra
