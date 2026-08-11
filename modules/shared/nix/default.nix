@@ -26,9 +26,6 @@ in {
     overlays = [outputs.overlays.additions];
 
     config = {
-      permittedInsecurePackages = [
-        "pnpm-10.29.2" # vesktop
-      ];
       allowUnfree = true;
     };
   };
