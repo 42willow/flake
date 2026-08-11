@@ -25,8 +25,6 @@ in {
           args = [
             "--parser"
             lang
-            "--config"
-            "${config.xdg.configHome}/.prettierrc.json"
           ];
         };
 
