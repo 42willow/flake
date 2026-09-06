@@ -49,12 +49,18 @@
     tlp = {
       enable = true;
       settings = {
-        CPU_ENERGY_PERF_POLICY_AC = "performance";
+        START_CHARGE_THRESH_BAT0 = 40;
+        STOP_CHARGE_THRESH_BAT0 = 50;
+        CPU_ENERGY_PERF_POLICY_ON_AC = "balance_power";
         CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
-        PLATFORM_PROFILE_ON_AC = "performance";
-        PLATFORM_PROFILE_ON_BAT = "low-power";
-        WIFI_PWR_ON_AC = "off"; # default: off
-        WIFI_PWR_ON_BAT = "off"; # default: on  todo)) trying to resolve samba frozen unit session slice issue
+        PLATFORM_PROFILE_ON_AC = "balanced";
+        PLATFORM_PROFILE_ON_BAT = "balanced";
+        RUNTIME_PM_ON_AC = "auto"; # enable runtime power management
+        RUNTIME_PM_ON_BAT = "auto";
+        WIFI_PWR_ON_AC = "off"; # disable wifi power save
+        WIFI_PWR_ON_BAT = "off";
+        CPU_SCALING_MAX_FREQ_ON_AC = 1600000;
+        CPU_SCALING_MAX_FREQ_ON_BAT = 1600000;
       };
     };
 
