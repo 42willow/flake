@@ -26,7 +26,7 @@
     kernelModules = ["kvm-intel"];
     extraModulePackages = [];
 
-    supportedFilesystems = ["ntfs"];
+    supportedFilesystems = ["ntfs" "ext4" "zfs"];
   };
 
   # file systems
