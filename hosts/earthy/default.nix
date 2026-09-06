@@ -35,6 +35,17 @@
       };
     };
 
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+      publish = {
+        enable = true;
+        addresses = true; # broadcast mdns
+        workstation = false; # visiblity in file managers
+      };
+    };
+
     tlp = {
       enable = true;
       settings = {
