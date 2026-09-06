@@ -1,7 +1,6 @@
 {
   self,
   pkgs,
-  config,
   ...
 }: {
   imports = [
@@ -46,6 +45,8 @@
       };
     };
 
+    tailscale.enable = true;
+
     tlp = {
       enable = true;
       settings = {
@@ -64,9 +65,7 @@
       };
     };
 
-    fwupd = {
-      enable = true;
-    };
+    fwupd.enable = true;
   };
 
   # required for ZFS
