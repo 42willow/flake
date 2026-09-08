@@ -45,7 +45,13 @@
       };
     };
 
-    tailscale.enable = true;
+    tailscale = {
+      enable = true;
+      openFirewall = true;
+      extraSetFlags = [
+        "--advertise-exit-node"
+      ];
+    };
 
     tlp = {
       enable = true;
