@@ -51,6 +51,7 @@
       openFirewall = true;
       extraSetFlags = [
         "--advertise-exit-node"
+        "--advertise-routes=10.10.1.0/24"
       ];
       useRoutingFeatures = "both";
     };
