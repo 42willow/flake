@@ -51,6 +51,7 @@
       extraSetFlags = [
         "--advertise-exit-node"
       ];
+      useRoutingFeatures = "both";
     };
 
     tlp = {
