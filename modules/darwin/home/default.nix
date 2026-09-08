@@ -3,7 +3,6 @@
 in {
   home-manager.users.${user.name} = {
     imports = [
-      ./paneru.nix
       ./glide-wm.nix
     ];
   };

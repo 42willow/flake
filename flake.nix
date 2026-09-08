@@ -137,15 +137,6 @@
       };
     };
 
-    paneru = {
-      url = "github:karinushka/paneru";
-      inputs = {
-        nixpkgs.follows = "nixos-unstable";
-        nix-darwin.follows = "nix-darwin";
-        flake-parts.follows = "flake-parts";
-      };
-    };
-
     quickshell = {
       url = "git+https://git.outfoxxed.me/quickshell/quickshell";
       inputs.nixpkgs.follows = "nixos-unstable";
