@@ -47,6 +47,7 @@
 
     tailscale = {
       enable = true;
+      package = pkgs.unstable.tailscale;
       openFirewall = true;
       extraSetFlags = [
         "--advertise-exit-node"
