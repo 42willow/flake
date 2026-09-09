@@ -33,6 +33,52 @@
         PermitRootLogin = "yes";
       };
     };
+    udisks2.enable = true;
+    gvfs.enable = true;
+    samba = {
+      enable = true;
+      package = pkgs.samba4Full; # mDNS and LDAP capability
+      openFirewall = true;
+
+      settings = {
+        global = {
+          "workgroup" = "WORKGROUP";
+          "server string" = "earthy fileserver";
+          "netbios name" = "earthy";
+          "security" = "user";
+
+          "mdns name" = "mdns"; # Forces Samba to respect the local system's lowercase hostname over mDNS
+
+          # macOS Finder Optimisations
+          "vfs objects" = "fruit streams_xattr";
+          "fruit:aapl" = "yes";
+          "fruit:model" = "MacBookPro";
+          "fruit:metadata" = "stream";
+          "fruit:posix_rename" = "yes";
+          "fruit:veto_appledouble" = "no";
+        };
+
+        "homes" = {
+          "comment" = "Home Directories";
+          "browseable" = "no"; # Keeps other users' home folders hidden
+          "read only" = "no"; # Allows you to write/save files
+          "guest ok" = "no"; # Requires your password to access
+          "valid users" = "%S"; # Crucial security: only allows the owner to log into their own home
+          "create mask" = "0600"; # Ensures new files are only readable by you
+          "directory mask" = "0700"; # Ensures new folders are only accessible by you
+        };
+
+        "shared-ntfs" = {
+          "comment" = "Shared NTFS";
+          "path" = "/mnt/shared";
+          "browseable" = "yes";
+          "read only" = "no";
+          "guest ok" = "no";
+          "valid users" = "willow"; # Limits access exclusively to user "willow"
+          "force user" = "willow"; # Forces Samba to write as UID 1000 matching the mount options
+        };
+      };
+    };
 
     avahi = {
       enable = true;
@@ -40,8 +86,9 @@
       openFirewall = true;
       publish = {
         enable = true;
+        domain = true; # broadcast mdns
         addresses = true; # broadcast mdns
-        workstation = false; # visiblity in file managers
+        userServices = true; # i.e. samba
       };
     };
 
