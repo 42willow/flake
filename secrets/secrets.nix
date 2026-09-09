@@ -7,6 +7,7 @@ let
   anemone = builtins.readFile ../keys/anemone.pub;
   hosts = [starling earthy anemone];
 in {
+  "freshrss.age".publicKeys = users ++ hosts;
   "id_ed25519.age".publicKeys = users ++ hosts;
   "id_ed25519.pub.age".publicKeys = users ++ hosts;
   "koito-password.age".publicKeys = users ++ hosts;

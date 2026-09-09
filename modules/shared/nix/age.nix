@@ -41,6 +41,7 @@ in {
       );
 
     secrets = {
+      freshrss = mkSecret {file = "freshrss";}; # freshrss password
       koitoPassword = mkSecret {file = "koito-password";}; # koito password
       koitoSubsonic = mkSecret {file = "koito-subsonic";}; # koito subsonic params
       lastfm = mkSecret {file = "lastfm";}; # API key
