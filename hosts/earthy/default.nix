@@ -33,6 +33,52 @@
         PermitRootLogin = "yes";
       };
     };
+    udisks2.enable = true;
+    gvfs.enable = true;
+    samba = {
+      enable = true;
+      package = pkgs.samba4Full; # mDNS and LDAP capability
+      openFirewall = true;
+
+      settings = {
+        global = {
+          "workgroup" = "WORKGROUP";
+          "server string" = "earthy fileserver";
+          "netbios name" = "earthy";
+          "security" = "user";
+
+          "mdns name" = "mdns"; # local system's lowercase hostname over mDNS
+
+          # macos finder view
+          "vfs objects" = "fruit streams_xattr";
+          "fruit:aapl" = "yes";
+          "fruit:model" = "MacBookPro";
+          "fruit:metadata" = "stream";
+          "fruit:posix_rename" = "yes";
+          "fruit:veto_appledouble" = "no";
+        };
+
+        "homes" = {
+          "comment" = "Home Directories";
+          "browseable" = "no";
+          "read only" = "no";
+          "guest ok" = "no";
+          "valid users" = "%S";
+          "create mask" = "0600";
+          "directory mask" = "0700";
+        };
+
+        "shared-ntfs" = {
+          "comment" = "Shared NTFS";
+          "path" = "/mnt/shared";
+          "browseable" = "yes";
+          "read only" = "no";
+          "guest ok" = "no";
+          "valid users" = "willow";
+          "force user" = "willow";
+        };
+      };
+    };
 
     avahi = {
       enable = true;
@@ -40,8 +86,9 @@
       openFirewall = true;
       publish = {
         enable = true;
+        domain = true; # broadcast mdns
         addresses = true; # broadcast mdns
-        workstation = false; # visiblity in file managers
+        userServices = true; # i.e. samba
       };
     };
 
