@@ -1,6 +1,7 @@
 {
   self,
   pkgs,
+  config,
   ...
 }: {
   imports = [
@@ -23,7 +24,7 @@
   #   options = let
   #     # this line prevents hanging on network split
   #     automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-  #   in ["${automount_opts},credentials=${config.age.secrets.samba.path}"];
+  #   in ["${automount_opts},credentials=${config.age.secrets.sambaNas.path}"];
   # };
 
   services = {
@@ -101,6 +102,21 @@
         "--advertise-routes=10.10.1.0/24"
       ];
       useRoutingFeatures = "both";
+      serve = {
+        enable = true;
+        services = {
+          navidrome = let
+            port = config.services.navidrome.settings.Port;
+          in {
+            endpoints."tcp:443" = "http://localhost:${port}";
+          };
+          koito = let
+            port = config.services.koito.environment.KOITO_LISTEN_PORT;
+          in {
+            endpoints."tcp:443" = "http://localhost:${port}";
+          };
+        };
+      };
     };
 
     tlp = {
@@ -123,6 +139,9 @@
 
     fwupd.enable = true;
   };
+
+  # disable firewall for tailscale
+  networking.firewall.trustedInterfaces = [config.services.tailscale.interfaceName];
 
   # required for ZFS
   networking.hostId = "c49b1e3e";
