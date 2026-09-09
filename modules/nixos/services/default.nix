@@ -7,6 +7,7 @@
   cfg = config.settings.system.services;
 in {
   imports = [
+    ./gonic.nix
     ./i18n.nix
     ./mpdscribble.nix
     ./pipewire.nix
