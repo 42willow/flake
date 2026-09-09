@@ -9,6 +9,7 @@ in {
   imports = [
     ./gonic.nix
     ./i18n.nix
+    ./koito.nix
     ./mpdscribble.nix
     ./pipewire.nix
     ./printing.nix
