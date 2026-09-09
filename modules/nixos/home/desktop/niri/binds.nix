@@ -9,162 +9,120 @@
   wpctl = lib.getExe' pkgs.wireplumber "wpctl";
 in {
   config = lib.mkIf cfg.enable {
-    programs.niri.settings.binds =
+    programs.niri.settings.binds = with config.lib.niri.actions;
       {
         # ==== Actions ====
-        "Mod+Shift+Slash".action.show-hotkey-overlay = [];
-        "Mod+B".action.power-off-monitors = [];
+        "Mod+Shift+Slash" = show-hotkey-overlay;
+        "Mod+B" = power-off-monitors;
 
-        "Mod+C".action.close-window = [];
-        "Mod+Escape".action.toggle-overview = [];
+        "Mod+C" = close-window;
+        "Mod+Escape" = toggle-overview;
 
-        "Mod+Shift+Q".action.quit = [];
+        "Mod+Shift+Q" = quit;
 
-        "Print".action.screenshot = [];
-        "Mod+Print".action.screenshot-screen = [];
-        "Alt+Print".action.screenshot-window = [];
+        "Print" = screenshot;
+        "Mod+Print" = screenshot-screen;
+        "Alt+Print" = screenshot-window;
 
         # ==== Spawn ====
-        "Mod+F".action.spawn = "firefox";
-        # "Mod+L".action.spawn = lib.getExe config.programs.hyprlock.package;
-        "Mod+P".action.spawn = lib.getExe pkgs.kooha;
-        "Mod+Q".action.spawn = lib.getExe config.programs.alacritty.package;
-        "Mod+T".action.spawn = lib.getExe pkgs.vesktop;
-        "Mod+W".action.spawn = "nautilus";
-        "Mod+X".action.spawn = "zeditor";
-        "Mod+Space".action.spawn = ["${lib.getExe' pkgs.tofi "tofi-drun"}" "--drun-launch=true" "--fuzzy-match=true"];
+        "Mod+F" = spawn "firefox";
+        # "Mod+L" = spawn  lib.getExe config.programs.hyprlock.package;
+        "Mod+P" = spawn (lib.getExe pkgs.kooha);
+        "Mod+Q" = spawn (lib.getExe config.programs.alacritty.package);
+        "Mod+T" = spawn (lib.getExe pkgs.vesktop);
+        "Mod+W" = spawn "nautilus";
+        "Mod+X" = spawn "zeditor";
+        "Mod+Space" = spawn (lib.getExe' pkgs.tofi "tofi-drun") "--drun-launch=true" "--fuzzy-match=true";
 
         # ==== Windows ====
-        "Mod+N".action.focus-column-or-monitor-left = [];
-        "Mod+E".action.focus-window-or-workspace-down = [];
-        "Mod+I".action.focus-window-or-workspace-up = [];
-        "Mod+O".action.focus-column-or-monitor-right = [];
-        "Mod+Shift+WheelScrollUp".action.focus-column-or-monitor-left = [];
-        "Mod+WheelScrollDown".action.focus-window-or-workspace-down = [];
-        "Mod+WheelScrollUp".action.focus-window-or-workspace-up = [];
-        "Mod+Shift+WheelScrollDown".action.focus-column-or-monitor-right = [];
+        "Mod+N" = focus-column-or-monitor-left;
+        "Mod+E" = focus-window-or-workspace-down;
+        "Mod+I" = focus-window-or-workspace-up;
+        "Mod+O" = focus-column-or-monitor-right;
+        "Mod+Shift+WheelScrollUp" = focus-column-or-monitor-left;
+        "Mod+WheelScrollDown" = focus-window-or-workspace-down;
+        "Mod+WheelScrollUp" = focus-window-or-workspace-up;
+        "Mod+Shift+WheelScrollDown" = focus-column-or-monitor-right;
 
-        "Alt+N".action.move-column-left-or-to-monitor-left = [];
-        "Alt+E".action.move-window-down-or-to-workspace-down = [];
-        "Alt+I".action.move-window-up-or-to-workspace-up = [];
-        "Alt+O".action.move-column-right-or-to-monitor-right = [];
-        "Alt+Shift+WheelScrollUp".action.move-column-left-or-to-monitor-left = [];
-        "Alt+WheelScrollDown".action.move-window-down-or-to-workspace-down = [];
-        "Alt+WheelScrollUp".action.move-window-up-or-to-workspace-up = [];
-        "Alt+Shift+WheelScrollDown".action.move-column-right-or-to-monitor-right = [];
+        "Alt+N" = move-column-left-or-to-monitor-left;
+        "Alt+E" = move-window-down-or-to-workspace-down;
+        "Alt+I" = move-window-up-or-to-workspace-up;
+        "Alt+O" = move-column-right-or-to-monitor-right;
+        "Alt+Shift+WheelScrollUp" = move-column-left-or-to-monitor-left;
+        "Alt+WheelScrollDown" = move-window-down-or-to-workspace-down;
+        "Alt+WheelScrollUp" = move-window-up-or-to-workspace-up;
+        "Alt+Shift+WheelScrollDown" = move-column-right-or-to-monitor-right;
 
-        "Mod+Shift+N".action.focus-monitor-left = [];
-        "Mod+Shift+O".action.focus-monitor-right = [];
-        "Mod+MouseBack".action.focus-monitor-left = [];
-        "Mod+MouseForward".action.focus-monitor-right = [];
+        "Mod+Shift+N" = focus-monitor-left;
+        "Mod+Shift+O" = focus-monitor-right;
+        "Mod+MouseBack" = focus-monitor-left;
+        "Mod+MouseForward" = focus-monitor-right;
 
-        "Alt+Shift+N".action.move-workspace-to-monitor-left = [];
-        "Alt+Shift+E".action.move-workspace-down = [];
-        "Alt+Shift+I".action.move-workspace-up = [];
-        "Alt+Shift+O".action.move-workspace-to-monitor-right = [];
-        "Alt+MouseBack".action.move-workspace-to-monitor-left = [];
-        "Alt+MouseForward".action.move-workspace-to-monitor-right = [];
+        "Alt+Shift+N" = move-workspace-to-monitor-left;
+        "Alt+Shift+E" = move-workspace-down;
+        "Alt+Shift+I" = move-workspace-up;
+        "Alt+Shift+O" = move-workspace-to-monitor-right;
+        "Alt+MouseBack" = move-workspace-to-monitor-left;
+        "Alt+MouseForward" = move-workspace-to-monitor-right;
 
-        "Mod+Comma".action.consume-window-into-column = [];
-        "Mod+Period".action.expel-window-from-column = [];
+        "Mod+Comma" = consume-window-into-column;
+        "Mod+Period" = expel-window-from-column;
 
-        "Mod+R".action.switch-preset-column-width = [];
-        "Alt+R".action.switch-preset-window-height = [];
-        "Mod+S".action.maximize-column = [];
-        "Alt+S".action.reset-window-height = [];
+        "Mod+R" = switch-preset-column-width;
+        "Alt+R" = switch-preset-window-height;
+        "Mod+S" = maximize-column;
+        "Alt+S" = reset-window-height;
 
         # === Special Keys ====
         XF86MonBrightnessUp = {
           cooldown-ms = 50;
-          action.spawn = [
-            "brightnessctl"
-            "set"
-            "+5%"
-          ];
+          action = spawn "brightnessctl" "set" "+5%";
         };
         XF86MonBrightnessDown = {
           cooldown-ms = 50;
-          action.spawn = [
-            "brightnessctl"
-            "set"
-            "5%-"
-          ];
+          action = spawn "brightnessctl" "set" "5%-";
         };
         XF86AudioRaiseVolume = {
           allow-when-locked = true;
           cooldown-ms = 50;
-          action.spawn = [
-            wpctl
-            "set-volume"
-            "@DEFAULT_AUDIO_SINK@"
-            "0.05+"
-            "-l"
-            "1.0"
-          ];
+          action = spawn wpctl "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+" "-l" "1.0";
         };
         XF86AudioLowerVolume = {
           allow-when-locked = true;
           cooldown-ms = 50;
-          action.spawn = [
-            wpctl
-            "set-volume"
-            "@DEFAULT_AUDIO_SINK@"
-            "0.05-"
-          ];
+          action = spawn wpctl "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-";
         };
         XF86AudioMute = {
           allow-when-locked = true;
-          action.spawn = [
-            wpctl
-            "set-mute"
-            "@DEFAULT_AUDIO_SINK@"
-            "toggle"
-          ];
+          action = spawn wpctl "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
         };
         XF86AudioMicMute = {
           allow-when-locked = true;
-          action.spawn = [
-            wpctl
-            "set-mute"
-            "@DEFAULT_AUDIO_SOURCE@"
-            "toggle"
-          ];
+          action = spawn wpctl "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
         };
         XF86AudioPlay = {
           allow-when-locked = true;
-          action.spawn = [
-            "playerctl"
-            "play-pause"
-          ];
+          action = spawn "playerctl" "play-pause";
         };
         XF86AudioPause = {
           allow-when-locked = true;
-          action.spawn = [
-            "playerctl"
-            "play-pause"
-          ];
+          action = spawn "playerctl" "play-pause";
         };
         XF86AudioNext = {
           allow-when-locked = true;
-          action.spawn = [
-            "playerctl"
-            "next"
-          ];
+          action = spawn "playerctl" "next";
         };
         XF86AudioPrev = {
           allow-when-locked = true;
-          action.spawn = [
-            "playerctl"
-            "previous"
-          ];
+          action = spawn "playerctl" "previous";
         };
       }
       // lib.foldl' (
         attr: i:
           attr
           // {
-            "Mod+${toString i}".action.focus-workspace = i;
-            "Alt+${toString i}".action.move-window-to-workspace = i;
+            "Mod+${toString i}" = focus-workspace i;
+            "Alt+${toString i}" = move-window-to-workspace i;
           }
       ) {} (lib.range 1 9);
   };
