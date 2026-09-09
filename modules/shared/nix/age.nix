@@ -41,6 +41,8 @@ in {
       );
 
     secrets = {
+      koitoPassword = mkSecret {file = "koito-password";}; # koito password
+      koitoSubsonic = mkSecret {file = "koito-subsonic";}; # koito subsonic params
       lastfm = mkSecret {file = "lastfm";}; # API key
       restic = mkSecret {file = "restic";}; # encryption password
       sambaNas = mkSecret {file = "samba-nas";}; # NAS samba credentials
