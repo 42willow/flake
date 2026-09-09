@@ -102,21 +102,21 @@
         "--advertise-routes=10.10.1.0/24"
       ];
       useRoutingFeatures = "both";
-      serve = {
-        enable = true;
-        services = {
-          navidrome = let
-            port = config.services.navidrome.settings.Port;
-          in {
-            endpoints."tcp:443" = "http://localhost:${port}";
-          };
-          koito = let
-            port = config.services.koito.environment.KOITO_LISTEN_PORT;
-          in {
-            endpoints."tcp:443" = "http://localhost:${port}";
-          };
-        };
-      };
+      # serve = {
+      #   enable = true;
+      #   services = {
+      #     navidrome = let
+      #       port = config.services.navidrome.settings.Port;
+      #     in {
+      #       endpoints."tcp:443" = "http://localhost:${port}";
+      #     };
+      #     koito = let
+      #       port = config.services.koito.environment.KOITO_LISTEN_PORT;
+      #     in {
+      #       endpoints."tcp:443" = "http://localhost:${port}";
+      #     };
+      #   };
+      # };
     };
 
     tlp = {
