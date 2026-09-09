@@ -13,7 +13,7 @@
       signing = {
         behavior = "own";
         backend = "ssh";
-        key = osConfig.age.secrets.gh.path;
+        key = osConfig.age.secrets.sshPrivate.path;
         backends.ssh.allowed-signers = "${config.home.homeDirectory}/.ssh/allowed_signers";
       };
       ui.default-command = "log";

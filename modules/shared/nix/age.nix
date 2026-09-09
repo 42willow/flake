@@ -41,24 +41,12 @@ in {
       );
 
     secrets = {
-      gh = mkSecret {
-        file = "gh";
-      };
-      ghPub = mkSecret {
-        file = "gh-pub";
-      };
-      lastfm = mkSecret {
-        file = "lastfm";
-      };
-      restic = mkSecret {
-        file = "restic";
-      };
-      samba = mkSecret {
-        file = "samba";
-      };
-      wifi = mkSecret {
-        file = "wifi";
-      };
+      lastfm = mkSecret {file = "lastfm";}; # API key
+      restic = mkSecret {file = "restic";}; # encryption password
+      sambaNas = mkSecret {file = "samba-nas";}; # NAS samba credentials
+      sshPrivate = mkSecret {file = "id_ed25519";}; # ssh private key
+      sshPublic = mkSecret {file = "id_ed25519.pub";}; # ssh public key
+      wifi = mkSecret {file = "wifi";}; # wifi passwords
     };
   };
 }
