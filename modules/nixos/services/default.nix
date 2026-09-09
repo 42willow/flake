@@ -7,6 +7,7 @@
   cfg = config.settings.system.services;
 in {
   imports = [
+    ./freshrss.nix
     ./gonic.nix
     ./i18n.nix
     ./koito.nix
