@@ -30,8 +30,7 @@ in {
         "Mod+P".action.spawn = lib.getExe pkgs.kooha;
         "Mod+Q".action.spawn = lib.getExe config.programs.alacritty.package;
         "Mod+T".action.spawn = lib.getExe pkgs.vesktop;
-        "Mod+W".action.spawn = "nautilus";
-        "Mod+X".action.spawn = "zeditor";
+        "Mod+W".action.spawn = lib.getExe pkgs.thunar;
         "Mod+Space".action.spawn = ["${lib.getExe' pkgs.tofi "tofi-drun"}" "--drun-launch=true" "--fuzzy-match=true"];
 
         # ==== Windows ====

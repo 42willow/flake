@@ -1,6 +1,7 @@
 {
   self,
   pkgs,
+  config,
   ...
 }: {
   imports = [
@@ -23,7 +24,7 @@
   #   options = let
   #     # this line prevents hanging on network split
   #     automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-  #   in ["${automount_opts},credentials=${config.age.secrets.samba.path}"];
+  #   in ["${automount_opts},credentials=${config.age.secrets.sambaNas.path}"];
   # };
 
   services = {
@@ -33,6 +34,52 @@
         PermitRootLogin = "yes";
       };
     };
+    udisks2.enable = true;
+    gvfs.enable = true;
+    samba = {
+      enable = true;
+      package = pkgs.samba4Full; # mDNS and LDAP capability
+      openFirewall = true;
+
+      settings = {
+        global = {
+          "workgroup" = "WORKGROUP";
+          "server string" = "earthy fileserver";
+          "netbios name" = "earthy";
+          "security" = "user";
+
+          "mdns name" = "mdns"; # Forces Samba to respect the local system's lowercase hostname over mDNS
+
+          # macOS Finder Optimisations
+          "vfs objects" = "fruit streams_xattr";
+          "fruit:aapl" = "yes";
+          "fruit:model" = "MacBookPro";
+          "fruit:metadata" = "stream";
+          "fruit:posix_rename" = "yes";
+          "fruit:veto_appledouble" = "no";
+        };
+
+        "homes" = {
+          "comment" = "Home Directories";
+          "browseable" = "no"; # Keeps other users' home folders hidden
+          "read only" = "no"; # Allows you to write/save files
+          "guest ok" = "no"; # Requires your password to access
+          "valid users" = "%S"; # Crucial security: only allows the owner to log into their own home
+          "create mask" = "0600"; # Ensures new files are only readable by you
+          "directory mask" = "0700"; # Ensures new folders are only accessible by you
+        };
+
+        "shared-ntfs" = {
+          "comment" = "Shared NTFS";
+          "path" = "/mnt/shared";
+          "browseable" = "yes";
+          "read only" = "no";
+          "guest ok" = "no";
+          "valid users" = "willow"; # Limits access exclusively to user "willow"
+          "force user" = "willow"; # Forces Samba to write as UID 1000 matching the mount options
+        };
+      };
+    };
 
     avahi = {
       enable = true;
@@ -40,8 +87,9 @@
       openFirewall = true;
       publish = {
         enable = true;
+        domain = true; # broadcast mdns
         addresses = true; # broadcast mdns
-        workstation = false; # visiblity in file managers
+        userServices = true; # i.e. samba
       };
     };
 
@@ -54,6 +102,21 @@
         "--advertise-routes=10.10.1.0/24"
       ];
       useRoutingFeatures = "both";
+      # serve = {
+      #   enable = true;
+      #   services = {
+      #     navidrome = let
+      #       port = config.services.navidrome.settings.Port;
+      #     in {
+      #       endpoints."tcp:443" = "http://localhost:${port}";
+      #     };
+      #     koito = let
+      #       port = config.services.koito.environment.KOITO_LISTEN_PORT;
+      #     in {
+      #       endpoints."tcp:443" = "http://localhost:${port}";
+      #     };
+      #   };
+      # };
     };
 
     tlp = {
@@ -76,6 +139,9 @@
 
     fwupd.enable = true;
   };
+
+  # disable firewall for tailscale
+  networking.firewall.trustedInterfaces = [config.services.tailscale.interfaceName];
 
   # required for ZFS
   networking.hostId = "c49b1e3e";
