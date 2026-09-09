@@ -1,6 +1,7 @@
 {
   self,
   pkgs,
+  config,
   ...
 }: {
   imports = [
@@ -123,6 +124,9 @@
 
     fwupd.enable = true;
   };
+
+  # disable firewall for tailscale
+  networking.firewall.trustedInterfaces = [config.services.tailscale.interfaceName];
 
   # required for ZFS
   networking.hostId = "c49b1e3e";
