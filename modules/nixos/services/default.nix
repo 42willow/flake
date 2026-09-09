@@ -8,6 +8,7 @@
 in {
   imports = [
     ./i18n.nix
+    ./koito.nix
     ./mpdscribble.nix
     ./navidrome.nix
     ./pipewire.nix

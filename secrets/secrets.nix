@@ -9,6 +9,8 @@ let
 in {
   "id_ed25519.age".publicKeys = users ++ hosts;
   "id_ed25519.pub.age".publicKeys = users ++ hosts;
+  "koito-password.age".publicKeys = users ++ hosts;
+  "koito-subsonic.age".publicKeys = users ++ hosts;
   "lastfm.age".publicKeys = users ++ hosts;
   "restic.age".publicKeys = users ++ hosts;
   "samba-nas.age".publicKeys = users ++ hosts;
