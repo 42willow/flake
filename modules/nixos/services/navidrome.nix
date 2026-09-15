@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   services.navidrome = {
     enable = true;
     openFirewall = false;
@@ -11,8 +11,9 @@
         TrustedSources = "127.0.0.1/32,::1/128";
       };
     };
-    plugins = with pkgs.navidromePlugins; [
-      discord-rich-presence
-    ];
+    # no binary cache :(
+    # plugins = with pkgs.navidromePlugins; [
+    #   discord-rich-presence
+    # ];
   };
 }
