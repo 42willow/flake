@@ -15,6 +15,7 @@ in {
     ./pipewire.nix
     ./printing.nix
     ./privacy.nix
+    ./radicale.nix
     ./restic.nix
     # ./sddm.nix
     # ./xfce.nix
