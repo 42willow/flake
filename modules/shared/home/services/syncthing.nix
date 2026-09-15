@@ -8,7 +8,7 @@
   cfg = osConfig.settings.system.services.sync;
 
   devices = {
-    starling.id = "TOHBV6W-HV6LS6S-AVSVXPI-3C7IKFC-PRIYNPF-DCGOC6B-YLMGJVC-ZV6AKAL";
+    starling.id = "K3SE5X3-SNWF7WF-WALKLLK-JP2R24I-HLIDTBO-WVJO5PG-FQC2PTR-STEEHQ2";
     earthy.id = "D2KIEXK-ZOZP3DU-YYATXS6-4ZVZIV3-FHJEXNC-T2IMJPL-VHKICFF-2VWSIQJ";
     pigeon.id = "FISUJV5-AZPGWHO-PTWYV5I-KNPRDW7-V4MXGZD-E5RADBM-LAGD3OE-7NMDIQH";
   };
@@ -18,6 +18,7 @@ in {
     services.syncthing = {
       enable = true;
       package = pkgs.unstable.syncthing;
+      guiAddress = "0.0.0.0:8384";
 
       inherit (cfg) key cert;
       overrideFolders = true;
