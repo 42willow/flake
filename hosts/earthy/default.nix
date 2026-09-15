@@ -103,19 +103,19 @@
       ];
       useRoutingFeatures = "both";
       serve = {
-        enable = false;
-        services = {
-          navidrome = let
-            port = builtins.toString config.services.navidrome.settings.Port;
-          in {
-            endpoints."tcp:443" = "https://localhost:${port}";
-          };
-          # koito = let
-          #   port = config.services.koito.environment.KOITO_LISTEN_PORT;
-          # in {
-          #   endpoints."tcp:443" = "http://localhost:${port}";
-          # };
-        };
+        enable = true;
+        #   services = {
+        #     navidrome = let
+        #       port = builtins.toString config.services.navidrome.settings.Port;
+        #     in {
+        #       endpoints."tcp:443" = "https://localhost:${port}";
+        #     };
+        #     # koito = let
+        #     #   port = config.services.koito.environment.KOITO_LISTEN_PORT;
+        #     # in {
+        #     #   endpoints."tcp:443" = "http://localhost:${port}";
+        #     # };
+        #   };
       };
     };
 

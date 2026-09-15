@@ -13,11 +13,11 @@
   mkSecret = {
     file,
     mode ? "400",
+    owner ? user.name,
+    group ? user.group,
     ...
   }: {
-    inherit mode;
-    inherit (user) group;
-    owner = user.name;
+    inherit mode owner group;
     file = "${self}/secrets/${file}.age";
   };
 in {
@@ -45,6 +45,11 @@ in {
       koitoPassword = mkSecret {file = "koito-password";}; # koito password
       koitoSubsonic = mkSecret {file = "koito-subsonic";}; # koito subsonic params
       lastfm = mkSecret {file = "lastfm";}; # API key
+      radicaleUsers = mkSecret {
+        file = "radicale-users";
+        owner = "radicale";
+        group = "radicale";
+      }; # created with `nix shell nixpkgs#apacheHttpd -c htpasswd -nb willow "password`
       restic = mkSecret {file = "restic";}; # encryption password
       sambaNas = mkSecret {file = "samba-nas";}; # NAS samba credentials
       sshPrivate = mkSecret {file = "id_ed25519";}; # ssh private key
