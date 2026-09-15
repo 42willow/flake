@@ -1,8 +1,11 @@
 {config, ...}: {
+  # this is done imperatively at the moment
+  # sudo tailscale serve --service=svc:radicale --bg http://127.0.0.1:5232
   services.tailscale.serve.services.radicale = {
     advertised = true;
     endpoints = {
-      "tcp:443" = "http://127.0.0.1:5232";
+      # TODO tcp:443 has no TLS termination - tailscale/tailscale#19724
+      "tcp:80" = "http://127.0.0.1:5232";
     };
   };
 
