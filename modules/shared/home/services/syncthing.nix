@@ -10,7 +10,8 @@ in {
     services.syncthing = {
       enable = true;
       package = pkgs.unstable.syncthing;
-      guiAddress = "0.0.0.0:8384";
+      guiAddress = "127.0.0.1:8384";
+      # sudo tailscale serve --bg http://127.0.0.1:8384
 
       inherit (cfg) key cert;
       overrideFolders = false;
