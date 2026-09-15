@@ -112,9 +112,13 @@ in {
         sound.enable =
           mkEnableOption "Enable sound"
           // {default = cfg.system.services.enable;};
-        sync.enable =
-          mkEnableOption "Enable syncthing"
-          // {default = false;};
+        sync = {
+          enable =
+            mkEnableOption "Enable syncthing"
+            // {default = false;};
+          key = lib.mkOption {type = lib.types.path;};
+          cert = lib.mkOption {type = lib.types.path;};
+        };
         printing.enable =
           mkEnableOption "Enable printing"
           // {default = cfg.system.services.enable;};

@@ -26,7 +26,11 @@ in {
         group = "staff";
         flakeDir = "${home}/Documents/git/flake";
       };
-      services.sync.enable = true;
+      services.sync = with config.age; {
+        enable = true;
+        key = secrets.syncthingStarlingKey.path;
+        cert = secrets.syncthingStarlingCert.path;
+      };
     };
   };
 

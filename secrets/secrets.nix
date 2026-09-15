@@ -16,5 +16,9 @@ in {
   "radicale-users.age".publicKeys = users ++ hosts;
   "restic.age".publicKeys = users ++ hosts;
   "samba-nas.age".publicKeys = users ++ hosts;
+  "syncthing-earthy-cert.pem.age".publicKeys = users ++ hosts;
+  "syncthing-earthy-key.pem.age".publicKeys = users ++ hosts;
+  "syncthing-starling-cert.pem.age".publicKeys = users ++ hosts;
+  "syncthing-starling-key.pem.age".publicKeys = users ++ hosts;
   "wifi.age".publicKeys = users ++ hosts;
 }

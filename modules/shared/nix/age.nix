@@ -3,6 +3,7 @@
   inputs,
   pkgs,
   config,
+  lib,
   ...
 }: let
   inherit (config.settings.system) user;
@@ -45,15 +46,23 @@ in {
       koitoPassword = mkSecret {file = "koito-password";}; # koito password
       koitoSubsonic = mkSecret {file = "koito-subsonic";}; # koito subsonic params
       lastfm = mkSecret {file = "lastfm";}; # API key
-      radicaleUsers = mkSecret {
-        file = "radicale-users";
-        owner = "radicale";
-        group = "radicale";
-      }; # created with `nix shell nixpkgs#apacheHttpd -c htpasswd -nb willow "password`
+      # created with `nix shell nixpkgs#apacheHttpd -c htpasswd -nb willow "password`
+      radicaleUsers =
+        (mkSecret {file = "radicale-users";})
+        // (
+          lib.optionalAttrs (config.services.radicale.enable or false) {
+            owner = "radicale";
+            group = "radicale";
+          }
+        );
       restic = mkSecret {file = "restic";}; # encryption password
       sambaNas = mkSecret {file = "samba-nas";}; # NAS samba credentials
       sshPrivate = mkSecret {file = "id_ed25519";}; # ssh private key
       sshPublic = mkSecret {file = "id_ed25519.pub";}; # ssh public key
+      syncthingEarthyCert = mkSecret {file = "syncthing-earthy-cert.pem";};
+      syncthingEarthyKey = mkSecret {file = "syncthing-earthy-key.pem";};
+      syncthingStarlingCert = mkSecret {file = "syncthing-starling-cert.pem";};
+      syncthingStarlingKey = mkSecret {file = "syncthing-starling-key.pem";};
       wifi = mkSecret {file = "wifi";}; # wifi passwords
     };
   };
