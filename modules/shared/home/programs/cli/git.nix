@@ -18,7 +18,7 @@ in {
           user = {
             name = "willow";
             email = "42willow" + "@" + "pm.me";
-            signingkey = osConfig.age.secrets.gh.path;
+            signingkey = osConfig.age.secrets.sshPrivate.path;
           };
 
           alias = {

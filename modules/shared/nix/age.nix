@@ -3,6 +3,7 @@
   inputs,
   pkgs,
   config,
+  lib,
   ...
 }: let
   inherit (config.settings.system) user;
@@ -13,11 +14,11 @@
   mkSecret = {
     file,
     mode ? "400",
+    owner ? user.name,
+    group ? user.group,
     ...
   }: {
-    inherit mode;
-    inherit (user) group;
-    owner = user.name;
+    inherit mode owner group;
     file = "${self}/secrets/${file}.age";
   };
 in {
@@ -41,24 +42,28 @@ in {
       );
 
     secrets = {
-      gh = mkSecret {
-        file = "gh";
-      };
-      ghPub = mkSecret {
-        file = "gh-pub";
-      };
-      lastfm = mkSecret {
-        file = "lastfm";
-      };
-      restic = mkSecret {
-        file = "restic";
-      };
-      samba = mkSecret {
-        file = "samba";
-      };
-      wifi = mkSecret {
-        file = "wifi";
-      };
+      freshrss = mkSecret {file = "freshrss";}; # freshrss password
+      koitoPassword = mkSecret {file = "koito-password";}; # koito password
+      koitoSubsonic = mkSecret {file = "koito-subsonic";}; # koito subsonic params
+      lastfm = mkSecret {file = "lastfm";}; # API key
+      # created with `nix shell nixpkgs#apacheHttpd -c htpasswd -nb willow "password`
+      radicaleUsers =
+        (mkSecret {file = "radicale-users";})
+        // (
+          lib.optionalAttrs (config.services.radicale.enable or false) {
+            owner = "radicale";
+            group = "radicale";
+          }
+        );
+      restic = mkSecret {file = "restic";}; # encryption password
+      sambaNas = mkSecret {file = "samba-nas";}; # NAS samba credentials
+      sshPrivate = mkSecret {file = "id_ed25519";}; # ssh private key
+      sshPublic = mkSecret {file = "id_ed25519.pub";}; # ssh public key
+      syncthingEarthyCert = mkSecret {file = "syncthing-earthy-cert.pem";};
+      syncthingEarthyKey = mkSecret {file = "syncthing-earthy-key.pem";};
+      syncthingStarlingCert = mkSecret {file = "syncthing-starling-cert.pem";};
+      syncthingStarlingKey = mkSecret {file = "syncthing-starling-key.pem";};
+      wifi = mkSecret {file = "wifi";}; # wifi passwords
     };
   };
 }
