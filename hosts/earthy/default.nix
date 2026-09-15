@@ -103,7 +103,7 @@
       ];
       useRoutingFeatures = "both";
       serve = {
-        enable = true;
+        enable = false;
         services = {
           navidrome = let
             port = builtins.toString config.services.navidrome.settings.Port;

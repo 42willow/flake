@@ -7,7 +7,7 @@
   imports = ["${inputs.nixos-unstable}/nixos/modules/services/web-apps/koito.nix"];
 
   services.koito = {
-    enable = true;
+    enable = false;
     package = pkgs.unstable.koito;
     openFirewall = false;
 
