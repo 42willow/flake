@@ -2,55 +2,70 @@
   config,
   lib,
   osConfig,
+  pkgs,
   ...
 }: let
   cfg = osConfig.settings.system.services.sync;
 
   devices = {
-    starling.id = "3NK35IK-ZONOPLB-R277NP3-MUTEU33-PFKOWCZ-U3SB6ZO-YPIBVY5-UTCTIQK";
-    earthy.id = "CARNCAO-VNEVXKV-R3NIN2R-APRWTXC-4QCKEVX-ZQI7LZG-GZHAUFU-4XCJYQQ";
+    starling.id = "TOHBV6W-HV6LS6S-AVSVXPI-3C7IKFC-PRIYNPF-DCGOC6B-YLMGJVC-ZV6AKAL";
+    earthy.id = "D2KIEXK-ZOZP3DU-YYATXS6-4ZVZIV3-FHJEXNC-T2IMJPL-VHKICFF-2VWSIQJ";
+    pigeon.id = "FISUJV5-AZPGWHO-PTWYV5I-KNPRDW7-V4MXGZD-E5RADBM-LAGD3OE-7NMDIQH";
   };
   allDevices = builtins.attrNames devices;
 in {
-  # https://github.com/nix-community/home-manager/issues/6542
-  # syncthing config not applied on switch on darwin
-  #
-  # touch ~/Library/Application\ Support/Syncthing/.launchd_update_config
-
   config = lib.mkIf cfg.enable {
     services.syncthing = {
-      enable = false;
+      enable = true;
+      package = pkgs.unstable.syncthing;
+
+      inherit (cfg) key cert;
+      overrideFolders = true;
+      overrideDevices = true;
+      # package =
+      #   if pkgs.stdenv.hostPlatform.isDarwin
+      #   then pkgs.syncthing-macos
+      #   else pkgs.syncthing;
 
       settings = {
         inherit devices;
         options = {
-          urAccepted = -1; # disable usage reporting
+          # disable discovery, relays, and NAT traversal (tailscale only)
+          # globalAnnounceEnabled = false;
+          # localAnnounceEnabled = false;
           # relaysEnabled = false;
+          # natEnabled = false;
+
+          urAccepted = -1; # disable usage reporting
         };
         folders = {
-          docs = {
-            label = "Documents";
+          # docs = {
+          #   label = "Documents";
+          #   devices = allDevices;
+          #   path = config.xdg.userDirs.documents;
+          # };
+          # music = {
+          #   label = "Music";
+          #   devices = allDevices;
+          #   path = config.xdg.userDirs.music;
+          # };
+          # pictures = {
+          #   label = "Pictures";
+          #   devices = allDevices;
+          #   path = config.xdg.userDirs.pictures;
+          # };
+          # videos = {
+          #   label = "Videos";
+          #   devices = allDevices;
+          #   path = config.xdg.userDirs.videos;
+          # };
+          shared = {
+            label = "shared";
             devices = allDevices;
-            path = config.xdg.userDirs.documents;
-          };
-          music = {
-            label = "Music";
-            devices = allDevices;
-            path = config.xdg.userDirs.music;
-          };
-          pictures = {
-            label = "Pictures";
-            devices = allDevices;
-            path = config.xdg.userDirs.pictures;
-          };
-          videos = {
-            label = "Videos";
-            devices = allDevices;
-            path = config.xdg.userDirs.videos;
+            path = "${config.home.homeDirectory}/shared";
           };
         };
       };
-      extraOptions = ["--no-default-folder"]; # don't create default ~/Sync folder
     };
   };
 }

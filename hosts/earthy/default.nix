@@ -12,7 +12,11 @@
   settings = {
     system = {
       hostName = "earthy";
-      services.sync.enable = true;
+      services.sync = with config.age; {
+        enable = true;
+        key = secrets.syncthingEarthyKey.path;
+        cert = secrets.syncthingEarthyCert.path;
+      };
     };
   };
 
