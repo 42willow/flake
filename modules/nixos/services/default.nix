@@ -7,6 +7,7 @@
   cfg = config.settings.system.services;
 in {
   imports = [
+    ./dispatcharr.nix
     ./freshrss.nix
     ./i18n.nix
     ./koito.nix
