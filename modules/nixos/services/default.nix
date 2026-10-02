@@ -11,6 +11,7 @@ in {
     ./freshrss.nix
     ./gonic.nix
     ./i18n.nix
+    ./immich.nix
     ./jellyfin.nix
     ./koito.nix
     ./mpdscribble.nix
