@@ -1,15 +1,35 @@
 {
   config,
   pkgs,
+  self,
   ...
-}: {
+}: let
+  inherit (self.lib) mkSecret;
+in {
+  sops = {
+    secrets = {
+      wifi-UNIFI_HD = mkSecret {
+        file = "wifi";
+        key = "UNIFI_HD";
+      };
+      wifi-UNIFI_5G = mkSecret {
+        file = "wifi";
+        key = "UNIFI_5G";
+      };
+    };
+    templates.wifi-env.content = with config.sops.placeholder; ''
+      UNIFI_HD=${wifi-UNIFI_HD};
+      UNIFI_5G=${wifi-UNIFI_5G};
+    '';
+  };
+
   networking = {
     inherit (config.settings.system) hostName;
     networkmanager = {
       enable = true;
       # https://github.com/Janik-Haag/nm2nix
       ensureProfiles = {
-        environmentFiles = [config.age.secrets.wifi.path];
+        environmentFiles = [config.sops.templates.wifi-env.path];
 
         # https://github.com/alyraffauf/nixcfg/blob/4ccc90fe11c63702879cf50b888ee460c185400d/common/wifi.nix
         profiles = let
@@ -40,9 +60,7 @@
       };
     };
     nameservers = ["1.1.1.1"];
-    firewall = {
-      enable = true;
-    };
+    firewall.enable = true;
   };
 
   environment.systemPackages = [pkgs.networkmanagerapplet];

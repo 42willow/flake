@@ -1,8 +1,4 @@
-{
-  config,
-  osConfig,
-  ...
-}: {
+{config, ...}: {
   programs.jujutsu = {
     enable = true;
     settings = {
@@ -13,7 +9,7 @@
       signing = {
         behavior = "own";
         backend = "ssh";
-        key = osConfig.age.secrets.sshPrivate.path;
+        key = config.sops.secrets.keys-ssh.path;
         backends.ssh.allowed-signers = "${config.home.homeDirectory}/.ssh/allowed_signers";
       };
       ui.default-command = "log";

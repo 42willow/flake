@@ -4,21 +4,56 @@
   lib,
   config,
   ...
-}: {
+}: let
+  inherit (self.lib) mkSecret;
+  inherit (config.sops) secrets;
+in {
   imports = [
     ./hardware-configuration.nix
     "${self}/modules/nixos"
   ];
+
+  sops = {
+    secrets = {
+      syncthing-earthy-key = mkSecret {
+        file = "syncthing";
+        key = "earthy/key";
+        owner = "willow";
+      };
+      syncthing-earthy-cert = mkSecret {
+        file = "syncthing";
+        key = "earthy/cert";
+        owner = "willow";
+      };
+      healthchecks-earthy-ping-key = mkSecret {
+        file = "healthchecks";
+        key = "earthy/ping-key";
+        mode = "0444"; # world readable
+      };
+      samba-nas-username = mkSecret {
+        file = "samba-nas";
+        key = "username";
+      };
+      samba-nas-password = mkSecret {
+        file = "samba-nas";
+        key = "password";
+      };
+    };
+    templates.samba-nas-env.content = with config.sops.placeholder; ''
+      username=${samba-nas-username}
+      password=${samba-nas-password}
+    '';
+  };
 
   settings = {
     system = {
       hostName = "earthy";
       services = {
         backups.enable = true; # restic
-        sync = with config.age; {
+        sync = {
           enable = true;
-          key = secrets.syncthingEarthyKey.path;
-          cert = secrets.syncthingEarthyCert.path;
+          key = secrets.syncthing-earthy-key.path;
+          cert = secrets.syncthing-earthy-cert.path;
         };
       };
     };
@@ -36,7 +71,7 @@
       "x-systemd.device-timeout=5s"
       "x-systemd.mount-timeout=5s"
       "x-systemd.requires=network-online.target"
-      "credentials=${config.age.secrets.sambaNas.path}"
+      "credentials=${config.sops.templates.samba-nas-env.path}"
     ];
   };
 
@@ -138,7 +173,11 @@
     fwupd.enable = true;
   };
 
-  # configure tailscale serve
+  /*
+  configure tailscale serve
+  `services.tailscale.serve.services.<name>` doesn't work with https
+  see https://github.com/tailscale/tailscale/issues/18381
+  */
   systemd.services.tailscale-serve = {
     description = "configure tailscale serve";
     after = ["tailscaled.service" "tailscaled.socket" "network-online.target"];
@@ -195,15 +234,13 @@
     wantedBy = ["timers.target"];
   };
 
-  systemd.services.earthy-heartbeat = let
-    inherit (config.age.secrets) healthchecksPingKey;
-  in {
+  systemd.services.earthy-heartbeat = {
     description = "ping healthchecks.io deadman's switch";
     wants = ["network-online.target"];
     after = ["network-online.target"];
-    unitConfig.ConditionPathExists = healthchecksPingKey.path;
+    unitConfig.ConditionPathExists = secrets.healthchecks-earthy-ping-key.path;
     script = ''
-      key="$(${lib.getExe' pkgs.coreutils "cat"} ${healthchecksPingKey.path})"
+      key="$(${lib.getExe' pkgs.coreutils "cat"} ${secrets.healthchecks-earthy-ping-key.path})"
       url="https://hc-ping.com/''${key}/earthy-heartbeat"
       ${pkgs.curl}/bin/curl \
         --fail \
@@ -214,7 +251,10 @@
         --output /dev/null \
         "$url"
     '';
-    serviceConfig.Type = "oneshot";
+    serviceConfig = {
+      Type = "oneshot";
+      DynamicUser = true;
+    };
   };
 
   services.logind.settings.Login = {
