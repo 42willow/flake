@@ -1,6 +1,7 @@
 {
   self,
   pkgs,
+  lib,
   config,
   ...
 }: {
@@ -142,6 +143,39 @@
 
   # required for ZFS
   networking.hostId = "c49b1e3e";
+
+  # healthchecks.io deadman's switch
+  systemd.timers.earthy-heartbeat = {
+    description = "trigger earthy heartbeat service once hourly";
+    timerConfig = {
+      OnBootSec = "2min";
+      OnCalendar = "hourly";
+      Persistent = true;
+    };
+    wantedBy = ["timers.target"];
+  };
+
+  systemd.services.earthy-heartbeat = let
+    inherit (config.age.secrets) healthchecksPingKey;
+  in {
+    description = "ping healthchecks.io deadman's switch";
+    wants = ["network-online.target"];
+    after = ["network-online.target"];
+    unitConfig.ConditionPathExists = healthchecksPingKey.path;
+    script = ''
+      key="$(${lib.getExe' pkgs.coreutils "cat"} ${healthchecksPingKey.path})"
+      url="https://hc-ping.com/''${key}/earthy-heartbeat"
+      ${pkgs.curl}/bin/curl \
+        --fail \
+        --silent \
+        --show-error \
+        --max-time 10 \
+        --retry 5 \
+        --output /dev/null \
+        "$url"
+    '';
+    serviceConfig.Type = "oneshot";
+  };
 
   services.logind.settings.Login = {
     HandleLidSwitch = "ignore";

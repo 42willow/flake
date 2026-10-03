@@ -43,18 +43,10 @@ in {
 
     secrets = {
       freshrss = mkSecret {file = "freshrss";}; # freshrss password
+      healthchecksPingKey = mkSecret {file = "healthchecks-ping-key";}; # healthchecks.io
       koitoPassword = mkSecret {file = "koito-password";}; # koito password
       koitoSubsonic = mkSecret {file = "koito-subsonic";}; # koito subsonic params
       lastfm = mkSecret {file = "lastfm";}; # API key
-      # created with `nix shell nixpkgs#apacheHttpd -c htpasswd -nb willow "password`
-      radicaleUsers =
-        (mkSecret {file = "radicale-users";})
-        // (
-          lib.optionalAttrs (config.services.radicale.enable or false) {
-            owner = "radicale";
-            group = "radicale";
-          }
-        );
       restic = mkSecret {file = "restic";}; # encryption password
       sambaNas = mkSecret {file = "samba-nas";}; # NAS samba credentials
       sshPrivate = mkSecret {file = "id_ed25519";}; # ssh private key
@@ -64,6 +56,16 @@ in {
       syncthingStarlingCert = mkSecret {file = "syncthing-starling-cert.pem";};
       syncthingStarlingKey = mkSecret {file = "syncthing-starling-key.pem";};
       wifi = mkSecret {file = "wifi";}; # wifi passwords
+
+      # created with `nix shell nixpkgs#apacheHttpd -c htpasswd -nb willow "password`
+      radicaleUsers =
+        (mkSecret {file = "radicale-users";})
+        // (
+          lib.optionalAttrs (config.services.radicale.enable or false) {
+            owner = "radicale";
+            group = "radicale";
+          }
+        );
     };
   };
 }
