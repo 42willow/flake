@@ -40,6 +40,11 @@
       starling = ./hosts/starling;
     };
 
+    lib = import ./modules/lib {
+      inherit inputs;
+      lib = nixpkgs.lib;
+    };
+
     overlays = import ./overlays.nix {
       inherit inputs;
       inherit self;
@@ -101,9 +106,9 @@
     };
 
     # secrets
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixos-unstable";
+    sops = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     # wallpapers
