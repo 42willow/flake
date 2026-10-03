@@ -6,10 +6,6 @@
   inherit (config.settings.system) user;
   inherit (self) outputs;
 in {
-  imports = [
-    ./age.nix
-  ];
-
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
     warn-dirty = false;
@@ -24,9 +20,6 @@ in {
 
   nixpkgs = {
     overlays = [outputs.overlays.additions];
-
-    config = {
-      allowUnfree = true;
-    };
+    config.allowUnfree = true;
   };
 }
