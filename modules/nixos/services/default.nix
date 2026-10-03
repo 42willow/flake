@@ -10,6 +10,7 @@ in {
     ./calibre-server.nix
     ./dispatcharr.nix
     ./freshrss.nix
+    ./gatus.nix
     ./gonic.nix
     ./i18n.nix
     ./immich.nix
