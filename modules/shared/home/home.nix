@@ -6,6 +6,7 @@ in {
     ./scripts
     ./services
     ./themes
+    ./secrets.nix
   ];
 
   programs.home-manager.enable = true;

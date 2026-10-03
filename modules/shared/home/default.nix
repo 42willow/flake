@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   config,
   ...
@@ -10,9 +11,7 @@ in {
     useUserPackages = true;
     backupFileExtension = "bak";
 
-    extraSpecialArgs = {
-      inherit inputs;
-    };
+    extraSpecialArgs = {inherit self inputs;};
 
     users.${user.name} = import ./home.nix;
   };

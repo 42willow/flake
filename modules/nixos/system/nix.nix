@@ -25,6 +25,7 @@
       wget
       curl
       git
+      sops
     ];
   };
 

@@ -2,13 +2,16 @@
   inherit (config.settings.system) user;
 in {
   imports = [
-    ../shared
+    ./secrets.nix
+
     ./desktop
     ./home
     ./homebrew.nix
     ./nix
     ./programs.nix
     ./services
+
+    ../shared
   ];
 
   users.users.${user.name}.home = user.home;
