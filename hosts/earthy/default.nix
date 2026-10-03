@@ -12,24 +12,32 @@
   settings = {
     system = {
       hostName = "earthy";
-      services.sync = with config.age; {
-        enable = true;
-        key = secrets.syncthingEarthyKey.path;
-        cert = secrets.syncthingEarthyCert.path;
+      services = {
+        backups.enable = true; # restic
+        sync = with config.age; {
+          enable = true;
+          key = secrets.syncthingEarthyKey.path;
+          cert = secrets.syncthingEarthyCert.path;
+        };
       };
     };
   };
 
   # samba
   environment.systemPackages = [pkgs.cifs-utils];
-  # fileSystems."/mnt/nas" = {
-  #   device = "//192.168.1.30/thinkpad_backup/";
-  #   fsType = "cifs";
-  #   options = let
-  #     # this line prevents hanging on network split
-  #     automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-  #   in ["${automount_opts},credentials=${config.age.secrets.sambaNas.path}"];
-  # };
+  fileSystems."/mnt/nas" = {
+    device = "//192.168.1.30/thinkpad_backup";
+    fsType = "cifs";
+    options = [
+      "x-systemd.automount"
+      "noauto"
+      "x-systemd.idle-timeout=60"
+      "x-systemd.device-timeout=5s"
+      "x-systemd.mount-timeout=5s"
+      "x-systemd.requires=network-online.target"
+      "credentials=${config.age.secrets.sambaNas.path}"
+    ];
+  };
 
   services = {
     openssh = {
