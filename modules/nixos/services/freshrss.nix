@@ -1,11 +1,25 @@
-{config, ...}: let
+{
+  self,
+  config,
+  ...
+}: let
+  inherit (self.lib) mkSecret;
+
   domain = "freshrss.raccoon-gourami.ts.net";
   port = 8443;
 in {
+  sops.secrets.freshrss-password = mkSecret {
+    file = "freshrss";
+    key = "password";
+    owner = "freshrss";
+    group = "freshrss";
+    mode = "0440";
+  };
+
   services.freshrss = {
     enable = true;
     defaultUser = "willow";
-    passwordFile = config.age.secrets.freshrss.file;
+    passwordFile = config.sops.secrets.freshrss-password.path;
     webserver = "caddy";
     baseUrl = "https://${domain}";
     virtualHost = "http://${domain}:${toString port}";

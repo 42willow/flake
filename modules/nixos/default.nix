@@ -13,6 +13,8 @@
   ];
 in {
   imports = [
+    ./secrets.nix
+
     ./desktop
     ./home
     ./nix

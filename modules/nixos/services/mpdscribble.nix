@@ -7,9 +7,9 @@
 in {
   config = lib.mkIf cfg.enable {
     services.mpdscribble = {
-      enable = true;
+      enable = false;
       endpoints."last.fm" = {
-        passwordFile = config.age.secrets.lastfm.path;
+        # passwordFile = config.sops.secrets.lastfm.path;
         username = "snudoo";
       };
     };

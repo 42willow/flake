@@ -3,6 +3,5 @@
     ./home
     ./nix
     ./options
-    ./programs
   ];
 }

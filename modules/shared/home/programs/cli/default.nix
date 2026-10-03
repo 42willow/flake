@@ -21,6 +21,7 @@ in {
     ./jjui.nix
     ./jujutsu.nix
     ./ripgrep.nix
+    ./ssh.nix
     ./starship.nix
     ./zoxide.nix
     ./zsh.nix
