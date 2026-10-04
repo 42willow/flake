@@ -38,7 +38,7 @@ in {
         inherit home;
         name = "willow";
         group = "staff";
-        flakeDir = "${home}/Documents/git/flake";
+        flakeDir = "${home}/flake";
       };
       services.sync = with config.sops.secrets; {
         enable = true;
