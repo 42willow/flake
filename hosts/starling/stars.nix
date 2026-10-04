@@ -1,10 +1,11 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: let
   stars = pkgs.writeShellScriptBin "stars" ''
-    cd ~/Documents/git/flake
+    cd ${config.settings.system.user.flakeDir}
     ${lib.getExe pkgs.just} starling
   '';
 in {

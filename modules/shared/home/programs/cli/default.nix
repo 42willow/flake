@@ -20,6 +20,7 @@ in {
     ./git.nix
     ./jjui.nix
     ./jujutsu.nix
+    ./nh.nix
     ./ripgrep.nix
     ./ssh.nix
     ./starship.nix
