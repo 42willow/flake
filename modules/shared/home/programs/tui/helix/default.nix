@@ -89,6 +89,7 @@ in {
             command = lib.getExe pkgs.unstable.openscad-lsp;
             args = ["--stdio"];
           };
+          gopls.command = lib.getExe pkgs.gopls;
           discord-rpc-lsp.command = lib.getExe pkgs.discord-rpc-lsp;
           nil.command = lib.getExe pkgs.nil;
           markdown-oxide.command = lib.getExe pkgs.markdown-oxide;
@@ -189,6 +190,11 @@ in {
           {
             name = "vue";
             language-servers = ["vue-lsp"];
+          }
+          {
+            name = "go";
+            language-servers = ["gopls"];
+            formatter.command = lib.getExe' pkgs.go "gofmt";
           }
           # {
           #   name = "kdl";
