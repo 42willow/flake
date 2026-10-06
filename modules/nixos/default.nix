@@ -24,6 +24,7 @@ in {
     ./themes
 
     ../shared
+    ../home
   ];
 
   users.users.${user.name} = {
