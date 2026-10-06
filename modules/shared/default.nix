@@ -1,6 +1,5 @@
 {
   imports = [
-    ./home
     ./nix
     ./options
   ];
