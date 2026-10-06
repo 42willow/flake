@@ -7,6 +7,8 @@
 }: let
   cfg = osConfig.settings.programs;
   inherit (pkgs) stdenv;
+
+  musicDir = "/srv/music";
 in {
   config = lib.mkIf (cfg.cli.enable
     && cfg.categories.music.enable) {
@@ -40,8 +42,8 @@ in {
           "edit"
           "inline"
         ];
-        directory = "${config.xdg.userDirs.music}";
-        library = "${config.xdg.userDirs.music}/music_library.db";
+        directory = "${musicDir}";
+        library = "${musicDir}/music_library.db";
         import = {
           copy = true;
           write = true;
