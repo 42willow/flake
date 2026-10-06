@@ -22,6 +22,7 @@ in {
     ./ghostty.nix
     ./git.nix
     ./gitui.nix
+    ./glide-wm
     ./halloy.nix
     ./helix
     ./jjui.nix
