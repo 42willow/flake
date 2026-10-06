@@ -12,6 +12,7 @@ in {
     ./services
 
     ../shared
+    ../home
   ];
 
   users.users.${user.name}.home = user.home;
