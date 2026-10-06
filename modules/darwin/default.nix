@@ -5,7 +5,6 @@ in {
     ./secrets.nix
 
     ./desktop
-    ./home
     ./homebrew.nix
     ./nix
     ./programs.nix
