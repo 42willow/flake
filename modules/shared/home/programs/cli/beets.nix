@@ -33,23 +33,35 @@ in {
       mpdIntegration.enableUpdate = true;
       settings = {
         plugins = [
+          "musicbrainz"
           "fetchart"
           "thumbnails"
           "mbsync"
           "edit"
+          "inline"
         ];
-        directory = "${config.xdg.userDirs.music}/music";
+        directory = "${config.xdg.userDirs.music}";
         library = "${config.xdg.userDirs.music}/music_library.db";
         import = {
           copy = true;
           write = true;
           autotag = true;
         };
-        paths = {
-          default = "Albums/%upper{%left{$albumartist,1}}/$albumartist/$album%aunique{}/$track. $title";
-          singleton = "Singles/$artist/$title";
-          comp = "Compilations/$album%aunique{}/$track. $title";
+
+        # plugin: inline
+        item_fields = {
+          multidisc = "1 if disctotal > 1 else 0";
         };
+
+        # aunique and sunique are important but shouldn't really ever be used
+        paths = let
+          album = "[$year] $album ($format)%aunique{}/%if{$multidisc,disc $disc/}$track - $title";
+        in {
+          default = "artists/$albumartist/albums/${album}";
+          singleton = "artists/$artist/singles/$title%sunique{}";
+          comp = "compilations/${album}";
+        };
+
         fetchart = {
           auto = true;
           sources = [
