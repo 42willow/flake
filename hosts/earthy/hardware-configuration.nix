@@ -19,6 +19,8 @@
       efi.canTouchEfiVariables = true;
     };
 
+    zfs.forceImportRoot = false;
+
     binfmt.emulatedSystems = ["aarch64-linux"];
 
     initrd.availableKernelModules = ["xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod"];

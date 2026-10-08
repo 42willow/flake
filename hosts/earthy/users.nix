@@ -58,7 +58,7 @@ in {
       lazygit.enable = false; # no config
       ncmpcpp.enable = true;
       nushell.enable = false;
-      yazi.enable = true; # no config
+      yazi.enable = true;
 
       # gui - nixos only
       # TODO cura, lightburn, and OBS are disabled

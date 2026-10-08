@@ -51,6 +51,7 @@ in {
   xdg = {
     userDirs = {
       enable = true;
+      setSessionVariables = false;
       desktop = "${config.home.homeDirectory}";
       documents = "${config.home.homeDirectory}/docs";
       download = "${config.home.homeDirectory}/tmp";

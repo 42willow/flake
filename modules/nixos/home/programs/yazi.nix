@@ -1,0 +1,5 @@
+{
+  programs.yazi = {
+    shellWrapperName = "y";
+  };
+}

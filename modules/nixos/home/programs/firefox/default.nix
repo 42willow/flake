@@ -1,4 +1,8 @@
-{inputs, ...}: let
+{
+  inputs,
+  config,
+  ...
+}: let
   ffConfig = {
     "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
     "browser.ml.chat.enabled" = false;
@@ -18,6 +22,7 @@ in {
   ];
 
   programs.firefox = {
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
     profiles = {
       default.extensions.force = true;
       testing = {
