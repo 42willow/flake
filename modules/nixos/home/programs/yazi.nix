@@ -7,6 +7,9 @@
 in {
   config = lib.mkIf (cfg.cli.enable
     && cfg.categories.fs.enable) {
-    programs.yazi.enable = true;
+    programs.yazi = {
+      enable = true;
+      shellWrapperName = "y";
+    };
   };
 }
