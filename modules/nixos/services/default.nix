@@ -18,7 +18,6 @@ in {
     ./mpdscribble.nix
     ./pipewire.nix
     ./printing.nix
-    ./privacy.nix
     ./radicale.nix
     ./restic.nix
     # ./sddm.nix
