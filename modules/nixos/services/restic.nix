@@ -5,11 +5,14 @@
   self,
   ...
 }: let
-  cfg = config.settings.system.services.backups;
+  inherit (self.lib) mkSecret mkServiceOption;
+  inherit (lib) mkIf;
 
-  inherit (self.lib) mkSecret;
+  cfg = config.nest.services.restic;
 in {
-  config = lib.mkIf cfg.enable {
+  options.nest.services.restic = mkServiceOption "restic" {};
+
+  config = mkIf cfg.enable {
     sops.secrets.restic-password = mkSecret {
       file = "restic";
       key = "password";

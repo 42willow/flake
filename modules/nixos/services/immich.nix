@@ -1,9 +1,26 @@
-{pkgs, ...}: {
-  services.immich = {
-    enable = true;
-    package = pkgs.unstable.immich;
-    host = "0.0.0.0";
+{
+  pkgs,
+  config,
+  self,
+  lib,
+  ...
+}: let
+  inherit (self.lib) mkServiceOption;
+  inherit (lib) mkIf;
+
+  cfg = config.nest.services.immich;
+in {
+  options.nest.services.immich = mkServiceOption "immich" {
     port = 2283;
-    openFirewall = false;
+    tailnet = true;
+  };
+
+  config = mkIf cfg.enable {
+    services.immich = {
+      inherit (cfg) host port;
+      enable = true;
+      package = pkgs.unstable.immich;
+      openFirewall = false;
+    };
   };
 }

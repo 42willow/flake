@@ -7,7 +7,7 @@
 }: let
   cfg = osConfig.settings.programs;
 in {
-  config = lib.mkIf (cfg.tui.enable
+  config = lib.mkIf (cfg.cli.enable
     && cfg.categories.core.enable) {
     xdg.configFile = {
       ".prettierrc.json".text = builtins.toJSON (import ./prettier.nix {inherit pkgs;});
