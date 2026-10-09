@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    ./fonts.nix
   ];
 
   programs = {
