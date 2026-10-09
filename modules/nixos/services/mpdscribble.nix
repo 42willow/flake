@@ -1,11 +1,17 @@
 {
+  self,
   config,
   lib,
   ...
 }: let
-  cfg = config.settings.programs.categories.music;
+  inherit (self.lib) mkServiceOption;
+  inherit (lib) mkIf;
+
+  cfg = config.nest.services.mpdscribble;
 in {
-  config = lib.mkIf cfg.enable {
+  options.nest.services.mpdscribble = mkServiceOption "mpdscribble" {};
+
+  config = mkIf cfg.enable {
     services.mpdscribble = {
       enable = false;
       endpoints."last.fm" = {

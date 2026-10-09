@@ -5,6 +5,8 @@
   inputs,
 }: let
   secrets = import ./secrets.nix {inherit inputs;};
+  services = import ./services.nix {inherit lib;};
 in {
   inherit (secrets) mkSecret;
+  inherit (services) mkServiceOption;
 }
