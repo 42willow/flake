@@ -1,13 +1,6 @@
 {
-  lib,
-  config,
-  ...
-}: {
   imports = [
+    ./steam.nix
+    ./zsh.nix
   ];
-
-  programs = {
-    steam.enable = lib.mkDefault config.settings.desktop.enable;
-    zsh.enable = true;
-  };
 }
