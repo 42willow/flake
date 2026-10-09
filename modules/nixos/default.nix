@@ -16,6 +16,7 @@ in {
     ./secrets.nix
 
     ./desktop
+    ./environment
     ./home
     ./nix
     ./programs
