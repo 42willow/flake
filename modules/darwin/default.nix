@@ -2,12 +2,10 @@
   inherit (config.settings.system) user;
 in {
   imports = [
-    ./secrets.nix
-
-    ./desktop
     ./homebrew.nix
     ./nix
     ./programs.nix
+    ./secrets.nix
     ./services
 
     ../shared
