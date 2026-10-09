@@ -10,7 +10,6 @@ in {
     ./dispatcharr.nix
     ./freshrss.nix
     ./gatus.nix
-    ./i18n.nix
     ./immich.nix
     ./jellyfin.nix
     ./koito.nix
