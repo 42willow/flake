@@ -1,30 +1,79 @@
 {
   self,
   pkgs,
+  lib,
+  config,
   ...
-}: {
+}: let
+  inherit (self.lib) mkSecret;
+  inherit (config.sops) secrets;
+in {
   imports = [
     ./hardware-configuration.nix
     "${self}/modules/nixos"
   ];
 
+  sops = {
+    secrets = {
+      syncthing-earthy-key = mkSecret {
+        file = "syncthing";
+        key = "earthy/key";
+        owner = "willow";
+      };
+      syncthing-earthy-cert = mkSecret {
+        file = "syncthing";
+        key = "earthy/cert";
+        owner = "willow";
+      };
+      healthchecks-earthy-ping-key = mkSecret {
+        file = "healthchecks";
+        key = "earthy/ping-key";
+        mode = "0444"; # world readable
+      };
+      samba-nas-username = mkSecret {
+        file = "samba-nas";
+        key = "username";
+      };
+      samba-nas-password = mkSecret {
+        file = "samba-nas";
+        key = "password";
+      };
+    };
+    templates.samba-nas-env.content = with config.sops.placeholder; ''
+      username=${samba-nas-username}
+      password=${samba-nas-password}
+    '';
+  };
+
   settings = {
     system = {
       hostName = "earthy";
-      services.sync.enable = true;
+      services = {
+        backups.enable = true; # restic
+        sync = {
+          enable = true;
+          key = secrets.syncthing-earthy-key.path;
+          cert = secrets.syncthing-earthy-cert.path;
+        };
+      };
     };
   };
 
   # samba
   environment.systemPackages = [pkgs.cifs-utils];
-  # fileSystems."/mnt/nas" = {
-  #   device = "//192.168.1.30/thinkpad_backup/";
-  #   fsType = "cifs";
-  #   options = let
-  #     # this line prevents hanging on network split
-  #     automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-  #   in ["${automount_opts},credentials=${config.age.secrets.sambaNas.path}"];
-  # };
+  fileSystems."/mnt/nas" = {
+    device = "//192.168.1.30/thinkpad_backup";
+    fsType = "cifs";
+    options = [
+      "x-systemd.automount"
+      "noauto"
+      "x-systemd.idle-timeout=60"
+      "x-systemd.device-timeout=5s"
+      "x-systemd.mount-timeout=5s"
+      "x-systemd.requires=network-online.target"
+      "credentials=${config.sops.templates.samba-nas-env.path}"
+    ];
+  };
 
   services = {
     openssh = {
@@ -124,8 +173,89 @@
     fwupd.enable = true;
   };
 
+  /*
+  configure tailscale serve
+  `services.tailscale.serve.services.<name>` doesn't work with https
+  see https://github.com/tailscale/tailscale/issues/18381
+  */
+  systemd.services.tailscale-serve = {
+    description = "configure tailscale serve";
+    after = ["tailscaled.service" "tailscaled.socket" "network-online.target"];
+    wants = ["tailscaled.service" "tailscaled.socket" "network-online.target"];
+    wantedBy = ["multi-user.target"];
+    stopIfChanged = false;
+
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+
+    script = let
+      ts = lib.getExe config.services.tailscale.package;
+    in ''
+      echo "waiting for tailscaled backend to be ready"
+      until ${ts} status --json | ${pkgs.jq}/bin/jq -e '.BackendState == "Running"' >/dev/null 2>&1; do
+        sleep 1
+      done
+      echo "tailscaled backend is ready"
+
+      ${ts} serve reset
+
+      ${lib.concatStringsSep "\n" (
+        lib.mapAttrsToList (
+          name: port: "${ts} serve --service=svc:${name} ${toString port}"
+        ) {
+          immich = 2283;
+          status = 3001;
+          dispatcharr = 3005;
+          radicale = 5232;
+          jellyfin = 8096;
+        }
+      )}
+
+      ${ts} serve --bg 8384
+    '';
+  };
+
+  # disable firewall for tailscale
+  networking.firewall.trustedInterfaces = [config.services.tailscale.interfaceName];
+
   # required for ZFS
   networking.hostId = "c49b1e3e";
+
+  # healthchecks.io deadman's switch
+  systemd.timers.earthy-heartbeat = {
+    description = "trigger earthy heartbeat service once hourly";
+    timerConfig = {
+      OnBootSec = "2min";
+      OnCalendar = "hourly";
+      Persistent = true;
+    };
+    wantedBy = ["timers.target"];
+  };
+
+  systemd.services.earthy-heartbeat = {
+    description = "ping healthchecks.io deadman's switch";
+    wants = ["network-online.target"];
+    after = ["network-online.target"];
+    unitConfig.ConditionPathExists = secrets.healthchecks-earthy-ping-key.path;
+    script = ''
+      key="$(${lib.getExe' pkgs.coreutils "cat"} ${secrets.healthchecks-earthy-ping-key.path})"
+      url="https://hc-ping.com/''${key}/earthy-heartbeat"
+      ${pkgs.curl}/bin/curl \
+        --fail \
+        --silent \
+        --show-error \
+        --max-time 10 \
+        --retry 5 \
+        --output /dev/null \
+        "$url"
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      DynamicUser = true;
+    };
+  };
 
   services.logind.settings.Login = {
     HandleLidSwitch = "ignore";

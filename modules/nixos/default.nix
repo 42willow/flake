@@ -13,7 +13,10 @@
   ];
 in {
   imports = [
+    ./secrets.nix
+
     ./desktop
+    ./environment
     ./home
     ./nix
     ./programs
@@ -22,6 +25,7 @@ in {
     ./themes
 
     ../shared
+    ../home
   ];
 
   users.users.${user.name} = {

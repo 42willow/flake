@@ -7,8 +7,9 @@
   cfg = config.settings.programs;
 in {
   config = lib.mkIf cfg.gui.enable {
-    environment.systemPackages = [
-      pkgs.unstable.aseprite
+    environment.systemPackages = with pkgs; [
+      unstable.aseprite
+      sops
     ];
   };
 }

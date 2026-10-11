@@ -7,69 +7,21 @@
 
   cfg = config.settings;
 in {
-  options.settings = {
+  options.nest = {
+    profiles = {
+      graphical
+    }
     programs = {
       enable =
         mkEnableOption "Enable all programs"
         // {default = true;};
 
       cli.enable =
-        mkEnableOption "Enable CLI programs"
-        // {default = cfg.programs.enable;};
-      tui.enable =
-        mkEnableOption "Enable TUI programs"
+        mkEnableOption "Enable CLI and TUI programs"
         // {default = cfg.programs.enable;};
       gui.enable =
         mkEnableOption "Enable GUI programs"
         // {default = cfg.desktop.enable;};
-
-      categories = {
-        enable =
-          mkEnableOption "Enable all program categories"
-          // {default = cfg.programs.enable;};
-        core.enable =
-          mkEnableOption "Enable core programs"
-          // {default = cfg.programs.categories.enable;};
-        design.enable =
-          mkEnableOption "Enable design programs"
-          // {default = cfg.programs.categories.enable;};
-        dev.enable =
-          mkEnableOption "Enable development programs"
-          // {default = cfg.programs.categories.enable;};
-        edu.enable =
-          mkEnableOption "Enable educational programs"
-          // {default = cfg.programs.categories.enable;};
-        fs.enable =
-          mkEnableOption "Enable file management programs"
-          // {default = cfg.programs.categories.enable;};
-        fun.enable =
-          mkEnableOption "Enable fun programs"
-          // {default = cfg.programs.categories.enable;};
-        gaming.enable =
-          mkEnableOption "Enable gaming programs"
-          // {default = cfg.programs.categories.enable;};
-        mail.enable =
-          mkEnableOption "Enable email programs"
-          // {default = cfg.programs.categories.enable;};
-        media.enable =
-          mkEnableOption "Enable multimedia programs"
-          // {default = cfg.programs.categories.enable;};
-        music.enable =
-          mkEnableOption "Enable music programs"
-          // {default = cfg.programs.categories.enable;};
-        printing.enable =
-          mkEnableOption "Enable 3D printing programs"
-          // {default = cfg.programs.categories.enable;};
-        privacy.enable =
-          mkEnableOption "Enable privacy programs"
-          // {default = cfg.programs.categories.enable;};
-        tools.enable =
-          mkEnableOption "Enable QOL programs"
-          // {default = cfg.programs.categories.enable;};
-        web.enable =
-          mkEnableOption "Enable browsers"
-          // {default = cfg.programs.categories.enable;};
-      };
     };
 
     system = {
@@ -112,9 +64,13 @@ in {
         sound.enable =
           mkEnableOption "Enable sound"
           // {default = cfg.system.services.enable;};
-        sync.enable =
-          mkEnableOption "Enable syncthing"
-          // {default = false;};
+        sync = {
+          enable =
+            mkEnableOption "Enable syncthing"
+            // {default = false;};
+          key = lib.mkOption {type = lib.types.path;};
+          cert = lib.mkOption {type = lib.types.path;};
+        };
         printing.enable =
           mkEnableOption "Enable printing"
           // {default = cfg.system.services.enable;};

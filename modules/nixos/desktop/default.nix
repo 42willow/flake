@@ -1,6 +1,7 @@
 {
   imports = [
-    # ./bspwm.nix
     ./niri.nix
+    # ./bspwm.nix
+    # ./xfce.nix
   ];
 }

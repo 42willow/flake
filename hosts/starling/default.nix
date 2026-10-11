@@ -4,12 +4,26 @@
   config,
   ...
 }: let
+  inherit (self.lib) mkSecret;
   cfg = config.settings;
 in {
   imports = [
     "${self}/modules/darwin"
     ./stars.nix
   ];
+
+  sops.secrets = {
+    syncthing-starling-key = mkSecret {
+      file = "syncthing";
+      key = "starling/key";
+      owner = "willow";
+    };
+    syncthing-starling-cert = mkSecret {
+      file = "syncthing";
+      key = "starling/cert";
+      owner = "willow";
+    };
+  };
 
   networking = {
     computerName = "starling";
@@ -24,9 +38,13 @@ in {
         inherit home;
         name = "willow";
         group = "staff";
-        flakeDir = "${home}/Documents/git/flake";
+        flakeDir = "${home}/flake";
       };
-      services.sync.enable = true;
+      services.sync = with config.sops.secrets; {
+        enable = true;
+        key = syncthing-starling-key.path;
+        cert = syncthing-starling-cert.path;
+      };
     };
   };
 
