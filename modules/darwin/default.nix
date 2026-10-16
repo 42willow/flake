@@ -2,13 +2,14 @@
   inherit (config.settings.system) user;
 in {
   imports = [
-    ../shared
-    ./desktop
-    ./home
     ./homebrew.nix
     ./nix
     ./programs.nix
+    ./secrets.nix
     ./services
+
+    ../shared
+    ../home
   ];
 
   users.users.${user.name}.home = user.home;
@@ -35,7 +36,7 @@ in {
         wvous-bl-corner = 5; # screen saver
         wvous-br-corner = 10; # put display to sleep
         wvous-tl-corner = 2; # mission control
-        wvous-tr-corner = 12; # notification centre
+        wvous-tr-corner = 2; # mission control
       };
     };
   };
