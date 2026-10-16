@@ -7,6 +7,7 @@
   cfg = config.settings.system.services;
 in {
   imports = [
+    ./calibre-server.nix
     ./dispatcharr.nix
     ./freshrss.nix
     ./gonic.nix
