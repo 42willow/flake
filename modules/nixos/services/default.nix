@@ -11,5 +11,6 @@
     ./mpdscribble.nix
     ./radicale.nix
     ./restic.nix
+    ./uhf-server.nix
   ];
 }
