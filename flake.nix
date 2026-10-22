@@ -103,12 +103,7 @@
     # secrets
     agenix = {
       url = "github:ryantm/agenix";
-      inputs = {
-        nixpkgs.follows = "nixos-unstable";
-        systems.follows = "systems";
-        darwin.follows = "";
-        home-manager.follows = "";
-      };
+      inputs.nixpkgs.follows = "nixos-unstable";
     };
 
     # wallpapers
