@@ -2,11 +2,25 @@
   config,
   pkgs,
   lib,
+  self,
   ...
 }: let
-  cfg = config.settings.system.services.backups;
+  inherit (self.lib) mkSecret mkServiceOption;
+  inherit (lib) mkIf;
+
+  cfg = config.nest.services.restic;
 in {
-  config = lib.mkIf cfg.enable {
+  options.nest.services.restic = mkServiceOption "restic" {};
+
+  config = mkIf cfg.enable {
+    sops.secrets.restic-password = mkSecret {
+      file = "restic";
+      key = "password";
+      owner = "restic";
+      group = "restic";
+      mode = "0440";
+    };
+
     users = {
       users.restic = {
         isSystemUser = true;
@@ -16,7 +30,7 @@ in {
     };
 
     security.wrappers.restic = {
-      source = "${pkgs.restic.out}/bin/restic";
+      source = lib.getExe pkgs.restic;
       owner = "restic";
       group = "restic";
       permissions = "u=rwx,g=,o=";
@@ -25,16 +39,16 @@ in {
 
     services.restic.backups = {
       remotebackup = {
-        passwordFile = "${config.age.secrets.restic.path}";
+        passwordFile = config.sops.secrets.restic-password.path;
         paths = [
-          "/mnt/shared/docs"
-          "/mnt/shared/git"
-          "/mnt/shared/media"
-          "/mnt/shared/formulate"
+          "/etc/ssh"
           "/home/willow/.config"
           "/home/willow/.ssh"
+          "/home/willow/docs"
           "/home/willow/flake"
-          "/etc/ssh"
+          "/home/willow/media"
+          "/home/willow/shared"
+          "/home/willow/tmp"
         ];
         repository = "/mnt/nas/restic";
         timerConfig = {
@@ -43,7 +57,7 @@ in {
         };
         pruneOpts = [
           "--keep-daily 7"
-          "--keep-weekly 5"
+          "--keep-weekly 4"
           "--keep-monthly 12"
         ];
         exclude = [
