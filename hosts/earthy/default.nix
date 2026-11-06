@@ -205,6 +205,7 @@ in {
         lib.mapAttrsToList (
           name: port: "${ts} serve --service=svc:${name} ${toString port}"
         ) {
+          actual = 5006;
           calibre = 4321;
           dispatcharr = 3005;
           freshrss = 8443;
