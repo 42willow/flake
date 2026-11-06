@@ -27,6 +27,11 @@ in {
       web.port = 3001;
       endpoints = [
         (mkTailnetEndpoint {
+          name = "actual - budgeting";
+          subdomain = "immich";
+          path = "/api/server/ping";
+        })
+        (mkTailnetEndpoint {
           name = "immich - photos";
           subdomain = "immich";
           path = "/api/server/ping";
