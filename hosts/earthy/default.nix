@@ -10,21 +10,39 @@
 in {
   imports = [
     ./hardware-configuration.nix
+    ./users.nix
     "${self}/modules/nixos"
   ];
 
+  nest = {
+    system.hostName = "earthy";
+    profiles = {
+      graphical.enable = true;
+      dev.enable = true;
+    };
+    hardware = {
+      printing.enable = true;
+      sound.enable = true;
+    };
+    services = {
+      dispatcharr.enable = true;
+      freshrss.enable = true;
+      gatus.enable = true;
+      immich.enable = true;
+      jellyfin.enable = true;
+      koito.enable = true;
+      radicale.enable = true;
+      restic.enable = true;
+    };
+  };
+
+  # build first with niri disabled, then enable after cache is added
+  programs.niri.enable = true;
+  programs.steam.enable = true; # no config
+  programs.zsh.enable = true; # no config
+
   sops = {
     secrets = {
-      syncthing-earthy-key = mkSecret {
-        file = "syncthing";
-        key = "earthy/key";
-        owner = "willow";
-      };
-      syncthing-earthy-cert = mkSecret {
-        file = "syncthing";
-        key = "earthy/cert";
-        owner = "willow";
-      };
       healthchecks-earthy-ping-key = mkSecret {
         file = "healthchecks";
         key = "earthy/ping-key";
@@ -43,20 +61,6 @@ in {
       username=${samba-nas-username}
       password=${samba-nas-password}
     '';
-  };
-
-  settings = {
-    system = {
-      hostName = "earthy";
-      services = {
-        backups.enable = true; # restic
-        sync = {
-          enable = true;
-          key = secrets.syncthing-earthy-key.path;
-          cert = secrets.syncthing-earthy-cert.path;
-        };
-      };
-    };
   };
 
   # samba

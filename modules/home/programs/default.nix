@@ -1,31 +1,19 @@
 {
-  lib,
-  inputs,
-  pkgs,
-  osConfig,
-  ...
-}: let
-  inherit (lib) optionals concatLists;
-  cfg = osConfig.settings.programs;
-in {
   imports = [
     ./alacritty.nix
     ./atuin.nix
-    ./bat.nix
     ./beets.nix
-    ./btop.nix
-    ./bun.nix
     ./delta.nix
     ./direnv.nix
     ./eza.nix
     ./fzf.nix
+    ./gh.nix
     ./ghostty.nix
     ./git.nix
     ./gitui.nix
     ./glide-wm
     ./halloy.nix
     ./helix
-    ./jjui.nix
     ./jujutsu.nix
     ./kitty.nix
     ./nh.nix
@@ -37,48 +25,4 @@ in {
     ./zoxide.nix
     ./zsh.nix
   ];
-
-  config = lib.mkIf cfg.cli.enable {
-    home.packages = with pkgs;
-    with inputs;
-      concatLists [
-        [
-          unstable.chiri
-        ]
-        (optionals cfg.categories.tools.enable [
-          catppuccin.packages."${pkgs.stdenv.hostPlatform.system}".catwalk
-          catppuccin.packages."${pkgs.stdenv.hostPlatform.system}".whiskers
-
-          # archivebox
-          just
-          tldr
-          typst
-        ])
-        (optionals cfg.categories.dev.enable [
-          # pnpm
-
-          # nix
-          alejandra
-          deadnix
-          devenv
-          direnv
-          nix-inspect
-          statix
-
-          # rust
-          cargo
-          gcc # needed for rust-analyzer
-          rustc
-
-          # zig
-          zig
-
-          # haskell
-          ghc
-
-          # python
-          uv
-        ])
-      ];
-  };
 }

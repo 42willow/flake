@@ -1,13 +1,12 @@
 {
   lib,
-  osConfig,
   pkgs,
+  config,
   ...
-}: let
-  cfg = osConfig.settings.programs;
-in {
-  config = lib.mkIf (cfg.gui.enable
-    && cfg.categories.core.enable) {
+}: {
+  options.programs.lightburn.enable = lib.mkEnableOption "lightburn";
+
+  config = lib.mkIf config.programs.lightburn.enable {
     home.packages = [
       (
         let

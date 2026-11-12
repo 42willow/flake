@@ -3,11 +3,9 @@
   pkgs,
   lib,
   ...
-}: let
-  cfg = config.settings.system.services.sound;
-in {
-  config = lib.mkIf cfg.enable {
-    # Enable sound with pipewire
+}: {
+  config = lib.mkIf config.nest.hardware.sound.enable {
+    # enable sound with pipewire
     services.pulseaudio.enable = false;
     security.rtkit.enable = true; # optional but recommended
     services.pipewire = {

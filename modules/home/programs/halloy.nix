@@ -2,7 +2,6 @@ let
   nickname = "willoboo";
 in {
   programs.halloy = {
-    enable = true;
     settings = {
       servers = {
         liberachat = {

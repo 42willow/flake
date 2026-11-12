@@ -4,12 +4,10 @@
   osConfig,
   lib,
   ...
-}: let
-  cfg = osConfig.settings.desktop;
-in {
+}: {
   imports = [inputs.stylix.homeModules.stylix];
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf osConfig.nest.profiles.graphical.enable {
     stylix = {
       enable = true;
       autoEnable = false;

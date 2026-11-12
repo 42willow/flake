@@ -1,11 +1,9 @@
 {
   pkgs,
-  osConfig,
+  config,
   lib,
   ...
 }: let
-  cfg = osConfig.settings.programs.categories.music;
-
   # TODO)) Add queuing for multiple URLs
   bdl = pkgs.writeShellScriptBin "bdl" ''
     echo "Please enter the Spotify URL:"
@@ -30,7 +28,9 @@
     echo "All operations completed successfully."
   '';
 in {
-  config = lib.mkIf cfg.enable {
+  options.nest.scripts.bdl.enable = lib.mkEnableOption "bdl: spotify DL + beets script";
+
+  config = lib.mkIf config.nest.scripts.bdl.enable {
     home.packages = [bdl];
   };
 }

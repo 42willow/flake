@@ -1,19 +1,9 @@
 {
-  lib,
-  osConfig,
-  ...
-}: let
-  cfg = osConfig.settings.programs;
-in {
-  config = lib.mkIf (cfg.gui.enable
-    && cfg.categories.core.enable) {
-    programs.kitty = {
-      enable = false;
-      settings = {
-        confirm_os_window_close = 0;
-        cursor_blink_interval = 0;
-        mouse_hide_wait = 0;
-      };
+  programs.kitty = {
+    settings = {
+      confirm_os_window_close = 0;
+      cursor_blink_interval = 0;
+      mouse_hide_wait = 0;
     };
   };
 }

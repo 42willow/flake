@@ -1,12 +1,13 @@
 {osConfig, ...}: let
-  inherit (osConfig.settings.system) user;
+  inherit (osConfig.nest.system) user;
 in {
   imports = [
+    ./packages.nix
     ./programs
     ./scripts
+    ./secrets.nix
     ./services
     ./themes
-    ./secrets.nix
   ];
 
   programs.home-manager.enable = true;

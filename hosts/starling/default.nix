@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (self.lib) mkSecret;
-  cfg = config.settings;
+  inherit (config) nest;
 in {
   imports = [
     "${self}/modules/darwin"
@@ -33,7 +33,7 @@ in {
   settings = {
     system = {
       user = let
-        home = "/Users/${cfg.system.user.name}";
+        home = "/Users/${nest.system.user.name}";
       in {
         inherit home;
         name = "willow";

@@ -137,11 +137,6 @@
       };
     };
 
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/quickshell/quickshell";
-      inputs.nixpkgs.follows = "nixos-unstable";
-    };
-
     # reduce inputs
     systems = {
       url = "github:nix-systems/default";

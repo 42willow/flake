@@ -1,12 +1,38 @@
 {
-  lib,
-  osConfig,
   pkgs,
+  config,
+  self,
+  lib,
   ...
 }: let
-  cfg = osConfig.settings.system.services.sync;
+  inherit (self.lib) mkServiceOption;
+  inherit (lib) mkIf types;
+  inherit (lib.options) mkOption;
+
+  cfg = config.nest.services.syncthing;
 in {
-  config = lib.mkIf cfg.enable {
+  options.nest.services.syncthing =
+    mkServiceOption "syncthing" {}
+    // {
+      key = mkOption {
+        type = with types; nullOr str;
+        default = null;
+        description = ''
+          Path to the `key.pem` file, which will be copied into Syncthing's
+          config directory.
+        '';
+      };
+      cert = mkOption {
+        type = with types; nullOr str;
+        default = null;
+        description = ''
+          Path to the `cert.pem` file, which will be copied into Syncthing's
+          config directory.
+        '';
+      };
+    };
+
+  config = mkIf cfg.enable {
     services.syncthing = {
       enable = true;
       package = pkgs.unstable.syncthing;

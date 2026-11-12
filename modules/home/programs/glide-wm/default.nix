@@ -5,7 +5,7 @@
   lib,
   ...
 }: let
-  inherit (osConfig.settings.system.user) flakeDir;
+  inherit (osConfig.nest.system.user) flakeDir;
   mkLink = config.lib.file.mkOutOfStoreSymlink;
   settingsFile = mkLink "${flakeDir}/modules/home/programs/glide-wm/glide.toml";
 in {

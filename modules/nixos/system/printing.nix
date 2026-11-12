@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  cfg = config.settings.system.services.printing;
+  cfg = config.nest.hardware.printing;
 in {
   config = lib.mkIf cfg.enable {
     services.printing = {

@@ -3,10 +3,8 @@
   config,
   lib,
   ...
-}: let
-  cfg = config.settings.desktop;
-in {
-  config = lib.mkIf cfg.enable {
+}: {
+  config = lib.mkIf config.nest.profiles.graphical.enable {
     fonts = {
       fontconfig = {
         enable = true;

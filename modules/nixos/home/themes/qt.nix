@@ -2,10 +2,8 @@
   osConfig,
   lib,
   ...
-}: let
-  cfg = osConfig.settings.desktop;
-in {
-  config = lib.mkIf cfg.enable {
+}: {
+  config = lib.mkIf osConfig.nest.profiles.graphical.enable {
     qt = {
       enable = true;
       platformTheme.name = "kvantum";

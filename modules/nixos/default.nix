@@ -4,7 +4,7 @@
   config,
   ...
 }: let
-  inherit (config.settings.system) user;
+  inherit (config.nest.system) user;
 
   keys = [
     "${self}/keys/anemone.pub"
@@ -19,7 +19,6 @@ in {
     ./environment
     ./home
     ./nix
-    ./programs
     ./services
     ./system
     ./themes

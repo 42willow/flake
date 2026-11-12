@@ -1,79 +1,56 @@
-{
-  lib,
-  osConfig,
-  config,
-  pkgs,
-  ...
-}: let
-  cfg = osConfig.settings.programs;
-in {
-  config = lib.mkIf (cfg.cli.enable
-    && cfg.categories.core.enable) {
-    programs = {
-      git = {
-        enable = true;
-        lfs.enable = true;
+{config, ...}: {
+  programs.git = {
+    lfs.enable = true;
 
-        settings = {
-          user = {
-            name = "willow";
-            email = "42willow" + "@" + "pm.me";
-            signingkey = config.sops.secrets.keys-ssh.path;
-          };
-
-          alias = {
-            co = "checkout";
-            br = "branch";
-            ci = "commit";
-            st = "status";
-            aa = "add";
-            aliases = "config --get-regexp '^alias\\.'";
-          };
-
-          init.defaultBranch = "main";
-          credential.helper = "store";
-
-          pull = {
-            rebase = true;
-            ff = "only";
-          };
-          push = {
-            autoSetupRemote = true;
-          };
-          rebase = {
-            autoSquash = true;
-            autoStash = true;
-          };
-          merge = {
-            ff = "only";
-          };
-
-          # prevent data corruption
-          transfer.fsckObjects = true;
-          fetch.fsckObjects = true;
-          receive.fsckObjects = true;
-
-          # commit signing
-          commit.gpgsign = true;
-          gpg.format = "ssh";
-          gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.ssh/allowed_signers";
-        };
-
-        ignores = [
-          ".direnv"
-          "node_modules"
-          ".DS_Store"
-        ];
+    settings = {
+      user = {
+        name = "willow";
+        email = "42willow" + "@" + "pm.me";
+        signingkey = config.sops.secrets.keys-ssh.path;
       };
 
-      gh = {
-        enable = true;
-        extensions = [
-          config.programs.gh-dash.package
-          pkgs.gh-stack
-        ];
+      alias = {
+        co = "checkout";
+        br = "branch";
+        ci = "commit";
+        st = "status";
+        aa = "add";
+        aliases = "config --get-regexp '^alias\\.'";
       };
-      gh-dash.enable = true;
+
+      init.defaultBranch = "main";
+      credential.helper = "store";
+
+      pull = {
+        rebase = true;
+        ff = "only";
+      };
+      push = {
+        autoSetupRemote = true;
+      };
+      rebase = {
+        autoSquash = true;
+        autoStash = true;
+      };
+      merge = {
+        ff = "only";
+      };
+
+      # prevent data corruption
+      transfer.fsckObjects = true;
+      fetch.fsckObjects = true;
+      receive.fsckObjects = true;
+
+      # commit signing
+      commit.gpgsign = true;
+      gpg.format = "ssh";
+      gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.ssh/allowed_signers";
     };
+
+    ignores = [
+      ".direnv"
+      "node_modules"
+      ".DS_Store"
+    ];
   };
 }
