@@ -1,12 +1,18 @@
 {
-  lib,
-  osConfig,
   pkgs,
+  config,
+  self,
+  lib,
   ...
 }: let
-  cfg = osConfig.settings.system.services.sync;
+  inherit (self.lib) mkServiceOption;
+  inherit (lib) mkIf;
+
+  cfg = config.nest.services.syncthing;
 in {
-  config = lib.mkIf cfg.enable {
+  options.nest.services.syncthing = mkServiceOption "syncthing" {};
+
+  config = mkIf cfg.enable {
     services.syncthing = {
       enable = true;
       package = pkgs.unstable.syncthing;

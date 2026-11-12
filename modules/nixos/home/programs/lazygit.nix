@@ -6,7 +6,7 @@
   cfg = osConfig.settings.programs;
 in {
   config = lib.mkIf (cfg.cli.enable
-    && cfg.categories.core.enable) {
-    programs.bat.enable = true;
+    && cfg.categories.dev.enable) {
+    programs.lazygit.enable = true;
   };
 }

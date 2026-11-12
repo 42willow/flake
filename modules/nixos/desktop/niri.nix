@@ -4,12 +4,12 @@
   config,
   lib,
   ...
-}: let
-  cfg = config.settings.desktop.niri;
-in {
+}: {
   imports = [inputs.niri.nixosModules.niri];
 
-  config = lib.mkIf cfg.enable {
+  options.programs.niri.enable = lib.options.mkEnableOption "niri";
+
+  config = lib.modules.mkIf config.programs.niri.enable {
     niri-flake.cache.enable = true;
     nixpkgs.overlays = [inputs.niri.overlays.niri];
 

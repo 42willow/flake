@@ -11,21 +11,18 @@ in {
   imports = [
     ./alacritty.nix
     ./atuin.nix
-    ./bat.nix
     ./beets.nix
-    ./btop.nix
-    ./bun.nix
     ./delta.nix
     ./direnv.nix
     ./eza.nix
     ./fzf.nix
+    ./gh.nix
     ./ghostty.nix
     ./git.nix
     ./gitui.nix
     ./glide-wm
     ./halloy.nix
     ./helix
-    ./jjui.nix
     ./jujutsu.nix
     ./kitty.nix
     ./nh.nix
