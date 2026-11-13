@@ -15,13 +15,14 @@
     inherit symbol;
     format = "via [$symbol](${style})";
   };
-
   tomlFormat = pkgs.formats.toml {};
 in {
   config = lib.mkIf (cfg.cli.enable
     && cfg.categories.core.enable) {
     programs.starship = {
       enable = true;
+      package = pkgs.unstable.starship;
+
       enableBashIntegration = config.programs.bash.enable;
       enableFishIntegration = config.programs.fish.enable;
       enableZshIntegration = config.programs.zsh.enable;
@@ -36,6 +37,7 @@ in {
           "$all"
           "$fill"
           "\${custom.jj}"
+          "$jj_change"
           "$line_break"
           "$character"
         ];
@@ -48,23 +50,74 @@ in {
         };
 
         username = {
+          disabled = true;
           style_user = "white";
           style_root = "black";
           format = "[$user]($style) ";
           show_always = false;
         };
 
-        custom.jj = {
-          command = "prompt";
-          format = "$output";
-          ignore_timeout = true;
-          shell = [
-            (lib.getExe pkgs.starship-jj)
-            "--ignore-working-copy"
-            "starship"
+        # custom.jj = {
+        #   command = "prompt";
+        #   format = "$output";
+        #   ignore_timeout = true;
+        #   shell = [
+        #     (lib.getExe pkgs.starship-jj)
+        #     "--ignore-working-copy"
+        #     "starship"
+        #   ];
+        #   use_stdin = false;
+        #   when = true;
+        # };
+        #
+
+        /*
+        wrapped parentheses () are conditional grouping operators
+        starship will only render the inner contents if the variables
+        within it exist
+        */
+
+        vcs.order = ["jj" "git" "hg" "pijul" "fossil"];
+
+        jj_bookmark = {
+          format = lib.concatStrings [
+            "["
+            "$symbol$bookmark(@$remote)"
+            "$diverged( \\(+$overflow_count others\\))"
+            "]($style) "
           ];
-          use_stdin = false;
-          when = true;
+          symbol = "󰘬 ";
+          style = "green";
+        };
+        jj_change = {
+          format = "$change( \\([$change_offset ](yellow)\\)) ";
+          prefix_style = "white";
+          suffix_style = "dimmed";
+        };
+        jj_metrics = {
+          format = lib.concatStrings [
+            "[\\(](dimmed)"
+            "([+$added]($added_style) )"
+            "([-$deleted]($deleted_style))"
+            "[\\)](dimmed)"
+          ];
+          added_style = "green";
+          deleted_style = "red";
+        };
+        jj_status = {
+          disabled = true;
+          format = "([\[$all\]]($style) )";
+          conflicted = "!";
+          description_empty = "";
+          description_present = "$description";
+          hidden = "";
+          immutable = "◆";
+          added = "+$count";
+          copied = "=$count";
+          deleted = "✘$count";
+          modified = "~$count";
+          renamed = "»$count";
+          style = "yellow";
         };
 
         cmd_duration = {
