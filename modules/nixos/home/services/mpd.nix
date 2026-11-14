@@ -1,13 +1,18 @@
 {
   pkgs,
   config,
-  osConfig,
   lib,
+  self,
   ...
 }: let
-  cfg = osConfig.settings.programs.categories.music;
+  inherit (self.lib) mkServiceOption;
+  inherit (lib) mkIf;
+
+  cfg = config.nest.services.mpd;
 in {
-  config = lib.mkIf cfg.enable {
+  options.nest.services.mpd = mkServiceOption "mpd" {};
+
+  config = mkIf cfg.enable {
     services = {
       mpd = {
         enable = true;
