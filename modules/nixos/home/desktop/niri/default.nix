@@ -4,121 +4,125 @@
   config,
   lib,
   ...
-}: {
+}: let
+  cfg = osConfig.nest.profiles.graphical;
+in {
   imports = [
     ./binds.nix
   ];
 
-  programs.niri.settings = {
-    animations.enable = true;
-    prefer-no-csd = true;
+  config = lib.mkIf cfg.enable {
+    programs.niri.settings = {
+      animations.enable = true;
+      prefer-no-csd = true;
 
-    cursor = {
-      inherit (config.stylix.cursor) size;
-      theme = config.stylix.cursor.name;
-    }; # TODO)) this doesn't fix the big cursor issue
+      cursor = {
+        inherit (config.stylix.cursor) size;
+        theme = config.stylix.cursor.name;
+      }; # TODO)) this doesn't fix the big cursor issue
 
-    outputs = {
-      DP-1 = {
-        position = {
-          x = 0;
-          y = 0;
+      outputs = {
+        DP-1 = {
+          position = {
+            x = 0;
+            y = 0;
+          };
+        };
+        DP-2 = {
+          position = {
+            x = 0;
+            y = 0;
+          };
+        };
+        eDP-1 = {
+          scale = 1;
+          position = {
+            # x = 2560;
+            x = 1024;
+            y = 0;
+          };
+        };
+        HDMI-A-1 = {
+          position = {
+            x = 0;
+            y = 0;
+          };
+          transform.rotation = 90;
         };
       };
-      DP-2 = {
-        position = {
-          x = 0;
-          y = 0;
-        };
-      };
-      eDP-1 = {
-        scale = 1;
-        position = {
-          # x = 2560;
-          x = 1024;
-          y = 0;
-        };
-      };
-      HDMI-A-1 = {
-        position = {
-          x = 0;
-          y = 0;
-        };
-        transform.rotation = 90;
-      };
-    };
 
-    overview.backdrop-color = "#1e2030";
+      overview.backdrop-color = "#1e2030";
 
-    window-rules = [
-      {
-        geometry-corner-radius = let
-          radius = 8.0;
-        in {
-          bottom-left = radius;
-          bottom-right = radius;
-          top-left = radius;
-          top-right = radius;
-        };
-        clip-to-geometry = true;
-      }
-      # {
-      #   # screencasted windows
-      #   matches = [{is-window-cast-target = true;}];
-      #   border = {
-      #     active-color = "#ed8796";
-      #   };
-      # }
-    ];
-    spawn-at-startup = [
-      {
-        command = [(lib.getExe pkgs.xwayland-satellite-unstable)];
-      }
-      {
-        command = ["qs"];
-      }
-    ];
-    environment = {
-      DISPLAY = ":0"; # xwayland-satellite
-    };
-
-    input = {
-      keyboard.xkb = {
-        inherit (osConfig.services.xserver.xkb) layout variant options;
-      };
-      touchpad = {
-        accel-speed = 0.4;
-      };
-      focus-follows-mouse = {
-        # allow focus-follows-mouse only when it will not scroll the view
-        enable = true;
-        max-scroll-amount = "0%";
-      };
-    };
-
-    screenshot-path = "${config.xdg.userDirs.pictures}/screenshots/screenshot-%Y-%m-%d_%H:%M:%S.png";
-
-    layout = {
-      gaps = 5;
-      center-focused-column = "never";
-
-      preset-column-widths = [
-        {proportion = 1.0 / 3.0;}
-        {proportion = 1.0 / 2.0;}
-        {proportion = 2.0 / 3.0;}
+      window-rules = [
+        {
+          geometry-corner-radius = let
+            radius = 8.0;
+          in {
+            bottom-left = radius;
+            bottom-right = radius;
+            top-left = radius;
+            top-right = radius;
+          };
+          clip-to-geometry = true;
+        }
+        # {
+        #   # screencasted windows
+        #   matches = [{is-window-cast-target = true;}];
+        #   border = {
+        #     active-color = "#ed8796";
+        #   };
+        # }
       ];
-      default-column-width.proportion = 0.5;
-
-      border = {
-        enable = true;
-        width = 2;
-
-        active.color = "#f5bde6";
-        inactive.color = "#24273a";
+      spawn-at-startup = [
+        {
+          command = [(lib.getExe pkgs.xwayland-satellite-unstable)];
+        }
+        {
+          command = ["qs"];
+        }
+      ];
+      environment = {
+        DISPLAY = ":0"; # xwayland-satellite
       };
-      focus-ring.enable = false;
-      insert-hint.display.color = "#f5bde680";
-      background-color = "#1e2030";
+
+      input = {
+        keyboard.xkb = {
+          inherit (osConfig.services.xserver.xkb) layout variant options;
+        };
+        touchpad = {
+          accel-speed = 0.4;
+        };
+        focus-follows-mouse = {
+          # allow focus-follows-mouse only when it will not scroll the view
+          enable = true;
+          max-scroll-amount = "0%";
+        };
+      };
+
+      screenshot-path = "${config.xdg.userDirs.pictures}/screenshots/screenshot-%Y-%m-%d_%H:%M:%S.png";
+
+      layout = {
+        gaps = 5;
+        center-focused-column = "never";
+
+        preset-column-widths = [
+          {proportion = 1.0 / 3.0;}
+          {proportion = 1.0 / 2.0;}
+          {proportion = 2.0 / 3.0;}
+        ];
+        default-column-width.proportion = 0.5;
+
+        border = {
+          enable = true;
+          width = 2;
+
+          active.color = "#f5bde6";
+          inactive.color = "#24273a";
+        };
+        focus-ring.enable = false;
+        insert-hint.display.color = "#f5bde680";
+        background-color = "#1e2030";
+      };
     };
   };
 }
