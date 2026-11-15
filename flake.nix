@@ -42,7 +42,7 @@
 
     lib = import ./modules/lib {
       inherit inputs;
-      lib = nixpkgs.lib;
+      inherit (nixpkgs) lib;
     };
 
     overlays = import ./overlays.nix {

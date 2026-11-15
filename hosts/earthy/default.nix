@@ -42,10 +42,12 @@ in {
     };
   };
 
-  # build first with niri disabled, then enable after cache is added
-  programs.niri.enable = true;
-  programs.steam.enable = true; # no config
-  programs.zsh.enable = true; # no config
+  programs = {
+    # build first with niri disabled, then enable after cache is added
+    niri.enable = true;
+    steam.enable = true; # no config
+    zsh.enable = true; # no config
+  };
 
   sops = {
     secrets = {
@@ -174,37 +176,46 @@ in {
   # required for ZFS
   networking.hostId = "c49b1e3e";
 
-  # healthchecks.io deadman's switch
-  systemd.timers.earthy-heartbeat = {
-    description = "trigger earthy heartbeat service once hourly";
-    timerConfig = {
-      OnBootSec = "2min";
-      OnCalendar = "hourly";
-      Persistent = true;
+  systemd = {
+    # healthchecks.io deadman's switch
+    timers.earthy-heartbeat = {
+      description = "trigger earthy heartbeat service once hourly";
+      timerConfig = {
+        OnBootSec = "2min";
+        OnCalendar = "hourly";
+        Persistent = true;
+      };
+      wantedBy = ["timers.target"];
     };
-    wantedBy = ["timers.target"];
-  };
 
-  systemd.services.earthy-heartbeat = {
-    description = "ping healthchecks.io deadman's switch";
-    wants = ["network-online.target"];
-    after = ["network-online.target"];
-    unitConfig.ConditionPathExists = secrets.healthchecks-earthy-ping-key.path;
-    script = ''
-      key="$(${lib.getExe' pkgs.coreutils "cat"} ${secrets.healthchecks-earthy-ping-key.path})"
-      url="https://hc-ping.com/''${key}/earthy-heartbeat"
-      ${pkgs.curl}/bin/curl \
-        --fail \
-        --silent \
-        --show-error \
-        --max-time 10 \
-        --retry 5 \
-        --output /dev/null \
-        "$url"
-    '';
-    serviceConfig = {
-      Type = "oneshot";
-      DynamicUser = true;
+    services.earthy-heartbeat = {
+      description = "ping healthchecks.io deadman's switch";
+      wants = ["network-online.target"];
+      after = ["network-online.target"];
+      unitConfig.ConditionPathExists = secrets.healthchecks-earthy-ping-key.path;
+      script = ''
+        key="$(${lib.getExe' pkgs.coreutils "cat"} ${secrets.healthchecks-earthy-ping-key.path})"
+        url="https://hc-ping.com/''${key}/earthy-heartbeat"
+        ${pkgs.curl}/bin/curl \
+          --fail \
+          --silent \
+          --show-error \
+          --max-time 10 \
+          --retry 5 \
+          --output /dev/null \
+          "$url"
+      '';
+      serviceConfig = {
+        Type = "oneshot";
+        DynamicUser = true;
+      };
+    };
+
+    targets = {
+      sleep.enable = false;
+      suspend.enable = false;
+      hibernate.enable = false;
+      hybrid-sleep.enable = false;
     };
   };
 
@@ -212,11 +223,5 @@ in {
     HandleLidSwitch = "ignore";
     HandleLidSwitchExternalPower = "ignore";
     HandleLidSwitchDocked = "ignore";
-  };
-  systemd.targets = {
-    sleep.enable = false;
-    suspend.enable = false;
-    hibernate.enable = false;
-    hybrid-sleep.enable = false;
   };
 }

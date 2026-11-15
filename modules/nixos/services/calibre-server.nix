@@ -28,8 +28,7 @@ in {
     services.calibre-server = {
       enable = true;
       openFirewall = false;
-      inherit (cfg) port;
-      host = cfg.host;
+      inherit (cfg) port host;
       user = "calibre-server";
       group = "calibre-server";
 
