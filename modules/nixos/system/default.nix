@@ -5,7 +5,7 @@
     ./nix.nix
     ./pipewire.nix
     ./printing.nix
-    ./vm.nix
-    # ./sddm.nix
+    ./sddm.nix
+    ./virtualisation.nix
   ];
 }

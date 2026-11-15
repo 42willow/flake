@@ -18,7 +18,7 @@ in {
     }
     // {
       ebooksPath = mkOption {
-        type = with types; nullOr str;
+        type = types.str;
         default = "/srv/ebooks";
         description = "Path to the ebooks directory.";
       };

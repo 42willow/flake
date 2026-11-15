@@ -71,14 +71,14 @@ in {
     };
 
     services.koito = {
-      enable = false;
+      enable = true;
       package = pkgs.unstable.koito;
       openFirewall = false;
 
       # https://koito.io/reference/configuration/
       environment = {
         KOITO_BIND_ADDR = cfg.host;
-        KOITO_LISTEN_PORT = cfg.port;
+        KOITO_LISTEN_PORT = toString cfg.port;
         KOITO_DEFAULT_THEME = "catppuccin";
         KOITO_LOGIN_GATE = "false";
       };

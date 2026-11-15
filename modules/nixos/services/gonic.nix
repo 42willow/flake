@@ -19,7 +19,7 @@ in {
       enable = true;
       settings = {
         cache-path = "/var/cache/gonic";
-        listen-addr = "0.0.0.0:4747";
+        listen-addr = "${cfg.host}:${toString cfg.port}";
         music-path = "/srv/music";
         podcast-path = "/srv/podcasts";
         playlists-path = "/var/lib/gonic/playlists";

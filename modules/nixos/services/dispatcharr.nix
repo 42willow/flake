@@ -15,8 +15,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    virtualisation.oci-containers.backend = "podman"; # TODO move elsewhere
-
     virtualisation.oci-containers.containers.dispatcharr = {
       image = "ghcr.io/dispatcharr/dispatcharr:latest";
       autoStart = true;

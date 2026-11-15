@@ -43,8 +43,8 @@ in {
         endpoints = [
           (mkTailnetEndpoint {
             name = "actual - budgeting";
-            subdomain = "immich";
-            path = "/api/server/ping";
+            subdomain = "actual";
+            path = "/health";
           })
           (mkTailnetEndpoint {
             name = "immich - photos";
