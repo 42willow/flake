@@ -13,7 +13,7 @@ in {
 
   config = mkIf cfg.enable {
     services.aerospace = {
-      enable = false;
+      enable = true;
 
       settings = {
         gaps = {

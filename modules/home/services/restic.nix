@@ -7,13 +7,14 @@
   ...
 }: let
   inherit (self.lib) mkSecret mkServiceOption;
+  inherit (pkgs.stdenv.hostPlatform) isDarwin;
   inherit (lib) mkIf;
 
   cfg = config.nest.services.restic;
 in {
   options.nest.services.restic = mkServiceOption "restic" {};
 
-  config = mkIf (cfg.enable && pkgs.stdenv.hostPlatform.isDarwin) {
+  config = mkIf (isDarwin && cfg.enable) {
     sops.secrets.restic-password = mkSecret {
       file = "restic";
       key = "password";

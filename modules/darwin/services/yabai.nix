@@ -14,7 +14,7 @@ in {
 
   config = mkIf cfg.enable {
     services.yabai = {
-      enable = false;
+      enable = true;
       package = pkgs.unstable.yabai;
       enableScriptingAddition = true;
       config = {

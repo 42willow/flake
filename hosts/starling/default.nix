@@ -4,33 +4,20 @@
   config,
   ...
 }: let
-  inherit (self.lib) mkSecret;
   inherit (config) nest;
 in {
   imports = [
     "${self}/modules/darwin"
     ./stars.nix
+    ./users.nix
   ];
-
-  sops.secrets = {
-    syncthing-starling-key = mkSecret {
-      file = "syncthing";
-      key = "starling/key";
-      owner = "willow";
-    };
-    syncthing-starling-cert = mkSecret {
-      file = "syncthing";
-      key = "starling/cert";
-      owner = "willow";
-    };
-  };
 
   networking = {
     computerName = "starling";
     hostName = "starling";
   };
 
-  settings = {
+  nest = {
     system = {
       user = let
         home = "/Users/${nest.system.user.name}";
@@ -40,11 +27,17 @@ in {
         group = "staff";
         flakeDir = "${home}/flake";
       };
-      services.sync = with config.sops.secrets; {
-        enable = true;
-        key = syncthing-starling-key.path;
-        cert = syncthing-starling-cert.path;
-      };
+    };
+    profiles = {
+      graphical.enable = true;
+      dev.enable = true;
+    };
+    services = {
+      aerospace.enable = false;
+      glide.enable = true;
+      jankyborders.enable = false;
+      skhd.enable = false;
+      yabai.enable = false;
     };
   };
 

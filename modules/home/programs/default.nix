@@ -11,7 +11,7 @@
     ./ghostty.nix
     ./git.nix
     ./gitui.nix
-    ./glide-wm
+    ./glide
     ./halloy.nix
     ./helix
     ./jujutsu.nix

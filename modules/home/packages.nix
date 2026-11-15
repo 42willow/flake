@@ -14,7 +14,7 @@ in {
     concatLists [
       # Shared - GUI
       (optionals nest.profiles.graphical.enable [
-        unstable.chiri
+        chiri
       ])
 
       # Shared - CLI (tools)

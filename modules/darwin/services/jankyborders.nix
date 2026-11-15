@@ -13,7 +13,7 @@ in {
 
   config = mkIf cfg.enable {
     services.jankyborders = {
-      enable = false;
+      enable = true;
 
       width = 6.0;
       hidpi = true;

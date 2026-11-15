@@ -1,8 +1,8 @@
 {
   imports = [
     ./aerospace.nix
-    ./janky-borders.nix
-    ./launch-agents.nix
+    ./glide.nix
+    ./jankyborders.nix
     ./skhd.nix
     ./yabai.nix
   ];

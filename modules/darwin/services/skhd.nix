@@ -13,7 +13,7 @@ in {
 
   config = mkIf cfg.enable {
     services.skhd = {
-      enable = false;
+      enable = true;
 
       skhdConfig =
         ''
