@@ -39,6 +39,6 @@ in {
       "d /var/lib/dispatcharr 0755 root root - -"
       "d /home/willow/epg 0755 willow users - -"
     ];
-    networking.firewall.allowedTCPPorts = [3005];
+    networking.firewall.allowedTCPPorts = [cfg.port];
   };
 }

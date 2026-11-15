@@ -13,7 +13,7 @@ in {
 
   config = mkIf cfg.enable {
     services.mpdscribble = {
-      enable = false;
+      enable = true;
       endpoints."last.fm" = {
         # passwordFile = config.sops.secrets.lastfm.path;
         username = "snudoo";

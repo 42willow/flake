@@ -25,14 +25,19 @@ in {
       sound.enable = true;
     };
     services = {
+      actual.enable = true;
+      calibre-server.enable = true;
       dispatcharr.enable = true;
       freshrss.enable = true;
       gatus.enable = true;
+      gonic.enable = true;
       immich.enable = true;
       jellyfin.enable = true;
       koito.enable = true;
+      mpdscribble.enable = false;
       radicale.enable = true;
       restic.enable = true;
+      uhf-server.enable = true;
     };
   };
 
