@@ -49,12 +49,12 @@ jobs:
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: Mic92/hestia@v1
+      - uses: Mic92/hestia@v3.1.0
         with:
-          version: v1
+          version: v3.1.0
 
       - name: Generate Nix Diff
-        uses: natsukium/nix-diff-action@v1.1.1
+        uses: natsukium/nix-diff-action@main
         with:
           mode: diff-only
           attributes: |
@@ -68,7 +68,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Aggregate and Post Diffs
-        uses: 42willow/nix-diff-action@main
+        uses: natsukium/nix-diff-action@main
         with:
           mode: comment-only
           github-token: ${{ secrets.GITHUB_TOKEN }}
