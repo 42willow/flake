@@ -12,6 +12,7 @@
     ./mpdscribble.nix
     ./radicale.nix
     ./restic.nix
+    ./tailscale.nix
     ./uhf-server.nix
   ];
 }
