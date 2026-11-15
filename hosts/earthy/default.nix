@@ -33,7 +33,7 @@ in {
       gonic.enable = true;
       immich.enable = true;
       jellyfin.enable = true;
-      koito.enable = true;
+      koito.enable = false;
       mpdscribble.enable = false;
       radicale.enable = true;
       restic.enable = true;
