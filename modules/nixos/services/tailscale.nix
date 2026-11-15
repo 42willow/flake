@@ -57,18 +57,13 @@ in {
 
         ${lib.concatStringsSep "\n" (
           lib.mapAttrsToList (
-            name: port: "${ts} serve --service=svc:${name} ${toString port}"
-          ) {
-            actual = 5006;
-            calibre = 4321;
-            dispatcharr = 3005;
-            freshrss = 8443;
-            gonic = 4747;
-            immich = 2283;
-            jellyfin = 8096;
-            radicale = 5232;
-            status = 3001;
-          }
+            _: svc: "${ts} serve --service=${svc.tailnet.name} ${toString svc.port}"
+          ) (
+            lib.filterAttrs (
+              _: svc: svc.enable && svc.tailnet.enable
+            )
+            config.nest.services
+          )
         )}
 
         ${ts} serve --bg 8384

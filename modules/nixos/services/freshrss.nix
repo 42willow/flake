@@ -11,7 +11,10 @@
 
   cfg = config.nest.services.freshrss;
 in {
-  options.nest.services.freshrss = mkServiceOption "freshrss" {port = 8443;};
+  options.nest.services.freshrss = mkServiceOption "freshrss" {
+    port = 8443;
+    tailnet = true;
+  };
 
   config = mkIf cfg.enable {
     sops.secrets.freshrss-password = mkSecret {

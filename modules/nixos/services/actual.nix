@@ -10,7 +10,7 @@
 
   cfg = config.nest.services.actual;
 in {
-  options.nest.services.actual = mkServiceOption "actual server" {
+  options.nest.services.actual = mkServiceOption "actual" {
     port = 5006;
     tailnet = true;
   };

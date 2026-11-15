@@ -12,7 +12,7 @@
   inherit (cfg) ebooksPath;
 in {
   options.nest.services.calibre-server =
-    mkServiceOption "calibre server" {
+    mkServiceOption "calibre" {
       port = 4321;
       tailnet = true;
     }

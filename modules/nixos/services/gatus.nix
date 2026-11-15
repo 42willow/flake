@@ -30,7 +30,7 @@
       ];
     };
 in {
-  options.nest.services.gatus = mkServiceOption "gatus" {
+  options.nest.services.gatus = mkServiceOption "status" {
     port = 3001;
     tailnet = true;
   };
