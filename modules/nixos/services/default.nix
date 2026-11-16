@@ -8,6 +8,7 @@
     ./gonic.nix
     ./immich.nix
     ./jellyfin.nix
+    ./junimoserver.nix
     ./koito.nix
     ./mpdscribble.nix
     ./radicale.nix
