@@ -19,7 +19,6 @@
 
         pkgs.rustfmt
         pkgs.nixd
-        pkgs.nil
         pkgs.prettierd
         pkgs.kdePackages.qtdeclarative # QML
       ];

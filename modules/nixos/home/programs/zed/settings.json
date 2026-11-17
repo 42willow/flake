@@ -110,7 +110,7 @@
           "command": "alejandra"
         }
       },
-      "language_servers": ["nil", "!nixd"]
+      "language_servers": ["nixd", "!nil"]
     },
     "Python": {
       "tab_size": 4

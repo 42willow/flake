@@ -2,8 +2,11 @@
   lib,
   pkgs,
   config,
+  osConfig,
   ...
-}: {
+}: let
+  inherit (osConfig.nest.user) flakeDir;
+in {
   xdg.configFile = lib.mkIf config.programs.helix.enable {
     ".prettierrc.json".text = builtins.toJSON (import ./prettier.nix {inherit pkgs;});
     ".dprint.jsonc".text = builtins.toJSON (import ./dprint.nix {inherit pkgs;});
@@ -85,7 +88,17 @@
         };
         gopls.command = lib.getExe pkgs.gopls;
         discord-rpc-lsp.command = lib.getExe pkgs.discord-rpc-lsp;
-        nil.command = lib.getExe pkgs.nil;
+        # nil.command = lib.getExe pkgs.nil;
+        nixd = {
+          command = lib.getExe pkgs.nixd;
+          config.nixd = {
+            nixpkgs.expr = ''import (builtins.getFlake "${flakeDir}").inputs.nixpkgs { }'';
+            options = {
+              nixos.expr = ''(builtins.getFlake "${flakeDir}").nixosConfigurations.earthy.options'';
+              home-manager.expr = ''(builtins.getFlake "${flakeDir}").nixosConfigurations.earthy.options.home-manager.users.type.getSubOptions [ ]'';
+            };
+          };
+        };
         markdown-oxide.command = lib.getExe pkgs.markdown-oxide;
         rust-analyzer.command = lib.getExe pkgs.rust-analyzer;
         zls.command = lib.getExe pkgs.zls;
@@ -102,7 +115,7 @@
         }) [
         {
           name = "nix";
-          language-servers = ["nil"];
+          language-servers = ["nixd"];
           formatter.command = lib.getExe pkgs.alejandra;
         }
         {
