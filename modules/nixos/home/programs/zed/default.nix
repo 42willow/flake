@@ -9,7 +9,7 @@
 
   config = lib.mkIf config.programs.zed.enable {
     home = let
-      inherit (osConfig.nest.system.user) flakeDir;
+      inherit (osConfig.nest.user) flakeDir;
       mkLink = config.lib.file.mkOutOfStoreSymlink;
       settingsFile = mkLink "${flakeDir}/modules/nixos/programs/zed/settings.json";
       keymapFile = mkLink "${flakeDir}/modules/nixos/programs/zed/keymap.json";

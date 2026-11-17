@@ -5,7 +5,7 @@
   ...
 }: let
   stars = pkgs.writeShellScriptBin "stars" ''
-    cd ${config.nest.system.user.flakeDir}
+    cd ${config.nest.user.flakeDir}
     ${lib.getExe pkgs.just} starling
   '';
 in {

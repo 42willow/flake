@@ -4,6 +4,6 @@
       enable = true;
       extraArgs = "--keep-since 4d --keep 3";
     };
-    flake = osConfig.nest.system.user.flakeDir;
+    flake = osConfig.nest.user.flakeDir;
   };
 }

@@ -15,7 +15,7 @@ in {
   ];
 
   nest = {
-    system.hostName = "earthy";
+    hostName = "earthy";
     profiles = {
       graphical.enable = true;
       dev.enable = true;

@@ -24,7 +24,7 @@ in {
   };
 
   networking = {
-    inherit (config.nest.system) hostName;
+    inherit (config.nest) hostName;
     networkmanager = {
       enable = true;
       # https://github.com/Janik-Haag/nm2nix

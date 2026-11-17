@@ -19,7 +19,7 @@
   disabledModules = ["profiles/base.nix"];
 
   nest = {
-    system.hostName = "anemone";
+    hostName = "anemone";
     profiles.headless.enable = true;
   };
 

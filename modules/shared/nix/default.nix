@@ -3,7 +3,7 @@
   self,
   ...
 }: let
-  inherit (config.nest.system) user;
+  inherit (config.nest) user;
   inherit (self) outputs;
 in {
   nix.settings = {

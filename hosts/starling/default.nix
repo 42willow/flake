@@ -18,15 +18,13 @@ in {
   };
 
   nest = {
-    system = {
-      user = let
-        home = "/Users/${nest.system.user.name}";
-      in {
-        inherit home;
-        name = "willow";
-        group = "staff";
-        flakeDir = "${home}/flake";
-      };
+    user = let
+      home = "/Users/${nest.user.name}";
+    in {
+      inherit home;
+      name = "willow";
+      group = "staff";
+      flakeDir = "${home}/flake";
     };
     profiles = {
       graphical.enable = true;

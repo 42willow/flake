@@ -1,5 +1,5 @@
 {osConfig, ...}: let
-  inherit (osConfig.nest.system) user;
+  inherit (osConfig.nest) user;
 in {
   imports = [
     ./packages.nix

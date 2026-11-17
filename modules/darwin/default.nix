@@ -1,5 +1,5 @@
 {config, ...}: let
-  inherit (config.nest.system) user;
+  inherit (config.nest) user;
 in {
   imports = [
     ./homebrew.nix

@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  inherit (osConfig.nest.system.user) flakeDir;
+  inherit (osConfig.nest.user) flakeDir;
   inherit (pkgs.stdenv.hostPlatform) isDarwin;
 
   mkLink = config.lib.file.mkOutOfStoreSymlink;

@@ -13,35 +13,33 @@ in {
       dev.enable = mkEnableOption "dev tools";
     };
 
-    system = {
-      user = {
-        name = mkOption {
-          type = types.str;
-          description = "The username of the main user for your system";
-          default = "willow";
-        };
-        home = mkOption {
-          type = types.path;
-          description = "The home directory of the main user for your system";
-          default = "/home/${nest.system.user.name}";
-        };
-        group = mkOption {
-          type = types.str;
-          description = "The group of the main user for your system";
-          default = "users";
-        };
-        flakeDir = mkOption {
-          type = types.path;
-          description = "The directory of this flake, used for symlinks";
-          default = "${nest.system.user.home}/flake";
-        };
-      };
-
-      hostName = mkOption {
+    user = {
+      name = mkOption {
         type = types.str;
-        description = "The hostname of your system";
-        default = "nixos";
+        description = "The username of the main user for your system";
+        default = "willow";
       };
+      home = mkOption {
+        type = types.path;
+        description = "The home directory of the main user for your system";
+        default = "/home/${nest.user.name}";
+      };
+      group = mkOption {
+        type = types.str;
+        description = "The group of the main user for your system";
+        default = "users";
+      };
+      flakeDir = mkOption {
+        type = types.path;
+        description = "The directory of this flake, used for symlinks";
+        default = "${nest.user.home}/flake";
+      };
+    };
+
+    hostName = mkOption {
+      type = types.str;
+      description = "The hostname of your system";
+      default = "nixos";
     };
 
     hardware = {
