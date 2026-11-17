@@ -28,27 +28,8 @@
     kernelModules = ["kvm-intel"];
     extraModulePackages = [];
 
-    supportedFilesystems = ["ntfs" "ext4" "zfs"];
+    supportedFilesystems = ["btrfs" "ntfs" "ext4" "zfs"];
   };
-
-  # file systems
-  fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-uuid/75293ea9-4307-498d-96b7-8672bd8dcb83";
-      fsType = "ext4";
-    };
-    "/boot" = {
-      device = "/dev/disk/by-uuid/0821-BB6D";
-      fsType = "vfat";
-      options = ["fmask=0077" "dmask=0077"];
-    };
-    "/mnt/shared" = {
-      device = "/dev/nvme0n1p5";
-      fsType = "ntfs";
-      options = ["rw" "uid=1000" "gid=100"];
-    };
-  };
-  swapDevices = [];
 
   hardware = {
     graphics = {
