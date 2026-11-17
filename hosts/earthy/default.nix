@@ -9,7 +9,9 @@
   inherit (config.sops) secrets;
 in {
   imports = [
+    ./disko.nix
     ./hardware-configuration.nix
+    ./preservation.nix
     ./users.nix
     "${self}/modules/nixos"
   ];
