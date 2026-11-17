@@ -39,6 +39,7 @@ in {
       helix.enable = true;
       jjui.enable = true; # no config
       nh.enable = true;
+      nix-index.enable = true;
       ripgrep.enable = true;
       ssh.enable = true;
       starship.enable = true;

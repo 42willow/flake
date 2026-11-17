@@ -17,6 +17,7 @@
     ./jujutsu.nix
     ./kitty.nix
     ./nh.nix
+    ./nix-index.nix
     ./ripgrep.nix
     ./sioyek.nix
     ./ssh.nix
