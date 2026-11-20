@@ -11,6 +11,18 @@ in {
     ".prettierrc.json".text = builtins.toJSON (import ./prettier.nix {inherit pkgs;});
     ".dprint.jsonc".text = builtins.toJSON (import ./dprint.nix {inherit pkgs;});
     "moxide/settings.toml".source = ./moxide.toml;
+    # "biome/biome.json".text = builtins.toJSON {
+    #   "$schema" = "https://biomejs.dev";
+    #   html.experimentalFullSupportEnabled = true;
+    #   linter = {
+    #     enabled = true;
+    #     rules = {
+    #       recommended = true;
+    #       correctness.useSortedClasses = "warn";
+    #     };
+    #   };
+    #   formatter.enabled = true;
+    # };
   };
 
   programs.helix = {
@@ -24,7 +36,21 @@ in {
           lang
         ];
       };
-
+      # biome = {
+      #   command = lib.getExe pkgs.unstable.biome;
+      #   args = [
+      #     "format"
+      #     "--stdin-file-path"
+      #     "%{buffer_name}"
+      #   ];
+      # };
+      oxfmt = {
+        command = lib.getExe pkgs.unstable.oxfmt;
+        args = [
+          "--stdin-filepath"
+          "%{buffer_name}"
+        ];
+      };
       dprint = {
         command = lib.getExe pkgs.dprint;
         args = [
@@ -38,9 +64,13 @@ in {
     in {
       language-server = {
         oxlint = {
-          command = lib.getExe pkgs.oxlint;
+          command = lib.getExe pkgs.unstable.oxlint;
           args = ["--lsp"];
         };
+        # biome = {
+        #   command = lib.getExe pkgs.unstable.biome;
+        #   args = ["lsp-proxy"];
+        # };
         emmet-lsp = {
           command = lib.getExe pkgs.emmet-language-server;
           args = ["--stdio"];
@@ -51,6 +81,10 @@ in {
         };
         vue-lsp = {
           command = lib.getExe pkgs.vue-language-server;
+          args = ["--stdio"];
+        };
+        tailwindcss-lsp = {
+          command = lib.getExe pkgs.tailwindcss-language-server;
           args = ["--stdio"];
         };
         astro-lsp = {
@@ -139,7 +173,16 @@ in {
         }
         {
           name = "astro";
-          language-servers = ["astro-lsp" "oxlint"];
+          language-servers = [
+            "astro-lsp"
+            "tailwindcss-lsp"
+            "emmet-lsp"
+            "oxlint"
+          ];
+          formatter = {
+            command = "bunx";
+            args = ["prettier" "--stdin-filepath" "%{buffer_name}"];
+          };
         }
         {
           name = "markdown";
@@ -149,13 +192,13 @@ in {
         }
         {
           name = "typescript";
-          language-servers = ["typescript-lsp"];
-          formatter = prettier "typescript";
+          language-servers = ["typescript-lsp" "oxlint"];
+          formatter = oxfmt;
         }
         {
           name = "javascript";
-          language-servers = ["javascript-lsp"];
-          formatter = prettier "javascript";
+          language-servers = ["javascript-lsp" "oxlint"];
+          formatter = oxfmt;
         }
         {
           name = "css";
