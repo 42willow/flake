@@ -35,6 +35,7 @@ in {
       jellyfin.enable = true;
       koito.enable = false;
       mpdscribble.enable = false;
+      penpot.enable = true;
       radicale.enable = true;
       restic.enable = true;
       tailscale.enable = true;
