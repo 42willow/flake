@@ -37,6 +37,10 @@ in {
       };
     in {
       language-server = {
+        oxlint = {
+          command = lib.getExe pkgs.oxlint;
+          args = ["--lsp"];
+        };
         emmet-lsp = {
           command = lib.getExe pkgs.emmet-language-server;
           args = ["--stdio"];
@@ -130,12 +134,12 @@ in {
         }
         {
           name = "svelte";
-          language-servers = ["svelte-lsp"];
-          formatter = prettier "svelte";
+          language-servers = ["svelte-lsp" "oxlint"];
+          formatter = oxfmt;
         }
         {
           name = "astro";
-          language-servers = ["astro-lsp"];
+          language-servers = ["astro-lsp" "oxlint"];
         }
         {
           name = "markdown";
