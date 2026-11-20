@@ -33,8 +33,10 @@ in {
       gonic.enable = true;
       immich.enable = true;
       jellyfin.enable = true;
+      junimoserver.enable = true;
       koito.enable = false;
       mpdscribble.enable = false;
+      penpot.enable = true;
       radicale.enable = true;
       restic.enable = true;
       tailscale.enable = true;
