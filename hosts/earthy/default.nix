@@ -27,18 +27,18 @@ in {
     services = {
       actual.enable = true;
       calibre-server.enable = true;
-      dispatcharr.enable = true;
+      dispatcharr.enable = false;
       freshrss.enable = true;
       gatus.enable = true;
       gonic.enable = true;
       immich.enable = true;
-      jellyfin.enable = true;
+      jellyfin.enable = false;
       koito.enable = false;
       mpdscribble.enable = false;
       radicale.enable = true;
       restic.enable = true;
       tailscale.enable = true;
-      uhf-server.enable = true;
+      uhf-server.enable = false;
     };
   };
 
