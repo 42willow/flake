@@ -142,6 +142,13 @@
       inputs.nixpkgs.follows = "nixos-unstable";
     };
 
+    # file system
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+    preservation.url = "github:nix-community/preservation";
+
     # reduce inputs
     systems = {
       url = "github:nix-systems/default";
